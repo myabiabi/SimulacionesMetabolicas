@@ -654,10 +654,15 @@ def comets(ruta_csv_syncoms, patron_xml, threads, cycles, mass, media, newpath):
 
 seguí las instrucciones de la pagina web: [dockers](https://docs.docker.com/engine/install/ubuntu/)
  
-
+ 
+#### 
+for fasta in *.fasta; do
+    nombre=$(basename "$fasta" .fasta)
+    carveme "$fasta" --dna -g LB -o "${nombre}.xml"
+done
  
  
- 
+python3 ModelajeMetabolico/scr/sim_syncom_comets.py --gem_path ModelajeMetabolico/modelos --strains Rerythropolis --media lb --media_dil 3 --cycles 10000 --threads 1 --outdir ./Rerythropolis_dil3
  
                                                                                                                                                                  
                                                                                                                                                                  

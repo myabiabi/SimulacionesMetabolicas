@@ -1,0 +1,39 @@
+---
+title: "Bitácora"
+author: "abi :)"
+output:
+  html_document:
+    theme: lumen
+    toc: true
+    toc_float: true
+    code_folding: show
+---
+
+# 🛠️ Repositorio de Comandos Útiles {.tabset .tabset-fade .tabset-pills}
+
+Aquí guardo los comandos que uso frecuentemente para no tener que buscarlos en el historial.
+
+## 💻 Cluster & Slurm
+* **Revisar estado de mis trabajos:** `squeue -u mi_usuario`
+* **Cancelar un trabajo:** `scancel ID_TRABAJO`
+* **Ver uso de memoria en tiempo real:** `sstat --format=JobID,MaxVMSize`
+
+## 🧬 Bioinformática & Modelos
+* **Correr simulación COMETS básica:**
+  ```bash
+  python -m cometspy run_simulation.py --steps 100
+
+### `r format(Sys.time(), '%d/%m/%Y')` | Notas del Día
+
+### 📝 Apuntes y Observaciones
+* Escribe aquí tus apuntes...
+* Puedes añadir viñetas o texto normal.
+
+### Comandos útiles
+```{r}
+# Tus scripts de hoy aquí
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+# Aquí puedes cargar tus librerías principales si lo deseas
+# library(tidyverse)
