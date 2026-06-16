@@ -1,84 +1,81 @@
+import os
+import cobra
+from cobra.io import read_sbml_model, write_sbml_model
+
+# 1. Imports principales de gemsembler (Limpiados y sin duplicados)
 from gemsembler import (
-    GatheredModels,  # Object to collect input models and build a supermodel
-    read_supermodel_from_json,  # Function to read a save supermodel
-    get_models_with_all_confidence_levels,  # creates cobrapy models at all confidence levels
-    get_model_of_interest  # creates one cobrapy model
+    GatheredModels,
+    read_supermodel_from_json,
+    get_models_with_all_confidence_levels,
+    get_model_of_interest
 )
 
+# 2. Funciones downstream para análisis posterior
 from gemsembler.downstream import (
-    glycolysis,  # returns table and/or interactive maps of glycolysis
-    pentose_phosphate,  # returns table and/or interactive maps of pentose phosphate
-    tca,  # # returns table and/or interactive maps of TCA
-    # table_reactions_confidence,  # returns a pandas dataframe with reaction IDs, confidence and additional info
-    # calc_dist_for_synt_path,
+    glycolysis,
+    pentose_phosphate,
+    tca,
     biomass,
     get_met_neighborhood,
-    # run_metquest_results_analysis,
     run_growth_full_flux_analysis,
-    # write_metabolites_production_output,
     pathway_of_interest,
-    # get_met_neighborhood,
     GLYCOLYSIS_GLOBAL,
     PENTOSE_PHOSPHATE_PATHWAY_GLOBAL,
     TCA_GLOBAL,
     COFACTORS_GLOBAL
 )
-import os
-import cobra
 from gemsembler.drawing import draw_one_synt_path, MET_NOT_INT_GLOBAL
-from cobra.io import read_sbml_model, write_sbml_model
 
+# 3. Configuración de modelos de entrada
+# Ajustado según el origen real de tus archivos (.faa para CarveMe y .fna para KBase)
 st_example = [
     {
-        "model_id": "st60_carveme",
-        "path_to_model": "./02_resultados/models/rz_na_cv_lb_GCF_000374945.xml",
+        "model_id": "arthrobacter_carveme",
+        "path_to_model": "./02_resultados/models/rz_na_cv_lb_arthrobacter.xml",
         "model_type": "carveme",
-        "path_to_genome": "01_data/protein_files/GCF_000374945.faa"
+        "path_to_genome": "01_data/protein_files/GCF_000374945.faa" 
     },
-
     {
-        "model_id": "st60_kbase",
-        "path_to_model": "./02_resultados/models/rz_na_rt_kb_lb_arthrobacter_sp.xml",
+        "model_id": "arthrobacter_kbase",
+        "path_to_model": "./02_resultados/models/rz_na_rt_kb_lb_arthrobacter.xml",
         "model_type": "modelseed",
-        "path_to_genome": "01_data/amino_files/GCF_000374945.1_ASM37494v1_genomic.fna"
+        "path_to_genome": "01_data/ncl_files/GCF_000374945.fna" 
     }
 ]
 
+# 4. Inicializar y correr el recolector
 gathered = GatheredModels()
 for model in st_example:
     gathered.add_model(**model)
 gathered.run()
 
+# 5. Ensamblar el supermodelo
+# Aquí le das ambos archivos de referencia finales para que Gemsembler haga el mapeo cruzado
 supermodel_lp = gathered.assemble_supermodel(
     "./gemsembler_output/",
-    path_final_genome_nt="01_data/amino_files/GCF_000374945.1_ASM37494v1_genomic.fna",
+    path_final_genome_nt="01_data/ncl_files/GCF_000374945.fna", 
     path_final_genome_aa="01_data/protein_files/GCF_000374945.faa"
 )
 
-print(type(supermodel_lp))
-print(dir(supermodel_lp))
+print("Tipo de superobjeto:", type(supermodel_lp))
+print("Métodos disponibles:", dir(supermodel_lp))
+
+# 6. Verificar niveles de confianza disponibles (ej. 'core', 'extended', etc.)
+levels = supermodel_lp.get_all_confidence_levels()
+print("Niveles de confianza disponibles:", levels)
 
 
-# Ver qué niveles de confianza están disponibles
-print(supermodel_lp.get_all_confidence_levels())
-
-# Opción A: exportar un nivel específico (ej. "core2" o "assembly")
+# Opción A: Exportar un nivel específico (ej. "core2")
+print("Exportando nivel core2...")
 core2_model = get_model_of_interest(
     supermodel_lp,
     "core2",
-    "./gemsembler_output/st60_core2.xml"
+    "./gemsembler_output/st_core2.xml"
 )
 
-# Opción B: exportar todos los niveles de una vez
+# Opción B: Exportar todos los niveles en lote a la carpeta de salida
+print("Exportando todos los niveles disponibles...")
 all_models = get_models_with_all_confidence_levels(
     supermodel_lp,
     "./gemsembler_output/"
 )
-
-# Opción C: si las funciones anteriores no escriben el .xml directamente,
-# exportar manualmente con COBRApy
-from cobra.io import write_sbml_model
-
-write_sbml_model(core2_model, "./gemsembler_output/st60_core2.xml")
-
-

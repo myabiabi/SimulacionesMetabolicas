@@ -61,6 +61,87 @@ name_bac <- c(
 
 # Evaluar el modelo 
 ## 1. Comparar número de variables
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/variables_totales/variables_totales.csv"
+
+df <- read_csv(variables_file)
+
+# Elimina espacios al inicio/final de los nombres de columnas
+names(df) <- trimws(names(df))
+
+df_long <- df %>%
+  pivot_longer(
+    cols = c(
+      Total_Reactions,
+      Total_Metabolites,
+      Total_Genes
+    ),
+    names_to = "Variable",
+    values_to = "Value"
+  )
+
+ggplot(
+  df_long,
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Method
+  )
+) +
+  geom_boxplot(
+    alpha = 0.4,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_jitter(
+    aes(color = Method),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2,
+    alpha = 0.9
+  ) +
+  scale_fill_manual(
+    values = c(
+      "CV" = "#79CDCD",
+      "KB" = "#BCEE68",
+      "GP" = "lightpink"
+    ),
+    labels = c(
+      "CarveMe",
+      "KBase",
+      "gapseq"
+    )
+  ) +
+  scale_color_manual(
+    values = c(
+      "CV" = "#528B8B",
+      "KB" = "#6E8B3D",
+      "GP" = "pink"
+    ),
+    labels = c(
+      "CarveMe",
+      "KBase",
+      "gapseq"
+    )
+  ) +
+  labs(
+    fill = "Reconstruction",
+    color = "Reconstruction",
+    x = "",
+    y = "Count"
+  ) +
+  guides(color = "none") +
+  theme_bw()
+
+```
+
 ## 2. MEMOTE 
 ## 3. Tipo de medio 
 

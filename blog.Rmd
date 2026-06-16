@@ -666,5 +666,51 @@ python3 ModelajeMetabolico/scr/sim_syncom_comets.py --gem_path ModelajeMetabolic
  
                                                                                                                                                                  
                                                                                                                                                                  
+!python3 /workspace/ModelajeMetabolico/scr/sim_syncom_comets.py \
+--gem_path /workspace/modelos_core \
+--strains ecoli_m9_compacto \
+--cycles 5500 \
+--media  m9 \
+--outdir ./modelos_core/ecoli_m9_compacto_1
+
+1:20
 
 
+!python3 /workspace/ModelajeMetabolico/scr/sim_syncom_comets.py \
+--gem_path /workspace/modelos_core \
+--strains ecoli_m9_compacto \
+--cycles 5500 \
+--media_dil 0.5 \
+--media  m9 \
+--outdir ./modelos_core/ecoli_m9_compacto_1_dil
+1:22
+
+
+!python3 /workspace/ModelajeMetabolico/scr/sim_syncom_comets.py \
+--gem_path /workspace/modelos_core \
+--strains ecoli_m9_compacto \
+--cycles 5500 \
+--media_dil 2 \
+--media  m9 \
+--outdir ./modelos_core/ecoli_m9_compacto_1_dil_2
+
+1:21
+
+
+!python3 /workspace/ModelajeMetabolico/scr/sim_syncom_comets.py \
+--gem_path /workspace/modelos_core \
+--strains ecoli_m9_compacto \
+--cycles 5500 \
+--media_dil 8 \
+--media  m9 \
+--outdir ./modelos_core/ecoli_m9_compacto_1_dil_8
+
+
+
+!python3 /workspace/ModelajeMetabolico/scr/sim_syncom_comets.py \
+--gem_path /workspace/modelos_core \
+--strains ecoli_m9_compacto \
+--cycles 5500 \
+--media  m9 \
+--outdir ./modelos_core/ecoli_m9_compacto_glu
+1:20
