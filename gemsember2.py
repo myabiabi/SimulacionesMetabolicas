@@ -33,13 +33,13 @@ st_example = [
         "model_id": "arthrobacter_carveme",
         "path_to_model": "./02_resultados/models/rz_na_cv_lb_arthrobacter.xml",
         "model_type": "carveme",
-        "path_to_genome": "01_data/protein_files/GCF_000374945.faa" 
+        "path_to_genome": "01_data/rz/protein_files/GCF_000374945.faa" 
     },
     {
         "model_id": "arthrobacter_kbase",
         "path_to_model": "./02_resultados/models/rz_na_rt_kb_lb_arthrobacter.xml",
         "model_type": "modelseed",
-        "path_to_genome": "01_data/ncl_files/GCF_000374945.fna" 
+        "path_to_genome": "01_data/rz/ncl_files/GCF_000374945.fna" 
     }
 ]
 
@@ -53,8 +53,8 @@ gathered.run()
 # Aquí le das ambos archivos de referencia finales para que Gemsembler haga el mapeo cruzado
 supermodel_lp = gathered.assemble_supermodel(
     "./gemsembler_output/",
-    path_final_genome_nt="01_data/ncl_files/GCF_000374945.fna", 
-    path_final_genome_aa="01_data/protein_files/GCF_000374945.faa"
+    path_final_genome_nt="01_data/rz/ncl_files/GCF_000374945.fna", 
+    path_final_genome_aa="01_data/rz/protein_files/GCF_000374945.faa"
 )
 
 print("Tipo de superobjeto:", type(supermodel_lp))
