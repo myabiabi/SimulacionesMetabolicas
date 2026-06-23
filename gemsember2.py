@@ -24,58 +24,98 @@ from gemsembler.downstream import (
     TCA_GLOBAL,
     COFACTORS_GLOBAL
 )
-from gemsembler.drawing import draw_one_synt_path, MET_NOT_INT_GLOBAL
 
-# 3. Configuración de modelos de entrada
-# Ajustado según el origen real de tus archivos (.faa para CarveMe y .fna para KBase)
-st_example = [
+from gemsembler import (
+    GatheredModels,
+    get_model_of_interest,
+    get_models_with_all_confidence_levels
+)
+
+# ==========================
+# Modelos de entrada
+# ==========================
+
+ecoli_example = [
     {
-        "model_id": "arthrobacter_carveme",
-        "path_to_model": "./02_resultados/models/rz_na_cv_lb_arthrobacter.xml",
-        "model_type": "carveme",
-        "path_to_genome": "01_data/rz/protein_files/GCF_000374945.faa" 
+        "model_id": "ecoli_carveme",
+        "path_to_model": "./02_resultados/modelos_core/ec_na_cv_na_ecoli.xml",
+        "model_type": "carveme"
     },
     {
-        "model_id": "arthrobacter_kbase",
-        "path_to_model": "./02_resultados/models/rz_na_rt_kb_lb_arthrobacter.xml",
-        "model_type": "modelseed",
-        "path_to_genome": "01_data/rz/ncl_files/GCF_000374945.fna" 
+        "model_id": "ecoli_modelseed",
+        "path_to_model": "./02_resultados/modelos_core/ec_na_kb_na_ecoli.xml",
+        "model_type": "modelseed"
     }
 ]
 
-# 4. Inicializar y correr el recolector
+# ==========================
+# Directorio de salida
+# ==========================
+
+output_dir = "./gemsembler_output_ecoli/"
+
+# ==========================
+# Cargar modelos
+# ==========================
+
 gathered = GatheredModels()
-for model in st_example:
+
+for model in ecoli_example:
     gathered.add_model(**model)
+
+# ==========================
+# Conversión y ensamblaje
+# ==========================
+
 gathered.run()
 
-# 5. Ensamblar el supermodelo
-# Aquí le das ambos archivos de referencia finales para que Gemsembler haga el mapeo cruzado
-supermodel_lp = gathered.assemble_supermodel(
-    "./gemsembler_output/",
-    path_final_genome_nt="01_data/rz/ncl_files/GCF_000374945.fna", 
-    path_final_genome_aa="01_data/rz/protein_files/GCF_000374945.faa"
+supermodel_ecoli = gathered.assemble_supermodel(
+    output_dir,
+    path_final_genome_nt="/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/others/ecoli.fna",
+    path_final_genome_aa="/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/others/ecoli.faa"
 )
 
-print("Tipo de superobjeto:", type(supermodel_lp))
-print("Métodos disponibles:", dir(supermodel_lp))
+# ==========================
+# Revisar niveles disponibles
+# ==========================
 
-# 6. Verificar niveles de confianza disponibles (ej. 'core', 'extended', etc.)
-levels = supermodel_lp.get_all_confidence_levels()
-print("Niveles de confianza disponibles:", levels)
+print("\nNiveles disponibles:")
 
+if hasattr(supermodel_ecoli, "get_all_confidence_levels"):
+    print(supermodel_ecoli.get_all_confidence_levels())
 
-# Opción A: Exportar un nivel específico (ej. "core2")
-print("Exportando nivel core2...")
-core2_model = get_model_of_interest(
-    supermodel_lp,
-    "core2",
-    "./gemsembler_output/st_core2.xml"
-)
+print("\nAtributos del supermodelo:")
+print(dir(supermodel_ecoli))
 
-# Opción B: Exportar todos los niveles en lote a la carpeta de salida
-print("Exportando todos los niveles disponibles...")
-all_models = get_models_with_all_confidence_levels(
-    supermodel_lp,
-    "./gemsembler_output/"
-)
+# ==========================
+# Generar modelos de confianza
+# ==========================
+
+try:
+    supermodel_ecoli.at_least_in(2)
+
+    core2_model = get_model_of_interest(
+        supermodel_ecoli,
+        "core2",
+        f"{output_dir}/ecoli_core2.xml"
+    )
+
+    print("Modelo core2 exportado correctamente.")
+
+except Exception as e:
+    print(f"\nNo fue posible generar core2: {e}")
+
+# ==========================
+# Exportar todos los modelos
+# ==========================
+
+try:
+    all_models = get_models_with_all_confidence_levels(
+        supermodel_ecoli,
+        output_dir
+    )
+
+    print("Todos los niveles exportados correctamente.")
+
+except Exception as e:
+    print(f"\nError exportando todos los niveles: {e}")
