@@ -54,5 +54,3 @@ def main():
     # El archivo SBML final se guarda automáticamente gracias al tercer argumento de get_model_of_interest
     print(f"-> Modelo COBRApy (core2) exportado a: {xml_path}")
 
-if __name__ == "__main__":
-    main()
