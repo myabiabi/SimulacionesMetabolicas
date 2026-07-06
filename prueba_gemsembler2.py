@@ -29,7 +29,7 @@ print("¡Estandarización completada!")
 print("\n--- Paso 2: Ensamblando el Supermodel ---")
 supermodel_bact = gathered.assemble_supermodel(
     output_folder=output_dir,
-    assembly_id=None
+    assembly_id="GCF_000744355.1"  # tu accession real aquí
 )
 
 # Diagnóstico: ver qué niveles están disponibles

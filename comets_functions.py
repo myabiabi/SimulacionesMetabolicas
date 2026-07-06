@@ -58,6 +58,7 @@ def comets(ruta_csv_syncoms, patron_xml, threads, cycles, mass, media, newpath):
         os.chdir(folder_name)
         
         print(f"\n>>> Simulando Comunidad {num} en: {os.getcwd()}")
+        
 
         try:
             test_tube = c.layout()
@@ -134,7 +135,7 @@ def comets(ruta_csv_syncoms, patron_xml, threads, cycles, mass, media, newpath):
     print(f"\nProceso finalizado. Resultados en: {root_path}")
 
 def media(name="lb", dil=1, vol=1):
-    name = name.lower()  # Evita errores si escribes "Marine" o "LB" en mayúsculas
+    name = name.lower()  
     res = {}
 
     if name == "lb":

@@ -59,6 +59,10 @@ def process_arguments():
                         help="Dilution factor for the media. Example: 0.1 for 1/10 dilution.",
                         type=float,
                         default=1)
+    parser.add_argument("--media_vol",
+                         help="Volume of media to use.",
+                         type=float,
+                         default=1)
     parser.add_argument("--initial_mass",
                         help=("Initial mass for each strain in grams of dry weight. Example: 1e-8"
                               "Currently, only identical starting masses for all strains are supported."),
@@ -110,7 +114,7 @@ if __name__ == "__main__":
     if not args.ignore_trace_metabolites:
         layout.add_typical_trace_metabolites(amount=1000)
     
-    for metabolite, amount in media(args.media, dil = args.media_dil).items():
+    for metabolite, amount in media(args.media, dil = args.media_dil, vol=args.media_vol).items():
         layout.set_specific_metabolite(metabolite, amount)
             
     # Set simulation parameters.

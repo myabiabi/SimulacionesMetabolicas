@@ -60,15 +60,11 @@ name_bac <- c(
 ```
 
 # Evaluar el modelo 
+
 ## 1. Comparar número de variables
 ```{r}
-library(readr)
-library(dplyr)
-library(tidyr)
-library(ggplot2)
 
 variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/variables_totales.csv"
-
 df <- read_csv(variables_file)
 
 names(df) <- trimws(names(df))
@@ -405,8 +401,25 @@ print(grafica_final)
 
 # Guardar la imagen única
 ```
-
 ## 2. MEMOTE 
+
+## 3. Tabla promedios 
+
+```{r}
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/variables_totales.csv"
+df <- read_csv(variables_file, show_col_types = FALSE)
+reacts <- mean(df$Reactions)
+mets <- mean(df$Metabolites)
+gens <- mean(df$Genes)
+
+cat("--- Mean Values for Thesis Models ---\n")
+cat("Average Reactions:  ", reacts, "\n")
+cat("Average Metabolites:", mets, "\n")
+cat("Average Genes:      ", gens, "\n")
+
+```
+
+
 
 ## 3. Area bajo la curve, velocidad
 

@@ -1596,30 +1596,518 @@ border-radius: 0px;
 </div>
 
 
-<div id="repositorio-de-comandos-útiles" class="section level1 tabset tabset-fade tabset-pills">
-<h1 class="tabset tabset-fade tabset-pills">🛠️ Repositorio de Comandos
-Útiles</h1>
-<p>Aquí guardo los comandos que uso frecuentemente para no tener que
-buscarlos en el historial.</p>
-<div id="antes-de-irte-no-olvides" class="section level2">
-<h2>Antes de irte NO OLVIDES</h2>
-</div>
-<div id="comandos-útilies" class="section level2">
-<h2>Comandos útilies</h2>
+<div id="comandos-útiles" class="section level2">
+<h2>💻 Comandos útiles</h2>
 <ul>
-<li><strong>Revisar estado de mis trabajos:</strong>
-<code>squeue -u mi_usuario</code></li>
-<li><strong>Cancelar un trabajo:</strong>
-<code>scancel ID_TRABAJO</code></li>
-<li><strong>Ver uso de memoria en tiempo real:</strong>
-<code>sstat --format=JobID,MaxVMSize</code></li>
+<li><strong>carveme</strong>
+<code>for file in *.fna; do     nombre=$(basename &quot;$file&quot; .fna)     carve &quot;$file&quot; --dna -g LB -o &quot;rz_na_cv_lb_${nombre}.xml&quot; done</code></li>
+</ul>
+<p>for file in *.faa; do nombre=<span class="math inline">\((basename
+&quot;\)</span>file” .faa) carve “<span class="math inline">\(file&quot;
+-g LB -o &quot;rz_na_cv_lb_\)</span>{nombre}.xml” done</p>
+<ul>
+<li><strong>migrar de cluster a compu</strong></li>
+</ul>
+<p>scp -r directorio/que/quieres/copiar <a href="mailto:mmontante@fenix.lavis.unam.mx" class="email">mmontante@fenix.lavis.unam.mx</a>:/directorio/donde/va/migrar</p>
+<p>scp -r /home/abigaylmontantearenas/Documents/proyecto_tesis/01_data
+<a href="mailto:mmontante@fenix.lavis.unam.mx" class="email">mmontante@fenix.lavis.unam.mx</a>:/mnt/data/sur/users/mmontante</p>
+<ul>
+<li><strong>actualizar copias de repos</strong> git pull origin
+main</li>
 </ul>
 </div>
-<div id="bitácora" class="section level2">
-<h2>Bitácora</h2>
-<div id="r-formatsys.time-dmy-notas-del-día" class="section level3">
-<h3><code>r format(Sys.time(), &#39;%d/%m/%Y&#39;)</code> | Notas del Día</h3>
+<div id="notas" class="section level2">
+<h2>🧬 Notas</h2>
+<div id="section" class="section level3">
+<h3>30/03/26</h3>
+<p>Tengo un problema con la comunidad 7 y 11 y este es el error que me
+arroja Debug Here … Falló Comunidad 1: [Errno 2] No such file or
+directory:
+‘/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/ST00094_prokka.cmd’
+Debug Here … Falló Comunidad 1: [Errno 2] No such file or directory:
+‘/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/ST00143.cmd’</p>
+<pre><code>tail 7symcom.log
+Warning: The added metabolite (pydx_e) is not able to be taken up by any of the current models
+Running COMETS simulation ...
+Debug Here ...
+Falló Comunidad 1: [Errno 2] No such file or directory: &#39;/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/ST00094_prokka.cmd&#39;
+[INFO] Python script finished at Fri Mar 27 13:18:03 CST 2026
+=========================================
+Pipeline done at: Fri Mar 27 13:18:03 CST 2026
+=========================================
+tail 11symcom.log
+tail: cannot open &#39;11symcom.log&#39; for reading: No such file or directory
+[mmontante@login01 SimulacionesMetabolicas]$ tail 11syncom.log
+Warning: The added metabolite (pydx_e) is not able to be taken up by any of the current models
+Running COMETS simulation ...
+[INFO] Python script finished at Fri Mar 27 13:33:56 CST 2026
+=========================================
+Pipeline done at: Fri Mar 27 13:33:56 CST 2026
+=========================================</code></pre>
 </div>
+<div id="memote" class="section level3">
+<h3>MEMOTE</h3>
+<p>Instalcion</p>
+<pre><code>conda create --name memote-env python=3.10
+conda activate memote-env
+conda install memote</code></pre>
+<p>Uso básico</p>
+<pre><code>conda activate memote-env
+memote report snapshot STECOLI_prokka_carveme_lb.xml --filename reporte_final.html</code></pre>
+<p>Mi job</p>
+<pre><code>INPUT_DIR=&quot;02_data/rizo/carveme&quot;
+OUTPUT_DIR=&quot;04_resultados/rizo/memote&quot;
+mkdir -p &quot;$OUTPUT_DIR&quot;
+for model in &quot;$INPUT_DIR&quot;/ST*.xml; do
+    # Extract the filename without the path
+    filename=$(basename &quot;$model&quot;)
+    echo &quot;Processing $filename...&quot;
+memote report snapshot &quot;$model&quot; --filename &quot;$OUTPUT_DIR/${filename%.*}.html&quot;
+done</code></pre>
+<p>Para comparar dos o más modelos:</p>
+<pre><code>memote report diff ./ST00042_eggnog_carveme_lb.xml ./ST00042_prokka_carveme_lb.xml ./ST00046_dimont_carveme_lb.xml --filename comparison_report.html</code></pre>
+<p><a href="URL">https://memote.readthedocs.io/en/latest/understanding_reports.html</a>
+En el archivo de biomass_funtion_2.py estoy viendo como guardo los
+archivos .cmd</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>31/03/26</h3>
+<pre><code>import cometspy as c
+import cobra.io
+import pandas as pd
+import os
+import glob
+def biomass_comunidades(ruta_csv_syncoms, patron_xml,
+                        threads, cycles, mass, media, folder_resultados):
+    # --- PARÁMETROS y VARIABLES ---
+    sim_params = c.params()
+    sim_params.set_param(&#39;numRunThreads&#39;, threads)
+    sim_params.set_param(&#39;maxCycles&#39;, cycles)
+    sim_params.set_param(&#39;timeStep&#39;, 0.1)
+    sim_params.set_param(&#39;writeMediaLog&#39;, True)
+    sim_params.set_param(&#39;MediaLogRate&#39;, 1)
+    sim_params.set_param(&#39;writeTotalBiomassLog&#39;, True)
+    initial_mass = [0, 0, mass]
+    os.makedirs(folder_resultados, exist_ok=True)
+    # --- SELECCIONAR COMUNIDADES ---
+    df = pd.read_csv(ruta_csv_syncoms)
+    # --- CARGAR MODELOS A MEMORIA ---
+    modelos_base = {}
+    lista_archivos = glob.glob(patron_xml)
+    print(f&quot;Cargando {len(lista_archivos)} modelos SBML...&quot;)
+    for path_completo in lista_archivos:
+        archivo = os.path.basename(path_completo)
+        model_id = archivo.split(&#39;_&#39;)[0]
+        try:
+            modelos_base[model_id] = cobra.io.read_sbml_model(path_completo)
+        except Exception as e:
+            print(f&quot;Error cargando {archivo}: {e}&quot;)
+    # --- CICLO DE SIMULACIÓN ---
+    for index, row in df.iterrows():
+        num = row.iloc[0] # ID de la comunidad
+        bacterias_en_comunidad = [col for col in df.columns[1:] if row[col] == 1]
+        print(f&quot;\n&gt;&gt;&gt; Procesando Comunidad {num}: {bacterias_en_comunidad}&quot;)
+        test_tube = c.layout()
+        modelos_agregados = []
+        try:
+            # Agregar cada bacteria al layout
+            for b_id in bacterias_en_comunidad:
+                if b_id in modelos_base:
+                    comets_model = c.model(modelos_base[b_id])
+                    comets_model.id = b_id
+                    comets_model.initial_pop = initial_mass
+                    test_tube.add_model(comets_model)
+                    modelos_agregados.append(b_id)
+                else:
+                    print(f&quot;Advertencia: Modelo {b_id} no encontrado.&quot;)
+            if not modelos_agregados:
+                print(f&quot;Saltando Comunidad {num}: No hay modelos válidos.&quot;)
+                continue
+            # --- CONFIGURACIÓN DEL MEDIO ---
+            for met, conc in media.items():
+                try:
+                    test_tube.set_specific_metabolite(met, conc)
+                except:
+                    pass
+            trace_metabolites = [&#39;ca2_e&#39;, &#39;cl_e&#39;, &#39;cobalt2_e&#39;, &#39;cu2_e&#39;, &#39;fe2_e&#39;, &#39;fe3_e&#39;, &#39;h_e&#39;,
+                                 &#39;k_e&#39;, &#39;h2o_e&#39;, &#39;mg2_e&#39;, &#39;mn2_e&#39;, &#39;mobd_e&#39;, &#39;na1_e&#39;, &#39;ni2_e&#39;,
+                                 &#39;nh4_e&#39;, &#39;o2_e&#39;, &#39;pi_e&#39;, &#39;so4_e&#39;, &#39;zn2_e&#39;]
+            for i in trace_metabolites:
+                test_tube.set_specific_metabolite(i, 1000)
+                test_tube.set_specific_static(i, 1000)
+            # --- EJECUCIÓN ---
+            experiment = c.comets(test_tube, sim_params)
+            experiment.run()
+            # --- GUARDADO DE RESULTADOS ---
+            df_biomasa = experiment.total_biomass
+            if df_biomasa is not None:
+                df_biomasa.columns = [&#39;cycle&#39;] + modelos_agregados
+                df_biomasa.to_csv(os.path.join(folder_resultados, f&quot;comunidad_{num}_biomasa.csv&quot;), index=False)
+            df_metabolites = experiment.get_metabolite_time_series(upper_threshold=500.0)
+            if df_metabolites is not None:
+                df_metabolites.to_csv(os.path.join(folder_resultados, f&quot;comunidad_{num}_metabolitos.csv&quot;), index=False)
+            print(f&quot;Comunidad {num} completada exitosamente.&quot;)
+        except Exception as e:
+            print(f&quot;Error crítico en comunidad {num}: {e}&quot;)</code></pre>
+</div>
+<div id="section-2" class="section level3">
+<h3>03/04/26</h3>
+<p>Función para generar biomasa y metabolitos</p>
+<pre><code>import cometspy as c
+import cobra.io
+import pandas as pd
+import os
+import glob
+def comets(ruta_csv_syncoms, patron_xml,
+                             threads, cycles, mass, media, folder_resultados, folder_temp):
+    # --- CAMBIAR DIRECTORIO ----
+    os.makedirs(folder_temp, exist_ok=True)
+    print(f&quot;Directorio inicial: {os.getcwd()}&quot;)
+    os.chdir(folder_temp)
+    print(f&quot;Directorio de trabajo actual (temporal): {os.getcwd()}&quot;)
+    dilution_rate = 0.1
+    os.makedirs(folder_resultados, exist_ok=True)
+    # --- PARÁMETROS ---
+    sim_params = c.params()
+    sim_params.set_param(&#39;numRunThreads&#39;, threads)
+    sim_params.set_param(&#39;maxCycles&#39;, cycles)
+    initial_mass = [0, 0, mass]
+    sim_params.set_param(&#39;writeMediaLog&#39;, True)
+    sim_params.set_param(&#39;MediaLogRate&#39;, 1)
+    sim_params.set_param(&#39;writeTotalBiomassLog&#39;, True)
+    sim_params.set_param(&#39;writeFluxLog&#39;, True)
+    sim_params.set_param(&#39;FluxLogRate&#39;, 1)
+    # --- SELECCIONAR COMUNIDADES ---
+    df = pd.read_csv(ruta_csv_syncoms)
+    id_comunidad = df.iloc[:, 0].tolist()
+    matriz_bacterias = df.iloc[:, 1:].astype(int).T.values.tolist()
+    comunidades_finales = []
+    for ensayo in matriz_bacterias:
+        bacterias_presentes = [nombre for nombre, valor in zip(id_comunidad, ensayo) if valor == 1]
+        comunidades_finales.append(bacterias_presentes)
+    # --- CARGAR MODELOS ---
+    modelos_base = {}
+    lista_archivos = glob.glob(patron_xml)
+    print(f&quot;Cargando {len(lista_archivos)} modelos SBML a memoria...&quot;)
+    for path_completo in lista_archivos:
+        archivo = os.path.basename(path_completo)
+        model_id = archivo.split(&#39;_&#39;)[0]
+        try:
+            modelos_base[model_id] = cobra.io.read_sbml_model(path_completo)
+        except Exception as e:
+            print(f&quot;Error cargando {archivo}: {e}&quot;)
+    # --- CICLO DE SIMULACIÓN POR COMUNIDAD ---
+    for num, lista_nombres in enumerate(comunidades_finales, start=1):
+        test_tube = c.layout()
+        print(f&quot;\n&gt;&gt;&gt; Procesando Comunidad {num}...&quot;)
+        try:
+            # Cargar modelos de la comunidad desde memoria
+            modelos_agregados = []
+            for model_id in lista_nombres:
+                if model_id in modelos_base:
+                    cobra_copy = modelos_base[model_id].copy()
+                    processed_model = c.model(cobra_copy)
+                    processed_model.initial_pop = initial_mass
+                    test_tube.add_model(processed_model)
+                    modelos_agregados.append(model_id)
+                else:
+                    print(f&quot;No se encontró el {model_id}&quot;)
+            # ----------------------------------------------------
+            # MEDIO DE CULTIVO
+            # ----------------------------------------------------
+            for met, conc in media.items():
+                try:
+                    test_tube.set_specific_metabolite(met, conc)
+                except:
+                    pass
+            # Mantener los traza estáticos
+            trace_metabolites = [&#39;ca2_e&#39;, &#39;cl_e&#39;, &#39;cobalt2_e&#39;, &#39;cu2_e&#39;, &#39;fe2_e&#39;, &#39;fe3_e&#39;, &#39;h_e&#39;,
+                                 &#39;k_e&#39;, &#39;h2o_e&#39;, &#39;mg2_e&#39;, &#39;mn2_e&#39;, &#39;mobd_e&#39;, &#39;na1_e&#39;, &#39;ni2_e&#39;,
+                                 &#39;nh4_e&#39;, &#39;o2_e&#39;, &#39;pi_e&#39;, &#39;so4_e&#39;, &#39;zn2_e&#39;]
+            for i in trace_metabolites:
+                if i not in media:
+                    test_tube.set_specific_metabolite(i, 1000)
+                test_tube.set_specific_static(i, 1000)
+            # --- EJECUCIÓN ---
+            experimet = c.comets(test_tube, sim_params)
+            experimet.run()
+            # --- RESULTADOS ---
+            final_models = experimet.total_biomass
+            if final_models is not None and not final_models.empty:
+                # Calculamos tiempo real antes de renombrar columnas
+                final_models[&#39;t&#39;] = final_models[&#39;cycle&#39;] * experimet.parameters.all_params[&#39;timeStep&#39;]
+                # Ajustamos columnas (cycle + nombres de bacterias + t)
+                final_models.columns = [&#39;cycle&#39;] + modelos_agregados + [&#39;t&#39;]
+                csv_file_name = os.path.join(folder_resultados, f&quot;comunidad_{num}.csv&quot;)
+                final_models.to_csv(csv_file_name, index=False)
+                print(f&quot;Comunidad {num} guardada con éxito.&quot;)
+            else:
+                print(f&quot;Comunidad {num} terminó sin biomasa.&quot;)
+            # Obtener series de tiempo de metabolitos
+            df_metabolites = experimet.get_metabolite_time_series()
+            if df_metabolites is not None:
+                met_file_name = os.path.join(folder_resultados, f&quot;comunidad_{num}_metabolitos.csv&quot;)
+                df_metabolites.to_csv(met_file_name, index=False)
+                print(f&quot;Metabolitos de comunidad {num} guardados con éxito.&quot;)
+        except Exception as e:</code></pre>
+<p>Para cambiar nombre a una lista de archivos:</p>
+<pre><code>for f in ST*.csv; do mv &quot;$f&quot; &quot;${f/.csv/_prokka_carveme_lb_lb10.csv}&quot;; done
+
+for f in comunidad*biomasa.csv; do mv &quot;$f&quot; &quot;${f/.csv/_.csv}&quot;; done
+comunidad_1_biomasa.csv
+
+for f in comunidad*_biomasa.csv; do 
+  mv &quot;$f&quot; &quot;${f/_.csv/.csv}&quot;
+done
+</code></pre>
+</div>
+<div id="section-3" class="section level3">
+<h3>08/04/26</h3>
+<pre><code> experimet = c.comets(test_tube, sim_params)
+            experimet.run(delete_files = False)
+            print(experiment.run_output)
+            print(experiment.total_biomas)
+            print(experiment.get_metabolite_time_series())
+
+            
+</code></pre>
+<p>biomass_funtion.py: sim = c.comets(layout, params)
+sim.run(delete_files = True) print(sim.run_output)
+print(sim.total_biomass)</p>
+<pre><code>import cometspy as c
+import cobra.io
+import pandas as pd
+import os
+import glob 
+
+def comets(ruta_csv_syncoms, patron_xml, threads, cycles, mass, media, newpath):
+    # Corrección de indentación y variable newpath
+    os.makedirs(newpath, exist_ok=True)
+    os.chdir(newpath)
+
+    # --- PARAMETROS ---
+    sim_params = c.params()
+    sim_params.set_param(&#39;numRunThreads&#39;, threads)
+    sim_params.set_param(&#39;maxCycles&#39;, cycles)
+    sim_params.set_param(&#39;writeMediaLog&#39;, True)
+    sim_params.set_param(&#39;MediaLogRate&#39;, 1)
+    sim_params.set_param(&#39;writeTotalBiomassLog&#39;, True)
+    sim_params.set_param(&#39;writeFluxLog&#39;, True)
+    sim_params.set_param(&#39;FluxLogRate&#39;, 1)
+
+    initial_mass = [0, 0, mass]
+
+    # --- SELECCIONAR COMUNIDADES ---
+    df = pd.read_csv(ruta_csv_syncoms)
+    id_comunidad = df.iloc[:, 0].tolist()
+    matriz_bacterias = df.iloc[:, 1:].astype(int).T.values.tolist()
+    
+    comunidades_finales = []
+    for ensayo in matriz_bacterias:
+        bacterias_presentes = [nombre for nombre, valor in zip(id_comunidad, ensayo) if valor == 1]
+        comunidades_finales.append(bacterias_presentes)
+
+    # --- CARGAR MODELOS ---
+    modelos_base = {}
+    lista_archivos = glob.glob(patron_xml)
+    
+    print(f&quot;Cargando {len(lista_archivos)} modelos SBML a memoria...&quot;)
+    for path_completo in lista_archivos:
+        archivo = os.path.basename(path_completo)
+        model_id = archivo.split(&#39;_&#39;)[0]
+        try:
+            modelos_base[model_id] = cobra.io.read_sbml_model(path_completo)
+        except Exception as e:
+            print(f&quot;Error cargando {archivo}: {e}&quot;)
+
+    # --- LOOP SIMULACION ---
+    for num, lista_nombres in enumerate(comunidades_finales, start=1):    
+        test_tube = c.layout()
+        print(f&quot;\n&gt;&gt;&gt; Procesando Comunidad {num}...&quot;)
+
+        try:
+            # Cargar modelos 
+            modelos_agregados = []
+            for model_id in lista_nombres:
+                if model_id in modelos_base:
+                    cobra_copy = modelos_base[model_id].copy()
+                    processed_model = c.model(cobra_copy)
+                    processed_model.initial_pop = initial_mass
+                    test_tube.add_model(processed_model)
+                    modelos_agregados.append(model_id)
+                else:
+                    print(f&quot;No se encontró el {model_id}&quot;)
+
+            # ---------------- MEDIO DE CULTIVO --------------------- 
+            for met, conc in media.items():
+                try:
+                    test_tube.set_specific_metabolite(met, conc)
+                except:
+                    pass
+
+            trace_metabolites = [&#39;ca2_e&#39;, &#39;cl_e&#39;, &#39;cobalt2_e&#39;, &#39;cu2_e&#39;, &#39;fe2_e&#39;, &#39;fe3_e&#39;, &#39;h_e&#39;, 
+                                 &#39;k_e&#39;, &#39;h2o_e&#39;, &#39;mg2_e&#39;, &#39;mn2_e&#39;, &#39;mobd_e&#39;, &#39;na1_e&#39;, &#39;ni2_e&#39;, 
+                                 &#39;nh4_e&#39;, &#39;o2_e&#39;, &#39;pi_e&#39;, &#39;so4_e&#39;, &#39;zn2_e&#39;]
+
+            for i in trace_metabolites:
+                if i not in media:
+                    test_tube.set_specific_metabolite(i, 1000)
+                test_tube.set_specific_static(i, 1000)
+
+            # --- SIMULACION  ---
+            experiment = c.comets(test_tube, sim_params)
+            experiment.run(delete_files=False)
+            print(experiment.run_output)
+            print(experiment.total_biomas)
+            print(experiment.get_metabolite_time_series())
+
+        except Exception as e:
+            print(f&quot;Error en comunidad {num}: {e}&quot;)
+</code></pre>
+</div>
+<div id="section-4" class="section level3">
+<h3>15/05/16</h3>
+<p>seguí las instrucciones de la pagina web: <a href="https://docs.docker.com/engine/install/ubuntu/">dockers</a></p>
+</div>
+<div id="section-5" class="section level3">
+<h3>30/06/26</h3>
+<p>gapseq1706.slurm</p>
+<p><strong>gap_find.slurm</strong></p>
+<pre><code>
+#!/bin/bash
+#SBATCH --job-name=find
+#SBATCH -o /mmontante/logs/job_%j.log
+#SBATCH -e /mmontante/logs/job_%j.error
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=20G
+
+# Activar ambiente de Conda
+eval &quot;$(conda shell.bash hook)&quot;
+conda activate gapseq
+
+# Rutas
+INDIR=&quot;/mnt/data/sur/users/mmontante/01_data/rz/protein_files&quot;
+OUTDIR=&quot;/mnt/data/sur/users/mmontante/02_resultados/gapseq_models&quot;
+
+mkdir -p &quot;$OUTDIR&quot;
+cd &quot;$OUTDIR&quot;
+
+# Ciclo 
+for GENOME in &quot;$INDIR&quot;/*.{fna,faa}; do
+
+    # Obtener el nombre base (ej. &quot;2643221508.fna&quot; -&gt; &quot;2643221508&quot;)
+    PREFIX=$(basename &quot;$GENOME&quot;)
+    PREFIX=&quot;${PREFIX%.*}&quot;
+
+    echo &quot;==================================================&quot;
+    echo &quot;Modelo actual: $PREFIX&quot;
+    echo &quot;==================================================&quot;
+
+    # Paso 1: gapseq find
+    echo &quot;Ejecutando gapseq find para: $PREFIX&quot;
+    gapseq find \
+        -p all \
+        -K &quot;$THREADS&quot; \
+        &quot;$GENOME&quot;
+
+    # Paso 2: gapseq find-transport
+    echo &quot;Ejecutando gapseq find-transport para: $PREFIX&quot;
+    gapseq find-transport \
+        -K &quot;$THREADS&quot; \
+        &quot;$GENOME&quot;
+
+    echo &quot;==================================================&quot;
+    echo &quot;Finalizado para $PREFIX: $(date)&quot;
+    echo &quot;==================================================&quot;
+    
+done
+
+echo &quot;==================================================&quot;
+echo &quot;Fin&quot;
+echo &quot;==================================================&quot;</code></pre>
+<p>job: 237980</p>
+</div>
+<div id="section-6" class="section level3">
+<h3>01/07/26</h3>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="27%" />
+<col width="22%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">cepa</th>
+<th align="center">id</th>
+<th align="left">find</th>
+<th align="center">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Bacillus</td>
+<td align="center">2561511073 GCF_000701305.1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="even">
+<td align="left">Agrobacterium</td>
+<td align="center">2561511224 GCF_000702405.1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="odd">
+<td align="left">Pseudomonas</td>
+<td align="center">2643221503</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="even">
+<td align="left">Mycobacterium</td>
+<td align="center">2576861824 GCF_000744355.1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="odd">
+<td align="left">P. umsongensis</td>
+<td align="center">RC3LPC_1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="even">
+<td align="left">Arthrobacter</td>
+<td align="center">2517572124 GCF_000374945.1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="odd">
+<td align="left">R. erythropolis</td>
+<td align="center">2643221496</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="even">
+<td align="left">V. paradoxus</td>
+<td align="center">2643221508</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="odd">
+<td align="left">B. thuringensis</td>
+<td align="center">C2RQJT_1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+<tr class="even">
+<td align="left">Paenibacillus</td>
+<td align="center">2636416069 GCF_900116035.1</td>
+<td align="left">Fila 1, Dato 2</td>
+<td align="center">Fila 1, Dato 2</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

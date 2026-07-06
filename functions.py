@@ -2,11 +2,12 @@ import os
 import csv
 import cobra
 
-def variables_totales(gem_path, output_dir):
-
+def variables_totales(gem_path, output_dir, output_filename):
+    # Nos aseguramos de que el directorio exista
     os.makedirs(output_dir, exist_ok=True)
 
-    output_file = os.path.join(output_dir, "variables_totales.csv")
+    # Ahora usamos la variable 'output_filename' en lugar del texto fijo
+    output_file = os.path.join(output_dir, output_filename)
 
     with open(output_file, "w", newline="") as f:
         writer = csv.writer(f)
@@ -40,8 +41,7 @@ def variables_totales(gem_path, output_dir):
 
     print(f"CSV guardado en: {output_file}")
     
-
-import mergem
+    
 
 def mergem_function(ruta_input, ruta_output, nombre_salida, *modelos):
     """
