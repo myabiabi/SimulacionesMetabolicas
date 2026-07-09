@@ -36,7 +36,8 @@ set -u
 eval "$(mamba shell hook --shell bash)"
 mamba activate python3
 module load COMETS
-module load nextflow          # quita esta linea si nextflow ya viene con tu env de mamba
+module load nextflow/24.04.1  # version fija; cambia si prefieres 25.10.4
+export JAVA_HOME=/opt/apps/oracle-java/20.0.1   # necesario para que nextflow encuentre java correctamente
 
 # ---- Ir a la carpeta donde estan main.nf y nextflow.config -----------------
 WORKDIR="/mnt/data/sur/users/mmontante/SimulacionesMetabolicas"   # <-- ajusta esta ruta
