@@ -19,6 +19,8 @@ library(pracma)
 library(ggrepel)
 library(growthcurver)
 library(ggbeeswarm)
+library(DescTools)
+
 
 variables <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/evaluacion/variables_totales.csv"
 gemn <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/gem"
@@ -421,7 +423,25 @@ cat("Average Genes:      ", gens, "\n")
 
 
 
-## 3. Area bajo la curve, velocidad
+## 3. Area bajo la curva, velocidad
+
+```{r}
+# Load the DescTools package for the trapezoid AUC calculation
+
+# Example dataframe for bacterial growth
+growth_data <- data.frame(
+  Time = c(0, 2, 4, 6, 8, 10, 12),
+  OD = c(0.05, 0.08, 0.15, 0.40, 0.80, 0.95, 0.96)
+)
+
+# Calculate AUC using the trapezoid method
+bacterial_auc <- AUC(x = growth_data$Time, 
+                    y = growth_data$OD, 
+                    method = "trapezoid")
+
+print(bacterial_auc)
+
+```
 
 
 ## 3. Tipo de medio 

@@ -19,12 +19,7 @@ for file in *.fasta; do
 done
 ```
 
-```
-for file in *.faa; do
-    nombre=$(basename "$file" .faa)
-    carve "$file" -g LB -o "rz_na_cv_lb_${nombre}.xml"
-done
-```
+
 
 ```
 for file in *.faa; do
@@ -42,7 +37,7 @@ scp -r directorio/que/quieres/copiar mmontante@fenix.lavis.unam.mx:/directorio/d
 scp -r /home/abigaylmontantearenas/Documents/proyecto_tesis/01_data mmontante@fenix.lavis.unam.mx:/mnt/data/sur/users/mmontante
 
 * **actualizar copias de repos**
-git pull origin main
+git push lab dev
 
 * **tamaño de un archivo**
 ls -lh archivo
@@ -56,7 +51,7 @@ for archivo in *.fbamodel.xml; do
     nombre_base="${archivo%.fbamodel.xml}"
     
     # 2. Definir lo que quieres agregar ANTES del nombre
-    prefijo="cc_pk_kb_rt_mm_"
+    prefijo="rz_na_kb_rt_lb"
     
     # 3. Renombrar el archivo agregando el prefijo y la extensión corta (.xml)
     mv "$archivo" "${prefijo}${nombre_base}.xml"
@@ -747,7 +742,70 @@ echo "Pipeline done at: $(date)"
 echo "========================================="
 ```
 
+### 07/07/26
 
+```
+  GNU nano 5.6.1                                                                                                                                          gap_redo0107.slurm                                                                                                                                          Modified  
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+# ==========================
+# Configuración
+# ==========================
+# Carpeta original de tus genomas de entrada (.fna o .faa)
+INDIR="/mnt/data/sur/users/mmontante/01_data/cc/raw_data/"
+
+# Carpeta de salida (donde están tus tablas actuales)
+OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/cc/gapseq/gapfind"
+
+# Forzar el uso exacto de los 8 cores de Slurm
+THREADS=$SLURM_CPUS_PER_TASK
+
+mkdir -p "$OUTDIR"
+cd "$OUTDIR"
+
+# ==========================
+# Ciclo de Corrección
+# ==========================
+for GENOME in "$INDIR"/*.{fna,faa}; do
+    
+    [ -e "$GENOME" ] || continue
+
+    PREFIX=$(basename "$GENOME")
+    PREFIX="${PREFIX%.*}"
+
+    echo "=================================================="
+    echo "RE-EJECUTANDO: $PREFIX"
+    echo "Inicio: $(date)"
+    echo "=================================================="
+
+    # Paso 1: gapseq find (Corregido el pase de THREADS)
+    echo ">>> Running gapseq find..."
+    gapseq find \
+        -p all \
+        -K $THREADS \
+        "$GENOME"
+
+    # Paso 2: gapseq find-transport (Corregido el pase de THREADS)
+    echo ">>> Running gapseq find-transport..."
+    gapseq find-transport \
+        -K $THREADS \
+        "$GENOME"
+
+    echo "=================================================="
+    echo "Finalizado $PREFIX: $(date)"
+    echo "=================================================="
+done
+
+echo "¡Re-predicción completa!"
+```
+
+```
+for file in *.faa; do
+    nombre=$(basename "$file" .faa)
+    carve "$file" -o "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_pk_cv_na_${nombre}.xml"
+done
+```
 
 
 
