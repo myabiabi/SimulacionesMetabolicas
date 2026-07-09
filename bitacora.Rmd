@@ -46,15 +46,36 @@ Corynebacterium_sp_29_x.fasta_assembly.RAST.fbamodel.xml
 .fbamodel.xml
 
 ```
-for archivo in *.fbamodel.xml; do
+for archivo in *.fna_assembly.RAST.fbamodel.xml.xml; do
     # 1. Obtener el nombre base eliminando el final largo
-    nombre_base="${archivo%.fbamodel.xml}"
+    nombre_base="${archivo%.fna_assembly.RAST.fbamodel.xml.xml}"
     
     # 2. Definir lo que quieres agregar ANTES del nombre
-    prefijo="rz_na_kb_rt_lb"
+    prefijo="rz_pk_kb_rt_lb_"
     
     # 3. Renombrar el archivo agregando el prefijo y la extensión corta (.xml)
     mv "$archivo" "${prefijo}${nombre_base}.xml"
+done
+```
+
+rz_pk_cv_lb_ST00000_prokka_carveme_lb.xml.xml
+```
+for archivo in *.xml.xml; do
+    # 1. Obtener el nombre base eliminando el PREFIJO largo del inicio
+    nombre_base="${archivo%.xml.xml}"
+    
+    # 2. Renombrar el archivo cambiando el prefijo y agregando .xml
+    mv "$archivo" "${nombre_base}.xml"
+done
+```
+
+```
+for archivo in *.xml.xml; do
+    # Elimina el último .xml del nombre actual
+    nombre_base="${archivo%.xml}"
+    
+    # Renombra de "archivo.xml.xml" a "archivo.xml"
+    mv "$archivo" "$nombre_base"
 done
 ```
 
@@ -803,8 +824,12 @@ echo "¡Re-predicción completa!"
 ```
 for file in *.faa; do
     nombre=$(basename "$file" .faa)
-    carve "$file" -o "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_pk_cv_na_${nombre}.xml"
+    carve "$file" -g LB -o "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_pk_cv_lb_${nombre}.xml"
 done
+```
+
+```
+datasets download genome accession GCF_000744355.1 --include genome,protein --filename GCF_000744355.1.zip
 ```
 
 
@@ -812,9 +837,43 @@ done
 
 
 
+1. Error inicial: descarga de NCBI rota
+Al correr el ejemplo de la documentación (lp_example) con assembly_id="GCF_000203855.3", assemble_supermodel() falló con:
+ValueError: 'submitter' is not in list
+Causa: el paquete ncbi_genome_download (usado internamente por gemsembler para descargar el genoma vía assembly_id) no logró parsear correctamente el assembly_summary.txt de NCBI — hubo una línea con longitud inválida que el "auto-fix" del parser no resolvió bien, dejando el conteo de columnas del encabezado desalineado.
+Intentos de solución:
 
+Verificamos versión de ncbi_genome_download → ya era 0.3.3 (versión reciente, con el fix conocido de 2023 para el formato nuevo de headers), pero el error persistió — indicando que era un problema de datos puntual, no de versión del paquete.
+Probamos borrar la caché (~/.cache/ncbi-genome-download) sin confirmar si eso lo resolvió, porque decidimos ir directo a la solución más robusta.
 
+Solución definitiva: evitar por completo la descarga automática de NCBI, usando los parámetros path_final_genome_nt y path_final_genome_aa de assemble_supermodel() (y también path_to_genome en add_model()) para pasar archivos de genoma ya descargados localmente, en vez de assembly_id.
+2. Adaptación del script al caso real (Mycobacterium sp.)
+Migramos del ejemplo genérico (lp_example) a tus 3 modelos propios (CarveMe, ModelSEED, gapseq), usando add_model() con model_type correspondiente a cada herramienta, y las rutas locales del genoma (GCF_000744355.1, nt + aa descargados con datasets).
+3. Segundo problema: genes no incorporados al supermodelo
+Aunque el ensamblado terminaba "exitosamente", vimos warnings:
+No genes will be used for mycobacterium_carveme / modelseed / gapseq
+Diagnóstico paso a paso:
 
+Confirmamos que BLAST (blastp, makeblastdb) sí estaba instalado y funcionando.
+Confirmamos que los 3 modelos SBML sí tenían genes (fbc:geneProduct).
+Encontramos que faltaba pasar path_to_genome en cada add_model() — sin eso, gemsembler nunca genera las secuencias de consulta para el BLAST de genes (solo se construía la base de datos, nunca el fasta de query).
+
+Al agregar path_to_genome, CarveMe se arregló (usa IDs tipo WP_030134547_1, que coinciden directo con protein.faa). Pero ModelSEED y gapseq siguieron fallando, por dos razones distintas:
+
+ModelSEED: usa IDs internos tipo mycobacterium_sp.CDS.2605 (numeración de ORFs de RAST/ModelSEED), que no son accessions públicos y no se pueden mapear contra el genoma de referencia de NCBI que tienes — necesitarías el archivo de genoma/anotación exacto que usaste como input original al correr ModelSEED.
+gapseq: aunque usa IDs WP_... (igual que CarveMe), revisamos el código fuente de gemsembler (genes.py, función get_genes_gapseq) y encontramos que está codificada para asumir IDs con coordenadas genómicas (gp_contig_inicio_fin), no accessions de proteína. Por eso, al procesar WP_019510803_1, interpretaba mal las "coordenadas" y abortaba la extracción completa tras el primer gen.
+
+Intentamos forzar model_type="modelseed" en el add_model de gapseq para usar la función genérica de extracción — no funcionó porque esa ruta tampoco aplica la transformación de punto→guión bajo que sí tiene el caso especial de CarveMe (WP_019510803.1 → WP_019510803_1).
+Propusimos (sin implementar aún) un monkeypatch para reemplazar solo la función genome_model_strategy de gapseq en el diccionario de configuración interno de GatheredModels, reutilizando la lógica de CarveMe — quedó pendiente como opción si en el futuro decides sí necesitar los genes de gapseq.
+4. Decisión final: priorizar la red metabólica, no los genes
+Como tu prioridad es la red metabólica consensuada (reacciones/metabolitos), no las asociaciones gen-reacción por fuente, optamos por la solución más simple: omitir path_to_genome en los tres add_model(). Esto evita el BLAST de genes por completo (sin afectar la comparación de reacciones/metabolitos, que es independiente), y te da:
+
+union_completa.xml (todas las reacciones, "assembly")
+core2.xml (reacciones en ≥2 de 3 modelos, at_least_in(2))
+core3.xml (reacciones en los 3 modelos, at_least_in(3), agregado como extra)
+El supermodelo completo en JSON para reanálisis posterior
+
+Ese es el script que quedó como versión final de hoy, pendiente de que lo corras y compartas el log de diagnóstico (Sources y Comparison keys) para confirmar que el consenso salió como esperabas.
 
 
 
