@@ -198,7 +198,7 @@ def media(name="lb", dil=1, vol=1):
         res = media("lb", dil)
         res["2dr5p_e"] = 0.1 * dil
 
-    elif name == "marine":
+    elif name == "mm":
         res = {
             "na1_e": 0.895059287633637 * vol * dil,
             "cl_e": 0.734866026900668 * vol * dil,
@@ -270,12 +270,11 @@ def media(name="lb", dil=1, vol=1):
             "h2o": 55.5092978073827 *vol,
             "h": 1E-07 * vol
         }
-    elif name == "marine+ribose":
-        res = media("marine", dil)
+    elif name == "mm+ribose":
+        res = media("mm", dil)
         res["2dr5p_e"] = 0.1 * dil
     else:
-        raise ValueError(f"Unrecognized media '{name}'. Supported: 'lb', 'marine'")
-
+        raise ValueError(f"Unrecognized media '{name}'. Supported: 'lb', 'mm'")
     return res
 
 

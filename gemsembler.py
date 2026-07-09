@@ -6,33 +6,46 @@ from gemsembler import (
     get_model_of_interest
 )
 
-output_dir = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler"
+output_dir = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/"
+output_dir = "output"
 os.makedirs(output_dir, exist_ok=True)
 id_bacteria = "mycobacterium_sp"
 
 print("--- Paso 1: Cargando y estandarizando tus modelos ---")
 gathered = GatheredModels()
 
-genoma_nt = "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/raw/ncl_files/GCF_000744355.fna"
-genoma_aa = "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/raw/protein_files/GCF_000744355.faa"
+#/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/raw/GCA_000744355/ncbi_dataset/data/GCF_000744355.1
+#/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/prokka/ST00109
+#genoma_nt = "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/raw/ncl_files/GCF_000744355.fna"
+#genoma_aa = "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/raw/protein_files/GCF_000744355.faa"
+#genoma_nt = "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/prokka/ST00109/ST00109.fna"
+#genoma_aa = "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/rz/prokka/ST00109/ST00109.faa"
+genoma_nt = "genome/ST00109.fna"
+genoma_aa = "genome/ST00109.faa"
 
-# NOTA: no pasamos path_to_genome aquí a propósito.
-# Prioridad = red metabólica consensuada (reacciones/metabolitos),
+
+
 # no la unificación de genes entre modelos (que requeriría resolver
 # el mismatch de esquemas de ID vía BLAST, ver conversación anterior).
 gathered.add_model(
     model_id="mycobacterium_carveme",
-    path_to_model="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_cv_lb_mycobacterium.xml",
-    model_type="carveme",
+    #path_to_model="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_cv_lb_mycobacterium.xml",
+    path_to_model="models/carveme.xml",
+    path_to_genome=genoma_nt,
+    model_type="carveme"
 )
 gathered.add_model(
     model_id="mycobacterium_modelseed",
-    path_to_model="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_rt_kb_lb_mycobacterium.xml",
+    #path_to_model="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_rt_kb_lb_mycobacterium.xml",
+    path_to_genome=genoma_aa,
+    path_to_genome=genoma_nt,
     model_type="modelseed",
 )
 gathered.add_model(
     model_id="mycobacterium_gapseq",
-    path_to_model="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_gp_lb_mycobacterium.xml",
+    #path_to_model="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_gp_lb_mycobacterium.xml",
+    path_to_genome=genoma_aa,
+    path_to_genome=genoma_nt,
     model_type="gapseq",
 )
 
@@ -43,6 +56,24 @@ print("\n--- Paso 2: Ensamblando el Supermodel ---")
 supermodel_bact = gathered.assemble_supermodel(
     output_folder=output_dir,
     path_final_genome_nt=genoma_nt,
+    #path_final_genome_aa=genoma_aa,
+)
+
+
+output_dir = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/"
+output_dir = "output"
+os.makedirs(output_dir, exist_ok=True)
+id_bacteria = "mycobacterium_sp"
+
+print("--- Paso 1: Cargando y estandarizando tus modelos ---")
+gathered = GatheredModels()
+gathered.run()
+print("¡Estandarización completada!")
+
+print("\n--- Paso 2: Ensamblando el Supermodel ---")
+supermodel_bact = gathered.assemble_supermodel(
+    output_folder=output_dir,
+    #path_final_genome_nt=genoma_nt,
     path_final_genome_aa=genoma_aa,
 )
 

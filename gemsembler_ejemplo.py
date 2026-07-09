@@ -46,7 +46,8 @@ def main():
     print("\n--- Paso 3: Guardando y leyendo el Supermodel en JSON ---")
     json_path = os.path.join(output_dir, "lp_supermodel.json")
     
-    # Guardar a JSON
+    # Guardar a JSON# no la unificación de genes entre modelos (que requeriría resolver
+
     supermodel_lp.write_supermodel_to_json(json_path)
     
     # Volver a leer desde el JSON (para asegurar que se guardó correctamente)

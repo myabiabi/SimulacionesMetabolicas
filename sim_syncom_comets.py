@@ -52,7 +52,7 @@ def process_arguments():
                         type=str,
                         default='output')
     parser.add_argument("--media",
-                        help="Name of the media to use. Supported: 'lb', 'marine'",
+                        help="Name of the media to use. Supported: 'lb', 'mm'",
                         type=str,
                         default='lb')
     parser.add_argument("--media_dil",
