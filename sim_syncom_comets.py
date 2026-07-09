@@ -93,6 +93,7 @@ def process_arguments():
     return args
 
 if __name__ == "__main__":
+
     # Read command line arguments
     args = process_arguments()
 
