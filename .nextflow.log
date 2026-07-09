@@ -1,0 +1,100 @@
+Jul-09 16:59:47.857 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --gem_path /mnt/data/sur/users/mmontante/02_resultados/rz/gem --outbase /mnt/data/sur/users/mmontante/02_resultados/simulaciones --media lb --cycles 5 --initial_mass 1e-4 -profile slurm -resume
+Jul-09 16:59:48.176 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
+Jul-09 16:59:48.308 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-09 16:59:48.367 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-09 16:59:48.369 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-09 16:59:48.374 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-09 16:59:48.436 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-09 16:59:48.528 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-09 16:59:48.533 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-09 16:59:48.649 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-09 16:59:48.667 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@5e76a2bb] - activable => nextflow.secret.LocalSecretsProvider@5e76a2bb
+Jul-09 16:59:48.728 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `slurm`
+Jul-09 16:59:50.566 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [slurm, local]
+Jul-09 16:59:50.597 [main] WARN  nextflow.config.ConfigBuilder - It appears you have never run this project before -- Option `-resume` is ignored
+Jul-09 16:59:50.701 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-09 16:59:50.743 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [condescending_hamilton] DSL2 - revision: ed68601d0e
+Jul-09 16:59:50.760 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-09 16:59:50.760 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-09 16:59:50.943 [main] DEBUG nextflow.Session - Session UUID: 667bcf38-1771-41de-b4a3-59df04036d74
+Jul-09 16:59:50.943 [main] DEBUG nextflow.Session - Run name: condescending_hamilton
+Jul-09 16:59:50.945 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-09 16:59:50.980 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-09 16:59:50.994 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-09 16:59:51.064 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.1 build 5913
+  Created: 20-05-2024 09:48 UTC (03:48 CDT)
+  System: Linux 5.14.0-503.40.1.el9_5.x86_64
+  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
+  Encoding: UTF-8 (UTF-8)
+  Process: 694667@node01.cluster [10.1.1.1]
+  CPUs: 1 - Mem: 1006.8 GB (37.2 GB) - Swap: 4 GB (3.5 GB)
+Jul-09 16:59:51.176 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work [nfs]
+Jul-09 16:59:51.178 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-09 16:59:51.204 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-09 16:59:51.253 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-09 16:59:51.389 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-09 16:59:51.428 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 2; maxThreads: 1000
+Jul-09 16:59:51.697 [main] DEBUG nextflow.Session - Session start
+Jul-09 16:59:51.730 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow_trace.txt
+Jul-09 16:59:52.859 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-09 16:59:53.321 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-09 16:59:53.321 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-09 16:59:53.351 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-09 16:59:53.376 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 3; pollInterval: 5s; dumpInterval: 5m 
+Jul-09 16:59:53.394 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-09 16:59:53.413 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-09 16:59:53.655 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: simular_comets
+Jul-09 16:59:53.656 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-09 16:59:53.691 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > simular_comets
+Jul-09 16:59:53.698 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/gem/; pattern: *.xml; options: [:]
+Jul-09 16:59:53.700 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_1225913e8e328d1c: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+Jul-09 16:59:53.701 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-09 16:59:53.701 [main] DEBUG nextflow.Session - Session await
+Jul-09 16:59:54.790 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00060) > jobId: 238789; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f3/f28a731762889d74fbc7dedf648cb2
+Jul-09 16:59:54.818 [Task submitter] INFO  nextflow.Session - [f3/f28a73] Submitted process > simular_comets (rz_pk_gp_lb_ST00060)
+Jul-09 16:59:54.908 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00046) > jobId: 238790; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/01/6f5b9546d2dd38d6efa9c6240c23ac
+Jul-09 16:59:54.909 [Task submitter] INFO  nextflow.Session - [01/6f5b95] Submitted process > simular_comets (rz_pk_gp_lb_ST00046)
+Jul-09 16:59:54.977 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00101) > jobId: 238791; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/ec/b60acd265786dc8144d66ee062b413
+Jul-09 16:59:54.977 [Task submitter] INFO  nextflow.Session - [ec/b60acd] Submitted process > simular_comets (rz_pk_gp_lb_ST00101)
+Jul-09 17:01:03.417 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238789; id: 2; name: simular_comets (rz_pk_gp_lb_ST00060); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f3/f28a731762889d74fbc7dedf648cb2 started: 1783637998414; exited: 2026-07-09T23:00:57.927642011Z; ]
+Jul-09 17:01:03.418 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-09 17:01:03.517 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00094) > jobId: 238792; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/87/4e4d4d402ffee0607ed727ba59634b
+Jul-09 17:01:03.518 [Task submitter] INFO  nextflow.Session - [87/4e4d4d] Submitted process > simular_comets (rz_pk_gp_lb_ST00094)
+Jul-09 17:01:03.641 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-09 17:01:43.417 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238792; id: 3; name: simular_comets (rz_pk_gp_lb_ST00094); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/87/4e4d4d402ffee0607ed727ba59634b started: 1783638068414; exited: 2026-07-09T23:01:23.048535783Z; ]
+Jul-09 17:01:43.464 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00109) > jobId: 238793; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/05/fd2244c3ee6d6b1eccb20afe66d49f
+Jul-09 17:01:43.464 [Task submitter] INFO  nextflow.Session - [05/fd2244] Submitted process > simular_comets (rz_pk_gp_lb_ST00109)
+Jul-09 17:02:08.419 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238790; id: 1; name: simular_comets (rz_pk_gp_lb_ST00046); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/01/6f5b9546d2dd38d6efa9c6240c23ac started: 1783637998469; exited: 2026-07-09T23:01:55.082400322Z; ]
+Jul-09 17:02:08.443 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238791; id: 4; name: simular_comets (rz_pk_gp_lb_ST00101); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/ec/b60acd265786dc8144d66ee062b413 started: 1783637998481; exited: 2026-07-09T23:01:27.682516188Z; ]
+Jul-09 17:02:08.480 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00110) > jobId: 238794; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7e/d36017d48caced141438c97d5c0c53
+Jul-09 17:02:08.481 [Task submitter] INFO  nextflow.Session - [7e/d36017] Submitted process > simular_comets (rz_pk_gp_lb_ST00110)
+Jul-09 17:02:08.565 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00143) > jobId: 238795; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7c/15f65dba82c8e428509998bb9a4621
+Jul-09 17:02:08.566 [Task submitter] INFO  nextflow.Session - [7c/15f65d] Submitted process > simular_comets (rz_pk_gp_lb_ST00143)
+Jul-09 17:02:23.417 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238793; id: 5; name: simular_comets (rz_pk_gp_lb_ST00109); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/05/fd2244c3ee6d6b1eccb20afe66d49f started: 1783638108416; exited: 2026-07-09T23:02:00.132378873Z; ]
+Jul-09 17:02:23.499 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00154) > jobId: 238797; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/9a/e4573dda4fded3c1faac08483fdfc8
+Jul-09 17:02:23.499 [Task submitter] INFO  nextflow.Session - [9a/e4573d] Submitted process > simular_comets (rz_pk_gp_lb_ST00154)
+Jul-09 17:02:48.419 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238794; id: 6; name: simular_comets (rz_pk_gp_lb_ST00110); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7e/d36017d48caced141438c97d5c0c53 started: 1783638133417; exited: 2026-07-09T23:02:29.585251919Z; ]
+Jul-09 17:02:48.442 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238795; id: 7; name: simular_comets (rz_pk_gp_lb_ST00143); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7c/15f65dba82c8e428509998bb9a4621 started: 1783638133420; exited: 2026-07-09T23:02:22.563282187Z; ]
+Jul-09 17:02:48.548 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00164) > jobId: 238799; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/02/26a65c2534607cb0bafbbb7d3c3d01
+Jul-09 17:02:48.549 [Task submitter] INFO  nextflow.Session - [02/26a65c] Submitted process > simular_comets (rz_pk_gp_lb_ST00164)
+Jul-09 17:02:48.633 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00000) > jobId: 238800; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1f/071d30f9d7bdce2fd334d72981ff90
+Jul-09 17:02:48.633 [Task submitter] INFO  nextflow.Session - [1f/071d30] Submitted process > simular_comets (rz_pk_gp_lb_ST00000)
+Jul-09 17:03:03.420 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238797; id: 8; name: simular_comets (rz_pk_gp_lb_ST00154); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/9a/e4573dda4fded3c1faac08483fdfc8 started: 1783638148417; exited: 2026-07-09T23:02:41.362201156Z; ]
+Jul-09 17:03:03.515 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process simular_comets (rz_pk_gp_lb_ST00042) > jobId: 238801; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/41/71d41f47e9f00fe9e091021a158235
+Jul-09 17:03:03.515 [Task submitter] INFO  nextflow.Session - [41/71d41f] Submitted process > simular_comets (rz_pk_gp_lb_ST00042)
+Jul-09 17:03:23.421 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238799; id: 9; name: simular_comets (rz_pk_gp_lb_ST00164); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/02/26a65c2534607cb0bafbbb7d3c3d01 started: 1783638173418; exited: 2026-07-09T23:03:04.882109554Z; ]
+Jul-09 17:03:28.425 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238800; id: 10; name: simular_comets (rz_pk_gp_lb_ST00000); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1f/071d30f9d7bdce2fd334d72981ff90 started: 1783638173428; exited: 2026-07-09T23:03:06.408113706Z; ]
+Jul-09 17:03:43.423 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 238801; id: 11; name: simular_comets (rz_pk_gp_lb_ST00042); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/41/71d41f47e9f00fe9e091021a158235 started: 1783638188419; exited: 2026-07-09T23:03:21.57215496Z; ]
+Jul-09 17:03:43.437 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-09 17:03:48.422 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-09 17:03:48.423 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-09 17:03:48.431 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jul-09 17:03:48.433 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jul-09 17:03:48.453 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=11; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=27m 27s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=12; peakMemory=48 GB; ]
+Jul-09 17:03:48.453 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-09 17:03:48.466 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-09 17:03:50.184 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-09 17:03:50.227 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jul-09 17:03:50.228 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

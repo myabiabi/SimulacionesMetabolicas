@@ -1,0 +1,14 @@
+building empty layout model
+models will need to be added with layout.add_model()
+Warning: The added metabolite (ade_e) is not able to be taken up by any of the current models
+Warning: The added metabolite (csn_e) is not able to be taken up by any of the current models
+Warning: The added metabolite (btn_e) is not able to be taken up by any of the current models
+Warning: The added metabolite (ascb__L_e) is not able to be taken up by any of the current models
+Warning: The added metabolite (pydx_e) is not able to be taken up by any of the current models
+Warning: The added metabolite (adocbl_e) is not able to be taken up by any of the current models
+Starting simulation...
+
+Running COMETS simulation ...
+
+Debug Here ...
+Done!

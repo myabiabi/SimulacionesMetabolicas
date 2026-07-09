@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=119936
+%cpu=103
+cpu_model=Intel(R) Xeon(R) Gold 6238 CPU @ 2.10GHz
+rchar=86313745
+wchar=40716009
+syscr=9966
+syscw=4173
+read_bytes=120938496
+write_bytes=40833024
+%mem=0
+vmem=8562104
+rss=455612
+peak_vmem=8627640
+peak_rss=455612
+vol_ctxt=62708
+inv_ctxt=146

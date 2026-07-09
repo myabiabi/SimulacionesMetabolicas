@@ -1,0 +1,6 @@
+0 0 0 rz_pk_gp_lb_ST00060.cmd 1E-4
+1 0 0 rz_pk_gp_lb_ST00060.cmd 1.0034285209E-4
+2 0 0 rz_pk_gp_lb_ST00060.cmd 1.0068677714E-4
+3 0 0 rz_pk_gp_lb_ST00060.cmd 1.0103177778E-4
+4 0 0 rz_pk_gp_lb_ST00060.cmd 1.0137785668E-4
+5 0 0 rz_pk_gp_lb_ST00060.cmd 1.0172501648E-4

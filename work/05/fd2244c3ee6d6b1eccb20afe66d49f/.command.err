@@ -1,0 +1,505 @@
+Adding exchange reaction EX_23dhbzs3_e with default bounds for boundary metabolite: 23dhbzs3_e.
+Adding exchange reaction EX_25dkglcn_e with default bounds for boundary metabolite: 25dkglcn_e.
+Adding exchange reaction EX_2ddglcn_e with default bounds for boundary metabolite: 2ddglcn_e.
+Adding exchange reaction EX_2m35mdntha_e with default bounds for boundary metabolite: 2m35mdntha_e.
+Adding exchange reaction EX_35dnta_e with default bounds for boundary metabolite: 35dnta_e.
+Adding exchange reaction EX_3hcinnm_e with default bounds for boundary metabolite: 3hcinnm_e.
+Adding exchange reaction EX_3hpppn_e with default bounds for boundary metabolite: 3hpppn_e.
+Adding exchange reaction EX_4ahmmp_e with default bounds for boundary metabolite: 4ahmmp_e.
+Adding exchange reaction EX_4hba_e with default bounds for boundary metabolite: 4hba_e.
+Adding exchange reaction EX_5mdru1p_e with default bounds for boundary metabolite: 5mdru1p_e.
+Adding exchange reaction EX_LalaLglu_e with default bounds for boundary metabolite: LalaLglu_e.
+Adding exchange reaction EX_R3hdec4e_e with default bounds for boundary metabolite: R3hdec4e_e.
+Adding exchange reaction EX_abt__L_e with default bounds for boundary metabolite: abt__L_e.
+Adding exchange reaction EX_ac_e with default bounds for boundary metabolite: ac_e.
+Adding exchange reaction EX_acald_e with default bounds for boundary metabolite: acald_e.
+Adding exchange reaction EX_acgam_e with default bounds for boundary metabolite: acgam_e.
+Adding exchange reaction EX_acon_C_e with default bounds for boundary metabolite: acon_C_e.
+Adding exchange reaction EX_acysbmn_e with default bounds for boundary metabolite: acysbmn_e.
+Adding exchange reaction EX_ad_e with default bounds for boundary metabolite: ad_e.
+Adding exchange reaction EX_adn_e with default bounds for boundary metabolite: adn_e.
+Adding exchange reaction EX_akg_e with default bounds for boundary metabolite: akg_e.
+Adding exchange reaction EX_ala_B_e with default bounds for boundary metabolite: ala_B_e.
+Adding exchange reaction EX_ala_L_asp__L_e with default bounds for boundary metabolite: ala_L_asp__L_e.
+Adding exchange reaction EX_ala_L_glu__L_e with default bounds for boundary metabolite: ala_L_glu__L_e.
+Adding exchange reaction EX_ala_L_thr__L_e with default bounds for boundary metabolite: ala_L_thr__L_e.
+Adding exchange reaction EX_ala__D_e with default bounds for boundary metabolite: ala__D_e.
+Adding exchange reaction EX_ala__L_e with default bounds for boundary metabolite: ala__L_e.
+Adding exchange reaction EX_ala_gln_e with default bounds for boundary metabolite: ala_gln_e.
+Adding exchange reaction EX_ala_his_e with default bounds for boundary metabolite: ala_his_e.
+Adding exchange reaction EX_ala_leu_e with default bounds for boundary metabolite: ala_leu_e.
+Adding exchange reaction EX_alagly_e with default bounds for boundary metabolite: alagly_e.
+Adding exchange reaction EX_alahis_e with default bounds for boundary metabolite: alahis_e.
+Adding exchange reaction EX_alaleu_e with default bounds for boundary metabolite: alaleu_e.
+Adding exchange reaction EX_alathr_e with default bounds for boundary metabolite: alathr_e.
+Adding exchange reaction EX_alatrp_e with default bounds for boundary metabolite: alatrp_e.
+Adding exchange reaction EX_alltn_e with default bounds for boundary metabolite: alltn_e.
+Adding exchange reaction EX_anhgm_e with default bounds for boundary metabolite: anhgm_e.
+Adding exchange reaction EX_arg__L_e with default bounds for boundary metabolite: arg__L_e.
+Adding exchange reaction EX_asn__L_e with default bounds for boundary metabolite: asn__L_e.
+Adding exchange reaction EX_aso3_e with default bounds for boundary metabolite: aso3_e.
+Adding exchange reaction EX_aso4_e with default bounds for boundary metabolite: aso4_e.
+Adding exchange reaction EX_asp__L_e with default bounds for boundary metabolite: asp__L_e.
+Adding exchange reaction EX_balaala_e with default bounds for boundary metabolite: balaala_e.
+Adding exchange reaction EX_balabala_e with default bounds for boundary metabolite: balabala_e.
+Adding exchange reaction EX_balagly_e with default bounds for boundary metabolite: balagly_e.
+Adding exchange reaction EX_balaleu_e with default bounds for boundary metabolite: balaleu_e.
+Adding exchange reaction EX_balamd_e with default bounds for boundary metabolite: balamd_e.
+Adding exchange reaction EX_bmn_e with default bounds for boundary metabolite: bmn_e.
+Adding exchange reaction EX_btd_RR_e with default bounds for boundary metabolite: btd_RR_e.
+Adding exchange reaction EX_btn_e with default bounds for boundary metabolite: btn_e.
+Adding exchange reaction EX_buts_e with default bounds for boundary metabolite: buts_e.
+Adding exchange reaction EX_butso3_e with default bounds for boundary metabolite: butso3_e.
+Adding exchange reaction EX_bz_e with default bounds for boundary metabolite: bz_e.
+Adding exchange reaction EX_ca2_e with default bounds for boundary metabolite: ca2_e.
+Adding exchange reaction EX_carn_e with default bounds for boundary metabolite: carn_e.
+Adding exchange reaction EX_cd2_e with default bounds for boundary metabolite: cd2_e.
+Adding exchange reaction EX_cellb_e with default bounds for boundary metabolite: cellb_e.
+Adding exchange reaction EX_cgly_e with default bounds for boundary metabolite: cgly_e.
+Adding exchange reaction EX_chol_e with default bounds for boundary metabolite: chol_e.
+Adding exchange reaction EX_chsterol_e with default bounds for boundary metabolite: chsterol_e.
+Adding exchange reaction EX_cit_e with default bounds for boundary metabolite: cit_e.
+Adding exchange reaction EX_cl_e with default bounds for boundary metabolite: cl_e.
+Adding exchange reaction EX_cmcbtt_e with default bounds for boundary metabolite: cmcbtt_e.
+Adding exchange reaction EX_co2_e with default bounds for boundary metabolite: co2_e.
+Adding exchange reaction EX_co_e with default bounds for boundary metabolite: co_e.
+Adding exchange reaction EX_cobalt2_e with default bounds for boundary metabolite: cobalt2_e.
+Adding exchange reaction EX_cpgn_e with default bounds for boundary metabolite: cpgn_e.
+Adding exchange reaction EX_cpgn_un_e with default bounds for boundary metabolite: cpgn_un_e.
+Adding exchange reaction EX_crn_e with default bounds for boundary metabolite: crn_e.
+Adding exchange reaction EX_csn_e with default bounds for boundary metabolite: csn_e.
+Adding exchange reaction EX_cu2_e with default bounds for boundary metabolite: cu2_e.
+Adding exchange reaction EX_cyan_e with default bounds for boundary metabolite: cyan_e.
+Adding exchange reaction EX_cys__L_e with default bounds for boundary metabolite: cys__L_e.
+Adding exchange reaction EX_dad_2_e with default bounds for boundary metabolite: dad_2_e.
+Adding exchange reaction EX_dca_e with default bounds for boundary metabolite: dca_e.
+Adding exchange reaction EX_ddca_e with default bounds for boundary metabolite: ddca_e.
+Adding exchange reaction EX_dmso2_e with default bounds for boundary metabolite: dmso2_e.
+Adding exchange reaction EX_enter_e with default bounds for boundary metabolite: enter_e.
+Adding exchange reaction EX_eths_e with default bounds for boundary metabolite: eths_e.
+Adding exchange reaction EX_ethso3_e with default bounds for boundary metabolite: ethso3_e.
+Adding exchange reaction EX_fcmcbtt_e with default bounds for boundary metabolite: fcmcbtt_e.
+Adding exchange reaction EX_fe2_e with default bounds for boundary metabolite: fe2_e.
+Adding exchange reaction EX_fe3_e with default bounds for boundary metabolite: fe3_e.
+Adding exchange reaction EX_fe3dcit_e with default bounds for boundary metabolite: fe3dcit_e.
+Adding exchange reaction EX_fe3dhbzs3_e with default bounds for boundary metabolite: fe3dhbzs3_e.
+Adding exchange reaction EX_fe3hox_e with default bounds for boundary metabolite: fe3hox_e.
+Adding exchange reaction EX_fe3hox_un_e with default bounds for boundary metabolite: fe3hox_un_e.
+Adding exchange reaction EX_fe3mcbtt_e with default bounds for boundary metabolite: fe3mcbtt_e.
+Adding exchange reaction EX_fe3pyovd_kt_e with default bounds for boundary metabolite: fe3pyovd_kt_e.
+Adding exchange reaction EX_feenter_e with default bounds for boundary metabolite: feenter_e.
+Adding exchange reaction EX_feoxam_e with default bounds for boundary metabolite: feoxam_e.
+Adding exchange reaction EX_feoxam_un_e with default bounds for boundary metabolite: feoxam_un_e.
+Adding exchange reaction EX_for_e with default bounds for boundary metabolite: for_e.
+Adding exchange reaction EX_fru_e with default bounds for boundary metabolite: fru_e.
+Adding exchange reaction EX_fuc_e with default bounds for boundary metabolite: fuc_e.
+Adding exchange reaction EX_fum_e with default bounds for boundary metabolite: fum_e.
+Adding exchange reaction EX_g3pe_e with default bounds for boundary metabolite: g3pe_e.
+Adding exchange reaction EX_galt_e with default bounds for boundary metabolite: galt_e.
+Adding exchange reaction EX_gam_e with default bounds for boundary metabolite: gam_e.
+Adding exchange reaction EX_glc__D_e with default bounds for boundary metabolite: glc__D_e.
+Adding exchange reaction EX_glcur_e with default bounds for boundary metabolite: glcur_e.
+Adding exchange reaction EX_gln__L_e with default bounds for boundary metabolite: gln__L_e.
+Adding exchange reaction EX_glu__L_e with default bounds for boundary metabolite: glu__L_e.
+Adding exchange reaction EX_glucan4_e with default bounds for boundary metabolite: glucan4_e.
+Adding exchange reaction EX_glucan6_e with default bounds for boundary metabolite: glucan6_e.
+Adding exchange reaction EX_glutar_e with default bounds for boundary metabolite: glutar_e.
+Adding exchange reaction EX_gly_asn__L_e with default bounds for boundary metabolite: gly_asn__L_e.
+Adding exchange reaction EX_gly_asp__L_e with default bounds for boundary metabolite: gly_asp__L_e.
+Adding exchange reaction EX_gly_cys_e with default bounds for boundary metabolite: gly_cys_e.
+Adding exchange reaction EX_gly_e with default bounds for boundary metabolite: gly_e.
+Adding exchange reaction EX_gly_gln_e with default bounds for boundary metabolite: gly_gln_e.
+Adding exchange reaction EX_gly_glu__L_e with default bounds for boundary metabolite: gly_glu__L_e.
+Adding exchange reaction EX_gly_leu_e with default bounds for boundary metabolite: gly_leu_e.
+Adding exchange reaction EX_gly_met_e with default bounds for boundary metabolite: gly_met_e.
+Adding exchange reaction EX_gly_phe_e with default bounds for boundary metabolite: gly_phe_e.
+Adding exchange reaction EX_gly_pro__L_e with default bounds for boundary metabolite: gly_pro__L_e.
+Adding exchange reaction EX_gly_tyr_e with default bounds for boundary metabolite: gly_tyr_e.
+Adding exchange reaction EX_glyb_e with default bounds for boundary metabolite: glyb_e.
+Adding exchange reaction EX_glyc3p_e with default bounds for boundary metabolite: glyc3p_e.
+Adding exchange reaction EX_glyc_e with default bounds for boundary metabolite: glyc_e.
+Adding exchange reaction EX_glyclt_e with default bounds for boundary metabolite: glyclt_e.
+Adding exchange reaction EX_glygln_e with default bounds for boundary metabolite: glygln_e.
+Adding exchange reaction EX_glyglu_e with default bounds for boundary metabolite: glyglu_e.
+Adding exchange reaction EX_glygly_e with default bounds for boundary metabolite: glygly_e.
+Adding exchange reaction EX_glyglygln_e with default bounds for boundary metabolite: glyglygln_e.
+Adding exchange reaction EX_glymet_e with default bounds for boundary metabolite: glymet_e.
+Adding exchange reaction EX_glyphe_e with default bounds for boundary metabolite: glyphe_e.
+Adding exchange reaction EX_glyser_e with default bounds for boundary metabolite: glyser_e.
+Adding exchange reaction EX_gsn_e with default bounds for boundary metabolite: gsn_e.
+Adding exchange reaction EX_gthrd_e with default bounds for boundary metabolite: gthrd_e.
+Adding exchange reaction EX_gua_e with default bounds for boundary metabolite: gua_e.
+Adding exchange reaction EX_h2_e with default bounds for boundary metabolite: h2_e.
+Adding exchange reaction EX_h2o2_e with default bounds for boundary metabolite: h2o2_e.
+Adding exchange reaction EX_h2o_e with default bounds for boundary metabolite: h2o_e.
+Adding exchange reaction EX_h2s_e with default bounds for boundary metabolite: h2s_e.
+Adding exchange reaction EX_h_e with default bounds for boundary metabolite: h_e.
+Adding exchange reaction EX_hexs_e with default bounds for boundary metabolite: hexs_e.
+Adding exchange reaction EX_hia_e with default bounds for boundary metabolite: hia_e.
+Adding exchange reaction EX_his__L_e with default bounds for boundary metabolite: his__L_e.
+Adding exchange reaction EX_hisgly_e with default bounds for boundary metabolite: hisgly_e.
+Adding exchange reaction EX_hishis_e with default bounds for boundary metabolite: hishis_e.
+Adding exchange reaction EX_hxa_e with default bounds for boundary metabolite: hxa_e.
+Adding exchange reaction EX_hxan_e with default bounds for boundary metabolite: hxan_e.
+Adding exchange reaction EX_icit_e with default bounds for boundary metabolite: icit_e.
+Adding exchange reaction EX_ile__L_e with default bounds for boundary metabolite: ile__L_e.
+Adding exchange reaction EX_ind3ac_e with default bounds for boundary metabolite: ind3ac_e.
+Adding exchange reaction EX_indole_e with default bounds for boundary metabolite: indole_e.
+Adding exchange reaction EX_inost_e with default bounds for boundary metabolite: inost_e.
+Adding exchange reaction EX_ins_e with default bounds for boundary metabolite: ins_e.
+Adding exchange reaction EX_isetac_e with default bounds for boundary metabolite: isetac_e.
+Adding exchange reaction EX_istfrnA_e with default bounds for boundary metabolite: istfrnA_e.
+Adding exchange reaction EX_istfrnB_e with default bounds for boundary metabolite: istfrnB_e.
+Adding exchange reaction EX_istnt_e with default bounds for boundary metabolite: istnt_e.
+Adding exchange reaction EX_k_e with default bounds for boundary metabolite: k_e.
+Adding exchange reaction EX_lac__L_e with default bounds for boundary metabolite: lac__L_e.
+Adding exchange reaction EX_lcts_e with default bounds for boundary metabolite: lcts_e.
+Adding exchange reaction EX_leu__L_e with default bounds for boundary metabolite: leu__L_e.
+Adding exchange reaction EX_leuleu_e with default bounds for boundary metabolite: leuleu_e.
+Adding exchange reaction EX_lmn2_e with default bounds for boundary metabolite: lmn2_e.
+Adding exchange reaction EX_lys__D_e with default bounds for boundary metabolite: lys__D_e.
+Adding exchange reaction EX_lys__L_e with default bounds for boundary metabolite: lys__L_e.
+Adding exchange reaction EX_lysglugly_e with default bounds for boundary metabolite: lysglugly_e.
+Adding exchange reaction EX_mal__L_e with default bounds for boundary metabolite: mal__L_e.
+Adding exchange reaction EX_malt_e with default bounds for boundary metabolite: malt_e.
+Adding exchange reaction EX_malthp_e with default bounds for boundary metabolite: malthp_e.
+Adding exchange reaction EX_malthx_e with default bounds for boundary metabolite: malthx_e.
+Adding exchange reaction EX_malttr_e with default bounds for boundary metabolite: malttr_e.
+Adding exchange reaction EX_man6pglyc_e with default bounds for boundary metabolite: man6pglyc_e.
+Adding exchange reaction EX_man_e with default bounds for boundary metabolite: man_e.
+Adding exchange reaction EX_mcbtt_e with default bounds for boundary metabolite: mcbtt_e.
+Adding exchange reaction EX_meoh_e with default bounds for boundary metabolite: meoh_e.
+Adding exchange reaction EX_met_L_ala__L_e with default bounds for boundary metabolite: met_L_ala__L_e.
+Adding exchange reaction EX_met__D_e with default bounds for boundary metabolite: met__D_e.
+Adding exchange reaction EX_met__L_e with default bounds for boundary metabolite: met__L_e.
+Adding exchange reaction EX_metsox_R__L_e with default bounds for boundary metabolite: metsox_R__L_e.
+Adding exchange reaction EX_metsox_S__L_e with default bounds for boundary metabolite: metsox_S__L_e.
+Adding exchange reaction EX_mg2_e with default bounds for boundary metabolite: mg2_e.
+Adding exchange reaction EX_mn2_e with default bounds for boundary metabolite: mn2_e.
+Adding exchange reaction EX_mobd_e with default bounds for boundary metabolite: mobd_e.
+Adding exchange reaction EX_mso3_e with default bounds for boundary metabolite: mso3_e.
+Adding exchange reaction EX_na1_e with default bounds for boundary metabolite: na1_e.
+Adding exchange reaction EX_nh4_e with default bounds for boundary metabolite: nh4_e.
+Adding exchange reaction EX_ni2_e with default bounds for boundary metabolite: ni2_e.
+Adding exchange reaction EX_no2_e with default bounds for boundary metabolite: no2_e.
+Adding exchange reaction EX_no3_e with default bounds for boundary metabolite: no3_e.
+Adding exchange reaction EX_no_e with default bounds for boundary metabolite: no_e.
+Adding exchange reaction EX_o2_e with default bounds for boundary metabolite: o2_e.
+Adding exchange reaction EX_octa_e with default bounds for boundary metabolite: octa_e.
+Adding exchange reaction EX_orn__L_e with default bounds for boundary metabolite: orn__L_e.
+Adding exchange reaction EX_orn_e with default bounds for boundary metabolite: orn_e.
+Adding exchange reaction EX_pea_e with default bounds for boundary metabolite: pea_e.
+Adding exchange reaction EX_peamn_e with default bounds for boundary metabolite: peamn_e.
+Adding exchange reaction EX_pentso3_e with default bounds for boundary metabolite: pentso3_e.
+Adding exchange reaction EX_phe__L_e with default bounds for boundary metabolite: phe__L_e.
+Adding exchange reaction EX_phedca_e with default bounds for boundary metabolite: phedca_e.
+Adding exchange reaction EX_pheme_e with default bounds for boundary metabolite: pheme_e.
+Adding exchange reaction EX_phenona_e with default bounds for boundary metabolite: phenona_e.
+Adding exchange reaction EX_pi_e with default bounds for boundary metabolite: pi_e.
+Adding exchange reaction EX_pime_e with default bounds for boundary metabolite: pime_e.
+Adding exchange reaction EX_pnto__R_e with default bounds for boundary metabolite: pnto__R_e.
+Adding exchange reaction EX_pro__L_e with default bounds for boundary metabolite: pro__L_e.
+Adding exchange reaction EX_progly_e with default bounds for boundary metabolite: progly_e.
+Adding exchange reaction EX_prohisglu_e with default bounds for boundary metabolite: prohisglu_e.
+Adding exchange reaction EX_ptrc_e with default bounds for boundary metabolite: ptrc_e.
+Adding exchange reaction EX_pyovd_kt_e with default bounds for boundary metabolite: pyovd_kt_e.
+Adding exchange reaction EX_rib__D_e with default bounds for boundary metabolite: rib__D_e.
+Adding exchange reaction EX_ribflv_e with default bounds for boundary metabolite: ribflv_e.
+Adding exchange reaction EX_s_e with default bounds for boundary metabolite: s_e.
+Adding exchange reaction EX_salc_e with default bounds for boundary metabolite: salc_e.
+Adding exchange reaction EX_salchs2_e with default bounds for boundary metabolite: salchs2_e.
+Adding exchange reaction EX_salchs2fe_e with default bounds for boundary metabolite: salchs2fe_e.
+Adding exchange reaction EX_salchs4_e with default bounds for boundary metabolite: salchs4_e.
+Adding exchange reaction EX_salchs4fe_e with default bounds for boundary metabolite: salchs4fe_e.
+Adding exchange reaction EX_sbt__D_e with default bounds for boundary metabolite: sbt__D_e.
+Adding exchange reaction EX_sel_e with default bounds for boundary metabolite: sel_e.
+Adding exchange reaction EX_ser__L_e with default bounds for boundary metabolite: ser__L_e.
+Adding exchange reaction EX_serglugly_e with default bounds for boundary metabolite: serglugly_e.
+Adding exchange reaction EX_skm_e with default bounds for boundary metabolite: skm_e.
+Adding exchange reaction EX_slnt_e with default bounds for boundary metabolite: slnt_e.
+Adding exchange reaction EX_so3_e with default bounds for boundary metabolite: so3_e.
+Adding exchange reaction EX_so4_e with default bounds for boundary metabolite: so4_e.
+Adding exchange reaction EX_spmd_e with default bounds for boundary metabolite: spmd_e.
+Adding exchange reaction EX_stfrnA_e with default bounds for boundary metabolite: stfrnA_e.
+Adding exchange reaction EX_stfrnB_e with default bounds for boundary metabolite: stfrnB_e.
+Adding exchange reaction EX_succ_e with default bounds for boundary metabolite: succ_e.
+Adding exchange reaction EX_sula_e with default bounds for boundary metabolite: sula_e.
+Adding exchange reaction EX_sulfac_e with default bounds for boundary metabolite: sulfac_e.
+Adding exchange reaction EX_taur_e with default bounds for boundary metabolite: taur_e.
+Adding exchange reaction EX_tcynt_e with default bounds for boundary metabolite: tcynt_e.
+Adding exchange reaction EX_thm_e with default bounds for boundary metabolite: thm_e.
+Adding exchange reaction EX_thr__L_e with default bounds for boundary metabolite: thr__L_e.
+Adding exchange reaction EX_thym_e with default bounds for boundary metabolite: thym_e.
+Adding exchange reaction EX_tnt_e with default bounds for boundary metabolite: tnt_e.
+Adding exchange reaction EX_tol_e with default bounds for boundary metabolite: tol_e.
+Adding exchange reaction EX_tre_e with default bounds for boundary metabolite: tre_e.
+Adding exchange reaction EX_trp__L_e with default bounds for boundary metabolite: trp__L_e.
+Adding exchange reaction EX_tsul_e with default bounds for boundary metabolite: tsul_e.
+Adding exchange reaction EX_ttdca_e with default bounds for boundary metabolite: ttdca_e.
+Adding exchange reaction EX_tyr__L_e with default bounds for boundary metabolite: tyr__L_e.
+Adding exchange reaction EX_ura_e with default bounds for boundary metabolite: ura_e.
+Adding exchange reaction EX_urate_e with default bounds for boundary metabolite: urate_e.
+Adding exchange reaction EX_val__L_e with default bounds for boundary metabolite: val__L_e.
+Adding exchange reaction EX_xan_e with default bounds for boundary metabolite: xan_e.
+Adding exchange reaction EX_xtsn_e with default bounds for boundary metabolite: xtsn_e.
+Adding exchange reaction EX_xyl3_e with default bounds for boundary metabolite: xyl3_e.
+Adding exchange reaction EX_xyl__D_e with default bounds for boundary metabolite: xyl__D_e.
+Adding exchange reaction EX_xylan4_e with default bounds for boundary metabolite: xylan4_e.
+Adding exchange reaction EX_xylb_e with default bounds for boundary metabolite: xylb_e.
+Adding exchange reaction EX_zn2_e with default bounds for boundary metabolite: zn2_e.
+Ignoring reaction 'EX_23dhbzs3_e' since it already exists.
+Ignoring reaction 'EX_25dkglcn_e' since it already exists.
+Ignoring reaction 'EX_2ddglcn_e' since it already exists.
+Ignoring reaction 'EX_2m35mdntha_e' since it already exists.
+Ignoring reaction 'EX_35dnta_e' since it already exists.
+Ignoring reaction 'EX_3hcinnm_e' since it already exists.
+Ignoring reaction 'EX_3hpppn_e' since it already exists.
+Ignoring reaction 'EX_4ahmmp_e' since it already exists.
+Ignoring reaction 'EX_4hba_e' since it already exists.
+Ignoring reaction 'EX_5mdru1p_e' since it already exists.
+Ignoring reaction 'EX_LalaLglu_e' since it already exists.
+Ignoring reaction 'EX_R3hdec4e_e' since it already exists.
+Ignoring reaction 'EX_abt__L_e' since it already exists.
+Ignoring reaction 'EX_ac_e' since it already exists.
+Ignoring reaction 'EX_acald_e' since it already exists.
+Ignoring reaction 'EX_acgam_e' since it already exists.
+Ignoring reaction 'EX_acon_C_e' since it already exists.
+Ignoring reaction 'EX_acysbmn_e' since it already exists.
+Ignoring reaction 'EX_ad_e' since it already exists.
+Ignoring reaction 'EX_adn_e' since it already exists.
+Ignoring reaction 'EX_akg_e' since it already exists.
+Ignoring reaction 'EX_ala_B_e' since it already exists.
+Ignoring reaction 'EX_ala_L_asp__L_e' since it already exists.
+Ignoring reaction 'EX_ala_L_glu__L_e' since it already exists.
+Ignoring reaction 'EX_ala_L_thr__L_e' since it already exists.
+Ignoring reaction 'EX_ala__D_e' since it already exists.
+Ignoring reaction 'EX_ala__L_e' since it already exists.
+Ignoring reaction 'EX_ala_gln_e' since it already exists.
+Ignoring reaction 'EX_ala_his_e' since it already exists.
+Ignoring reaction 'EX_ala_leu_e' since it already exists.
+Ignoring reaction 'EX_alagly_e' since it already exists.
+Ignoring reaction 'EX_alahis_e' since it already exists.
+Ignoring reaction 'EX_alaleu_e' since it already exists.
+Ignoring reaction 'EX_alathr_e' since it already exists.
+Ignoring reaction 'EX_alatrp_e' since it already exists.
+Ignoring reaction 'EX_alltn_e' since it already exists.
+Ignoring reaction 'EX_anhgm_e' since it already exists.
+Ignoring reaction 'EX_arg__L_e' since it already exists.
+Ignoring reaction 'EX_asn__L_e' since it already exists.
+Ignoring reaction 'EX_aso3_e' since it already exists.
+Ignoring reaction 'EX_aso4_e' since it already exists.
+Ignoring reaction 'EX_asp__L_e' since it already exists.
+Ignoring reaction 'EX_balaala_e' since it already exists.
+Ignoring reaction 'EX_balabala_e' since it already exists.
+Ignoring reaction 'EX_balagly_e' since it already exists.
+Ignoring reaction 'EX_balaleu_e' since it already exists.
+Ignoring reaction 'EX_balamd_e' since it already exists.
+Ignoring reaction 'EX_bmn_e' since it already exists.
+Ignoring reaction 'EX_btd_RR_e' since it already exists.
+Ignoring reaction 'EX_btn_e' since it already exists.
+Ignoring reaction 'EX_buts_e' since it already exists.
+Ignoring reaction 'EX_butso3_e' since it already exists.
+Ignoring reaction 'EX_bz_e' since it already exists.
+Ignoring reaction 'EX_ca2_e' since it already exists.
+Ignoring reaction 'EX_carn_e' since it already exists.
+Ignoring reaction 'EX_cellb_e' since it already exists.
+Ignoring reaction 'EX_cgly_e' since it already exists.
+Ignoring reaction 'EX_chol_e' since it already exists.
+Ignoring reaction 'EX_chsterol_e' since it already exists.
+Ignoring reaction 'EX_cit_e' since it already exists.
+Ignoring reaction 'EX_cl_e' since it already exists.
+Ignoring reaction 'EX_cmcbtt_e' since it already exists.
+Ignoring reaction 'EX_co2_e' since it already exists.
+Ignoring reaction 'EX_co_e' since it already exists.
+Ignoring reaction 'EX_cobalt2_e' since it already exists.
+Ignoring reaction 'EX_cpgn_e' since it already exists.
+Ignoring reaction 'EX_cpgn_un_e' since it already exists.
+Ignoring reaction 'EX_crn_e' since it already exists.
+Ignoring reaction 'EX_csn_e' since it already exists.
+Ignoring reaction 'EX_cu2_e' since it already exists.
+Ignoring reaction 'EX_cyan_e' since it already exists.
+Ignoring reaction 'EX_cys__L_e' since it already exists.
+Ignoring reaction 'EX_dad_2_e' since it already exists.
+Ignoring reaction 'EX_dca_e' since it already exists.
+Ignoring reaction 'EX_ddca_e' since it already exists.
+Ignoring reaction 'EX_dmso2_e' since it already exists.
+Ignoring reaction 'EX_enter_e' since it already exists.
+Ignoring reaction 'EX_eths_e' since it already exists.
+Ignoring reaction 'EX_ethso3_e' since it already exists.
+Ignoring reaction 'EX_fcmcbtt_e' since it already exists.
+Ignoring reaction 'EX_fe2_e' since it already exists.
+Ignoring reaction 'EX_fe3_e' since it already exists.
+Ignoring reaction 'EX_fe3dcit_e' since it already exists.
+Ignoring reaction 'EX_fe3dhbzs3_e' since it already exists.
+Ignoring reaction 'EX_fe3hox_e' since it already exists.
+Ignoring reaction 'EX_fe3hox_un_e' since it already exists.
+Ignoring reaction 'EX_fe3mcbtt_e' since it already exists.
+Ignoring reaction 'EX_fe3pyovd_kt_e' since it already exists.
+Ignoring reaction 'EX_feenter_e' since it already exists.
+Ignoring reaction 'EX_feoxam_e' since it already exists.
+Ignoring reaction 'EX_feoxam_un_e' since it already exists.
+Ignoring reaction 'EX_for_e' since it already exists.
+Ignoring reaction 'EX_fru_e' since it already exists.
+Ignoring reaction 'EX_fuc_e' since it already exists.
+Ignoring reaction 'EX_fum_e' since it already exists.
+Ignoring reaction 'EX_g3pe_e' since it already exists.
+Ignoring reaction 'EX_galt_e' since it already exists.
+Ignoring reaction 'EX_gam_e' since it already exists.
+Ignoring reaction 'EX_glc__D_e' since it already exists.
+Ignoring reaction 'EX_glcur_e' since it already exists.
+Ignoring reaction 'EX_gln__L_e' since it already exists.
+Ignoring reaction 'EX_glu__L_e' since it already exists.
+Ignoring reaction 'EX_glucan4_e' since it already exists.
+Ignoring reaction 'EX_glucan6_e' since it already exists.
+Ignoring reaction 'EX_glutar_e' since it already exists.
+Ignoring reaction 'EX_gly_asn__L_e' since it already exists.
+Ignoring reaction 'EX_gly_asp__L_e' since it already exists.
+Ignoring reaction 'EX_gly_cys_e' since it already exists.
+Ignoring reaction 'EX_gly_e' since it already exists.
+Ignoring reaction 'EX_gly_gln_e' since it already exists.
+Ignoring reaction 'EX_gly_glu__L_e' since it already exists.
+Ignoring reaction 'EX_gly_leu_e' since it already exists.
+Ignoring reaction 'EX_gly_met_e' since it already exists.
+Ignoring reaction 'EX_gly_phe_e' since it already exists.
+Ignoring reaction 'EX_gly_pro__L_e' since it already exists.
+Ignoring reaction 'EX_gly_tyr_e' since it already exists.
+Ignoring reaction 'EX_glyb_e' since it already exists.
+Ignoring reaction 'EX_glyc3p_e' since it already exists.
+Ignoring reaction 'EX_glyc_e' since it already exists.
+Ignoring reaction 'EX_glyclt_e' since it already exists.
+Ignoring reaction 'EX_glygln_e' since it already exists.
+Ignoring reaction 'EX_glyglu_e' since it already exists.
+Ignoring reaction 'EX_glygly_e' since it already exists.
+Ignoring reaction 'EX_glyglygln_e' since it already exists.
+Ignoring reaction 'EX_glymet_e' since it already exists.
+Ignoring reaction 'EX_glyphe_e' since it already exists.
+Ignoring reaction 'EX_glyser_e' since it already exists.
+Ignoring reaction 'EX_gsn_e' since it already exists.
+Ignoring reaction 'EX_gthrd_e' since it already exists.
+Ignoring reaction 'EX_gua_e' since it already exists.
+Ignoring reaction 'EX_h2_e' since it already exists.
+Ignoring reaction 'EX_h2o2_e' since it already exists.
+Ignoring reaction 'EX_h2o_e' since it already exists.
+Ignoring reaction 'EX_h2s_e' since it already exists.
+Ignoring reaction 'EX_h_e' since it already exists.
+Ignoring reaction 'EX_hexs_e' since it already exists.
+Ignoring reaction 'EX_hia_e' since it already exists.
+Ignoring reaction 'EX_his__L_e' since it already exists.
+Ignoring reaction 'EX_hisgly_e' since it already exists.
+Ignoring reaction 'EX_hishis_e' since it already exists.
+Ignoring reaction 'EX_hxa_e' since it already exists.
+Ignoring reaction 'EX_hxan_e' since it already exists.
+Ignoring reaction 'EX_icit_e' since it already exists.
+Ignoring reaction 'EX_ile__L_e' since it already exists.
+Ignoring reaction 'EX_ind3ac_e' since it already exists.
+Ignoring reaction 'EX_indole_e' since it already exists.
+Ignoring reaction 'EX_inost_e' since it already exists.
+Ignoring reaction 'EX_ins_e' since it already exists.
+Ignoring reaction 'EX_isetac_e' since it already exists.
+Ignoring reaction 'EX_istfrnA_e' since it already exists.
+Ignoring reaction 'EX_istfrnB_e' since it already exists.
+Ignoring reaction 'EX_istnt_e' since it already exists.
+Ignoring reaction 'EX_k_e' since it already exists.
+Ignoring reaction 'EX_lac__L_e' since it already exists.
+Ignoring reaction 'EX_lcts_e' since it already exists.
+Ignoring reaction 'EX_leu__L_e' since it already exists.
+Ignoring reaction 'EX_leuleu_e' since it already exists.
+Ignoring reaction 'EX_lmn2_e' since it already exists.
+Ignoring reaction 'EX_lys__D_e' since it already exists.
+Ignoring reaction 'EX_lys__L_e' since it already exists.
+Ignoring reaction 'EX_lysglugly_e' since it already exists.
+Ignoring reaction 'EX_mal__L_e' since it already exists.
+Ignoring reaction 'EX_malt_e' since it already exists.
+Ignoring reaction 'EX_malthp_e' since it already exists.
+Ignoring reaction 'EX_malthx_e' since it already exists.
+Ignoring reaction 'EX_malttr_e' since it already exists.
+Ignoring reaction 'EX_man6pglyc_e' since it already exists.
+Ignoring reaction 'EX_man_e' since it already exists.
+Ignoring reaction 'EX_mcbtt_e' since it already exists.
+Ignoring reaction 'EX_meoh_e' since it already exists.
+Ignoring reaction 'EX_met_L_ala__L_e' since it already exists.
+Ignoring reaction 'EX_met__D_e' since it already exists.
+Ignoring reaction 'EX_met__L_e' since it already exists.
+Ignoring reaction 'EX_metsox_R__L_e' since it already exists.
+Ignoring reaction 'EX_metsox_S__L_e' since it already exists.
+Ignoring reaction 'EX_mg2_e' since it already exists.
+Ignoring reaction 'EX_mn2_e' since it already exists.
+Ignoring reaction 'EX_mobd_e' since it already exists.
+Ignoring reaction 'EX_mso3_e' since it already exists.
+Ignoring reaction 'EX_nh4_e' since it already exists.
+Ignoring reaction 'EX_no2_e' since it already exists.
+Ignoring reaction 'EX_no3_e' since it already exists.
+Ignoring reaction 'EX_no_e' since it already exists.
+Ignoring reaction 'EX_o2_e' since it already exists.
+Ignoring reaction 'EX_octa_e' since it already exists.
+Ignoring reaction 'EX_orn__L_e' since it already exists.
+Ignoring reaction 'EX_orn_e' since it already exists.
+Ignoring reaction 'EX_pea_e' since it already exists.
+Ignoring reaction 'EX_peamn_e' since it already exists.
+Ignoring reaction 'EX_pentso3_e' since it already exists.
+Ignoring reaction 'EX_phe__L_e' since it already exists.
+Ignoring reaction 'EX_phedca_e' since it already exists.
+Ignoring reaction 'EX_pheme_e' since it already exists.
+Ignoring reaction 'EX_phenona_e' since it already exists.
+Ignoring reaction 'EX_pi_e' since it already exists.
+Ignoring reaction 'EX_pime_e' since it already exists.
+Ignoring reaction 'EX_pnto__R_e' since it already exists.
+Ignoring reaction 'EX_pro__L_e' since it already exists.
+Ignoring reaction 'EX_progly_e' since it already exists.
+Ignoring reaction 'EX_prohisglu_e' since it already exists.
+Ignoring reaction 'EX_ptrc_e' since it already exists.
+Ignoring reaction 'EX_pyovd_kt_e' since it already exists.
+Ignoring reaction 'EX_rib__D_e' since it already exists.
+Ignoring reaction 'EX_ribflv_e' since it already exists.
+Ignoring reaction 'EX_s_e' since it already exists.
+Ignoring reaction 'EX_salc_e' since it already exists.
+Ignoring reaction 'EX_salchs2_e' since it already exists.
+Ignoring reaction 'EX_salchs2fe_e' since it already exists.
+Ignoring reaction 'EX_salchs4_e' since it already exists.
+Ignoring reaction 'EX_salchs4fe_e' since it already exists.
+Ignoring reaction 'EX_sbt__D_e' since it already exists.
+Ignoring reaction 'EX_sel_e' since it already exists.
+Ignoring reaction 'EX_ser__L_e' since it already exists.
+Ignoring reaction 'EX_serglugly_e' since it already exists.
+Ignoring reaction 'EX_skm_e' since it already exists.
+Ignoring reaction 'EX_slnt_e' since it already exists.
+Ignoring reaction 'EX_so3_e' since it already exists.
+Ignoring reaction 'EX_so4_e' since it already exists.
+Ignoring reaction 'EX_spmd_e' since it already exists.
+Ignoring reaction 'EX_stfrnA_e' since it already exists.
+Ignoring reaction 'EX_stfrnB_e' since it already exists.
+Ignoring reaction 'EX_succ_e' since it already exists.
+Ignoring reaction 'EX_sula_e' since it already exists.
+Ignoring reaction 'EX_sulfac_e' since it already exists.
+Ignoring reaction 'EX_taur_e' since it already exists.
+Ignoring reaction 'EX_tcynt_e' since it already exists.
+Ignoring reaction 'EX_thm_e' since it already exists.
+Ignoring reaction 'EX_thr__L_e' since it already exists.
+Ignoring reaction 'EX_thym_e' since it already exists.
+Ignoring reaction 'EX_tnt_e' since it already exists.
+Ignoring reaction 'EX_tol_e' since it already exists.
+Ignoring reaction 'EX_tre_e' since it already exists.
+Ignoring reaction 'EX_trp__L_e' since it already exists.
+Ignoring reaction 'EX_tsul_e' since it already exists.
+Ignoring reaction 'EX_ttdca_e' since it already exists.
+Ignoring reaction 'EX_tyr__L_e' since it already exists.
+Ignoring reaction 'EX_ura_e' since it already exists.
+Ignoring reaction 'EX_urate_e' since it already exists.
+Ignoring reaction 'EX_val__L_e' since it already exists.
+Ignoring reaction 'EX_xan_e' since it already exists.
+Ignoring reaction 'EX_xtsn_e' since it already exists.
+Ignoring reaction 'EX_xyl3_e' since it already exists.
+Ignoring reaction 'EX_xyl__D_e' since it already exists.
+Ignoring reaction 'EX_xylan4_e' since it already exists.
+Ignoring reaction 'EX_xylb_e' since it already exists.
+Ignoring reaction 'EX_zn2_e' since it already exists.
+/mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/model.py:667: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+  self.objective = [int(self.reactions[self.reactions.
+/mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/layout.py:1425: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.media = pd.concat([self.media, new_row],
+/mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/comets.py:458: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
+  self.fluxes = pd.read_csv(self.working_dir + self.parameters.all_params['FluxLogName'],
+/mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/comets.py:472: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
+  self.media = pd.read_csv(self.working_dir + self.parameters.all_params[
+/mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/comets.py:808: FutureWarning: The provided callable <built-in function sum> is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  fluxes = fluxes.groupby(by = "cycle").agg(func = sum).reset_index().drop(columns = ["x", "y"])

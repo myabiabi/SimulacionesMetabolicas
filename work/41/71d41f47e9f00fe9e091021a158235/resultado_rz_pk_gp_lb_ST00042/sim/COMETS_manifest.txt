@@ -1,0 +1,5 @@
+ModelFileName: ./rz_pk_gp_lb_ST00042.cmd
+FluxFileName: ../flux.txt
+MediaFileName: ../media.txt
+BiomassFileName: ../biomass.txt
+TotalBiomassFileName: ../total_biomass.txt

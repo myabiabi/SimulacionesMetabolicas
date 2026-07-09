@@ -1,0 +1,1 @@
+2026-07-09 16:59:51	3m 59s	condescending_hamilton	OK	ed68601d0e5d03d7b6d522a89f04bc1a	667bcf38-1771-41de-b4a3-59df04036d74	nextflow run main.nf --gem_path /mnt/data/sur/users/mmontante/02_resultados/rz/gem --outbase /mnt/data/sur/users/mmontante/02_resultados/simulaciones --media lb --cycles 5 --initial_mass 1e-4 -profile slurm -resume
