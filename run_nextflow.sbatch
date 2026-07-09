@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=2G
-#SBATCH --partition=normal
+#SBATCH --partition=defq
 
 # ==========================================================================
 # run_nextflow.sbatch
