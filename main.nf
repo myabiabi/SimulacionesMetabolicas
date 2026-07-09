@@ -4,7 +4,6 @@
  * ==========================================================================
  * main.nf - Simulacion COMETS por cada modelo .xml
  *
- * Equivalente al job array de SLURM que ya tenias, pero manejado por
  * Nextflow: por cada archivo .xml en --gem_path se lanza una tarea
  * independiente (en paralelo, segun los recursos del cluster).
  *

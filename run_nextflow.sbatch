@@ -46,7 +46,6 @@ echo "=== Lanzando pipeline Nextflow: $(date) ==="
 echo "Job ID: $SLURM_JOB_ID"
 echo "Nodo (cabeza): $(hostname)"
 
-# ---- Correr el pipeline -----------------------------------------------------
 # -resume permite reanudar si el pipeline se cae a la mitad (no reprocesa
 # los .xml que ya terminaron bien)
 nextflow run main.nf \
