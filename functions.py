@@ -53,7 +53,7 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
     """
     resultados_totales = {}
     
-    print(f"🚀 Iniciando procesamiento para {len(lista_patrones)} patrones...")
+    print(f" Iniciando para {len(lista_patrones)} patrones...")
     
     # El ciclo FOR ahora está aquí adentro
     for patron in lista_patrones:
@@ -66,11 +66,11 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
         
         # Validaciones para este patrón específico
         if not input_models:
-            print(f"⚠️ [Saltado] No se encontraron archivos para: '{patron}'")
+            print(f"No se encontraron archivos para: '{patron}'")
             continue # Salta al siguiente patrón de la lista
             
         if len(input_models) < 2:
-            print(f"⚠️ [Saltado] Solo se encontró {len(input_models)} modelo para '{patron}'. Se necesitan al menos 2.")
+            print(f"Solo se encontró {len(input_models)} modelo para '{patron}'. Se necesitan al menos 2.")
             continue
 
         print(f"\n========================================")
@@ -88,7 +88,7 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
                 trans_to_db=None
             )
         except Exception as e:
-            print(f"❌ Error en mergem para {patron}: {e}")
+            print(f"Error {patron}: {e}")
             continue
 
         # 3. Guardar el XML resultante
@@ -97,49 +97,13 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
         output_path = os.path.join(ruta_output, nombre_salida)
         
         cobra.io.write_sbml_model(results['merged_model'], output_path)
-        print(f"✅ Consenso guardado en: {output_path}")
+        print(f"Consenso guardado en: {output_path}")
         
         # Guardamos el resultado en nuestro diccionario usando el nombre de la bacteria
         resultados_totales[patron] = results
             
-    print(f"\n🏁 ¡Proceso terminado!")
+    print(f"fin")
     return resultados_totales
-
-
-def procesar_multiples_patrones(ruta_input, ruta_output, lista_patrones):
-    """
-    Recorre una lista de patrones, define el nombre de salida automáticamente 
-    y ejecuta mergem para cada uno.
-    
-    Parameters:
-    -----------
-    ruta_input : str
-        Ruta de la carpeta con los modelos XML individuales.
-    ruta_output : str
-        Ruta donde se guardarán los consensos.
-    lista_patrones : list
-        Lista de strings con los nombres o patrones a buscar (ej. ['mycobacterium', 'pseudomonas']).
-    """
-    resultados_totales = {}
-    
-    print(f"🚀 Iniciando procesamiento por lote para {len(lista_patrones)} patrones...")
-    
-    for patron in lista_patrones:
-        # Generamos el nombre de salida de forma automática usando el patrón
-        nombre_salida = f"modelo_consenso_{patron.lower()}.xml"
-        
-        # Llamamos a la función individual
-        res = mergem_function(ruta_input, ruta_output, nombre_salida, patron)
-        
-        if res is not None:
-            resultados_totales[patron] = res
-            
-    print(f"\n ¡Proceso terminado! Se generaron exitosamente {len(resultados_totales)} modelos consenso.")
-    return resultados_totales
-
-#imprimir lista reacciones: 
-# # Load the XML/SBML model
-import cobra
 
 
 model = cobra.io.read_sbml_model("/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_cv_lb_paenibacillus.xml")
