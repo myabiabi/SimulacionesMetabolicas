@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=com_results
+#SBATCH --job-name=combos
 #SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/logs/%x.log
 #SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/logs/%x.error
 #SBATCH --time=1000:00:00
@@ -18,7 +18,7 @@ module load COMETS
 
 echo "[INFO] Starting Python script at $(date)"
 
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/comunidades.py
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/combos.py
 
 
 echo "[INFO] Python script finished at $(date)"

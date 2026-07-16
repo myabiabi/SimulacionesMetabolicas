@@ -3,18 +3,23 @@ import subprocess
 import csv
 
 # --- CONFIGURACIÓN DE RUTAS Y PARÁMETROS ---
-CSV_PATH = "/mnt/data/sur/users/mmontante/01_data/rz/syncoms_pairs.csv"
+CSV_PATH = "/mnt/data/sur/users/mmontante/01_data/rz/syncoms.csv"
 SCRIPT_ORIGINAL = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py"
 GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final"
 
 # CAMBIO CRUCIAL: Dejamos esto relativo porque tu script original 
 # ya se encarga de concatenarlo con la ruta base interna (/mnt/data/sur/users/mmontante/)
-OUTDIR_BASE = "02_resultados/rz/pares"
+OUTDIR_BASE = "02_resultados/rz/com"
+
+if not os.path.exists(OUTDIR_BASE):
+	os.makedirs(OUTDIR_BASE)
 
 # Parámetros fijos para las simulaciones
 
 CYCLES = "10000"
 MEDIA = "lb"
+MEDIA_DIL = "0.1"
+MEDIA_VOL = "0.03"
 
 def main():
     if not os.path.exists(CSV_PATH):
@@ -69,6 +74,8 @@ def main():
         comando.extend([
             "--cycles", CYCLES,
             "--media", MEDIA,
+            "--media_dil", MEDIA_DIL,
+            "--media_vol", MEDIA_VOL,
             "--outdir", outdir_especifico
         ])
         
