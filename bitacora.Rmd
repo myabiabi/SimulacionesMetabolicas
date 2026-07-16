@@ -37,7 +37,7 @@ scp -r directorio/que/quieres/copiar mmontante@fenix.lavis.unam.mx:/directorio/d
 scp -r /home/abigaylmontantearenas/Documents/proyecto_tesis/01_data mmontante@fenix.lavis.unam.mx:/mnt/data/sur/users/mmontante
 
 * **actualizar copias de repos**
-git push lab dev
+git push lab devfe
 
 * **tamaño de un archivo**
 ls -lh archivo
@@ -45,27 +45,43 @@ ls -lh archivo
 Corynebacterium_sp_29_x.fasta_assembly.RAST.fbamodel.xml
 .fbamodel.xml
 
+rz_pk_gp_lbST00042_prokka_gapseq_lb.xml.xml.xml
+
 ```
-for archivo in *.fna_assembly.RAST.fbamodel.xml.xml; do
-    # 1. Obtener el nombre base eliminando el final largo
-    nombre_base="${archivo%.fna_assembly.RAST.fbamodel.xml.xml}"
+for archivo in *_prokka_gapseq_lb.xml.xml.xml; do
+    # 1. Elimina la cadena exacta del final del archivo original
+    nombre_base="${archivo%_prokka_gapseq_lb.xml.xml.xml}"
     
-    # 2. Definir lo que quieres agregar ANTES del nombre
-    prefijo="rz_pk_kb_rt_lb_"
+    # 2. Definir el prefijo (sin el guion bajo al final para que quede pegado a ST)
+    #prefijo="rz_pk_gp_lb"
     
-    # 3. Renombrar el archivo agregando el prefijo y la extensión corta (.xml)
-    mv "$archivo" "${prefijo}${nombre_base}.xml"
+    # 3. Renombrar el archivo combinando todo
+    mv "$archivo" "${nombre_base}.xml"
 done
 ```
 
-rz_pk_cv_lb_ST00000_prokka_carveme_lb.xml.xml
 ```
-for archivo in *.xml.xml; do
-    # 1. Obtener el nombre base eliminando el PREFIJO largo del inicio
-    nombre_base="${archivo%.xml.xml}"
+for archivo in rz_pk_gp_lbST*_prokka_gapseq_lb.xml.xml.xml; do
+    # 1. Quitamos el prefijo del inicio usando '#'
+    sin_prefijo="${archivo#rz_pk_gp_lb}"
     
+    # 2. Quitamos todo el bloque de texto del final usando '%'
+    nombre_limpio="${sin_prefijo%_prokka_gapseq_lb.xml.xml.xml}"
+    
+    # 3. Renombramos al formato limpio final
+    mv "$archivo" "${nombre_limpio}.xml"
+done
+```
+
+STXXX.xml
+```
+for archivo in ST*; do
+    # 1. Obtener el nombre base eliminando el PREFIJO largo del inicio
+    nombre_base="${archivo%.xml}"
+    
+    prefijo="rz_pk_gp_lb_"
     # 2. Renombrar el archivo cambiando el prefijo y agregando .xml
-    mv "$archivo" "${nombre_base}.xml"
+    mv "$archivo" "${prefijo}${nombre_base}.xml"
 done
 ```
 
@@ -876,10 +892,73 @@ El supermodelo completo en JSON para reanálisis posterior
 Ese es el script que quedó como versión final de hoy, pendiente de que lo corras y compartas el log de diagnóstico (Sources y Comparison keys) para confirmar que el consenso salió como esperabas.
 
 
+### 10/06/26
+GAPSEQ
+
+PASO 1
+gap_redo <---- GAP FID
+PASO2 
+gapfill0207 <--- PREDICCIONES
+PASO 3 
+
+
+#############
+gapfill0607
+job: 238901
 
 
 
+#####
+simulacion individual rizosfera job: 238916
 
+#########
+  GNU nano 5.6.1                                                                        SimulacionesMetabolicas/individual.slurm                                                                                   
+#!/bin/bash
+#SBATCH --job-name=com_results
+#SBATCH --output=%x.log
+#SBATCH --error=%x.error
+#SBATCH --time=1000:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+
+echo "========================================="
+echo "Job started on: $(date)"
+echo "Running on host: $(hostname)"
+echo "Working directory: $(pwd)"
+echo "========================================="
+
+eval "$(mamba shell hook --shell bash)"
+mamba activate python3
+module load COMETS
+
+echo "[INFO] Starting Python script at $(date)"
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00042 --cycles 40000 --outdir ./resultados4/com1
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00046 --cycles 40000 --outdir ./resultados4/com2
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST0060 --cycles 40000 --outdir ./resultados4/com3
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00094 --cycles 40000 --outdir ./resultados4/com4
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00101 --cycles 40000 --outdir ./resultados4/com5
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00109 --cycles 40000 --outdir ./resultados4/com6
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00110 --cycles 40000 --outdir ./resultados4/com7
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00143 --cycles 40000 --outdir ./resultados4/com8
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00154 --cycles 40000 --outdir ./resultados4/com9
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00164 --cycles 40000 --outdir ./resultados4/com10
+
+
+echo "[INFO] Python script finished at $(date)"
+
+echo "========================================="
+echo "Pipeline done at: $(date)"
+echo "========================================="
 
 
 
