@@ -18,8 +18,6 @@ cd "$OUTDIR"
 
 for RXN_FILE in "$INDIR"/*-all-Reactions.tbl; do
     
-    # Validar que el archivo realmente exista por si la carpeta está vacía
-    [ -e "$RXN_FILE" ] || continue
     
     PREFIX=$(basename "$RXN_FILE")
     PREFIX="${PREFIX%-all-Reactions.tbl}"
@@ -34,20 +32,38 @@ for RXN_FILE in "$INDIR"/*-all-Reactions.tbl; do
         -t "$TRANS_FILE" \
         -p "$PATH_FILE"
 
-    # 2. gapseq fill
-    echo "Ejecutando Gap-filling para $PREFIX"
+    for DRAFT in *-draft.RDS; do
+    [ -e "$DRAFT" ] || continue
+    PREFIX="${DRAFT%-draft.RDS}"
+    echo "=================================================="
+    echo "Procesando: $PREFIX — $(date)"
+    echo "=================================================="
+
+    # ---- Gap filling ----
+    echo ">>> Gap filling: $PREFIX"
     gapseq fill \
-        -m "${PREFIX}-draft.RDS" \
+        -m "$DRAFT" \
         -n "$MEDIA" \
-        -b 100 \
-        -K $SLURM_CPUS_PER_TASK \
-        -f xml
+        -c "${PREFIX}-rxnWeights.RDS" \
+        -g "${PREFIX}-rxnXgenes.RDS" \
+        -b 100
 
-    # [Opcional] Si tu versión de gapseq no acepta '-f xml', usa export:
-    # Si el comando anterior te da error, elimina '-f xml' y descomenta lo siguiente:
-    # gapseq export -m "${PREFIX}-fill.RDS" -f sbml
-    echo "=================================================="
-    echo "Finalizado $PREFIX: $(date)"
-    echo "=================================================="
+    # ---- Exportar a SBML/XML ----
+    echo ">>> Exportando a XML: $PREFIX"
+    gapseq export \
+        -m "${PREFIX}-fill.RDS" \
+        -f sbml \
+        -o "${PREFIX}-model.xml"
 
+    echo ">>> Listo: $PREFIX — $(date)"
 done
+
+echo "¡Proceso completo!"
+
+
+
+
+
+
+
+

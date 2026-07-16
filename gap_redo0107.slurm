@@ -20,7 +20,6 @@ INDIR="/mnt/data/sur/users/mmontante/01_data/cc/raw_data"
 OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/cc/gapseq/gapfind"
 
 # Forzar el uso exacto de los 8 cores de Slurm
-THREADS=$SLURM_CPUS_PER_TASK
 
 mkdir -p "$OUTDIR"
 cd "$OUTDIR"
@@ -45,14 +44,12 @@ for GENOME in "$INDIR"/*.{fna,faa,fasta}; do
     echo ">>> Running gapseq find..."
     gapseq find \
         -p all \
-        -K $THREADS \
         "$GENOME"
 
     # Paso 2: gapseq find-transport (Corregido el pase de THREADS)
     echo ">>> Running gapseq find-transport..."
     gapseq find-transport \
-        -K $THREADS \
-        "$GENOME"
+         "$GENOME"
 
     echo "=================================================="
     echo "Finalizado $PREFIX: $(date)"

@@ -446,3 +446,103 @@ Jul-16 15:20:17.304 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! exe
 ~> TaskHandler[jobId: 240681; id: 21; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/40/bc14432a68aaf3349909fe73f95913 started: 1784236517371; exited: -; ]
 ~> TaskHandler[jobId: 240682; id: 22; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_mm_Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b7/83007e45edb1162a11b0d3dfb40770 started: 1784236517373; exited: -; ]
 .. remaining tasks omitted.
+Jul-16 15:20:27.407 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 240692; id: 32; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_cv_mm_Micrococcus_luteus_149_a); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/fc/39b9c3c6844f3188280fb5b356b15b started: 1784236517398; exited: 2026-07-16T21:20:12.31274794Z; ]
+Jul-16 15:20:27.480 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 240707; id: 47; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a); status: COMPLETED; exit: 137; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/25/71264cf71b8118c31156c4c3cf7b9a started: 1784236517423; exited: 2026-07-16T21:19:57.868811223Z; ]
+Jul-16 15:20:27.494 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/25/71264cf71b8118c31156c4c3cf7b9a
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
+Jul-16 15:20:27.497 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 240738; id: 79; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Corynebacterium_sp_29_x); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/f5/2d6151090642b78c6208d765bf8396 started: 1784236617304; exited: 2026-07-16T21:19:51.281840081Z; ]
+Jul-16 15:20:27.551 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 240754; id: 95; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Metabacillus_indicus_450_x); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/25b1887082141f11cbf54390e4e9e9 started: 1784236642321; exited: 2026-07-16T21:20:11.443751747Z; ]
+Jul-16 15:20:27.575 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)'
+
+Caused by:
+  Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
+
+
+Command executed:
+
+  eval "$(mamba shell hook --shell bash)"
+  mamba activate python3
+  module load COMETS
+  
+  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py \
+    --gem_path /mnt/data/sur/users/mmontante/02_resultados/cc/models \
+    --strains cc_pk_cv_lb_Staphylococcus_shinii_154_a \
+    --media mm \
+    --cycles 10000 \
+    --media_dil 0.1 \
+    --media_vol 0.03 \
+    --outdir out_cc_pk_cv_lb_Staphylococcus_shinii_154_a
+
+Command exit status:
+  137
+
+Command output:
+  (empty)
+
+Command error:
+  Ignoring reaction 'EX_pi_e' since it already exists.
+  Ignoring reaction 'EX_ppal_e' since it already exists.
+  Ignoring reaction 'EX_ppap_e' since it already exists.
+  Ignoring reaction 'EX_ppi_e' since it already exists.
+  Ignoring reaction 'EX_pro__L_e' since it already exists.
+  Ignoring reaction 'EX_prohisglu_e' since it already exists.
+  Ignoring reaction 'EX_ptrc_e' since it already exists.
+  Ignoring reaction 'EX_pyovd_kt_e' since it already exists.
+  Ignoring reaction 'EX_raffin_e' since it already exists.
+  Ignoring reaction 'EX_rib__D_e' since it already exists.
+  Ignoring reaction 'EX_ribflv_e' since it already exists.
+  Ignoring reaction 'EX_s_e' since it already exists.
+  Ignoring reaction 'EX_salc_e' since it already exists.
+  Ignoring reaction 'EX_salchs4_e' since it already exists.
+  Ignoring reaction 'EX_salchs4fe_e' since it already exists.
+  Ignoring reaction 'EX_salcn_e' since it already exists.
+  Ignoring reaction 'EX_sbt__D_e' since it already exists.
+  Ignoring reaction 'EX_sel_e' since it already exists.
+  Ignoring reaction 'EX_ser__D_e' since it already exists.
+  Ignoring reaction 'EX_ser__L_e' since it already exists.
+  Ignoring reaction 'EX_serglugly_e' since it already exists.
+  Ignoring reaction 'EX_slnt_e' since it already exists.
+  Ignoring reaction 'EX_so3_e' since it already exists.
+  Ignoring reaction 'EX_so4_e' since it already exists.
+  Ignoring reaction 'EX_spmd_e' since it already exists.
+  Ignoring reaction 'EX_stfrnA_e' since it already exists.
+  Ignoring reaction 'EX_stfrnB_e' since it already exists.
+  Ignoring reaction 'EX_succ_e' since it already exists.
+  Ignoring reaction 'EX_sucr_e' since it already exists.
+  Ignoring reaction 'EX_tcynt_e' since it already exists.
+  Ignoring reaction 'EX_tet_e' since it already exists.
+  Ignoring reaction 'EX_thm_e' since it already exists.
+  Ignoring reaction 'EX_thr__L_e' since it already exists.
+  Ignoring reaction 'EX_thymd_e' since it already exists.
+  Ignoring reaction 'EX_tnt_e' since it already exists.
+  Ignoring reaction 'EX_tre_e' since it already exists.
+  Ignoring reaction 'EX_trp__L_e' since it already exists.
+  Ignoring reaction 'EX_tsul_e' since it already exists.
+  Ignoring reaction 'EX_tyr__L_e' since it already exists.
+  Ignoring reaction 'EX_ura_e' since it already exists.
+  Ignoring reaction 'EX_urea_e' since it already exists.
+  Ignoring reaction 'EX_val__L_e' since it already exists.
+  Ignoring reaction 'EX_xan_e' since it already exists.
+  Ignoring reaction 'EX_xyl__D_e' since it already exists.
+  Ignoring reaction 'EX_zn2_e' since it already exists.
+  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/model.py:667: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+    self.objective = [int(self.reactions[self.reactions.
+  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/layout.py:1425: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+    self.media = pd.concat([self.media, new_row],
+  .command.sh: line 13: 2232988 Killed                  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path /mnt/data/sur/users/mmontante/02_resultados/cc/models --strains cc_pk_cv_lb_Staphylococcus_shinii_154_a --media mm --cycles 10000 --media_dil 0.1 --media_vol 0.03 --outdir out_cc_pk_cv_lb_Staphylococcus_shinii_154_a
+
+Work dir:
+  /mnt/data/sur/users/mmontante/02_resultados/nf_work/25/71264cf71b8118c31156c4c3cf7b9a
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Jul-16 15:20:27.587 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
+Jul-16 15:20:27.611 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-16 15:20:27.611 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-16 15:20:27.611 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-16 15:20:27.624 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (38)
+Jul-16 15:20:27.794 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=101; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=38; succeedDuration=3h 1m 49s; failedDuration=5m 10s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=92; peakCpus=92; peakMemory=0; ]
+Jul-16 15:20:27.794 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-16 15:20:27.796 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-16 15:20:29.013 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-16 15:20:29.115 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
