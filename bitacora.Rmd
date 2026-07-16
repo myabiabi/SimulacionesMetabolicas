@@ -904,8 +904,8 @@ PASO 3
 
 #############
 gapfill0607
-job: 238901
 
+job: 238901
 
 
 #####
@@ -959,6 +959,321 @@ echo "[INFO] Python script finished at $(date)"
 echo "========================================="
 echo "Pipeline done at: $(date)"
 echo "========================================="
+
+
+######################################
+workDir = '/mnt/data/sur/users/mmontante02_resultados/nf_work'
+
+report {
+    enabled = true
+    file    = '/mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_report.html'
+}
+
+trace {
+    enabled = true
+    file    = '/mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt'
+}
+
+
+
+######################
+  GNU nano 5.6.1                  SimulacionesMetabolicas/run_nf_comets.slurm                            
+#!/bin/bash
+#SBATCH --job-name=nf_comets
+#SBATCH --output=%x.log
+#SBATCH --error=%x.error
+#SBATCH --time=13:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=2G
+
+cd /mnt/data/sur/users/mmontante/SimulacionesMetabolicas
+
+echo "========================================="
+echo "Job started on: $(date)"
+echo "Running on host: $(hostname)"
+echo "Working directory: $(pwd)"
+echo "========================================="
+
+module load nextflow/24.04.1
+export JAVA_HOME=/opt/apps/oracle-java/20.0.1
+
+nextflow run main.nf -entry COMETS -profile comets -resume
+
+
+
+###################################
+  GNU nano 5.6.1                                                                                                                                                                                                                                                                                                       function_biomass.py                                                                                                                                                                                                                                                                                                                 
+# -------------------------------------------------------------------------------------------------
+import cometspy as c
+import cobra.io
+import pandas as pd
+import os
+import glob
+
+def biomass_comunidades_rizo(ruta_csv_syncoms, patron_xml, 
+                             threads, cycles, mass, media, folder_resultados):
+    # --- CONFIGURACIÓN ---
+    sim_params = c.params()
+    sim_params.set_param('numRunThreads', threads)
+    sim_params.set_param('maxCycles', cycles)
+    
+    # Formato de población inicial para COMETS (lista de listas)
+    initial_mass_fmt = [[0, 0, mass]]
+    os.makedirs(folder_resultados, exist_ok=True)
+
+    # --- LECTURA DE DATOS ---
+    df = pd.read_csv(ruta_csv_syncoms)
+    # Primera columna: IDs de bacterias (ej: ST00046, STECOLI)
+    id_bacterias_csv = [str(x).strip() for x in df.iloc[:, 0].tolist()]
+    # Resto de columnas: Matriz binaria de comunidades (R1, R2...)
+    matriz_bacterias = df.iloc[:, 1:].astype(int).T.values.tolist()
+    
+    comunidades_finales = []
+    for ensayo in matriz_bacterias:
+        bacterias_presentes = [nombre for nombre, valor in zip(id_bacterias_csv, ensayo) if valor == 1]
+        comunidades_finales.append(bacterias_presentes)
+
+    # --- CARGA DE MODELOS A MEMORIA ---
+    modelos_base = {}
+    lista_archivos = glob.glob(patron_xml)
+    
+    print(f"--- Cargando {len(lista_archivos)} modelos SBML a memoria ---")
+    for path_completo in lista_archivos:
+        archivo = os.path.basename(path_completo)
+        # Extrae ID antes del guion bajo (ej: STECOLI)
+        model_id_xml = archivo.split('_')[0].strip()
+        try:
+            modelos_base[model_id_xml] = cobra.io.read_sbml_model(path_completo)
+        except Exception as e:
+            print(f"Error cargando {archivo}: {e}")
+
+    # --- CICLO DE SIMULACIÓN ---
+    # Aquí es donde se imprime la comunidad que va saliendo
+    for num, lista_nombres_csv in enumerate(comunidades_finales, start=1):    
+        test_tube = c.layout()
+        print(f"\n[INICIO] >>> Procesando Comunidad {num}: {lista_nombres_csv}")
+
+       	try:
+            modelos_agregados = []
+            for id_buscado in lista_nombres_csv:
+                # Búsqueda de coincidencia
+                id_match = None
+                if id_buscado in modelos_base:
+                    id_match = id_buscado
+                else:
+                    # Búsqueda flexible (por si acaso)
+                    for id_xml in modelos_base.keys():
+                        if id_buscado in id_xml or id_xml in id_buscado:
+                            id_match = id_xml
+                            break
+
+               	if id_match:
+                    cobra_copy = modelos_base[id_match].copy()
+                    processed_model = c.model(cobra_copy)
+                    processed_model.initial_pop = initial_mass_fmt
+                    test_tube.add_model(processed_model)
+                    modelos_agregados.append(id_buscado)
+                else:
+                    print(f"   ! Advertencia: No se encontró modelo para '{id_buscado}'")
+
+            # --- CONFIGURACIÓN DEL MEDIO ---
+            for met, conc in media.items():
+                try:
+                    test_tube.set_specific_metabolite(met, conc)
+                except:
+                    pass
+
+            # Nutrientes traza básicos
+            trace = ['ca2_e', 'cl_e', 'cobalt2_e', 'cu2_e', 'fe2_e', 'fe3_e', 'h_e', 
+                     'k_e', 'h2o_e', 'mg2_e', 'mn2_e', 'mobd_e', 'na1_e', 'ni2_e', 
+                     'nh4_e', 'o2_e', 'pi_e', 'so4_e', 'zn2_e']
+            for i in trace:
+                if i not in media:
+                    test_tube.set_specific_metabolite(i, 1000)
+                test_tube.set_specific_static(i, 1000)
+
+            # --- CORRER SIMULACIÓN ---
+            experimet = c.comets(test_tube, sim_params)
+            experimet.run()
+
+            # --- GUARDAR RESULTADOS ---
+            final_models = experimet.total_biomass
+            if final_models is not None and not final_models.empty:
+                # Añadir columna de tiempo real
+                final_models['t'] = final_models['cycle'] * experimet.parameters.all_params['timeStep']
+                # Renombrar columnas
+                final_models.columns = ['cycle'] + modelos_agregados + ['t']
+
+               	csv_file_name = os.path.join(folder_resultados, f"comunidad_{num}.csv")
+                final_models.to_csv(csv_file_name, index=False)
+                print(f"[ÉXITO] Comunidad {num} guardada correctamente.")
+            else:
+                print(f"[AVISO] Comunidad {num} terminó sin biomasa.")
+
+        except Exception as e:
+            print(f"[FALLO] Error en Comunidad {num}: {e}")
+
+
+########## modificar csv desde termina
+sed 's/,/\t/g; s/\t0/\t/g' /mnt/data/sur/users/mmontante/01_data/rz/syncoms_pairs.csv > /mnt/data/sur/users/mmontante/01_data/rz/syncoms_pairs_tab.csv
+
+
+#####################################
+  GNU nano 5.6.1                                                                                                                                                                                                              SimulacionesMetabolicas/comunidades.py                                                                                                                                                                                                                        
+import os
+import subprocess
+from itertools import combinations
+
+# --- CONFIGURACIÓN DE RUTAS Y PARÁMETROS ---
+SCRIPT_ORIGINAL = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py"
+GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final"
+OUTDIR_BASE = "02_resultados/rz/combos"
+
+if not os.path.exists(OUTDIR_BASE):
+    os.makedirs(OUTDIR_BASE)
+
+CYCLES = "10000"
+MEDIA = "lb"
+
+def main():
+    if not os.path.exists(GEM_PATH):
+        print(f"Error: No se encontró la carpeta de modelos en {GEM_PATH}")
+        return
+
+    # 1. Obtener los nombres de las cepas directamente de los archivos de la carpeta
+    # Filtramos para asegurarnos de leer solo archivos de modelos (ej: .xml) y quitarles la extensión
+    modelos_archivos = [f for f in os.listdir(GEM_PATH) if f.endswith('.xml')]
+    cepas_disponibles = [os.path.splitext(f)[0] for f in modelos_archivos]
+
+    if not cepas_disponibles:
+        print(f"Error: No se encontraron archivos .xml en {GEM_PATH}")
+        return
+
+    print(f"Modelos detectados ({len(cepas_disponibles)}): {cepas_disponibles}\n")
+
+    # 2. Iterar por tamaños de combinación (2 = pares, 3 = tríos, 4 = cuartetos)
+    for tamaño in range(2, 5):
+        # Generar todas las combinaciones posibles de la lista total de cepas
+        combos = list(combinations(cepas_disponibles, tamaño))
+        print(f"Lanzando {len(combos)} combinaciones de tamaño {tamaño}...")
+
+        for combo in combos:
+            # Crear un identificador único para la carpeta del combo
+            combo_nombre = "_".join(combo)
+            outdir_especifico = os.path.join(OUTDIR_BASE, f"tamanho_{tamaño}", combo_nombre)
+
+            # 3. Construir el comando para el script original
+            comando = [
+                "python3", SCRIPT_ORIGINAL,
+                "--gem_path", GEM_PATH,
+            ]
+
+            comando.append("--strains")
+            comando.extend(combo) 
+
+            comando.extend([
+                "--cycles", CYCLES,
+                "--media", MEDIA,
+                "--outdir", outdir_especifico
+            ])
+
+            # Ejecutar la simulación
+            try:
+                print(f"[EJECUTANDO COMETS] Combo {combo_nombre}...")
+                resultado = subprocess.run(comando, check=True, text=True, capture_output=True)
+            except subprocess.CalledProcessError as e:
+                print(f"[ERROR] Falló la simulación para {combo_nombre}.")
+                print(f"Detalle del error:\n{e.stderr}")
+
+    print("\n--- ¡Todas las combinaciones globales completadas exitosamente! ---")
+
+if __name__ == "__main__":
+    main()
+
+
+#############
+  GNU nano 5.6.1                                                             SimulacionesMetabolicas/gapfill0607.slurm                                                                        
+#SBATCH -e /mnt/data/sur/users/mmontante/logs/fill_export_%j.error
+#SBATCH --time=24:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+WORKDIR="/mnt/data/sur/users/mmontante/02_resultados/cc/gapseq_fill"
+MEDIA="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
+
+mkdir -p "$WORKDIR/logs"
+cd "$WORKDIR"
+
+for DRAFT in *-draft.RDS; do
+    [ -e "$DRAFT" ] || continue
+    PREFIX="${DRAFT%-draft.RDS}"
+    echo "=================================================="
+    echo "Procesando: $PREFIX — $(date)"
+    echo "=================================================="
+
+    # ---- Gap filling ----
+    echo ">>> Gap filling: $PREFIX"
+    gapseq fill \
+        -m "$DRAFT" \
+        -n "$MEDIA" \
+        -c "${PREFIX}-rxnWeights.RDS" \
+        -g "${PREFIX}-rxnXgenes.RDS" \
+        -b 100
+
+    # ---- Exportar a SBML/XML ----
+    echo ">>> Exportando a XML: $PREFIX"
+    gapseq export \
+        -m "${PREFIX}-fill.RDS" \
+        -f sbml \
+        -o "${PREFIX}-model.xml"
+
+    echo ">>> Listo: $PREFIX — $(date)"
+done
+
+echo "¡Proceso completo!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
