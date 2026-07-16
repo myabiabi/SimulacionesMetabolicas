@@ -1,0 +1,123 @@
+Jul-16 13:50:01.746 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
+Jul-16 13:50:02.141 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
+Jul-16 13:50:02.208 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-16 13:50:02.283 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-16 13:50:02.285 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-16 13:50:02.294 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-16 13:50:02.332 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-16 13:50:02.433 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-16 13:50:02.439 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-16 13:50:02.518 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-16 13:50:02.523 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1d3e6d34] - activable => nextflow.secret.LocalSecretsProvider@1d3e6d34
+Jul-16 13:50:02.541 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
+Jul-16 13:50:03.404 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, comets]
+Jul-16 13:50:03.500 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-16 13:50:03.526 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [mighty_kilby] DSL2 - revision: 4ad2119fb2
+Jul-16 13:50:03.528 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-16 13:50:03.528 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-16 13:50:03.607 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
+Jul-16 13:50:03.608 [main] DEBUG nextflow.Session - Run name: mighty_kilby
+Jul-16 13:50:03.609 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-16 13:50:03.622 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-16 13:50:03.629 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-16 13:50:03.664 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.1 build 5913
+  Created: 20-05-2024 09:48 UTC (03:48 CDT)
+  System: Linux 5.14.0-503.14.1.el9_5.x86_64
+  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
+  Encoding: UTF-8 (UTF-8)
+  Process: 730946@node05.cluster [10.1.1.5]
+  CPUs: 2 - Mem: 251.3 GB (22.9 GB) - Swap: 0 (0)
+Jul-16 13:50:03.747 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
+Jul-16 13:50:03.748 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-16 13:50:03.764 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-16 13:50:03.779 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-16 13:50:03.887 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-16 13:50:03.904 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-16 13:50:04.176 [main] DEBUG nextflow.Session - Session start
+Jul-16 13:50:04.181 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
+Jul-16 13:50:04.425 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+Jul-16 13:50:04.434 [main] ERROR nextflow.cli.Launcher - Script compilation error
+- file : /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+- cause: The LHS of an assignment should be a variable or a field accessing expression @ line 1, column 1.
+   +nextflow.enable.dsl=2
+   ^
+
+1 error
+
+nextflow.exception.ScriptCompilationException: Script compilation error
+- file : /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+- cause: The LHS of an assignment should be a variable or a field accessing expression @ line 1, column 1.
+   +nextflow.enable.dsl=2
+   ^
+
+1 error
+
+	at nextflow.script.ScriptParser.parse0(ScriptParser.groovy:196)
+	at nextflow.script.ScriptParser.parse(ScriptParser.groovy:206)
+	at nextflow.script.ScriptRunner.parseScript(ScriptRunner.groovy:229)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:136)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
+	at nextflow.cli.Launcher.run(Launcher.groovy:503)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+Script_167b44ea5d835b63: 1: The LHS of an assignment should be a variable or a field accessing expression @ line 1, column 1.
+   +nextflow.enable.dsl=2
+   ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:292)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:148)
+	at org.apache.groovy.parser.antlr4.AstBuilder.collectSyntaxError(AstBuilder.java:4753)
+	at org.apache.groovy.parser.antlr4.AstBuilder.createParsingFailedException(AstBuilder.java:4732)
+	at org.apache.groovy.parser.antlr4.AstBuilder.createParsingFailedException(AstBuilder.java:4689)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitAssignmentExprAlt(AstBuilder.java:3222)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitAssignmentExprAlt(AstBuilder.java:169)
+	at org.apache.groovy.parser.antlr4.GroovyParser$AssignmentExprAltContext.accept(GroovyParser.java:9020)
+	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:20)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visit(AstBuilder.java:4406)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitCommandExpression(AstBuilder.java:2275)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitCommandExprAlt(AstBuilder.java:2260)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitCommandExprAlt(AstBuilder.java:169)
+	at org.apache.groovy.parser.antlr4.GroovyParser$CommandExprAltContext.accept(GroovyParser.java:8221)
+	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)
+	at org.apache.groovy.parser.antlr4.GroovyParserBaseVisitor.visitExpressionStmtAlt(GroovyParserBaseVisitor.java:369)
+	at org.apache.groovy.parser.antlr4.GroovyParser$ExpressionStmtAltContext.accept(GroovyParser.java:6923)
+	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)
+	at org.apache.groovy.parser.antlr4.GroovyParserBaseVisitor.visitScriptStatement(GroovyParserBaseVisitor.java:425)
+	at org.apache.groovy.parser.antlr4.GroovyParser$ScriptStatementContext.accept(GroovyParser.java:477)
+	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:20)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visit(AstBuilder.java:4406)
+	at org.apache.groovy.parser.antlr4.AstBuilder.lambda$visitScriptStatements$0(AstBuilder.java:314)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitScriptStatements(AstBuilder.java:315)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitCompilationUnit(AstBuilder.java:272)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visitCompilationUnit(AstBuilder.java:169)
+	at org.apache.groovy.parser.antlr4.GroovyParser$CompilationUnitContext.accept(GroovyParser.java:323)
+	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:20)
+	at org.apache.groovy.parser.antlr4.AstBuilder.visit(AstBuilder.java:4406)
+	at org.apache.groovy.parser.antlr4.AstBuilder.buildAST(AstBuilder.java:262)
+	at org.apache.groovy.parser.antlr4.Antlr4ParserPlugin.buildAST(Antlr4ParserPlugin.java:58)
+	at org.codehaus.groovy.control.SourceUnit.buildAST(SourceUnit.java:256)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1921)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:663)
+	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:373)
+	at groovy.lang.GroovyClassLoader.lambda$parseClass$2(GroovyClassLoader.java:316)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.compute(StampedCommonCache.java:163)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.getAndPut(StampedCommonCache.java:154)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:314)
+	at groovy.lang.GroovyShell.parseClass(GroovyShell.java:572)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:585)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:639)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:643)
+	at nextflow.script.ScriptParser.parse0(ScriptParser.groovy:175)
+	... 6 common frames omitted

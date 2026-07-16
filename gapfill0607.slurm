@@ -9,7 +9,7 @@
 eval "$(conda shell.bash hook)"
 conda activate gapseq
 
-WORKDIR="/mnt/data/sur/users/mmontante/02_resultados/gapseq_fill"
+WORKDIR="/mnt/data/sur/users/mmontante/02_resultados/cc/gapseq_fill"
 MEDIA="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
 
 mkdir -p "$WORKDIR/logs"
@@ -18,7 +18,6 @@ cd "$WORKDIR"
 for DRAFT in *-draft.RDS; do
     [ -e "$DRAFT" ] || continue
     PREFIX="${DRAFT%-draft.RDS}"
-
     echo "=================================================="
     echo "Procesando: $PREFIX — $(date)"
     echo "=================================================="
