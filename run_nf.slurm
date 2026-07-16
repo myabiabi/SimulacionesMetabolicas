@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=comets
-#SBATCH --output=/mnt/data/sur/users/mmontante/logs/%x.log
-#SBATCH --error=/mnt/data/sur/users/mmontante/logs/%x.error
+#SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/logs/%x.log
+#SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/logs/%x.error
 #SBATCH --time=240:00:00
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G

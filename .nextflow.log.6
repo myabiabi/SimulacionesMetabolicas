@@ -1,97 +1,442 @@
-Jul-14 14:34:55.119 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry MEMOTE -profile memote
-Jul-14 14:34:55.296 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
-Jul-14 14:34:55.333 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
-Jul-14 14:34:55.348 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-14 14:34:55.349 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-14 14:34:55.355 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
-Jul-14 14:34:55.383 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-14 14:34:55.423 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-14 14:34:55.427 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-14 14:34:55.511 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-14 14:34:55.514 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
-Jul-14 14:34:55.530 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `memote`
-Jul-14 14:34:56.110 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, comets]
-Jul-14 14:34:56.142 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jul-14 14:34:56.157 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [deadly_hawking] DSL2 - revision: 11f249860e
-Jul-14 14:34:56.159 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-14 14:34:56.159 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-14 14:34:56.229 [main] DEBUG nextflow.Session - Session UUID: 18df50e9-49f3-4b83-be3b-3a5bce73e887
-Jul-14 14:34:56.229 [main] DEBUG nextflow.Session - Run name: deadly_hawking
-Jul-14 14:34:56.232 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-14 14:34:56.242 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-14 14:34:56.248 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-14 14:34:56.276 [main] DEBUG nextflow.cli.CmdRun - 
+Jul-14 16:04:01.946 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
+Jul-14 16:04:02.160 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
+Jul-14 16:04:02.189 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-14 16:04:02.222 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-14 16:04:02.223 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-14 16:04:02.227 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-14 16:04:02.249 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-14 16:04:02.285 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-14 16:04:02.289 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-14 16:04:02.357 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-14 16:04:02.361 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
+Jul-14 16:04:02.366 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
+Jul-14 16:04:02.939 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, comets]
+Jul-14 16:04:02.969 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-14 16:04:02.986 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [kickass_minsky] DSL2 - revision: e788265a5e
+Jul-14 16:04:02.988 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-14 16:04:02.989 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-14 16:04:03.075 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
+Jul-14 16:04:03.075 [main] DEBUG nextflow.Session - Run name: kickass_minsky
+Jul-14 16:04:03.077 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-14 16:04:03.089 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-14 16:04:03.095 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-14 16:04:03.125 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 24.04.1 build 5913
   Created: 20-05-2024 09:48 UTC (03:48 CDT)
   System: Linux 5.14.0-611.54.1.el9_7.x86_64
   Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
   Encoding: UTF-8 (UTF-8)
-  Process: 4082633@node07.cluster [10.1.1.7]
-  CPUs: 2 - Mem: 503.4 GB (38.8 GB) - Swap: 0 (0)
-Jul-14 14:34:56.304 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work [nfs]
-Jul-14 14:34:56.305 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-14 14:34:56.316 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-14 14:34:56.326 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-14 14:34:56.364 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-14 14:34:56.376 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
-Jul-14 14:34:56.464 [main] DEBUG nextflow.Session - Session start
-Jul-14 14:34:56.725 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-14 14:34:57.174 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
-Jul-14 14:34:57.174 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
-Jul-14 14:34:57.186 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
-Jul-14 14:34:57.195 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
-Jul-14 14:34:57.197 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
-Jul-14 14:34:57.200 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
-Jul-14 14:34:57.271 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT, MEMOTE_REPORT
-Jul-14 14:34:57.271 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
-Jul-14 14:34:57.278 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT
-Jul-14 14:34:57.282 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final/; pattern: *.xml; options: [:]
-Jul-14 14:34:57.288 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_96631759bad4ce09: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
-  Script_87f803a9295c7ce0: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
-Jul-14 14:34:57.288 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jul-14 14:34:57.288 [main] DEBUG nextflow.Session - Session await
-Jul-14 14:34:57.657 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (agrobacterium) > jobId: 239709; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/f69b3ca3d2775176451d91af5a2fcc
-Jul-14 14:34:57.657 [Task submitter] INFO  nextflow.Session - [24/f69b3c] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (agrobacterium)
-Jul-14 14:34:57.686 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (arthrobacter) > jobId: 239710; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/31/13b26bf0f64cb93baa62ad6d888c4f
-Jul-14 14:34:57.686 [Task submitter] INFO  nextflow.Session - [31/13b26b] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (arthrobacter)
-Jul-14 14:34:57.701 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bthuringensis) > jobId: 239711; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/f4060a621122c7002606c18ae01a17
-Jul-14 14:34:57.702 [Task submitter] INFO  nextflow.Session - [0a/f4060a] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bthuringensis)
-Jul-14 14:34:57.717 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bacillus) > jobId: 239712; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/92/f52607d932f01081ac82a40338fb02
-Jul-14 14:34:57.717 [Task submitter] INFO  nextflow.Session - [92/f52607] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bacillus)
-Jul-14 14:34:57.734 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (mycobacterium) > jobId: 239713; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/17/b14ec710662118e6080bc4bc71ea8a
-Jul-14 14:34:57.734 [Task submitter] INFO  nextflow.Session - [17/b14ec7] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (mycobacterium)
-Jul-14 14:34:57.749 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (paenibacillus) > jobId: 239714; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6a/69c1c4a572ee7f8998bedf2887ed52
-Jul-14 14:34:57.750 [Task submitter] INFO  nextflow.Session - [6a/69c1c4] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (paenibacillus)
-Jul-14 14:34:57.770 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pseudomonas) > jobId: 239715; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/18/31823f174a4db6b76f13dec58838f3
-Jul-14 14:34:57.770 [Task submitter] INFO  nextflow.Session - [18/31823f] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pseudomonas)
-Jul-14 14:34:57.786 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pumsongensis) > jobId: 239716; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d9/6d10d10054e80dcf5aa89eeac924ea
-Jul-14 14:34:57.786 [Task submitter] INFO  nextflow.Session - [d9/6d10d1] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pumsongensis)
-Jul-14 14:34:57.810 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (vparadoxus) > jobId: 239717; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/4f/f5f2660a431cf205f7e6821bf2d63e
-Jul-14 14:34:57.810 [Task submitter] INFO  nextflow.Session - [4f/f5f266] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (vparadoxus)
-Jul-14 14:34:57.824 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis) > jobId: 239718; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7b/cfd90ccdcabba5d05dbcd2f5493aaa
-Jul-14 14:34:57.825 [Task submitter] INFO  nextflow.Session - [7b/cfd90c] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis)
-Jul-14 14:35:42.207 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239712; id: 3; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/92/f52607d932f01081ac82a40338fb02 started: 1784061302235; exited: 2026-07-14T20:35:40.304887963Z; ]
-Jul-14 14:35:42.208 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-14 14:35:42.236 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-14 14:35:57.205 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239711; id: 4; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bthuringensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/f4060a621122c7002606c18ae01a17 started: 1784061302233; exited: 2026-07-14T20:35:55.755773019Z; ]
-Jul-14 14:37:42.210 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239710; id: 2; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (arthrobacter); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/31/13b26bf0f64cb93baa62ad6d888c4f started: 1784061302231; exited: 2026-07-14T20:37:39.207652959Z; ]
-Jul-14 14:38:22.211 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239709; id: 1; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (agrobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/f69b3ca3d2775176451d91af5a2fcc started: 1784061302204; exited: 2026-07-14T20:38:18.872079252Z; ]
-Jul-14 14:38:32.213 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239716; id: 8; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pumsongensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d9/6d10d10054e80dcf5aa89eeac924ea started: 1784061342210; exited: 2026-07-14T20:38:31.247919809Z; ]
-Jul-14 14:38:37.212 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239713; id: 5; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (mycobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/17/b14ec710662118e6080bc4bc71ea8a started: 1784061302238; exited: 2026-07-14T20:38:35.895859926Z; ]
-Jul-14 14:38:37.213 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239714; id: 6; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (paenibacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6a/69c1c4a572ee7f8998bedf2887ed52 started: 1784061302240; exited: 2026-07-14T20:38:23.69701709Z; ]
-Jul-14 14:39:12.212 [Task monitor] DEBUG nextflow.file.FileHelper - NFS path (true): /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work
-Jul-14 14:39:12.226 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239715; id: 7; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pseudomonas); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/18/31823f174a4db6b76f13dec58838f3 started: 1784061302241; exited: 2026-07-14T20:38:57.255584743Z; ]
-Jul-14 14:39:12.227 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239717; id: 9; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (vparadoxus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/4f/f5f2660a431cf205f7e6821bf2d63e started: 1784061357206; exited: 2026-07-14T20:39:09.936421374Z; ]
-Jul-14 14:40:02.214 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
-~> TaskHandler[jobId: 239718; id: 10; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7b/cfd90ccdcabba5d05dbcd2f5493aaa started: 1784061462211; exited: -; ]
-Jul-14 14:40:57.217 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239718; id: 10; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7b/cfd90ccdcabba5d05dbcd2f5493aaa started: 1784061462211; exited: 2026-07-14T20:40:55.250176579Z; ]
-Jul-14 14:40:57.222 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jul-14 14:41:02.217 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
-Jul-14 14:41:02.217 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-14 14:41:02.222 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
-Jul-14 14:41:02.223 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
-Jul-14 14:41:02.228 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=10; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=3h 45m 59s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=8; peakCpus=64; peakMemory=64 GB; ]
-Jul-14 14:41:02.368 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-14 14:41:02.423 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Jul-14 14:41:02.424 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Process: 4126916@node07.cluster [10.1.1.7]
+  CPUs: 2 - Mem: 503.4 GB (37.8 GB) - Swap: 0 (0)
+Jul-14 16:04:03.174 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work [nfs]
+Jul-14 16:04:03.175 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-14 16:04:03.186 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-14 16:04:03.196 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-14 16:04:03.233 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-14 16:04:03.242 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-14 16:04:03.415 [main] DEBUG nextflow.Session - Session start
+Jul-14 16:04:03.766 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-14 16:04:04.361 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-14 16:04:04.361 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-14 16:04:04.373 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-14 16:04:04.381 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-14 16:04:04.384 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-14 16:04:04.388 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-14 16:04:04.446 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-14 16:04:04.447 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-14 16:04:04.453 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-14 16:04:04.454 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
+  Script_e1d01e71e2c69352: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+  Script_2accf170ce267d6c: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./comets.nf
+Jul-14 16:04:04.454 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-14 16:04:04.454 [main] DEBUG nextflow.Session - Session await
+Jul-14 16:04:04.461 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/models/; pattern: *.xml; options: [:]
+Jul-14 16:04:04.804 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_arthrobacter) > jobId: 239825; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/c6/65d0db6b5eb9ad2961e75eb3977f98
+Jul-14 16:04:04.804 [Task submitter] INFO  nextflow.Session - [c6/65d0db] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_arthrobacter)
+Jul-14 16:04:04.851 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter) > jobId: 239826; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/1a570fc29510b0e17257506d7ac8ff
+Jul-14 16:04:04.851 [Task submitter] INFO  nextflow.Session - [0a/1a570f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter)
+Jul-14 16:04:04.875 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_rerythropolis) > jobId: 239827; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d8/090188c4df0f40a85e46a1f7b70c27
+Jul-14 16:04:04.876 [Task submitter] INFO  nextflow.Session - [d8/090188] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_rerythropolis)
+Jul-14 16:04:04.888 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pseudomonassp) > jobId: 239828; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/cc/88e5f0f7981934b804112bc64d6781
+Jul-14 16:04:04.889 [Task submitter] INFO  nextflow.Session - [cc/88e5f0] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pseudomonassp)
+Jul-14 16:04:04.901 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_pseudomonas) > jobId: 239829; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/53/14abcd39108a306e2a4681703207fa
+Jul-14 16:04:04.901 [Task submitter] INFO  nextflow.Session - [53/14abcd] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_pseudomonas)
+Jul-14 16:04:04.913 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_paenibacillus) > jobId: 239830; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/19/1ccfc68e9f47a2cb4e4b89cdfde4c2
+Jul-14 16:04:04.917 [Task submitter] INFO  nextflow.Session - [19/1ccfc6] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_paenibacillus)
+Jul-14 16:04:04.953 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bthuringensis) > jobId: 239831; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/42/c35b89b86b51a48b16aa25d2d53c23
+Jul-14 16:04:04.953 [Task submitter] INFO  nextflow.Session - [42/c35b89] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bthuringensis)
+Jul-14 16:04:04.968 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_rerythropolis) > jobId: 239832; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a6/04fffe5d3121d17493267294f0dfd2
+Jul-14 16:04:04.969 [Task submitter] INFO  nextflow.Session - [a6/04fffe] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_rerythropolis)
+Jul-14 16:04:05.031 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_mycobacterium) > jobId: 239833; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d0/8de669ba7248ab5f80b749134fc38d
+Jul-14 16:04:05.031 [Task submitter] INFO  nextflow.Session - [d0/8de669] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_mycobacterium)
+Jul-14 16:04:05.043 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_mycobacterium) > jobId: 239834; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/eb/c002fac89e2bd44a94ccce5b7aeebf
+Jul-14 16:04:05.044 [Task submitter] INFO  nextflow.Session - [eb/c002fa] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_mycobacterium)
+Jul-14 16:04:05.120 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_paenibacillus) > jobId: 239835; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/96/7ed86dd423a25393298b6819c62fea
+Jul-14 16:04:05.120 [Task submitter] INFO  nextflow.Session - [96/7ed86d] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_paenibacillus)
+Jul-14 16:04:05.154 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bacillus) > jobId: 239836; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/29/b503f0975fc369e7d3ea9953ed728c
+Jul-14 16:04:05.154 [Task submitter] INFO  nextflow.Session - [29/b503f0] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bacillus)
+Jul-14 16:04:05.195 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_agrobacterium) > jobId: 239837; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2e/ed614ca8a23891d5af08571ae324b7
+Jul-14 16:04:05.195 [Task submitter] INFO  nextflow.Session - [2e/ed614c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_agrobacterium)
+Jul-14 16:04:05.250 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_rerythropolis) > jobId: 239838; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a3/4d39b44eaae78b2fad0f15e3735c3b
+Jul-14 16:04:05.250 [Task submitter] INFO  nextflow.Session - [a3/4d39b4] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_rerythropolis)
+Jul-14 16:04:05.294 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_vparadoxus) > jobId: 239839; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7e/c35c73836de985656bb9b8769b760b
+Jul-14 16:04:05.294 [Task submitter] INFO  nextflow.Session - [7e/c35c73] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_vparadoxus)
+Jul-14 16:04:05.311 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_mycobacterium) > jobId: 239840; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1d/4472f98b2e4afcfe38528ef1fde7bd
+Jul-14 16:04:05.311 [Task submitter] INFO  nextflow.Session - [1d/4472f9] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_mycobacterium)
+Jul-14 16:04:05.383 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bacillus) > jobId: 239841; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/02/2e76d8f16cfa425bc781f0df406b7a
+Jul-14 16:04:05.384 [Task submitter] INFO  nextflow.Session - [02/2e76d8] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bacillus)
+Jul-14 16:04:05.397 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bthuringensis) > jobId: 239842; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/06/e4a8061f9763bd20969fa6616306c5
+Jul-14 16:04:05.397 [Task submitter] INFO  nextflow.Session - [06/e4a806] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bthuringensis)
+Jul-14 16:04:05.426 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bacillus) > jobId: 239843; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a3/67fc77c2d0ed49f8d39b958d021989
+Jul-14 16:04:05.427 [Task submitter] INFO  nextflow.Session - [a3/67fc77] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bacillus)
+Jul-14 16:04:05.455 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_bacillus) > jobId: 239844; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0c/4a9c3f394c53e1f57d04c88e9c2b4f
+Jul-14 16:04:05.455 [Task submitter] INFO  nextflow.Session - [0c/4a9c3f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_bacillus)
+Jul-14 16:04:05.528 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_arthrobacter) > jobId: 239845; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/72/e594d05097b005ac97ae9a49d3e5b1
+Jul-14 16:04:05.529 [Task submitter] INFO  nextflow.Session - [72/e594d0] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_arthrobacter)
+Jul-14 16:04:05.541 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_vparadoxus) > jobId: 239846; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f3/14e1ea2b33f2051b904a810a3d6026
+Jul-14 16:04:05.541 [Task submitter] INFO  nextflow.Session - [f3/14e1ea] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_vparadoxus)
+Jul-14 16:04:05.577 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_paenibacillus) > jobId: 239847; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2d/68f708da578012addbe8d6d514a5ed
+Jul-14 16:04:05.577 [Task submitter] INFO  nextflow.Session - [2d/68f708] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_paenibacillus)
+Jul-14 16:04:05.595 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_mycobacterium) > jobId: 239848; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/6a0629eab72cd225bcd9a8eb1b2465
+Jul-14 16:04:05.595 [Task submitter] INFO  nextflow.Session - [24/6a0629] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_mycobacterium)
+Jul-14 16:04:05.635 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_agrobacterium) > jobId: 239849; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/28/dbe465c3e382e3aebeb95ce23fe024
+Jul-14 16:04:05.635 [Task submitter] INFO  nextflow.Session - [28/dbe465] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_agrobacterium)
+Jul-14 16:04:05.675 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_mycobacterium) > jobId: 239850; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f4/e775962c35a103cfbcc594bd1b9822
+Jul-14 16:04:05.675 [Task submitter] INFO  nextflow.Session - [f4/e77596] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_mycobacterium)
+Jul-14 16:04:05.703 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_agrobacterium) > jobId: 239851; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/92/ff0de8b98538c2e6a7c02d33fca48e
+Jul-14 16:04:05.704 [Task submitter] INFO  nextflow.Session - [92/ff0de8] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_agrobacterium)
+Jul-14 16:04:05.718 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_agrobacterium) > jobId: 239852; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/37/5d2b2ac4690c0cef428605b3610dc6
+Jul-14 16:04:05.718 [Task submitter] INFO  nextflow.Session - [37/5d2b2a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_agrobacterium)
+Jul-14 16:04:05.757 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_agrobacterium) > jobId: 239853; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/39/defee14f80f83379875c0854c94406
+Jul-14 16:04:05.758 [Task submitter] INFO  nextflow.Session - [39/defee1] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_agrobacterium)
+Jul-14 16:04:05.814 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_arthrobacter) > jobId: 239854; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6d/f2ad777a975d2d2829d3d2616b2c8d
+Jul-14 16:04:05.814 [Task submitter] INFO  nextflow.Session - [6d/f2ad77] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_arthrobacter)
+Jul-14 16:04:05.838 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_agrobacterium) > jobId: 239855; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/8e/123b60661225288dc79c9f13ac6e31
+Jul-14 16:04:05.838 [Task submitter] INFO  nextflow.Session - [8e/123b60] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_agrobacterium)
+Jul-14 16:04:05.852 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_arthrobacter) > jobId: 239856; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/ba/3fdfabff40abc1b2df8fc32e3827c7
+Jul-14 16:04:05.853 [Task submitter] INFO  nextflow.Session - [ba/3fdfab] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_arthrobacter)
+Jul-14 16:04:05.871 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_pumsongensis) > jobId: 239857; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/8e/df2c2877622bcc296005f6a653aee5
+Jul-14 16:04:05.872 [Task submitter] INFO  nextflow.Session - [8e/df2c28] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_pumsongensis)
+Jul-14 16:04:05.887 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_paenibacillus) > jobId: 239858; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/00/117fbace0a1fdb6a288967bc9cd70b
+Jul-14 16:04:05.888 [Task submitter] INFO  nextflow.Session - [00/117fba] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_paenibacillus)
+Jul-14 16:04:05.903 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_agrobacterium) > jobId: 239859; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/fa/56a24e51f9f0bed9b1957910554bb1
+Jul-14 16:04:05.903 [Task submitter] INFO  nextflow.Session - [fa/56a24e] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_agrobacterium)
+Jul-14 16:04:05.952 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_arthrobacter) > jobId: 239860; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/b5/0fca7a4d65c7096f2d0103d8ce176f
+Jul-14 16:04:05.952 [Task submitter] INFO  nextflow.Session - [b5/0fca7a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_arthrobacter)
+Jul-14 16:04:05.964 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_bthuringensis) > jobId: 239861; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/db/627d982ebfcdb1a4d68639470b2558
+Jul-14 16:04:05.965 [Task submitter] INFO  nextflow.Session - [db/627d98] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_bthuringensis)
+Jul-14 16:04:06.024 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bthuringensis) > jobId: 239862; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/26/2bc5e5f1d330c18d09a244b660139a
+Jul-14 16:04:06.025 [Task submitter] INFO  nextflow.Session - [26/2bc5e5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bthuringensis)
+Jul-14 16:04:06.043 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_arthrobacter) > jobId: 239863; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6a/157092453447d0f838ae9966a2871d
+Jul-14 16:04:06.044 [Task submitter] INFO  nextflow.Session - [6a/157092] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_arthrobacter)
+Jul-14 16:04:06.060 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_agrobacterium) > jobId: 239864; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d0/bb83c1185e5218b29de8946ef1a1f3
+Jul-14 16:04:06.060 [Task submitter] INFO  nextflow.Session - [d0/bb83c1] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_agrobacterium)
+Jul-14 16:04:06.105 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_bacillus) > jobId: 239865; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/56/bc1f76c59abcf36bf1acb716f6a666
+Jul-14 16:04:06.105 [Task submitter] INFO  nextflow.Session - [56/bc1f76] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_bacillus)
+Jul-14 16:04:06.129 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_bthuringensis) > jobId: 239866; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/9d/c863e93027a0768005e58409eebbec
+Jul-14 16:04:06.129 [Task submitter] INFO  nextflow.Session - [9d/c863e9] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_bthuringensis)
+Jul-14 16:04:06.179 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_pumsongensis) > jobId: 239867; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7a/2327c74c18964c1ff276afe3ba32ee
+Jul-14 16:04:06.180 [Task submitter] INFO  nextflow.Session - [7a/2327c7] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_pumsongensis)
+Jul-14 16:04:06.190 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_agrobacterium) > jobId: 239868; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/5d/168471910c7744ec87aab910d46c51
+Jul-14 16:04:06.191 [Task submitter] INFO  nextflow.Session - [5d/168471] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_agrobacterium)
+Jul-14 16:04:06.284 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_pseudomonassp) > jobId: 239869; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/b8/442f6c18b2d0d5ba7daf1f71ee4bff
+Jul-14 16:04:06.284 [Task submitter] INFO  nextflow.Session - [b8/442f6c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_pseudomonassp)
+Jul-14 16:04:06.296 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_vparadoxus) > jobId: 239870; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d2/35e5b47c394b9d294844faa9af87bd
+Jul-14 16:04:06.296 [Task submitter] INFO  nextflow.Session - [d2/35e5b4] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_vparadoxus)
+Jul-14 16:04:06.356 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_paenibacillus) > jobId: 239871; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/34/1a49718c9b29263f71673b673026a2
+Jul-14 16:04:06.356 [Task submitter] INFO  nextflow.Session - [34/1a4971] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_paenibacillus)
+Jul-14 16:04:06.377 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_rerythropolis) > jobId: 239872; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a9/cbf92c0863def546f348ffabad80ca
+Jul-14 16:04:06.377 [Task submitter] INFO  nextflow.Session - [a9/cbf92c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_rerythropolis)
+Jul-14 16:04:06.401 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_bthuringensis) > jobId: 239873; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2d/2a65ecd5c9b721c9087ef6d5f893a4
+Jul-14 16:04:06.401 [Task submitter] INFO  nextflow.Session - [2d/2a65ec] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_bthuringensis)
+Jul-14 16:04:06.424 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_bacillus) > jobId: 239874; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/09/c6f562a7b51dc0fc3d81905100fdf4
+Jul-14 16:04:06.425 [Task submitter] INFO  nextflow.Session - [09/c6f562] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_bacillus)
+Jul-14 16:04:06.436 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_bacillus) > jobId: 239875; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/15/eedef37eafdd5ade3005f899be7be3
+Jul-14 16:04:06.436 [Task submitter] INFO  nextflow.Session - [15/eedef3] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_bacillus)
+Jul-14 16:04:06.500 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_pumsongensis) > jobId: 239876; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/14/6a51d6abefe25d5f0a0bd49baeea79
+Jul-14 16:04:06.500 [Task submitter] INFO  nextflow.Session - [14/6a51d6] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_pumsongensis)
+Jul-14 16:04:06.517 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_pumsongensis) > jobId: 239877; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/9a/9c7dfc429c784ecd4736763e0dd9bd
+Jul-14 16:04:06.517 [Task submitter] INFO  nextflow.Session - [9a/9c7dfc] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_pumsongensis)
+Jul-14 16:04:06.530 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_pseudomonas) > jobId: 239878; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/30/5c7d9d761ef70aee1d8fcc6d343467
+Jul-14 16:04:06.531 [Task submitter] INFO  nextflow.Session - [30/5c7d9d] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_pseudomonas)
+Jul-14 16:04:06.556 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_paenibacillus) > jobId: 239879; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/3c/a624bb1f11f1dd830c4ddb8c6dea80
+Jul-14 16:04:06.557 [Task submitter] INFO  nextflow.Session - [3c/a624bb] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_paenibacillus)
+Jul-14 16:04:06.601 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_paenibacillus) > jobId: 239880; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/91/a2acd49e1e1191a7f74aeed1da72e5
+Jul-14 16:04:06.601 [Task submitter] INFO  nextflow.Session - [91/a2acd4] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_paenibacillus)
+Jul-14 16:04:06.623 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_pumsongensis) > jobId: 239881; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f5/8b740f160644379557bda1e19dfb39
+Jul-14 16:04:06.623 [Task submitter] INFO  nextflow.Session - [f5/8b740f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_pumsongensis)
+Jul-14 16:04:06.636 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_pumsongensis) > jobId: 239882; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6a/88eef51c22f4ff6e2484d6afdb801e
+Jul-14 16:04:06.636 [Task submitter] INFO  nextflow.Session - [6a/88eef5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_pumsongensis)
+Jul-14 16:04:06.677 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_paenibacillus) > jobId: 239883; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/4b/1ebae7f40380b60143144ba89114fd
+Jul-14 16:04:06.678 [Task submitter] INFO  nextflow.Session - [4b/1ebae7] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_paenibacillus)
+Jul-14 16:04:06.711 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_vparadoxus) > jobId: 239884; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/c2/1fcc973e27d6f45d23032b908b2698
+Jul-14 16:04:06.711 [Task submitter] INFO  nextflow.Session - [c2/1fcc97] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_vparadoxus)
+Jul-14 16:04:06.724 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_arthrobacter) > jobId: 239885; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f9/9949f61e1bd8eb4ec38040c924e4cb
+Jul-14 16:04:06.724 [Task submitter] INFO  nextflow.Session - [f9/9949f6] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_arthrobacter)
+Jul-14 16:04:06.764 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_mycobacterium) > jobId: 239886; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/25/3bb163479173a4ea183a6f14cdd37c
+Jul-14 16:04:06.764 [Task submitter] INFO  nextflow.Session - [25/3bb163] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_mycobacterium)
+Jul-14 16:04:06.792 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_agrobacterium) > jobId: 239887; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/5a/9f2ac8c67acbbff13e421bca578a98
+Jul-14 16:04:06.792 [Task submitter] INFO  nextflow.Session - [5a/9f2ac8] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_agrobacterium)
+Jul-14 16:04:06.842 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_mycobacterium) > jobId: 239888; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/8d/d40ff827d31ea460f0d9e2dfadb23e
+Jul-14 16:04:06.842 [Task submitter] INFO  nextflow.Session - [8d/d40ff8] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_mycobacterium)
+Jul-14 16:04:06.853 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_pseudomonas) > jobId: 239889; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1a/d708b9080f02f396ed0c714a57ba56
+Jul-14 16:04:06.854 [Task submitter] INFO  nextflow.Session - [1a/d708b9] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_pseudomonas)
+Jul-14 16:04:06.865 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_bthuringensis) > jobId: 239890; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d3/510e97b0877a0753c2aa2c895c7bae
+Jul-14 16:04:06.865 [Task submitter] INFO  nextflow.Session - [d3/510e97] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_bthuringensis)
+Jul-14 16:04:06.891 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_mycobacterium) > jobId: 239891; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a9/0d1dbd282cbe3cc7f42839f9761d53
+Jul-14 16:04:06.892 [Task submitter] INFO  nextflow.Session - [a9/0d1dbd] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_mycobacterium)
+Jul-14 16:04:06.921 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_pseudomonas) > jobId: 239892; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/da/9ecab99ed656af47fb3c95f25a3e54
+Jul-14 16:04:06.921 [Task submitter] INFO  nextflow.Session - [da/9ecab9] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_pseudomonas)
+Jul-14 16:04:06.932 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_paenibacillus_sp) > jobId: 239893; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/8d/6f0386877ecdbf2a910b4c1386963c
+Jul-14 16:04:06.932 [Task submitter] INFO  nextflow.Session - [8d/6f0386] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_paenibacillus_sp)
+Jul-14 16:04:06.967 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_paenibacillus) > jobId: 239894; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f1/99d1cde45d178f9ded0f2aeba22423
+Jul-14 16:04:06.967 [Task submitter] INFO  nextflow.Session - [f1/99d1cd] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_paenibacillus)
+Jul-14 16:04:07.001 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_pumsongensis) > jobId: 239895; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/fd/00b031b62ce484ee77396a19adc27d
+Jul-14 16:04:07.001 [Task submitter] INFO  nextflow.Session - [fd/00b031] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_pumsongensis)
+Jul-14 16:04:07.026 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bacillus) > jobId: 239896; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/f7/06cb869955179d7c6b173520c46254
+Jul-14 16:04:07.026 [Task submitter] INFO  nextflow.Session - [f7/06cb86] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bacillus)
+Jul-14 16:04:07.061 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_bacillus) > jobId: 239897; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/ae/74f8f27aae23627eb3ed28a4df0ca3
+Jul-14 16:04:07.061 [Task submitter] INFO  nextflow.Session - [ae/74f8f2] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_bacillus)
+Jul-14 16:04:07.081 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_rerythropolis) > jobId: 239898; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/87/07c1ab7817422937575596304e3cab
+Jul-14 16:04:07.081 [Task submitter] INFO  nextflow.Session - [87/07c1ab] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_rerythropolis)
+Jul-14 16:04:07.135 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_mycobacterium) > jobId: 239899; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/bc/ece5fa85d79a514250231214606426
+Jul-14 16:04:07.135 [Task submitter] INFO  nextflow.Session - [bc/ece5fa] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_mycobacterium)
+Jul-14 16:04:07.150 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_rerythropolis) > jobId: 239900; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2c/a169d6dae835a33e6e99d23083e24b
+Jul-14 16:04:07.150 [Task submitter] INFO  nextflow.Session - [2c/a169d6] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_rerythropolis)
+Jul-14 16:04:07.181 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_mycobacterium) > jobId: 239901; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/56/19e79f075dc33f3a4ac74f9f9718af
+Jul-14 16:04:07.181 [Task submitter] INFO  nextflow.Session - [56/19e79f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_mycobacterium)
+Jul-14 16:04:07.216 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_arthrobacter) > jobId: 239902; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/28/a9418c1d688a96aabb30b9af49eeff
+Jul-14 16:04:07.217 [Task submitter] INFO  nextflow.Session - [28/a9418c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_arthrobacter)
+Jul-14 16:04:07.253 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_pseudomonas) > jobId: 239903; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1d/fd90d25fc13515fe0200710058b46f
+Jul-14 16:04:07.254 [Task submitter] INFO  nextflow.Session - [1d/fd90d2] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_pseudomonas)
+Jul-14 16:04:07.271 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_bacillus) > jobId: 239904; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/45/60389acf9c4643565a20328d3647cf
+Jul-14 16:04:07.271 [Task submitter] INFO  nextflow.Session - [45/60389a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_eg_cv_lb_bacillus)
+Jul-14 16:04:07.309 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_vparadoxus) > jobId: 239905; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/63/667e702db413d89905b5d6a6cd1213
+Jul-14 16:04:07.309 [Task submitter] INFO  nextflow.Session - [63/667e70] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_vparadoxus)
+Jul-14 16:04:07.328 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_mycobacterium) > jobId: 239906; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/44/4b4adae2664ea4fad067a274a38b2d
+Jul-14 16:04:07.328 [Task submitter] INFO  nextflow.Session - [44/4b4ada] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_mycobacterium)
+Jul-14 16:04:07.343 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_rerythropolis) > jobId: 239907; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a5/6b27992629f0b9ff4f7e7db43b5f26
+Jul-14 16:04:07.343 [Task submitter] INFO  nextflow.Session - [a5/6b2799] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_rerythropolis)
+Jul-14 16:04:07.379 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_agrobacterium) > jobId: 239908; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/c3/a33764b30f1726c39cf3a0935bf5a6
+Jul-14 16:04:07.379 [Task submitter] INFO  nextflow.Session - [c3/a33764] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_agrobacterium)
+Jul-14 16:04:07.400 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_bacillus) > jobId: 239909; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/25/3b620ab35978758082b649324caab3
+Jul-14 16:04:07.400 [Task submitter] INFO  nextflow.Session - [25/3b620a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_bacillus)
+Jul-14 16:04:07.467 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_bthuringensis) > jobId: 239910; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/28/e7f2f34650f309abf6038fb20c9cfb
+Jul-14 16:04:07.467 [Task submitter] INFO  nextflow.Session - [28/e7f2f3] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_bthuringensis)
+Jul-14 16:04:07.483 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_paenibacillus) > jobId: 239911; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/38/6d1ebb2c25be031bfb92c21380ad87
+Jul-14 16:04:07.484 [Task submitter] INFO  nextflow.Session - [38/6d1ebb] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_paenibacillus)
+Jul-14 16:04:07.509 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_arthrobacter) > jobId: 239912; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a0/3d7cd546e721d1383e96604cb748c8
+Jul-14 16:04:07.509 [Task submitter] INFO  nextflow.Session - [a0/3d7cd5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_arthrobacter)
+Jul-14 16:04:07.528 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_pseudomonas) > jobId: 239913; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/bf/9c0caf99a3fcce20de729aae2ad625
+Jul-14 16:04:07.528 [Task submitter] INFO  nextflow.Session - [bf/9c0caf] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_pseudomonas)
+Jul-14 16:04:07.552 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_vparadoxus) > jobId: 239914; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/62/aaef5e04910bd75c29d5397c01561b
+Jul-14 16:04:07.552 [Task submitter] INFO  nextflow.Session - [62/aaef5e] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_vparadoxus)
+Jul-14 16:04:07.569 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pumsongensis) > jobId: 239915; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d7/52cf35ff963c3a461deda19642e4c4
+Jul-14 16:04:07.569 [Task submitter] INFO  nextflow.Session - [d7/52cf35] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pumsongensis)
+Jul-14 16:04:07.588 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bthuringensis) > jobId: 239916; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/62/6bd6a044b43c4e6be9dcba30179493
+Jul-14 16:04:07.588 [Task submitter] INFO  nextflow.Session - [62/6bd6a0] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bthuringensis)
+Jul-14 16:04:07.601 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_vparadoxus) > jobId: 239917; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/37/c35edb29c40a8b7e398be0fb0486a1
+Jul-14 16:04:07.601 [Task submitter] INFO  nextflow.Session - [37/c35edb] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_vparadoxus)
+Jul-14 16:04:07.617 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_pumsongensis) > jobId: 239918; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1a/c0b76d15315ae2eb8bb4463c30fd8e
+Jul-14 16:04:07.617 [Task submitter] INFO  nextflow.Session - [1a/c0b76d] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_pumsongensis)
+Jul-14 16:04:07.637 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_vparadoxus) > jobId: 239919; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/46/76811006de9b2ff0346576aafe2c90
+Jul-14 16:04:07.637 [Task submitter] INFO  nextflow.Session - [46/768110] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_vparadoxus)
+Jul-14 16:04:07.691 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_rerythropolis) > jobId: 239920; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/68/c02a65b818e679f92708f8064a9dfc
+Jul-14 16:04:07.691 [Task submitter] INFO  nextflow.Session - [68/c02a65] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_rerythropolis)
+Jul-14 16:04:07.708 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_bthuringensis) > jobId: 239921; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6b/8590d7642f3d7d576385c92a628fb6
+Jul-14 16:04:07.708 [Task submitter] INFO  nextflow.Session - [6b/8590d7] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_bthuringensis)
+Jul-14 16:04:14.391 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239826; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/1a570fc29510b0e17257506d7ac8ff started: 1784066649411; exited: 2026-07-14T22:04:11.905777374Z; ]
+Jul-14 16:04:14.392 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-14 16:04:14.395 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239827; id: 3; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_rerythropolis); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d8/090188c4df0f40a85e46a1f7b70c27 started: 1784066649413; exited: 2026-07-14T22:04:09.717786856Z; ]
+Jul-14 16:04:14.399 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239828; id: 4; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pseudomonassp); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/cc/88e5f0f7981934b804112bc64d6781 started: 1784066649414; exited: 2026-07-14T22:04:09.778786591Z; ]
+Jul-14 16:04:14.399 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/1a570fc29510b0e17257506d7ac8ff
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter)` terminated with an error exit status (1)
+Jul-14 16:04:14.399 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239829; id: 5; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_pseudomonas); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/53/14abcd39108a306e2a4681703207fa started: 1784066649415; exited: 2026-07-14T22:04:09.842786314Z; ]
+Jul-14 16:04:14.400 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239830; id: 6; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_paenibacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/19/1ccfc68e9f47a2cb4e4b89cdfde4c2 started: 1784066649416; exited: 2026-07-14T22:04:11.318779918Z; ]
+Jul-14 16:04:14.401 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239831; id: 7; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bthuringensis); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/42/c35b89b86b51a48b16aa25d2d53c23 started: 1784066649416; exited: 2026-07-14T22:04:09.690786973Z; ]
+Jul-14 16:04:14.411 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239832; id: 8; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_rerythropolis); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a6/04fffe5d3121d17493267294f0dfd2 started: 1784066649417; exited: 2026-07-14T22:04:12.251775875Z; ]
+Jul-14 16:04:14.419 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239833; id: 10; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_mycobacterium); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d0/8de669ba7248ab5f80b749134fc38d started: 1784066649417; exited: 2026-07-14T22:04:14.048768089Z; ]
+Jul-14 16:04:14.421 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239834; id: 9; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_mycobacterium); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/eb/c002fac89e2bd44a94ccce5b7aeebf started: 1784066649418; exited: 2026-07-14T22:04:11.919777314Z; ]
+Jul-14 16:04:14.423 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239836; id: 12; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/29/b503f0975fc369e7d3ea9953ed728c started: 1784066649419; exited: 2026-07-14T22:04:11.829777704Z; ]
+Jul-14 16:04:14.424 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239837; id: 13; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_agrobacterium); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2e/ed614ca8a23891d5af08571ae324b7 started: 1784066649420; exited: 2026-07-14T22:04:11.921777305Z; ]
+Jul-14 16:04:14.426 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239838; id: 14; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_rerythropolis); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a3/4d39b44eaae78b2fad0f15e3735c3b started: 1784066649420; exited: 2026-07-14T22:04:13.745769402Z; ]
+Jul-14 16:04:14.426 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239839; id: 16; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_vparadoxus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7e/c35c73836de985656bb9b8769b760b started: 1784066649422; exited: 2026-07-14T22:04:12.228775975Z; ]
+Jul-14 16:04:14.427 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239840; id: 15; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_mycobacterium); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1d/4472f98b2e4afcfe38528ef1fde7bd started: 1784066649423; exited: 2026-07-14T22:04:11.923777297Z; ]
+Jul-14 16:04:14.428 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239841; id: 18; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/02/2e76d8f16cfa425bc781f0df406b7a started: 1784066649424; exited: 2026-07-14T22:04:11.855777591Z; ]
+Jul-14 16:04:14.429 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239842; id: 17; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bthuringensis); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/06/e4a8061f9763bd20969fa6616306c5 started: 1784066649426; exited: 2026-07-14T22:04:13.699769601Z; ]
+Jul-14 16:04:14.432 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239843; id: 19; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a3/67fc77c2d0ed49f8d39b958d021989 started: 1784066649426; exited: 2026-07-14T22:04:12.989772677Z; ]
+Jul-14 16:04:14.432 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239844; id: 20; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_bacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0c/4a9c3f394c53e1f57d04c88e9c2b4f started: 1784066649427; exited: 2026-07-14T22:04:11.730778133Z; ]
+Jul-14 16:04:14.432 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239845; id: 21; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_arthrobacter); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/72/e594d05097b005ac97ae9a49d3e5b1 started: 1784066649427; exited: 2026-07-14T22:04:14.277767096Z; ]
+Jul-14 16:04:14.433 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239847; id: 23; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_paenibacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2d/68f708da578012addbe8d6d514a5ed started: 1784066649430; exited: 2026-07-14T22:04:12.766773644Z; ]
+Jul-14 16:04:14.433 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239848; id: 24; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_mycobacterium); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/6a0629eab72cd225bcd9a8eb1b2465 started: 1784066649431; exited: 2026-07-14T22:04:13.011772582Z; ]
+Jul-14 16:04:14.437 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239852; id: 28; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_agrobacterium); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/37/5d2b2ac4690c0cef428605b3610dc6 started: 1784066649433; exited: 2026-07-14T22:04:11.843777643Z; ]
+Jul-14 16:04:14.438 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239856; id: 32; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_arthrobacter); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/ba/3fdfabff40abc1b2df8fc32e3827c7 started: 1784066649439; exited: 2026-07-14T22:04:14.019768214Z; ]
+Jul-14 16:04:14.438 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239858; id: 35; name: COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_paenibacillus); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/00/117fbace0a1fdb6a288967bc9cd70b started: 1784066649443; exited: 2026-07-14T22:04:13.583770103Z; ]
+Jul-14 16:04:14.446 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter)'
+
+Caused by:
+  Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  eval "$(mamba shell hook --shell bash)"
+  mamba activate python3
+  module load COMETS
+  
+  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py \
+    --gem_path /mnt/data/sur/users/mmontante/02_resultados/rz/models \
+    --strains rz_pk_cv_lb_arthrobacter \
+    --media lb \
+    --cycles 5 \
+    --media_dil 0.1 \
+    --media_vol 0.03 \
+    --outdir .
+
+Command exit status:
+  1
+
+Command output:
+  building empty layout model
+  models will need to be added with layout.add_model()
+  Warning: The added metabolite (cu_e) is not able to be taken up by any of the current models
+  Warning: The added metabolite (ascb__L_e) is not able to be taken up by any of the current models
+  Warning: The added metabolite (nac_e) is not able to be taken up by any of the current models
+  Warning: The added metabolite (pydx_e) is not able to be taken up by any of the current models
+  Warning: The added metabolite (adocbl_e) is not able to be taken up by any of the current models
+
+Command error:
+  Ignoring reaction 'EX_salchs4_e' since it already exists.
+  Ignoring reaction 'EX_salchs4fe_e' since it already exists.
+  Ignoring reaction 'EX_sbt__D_e' since it already exists.
+  Ignoring reaction 'EX_sel_e' since it already exists.
+  Ignoring reaction 'EX_ser__D_e' since it already exists.
+  Ignoring reaction 'EX_ser__L_e' since it already exists.
+  Ignoring reaction 'EX_serglugly_e' since it already exists.
+  Ignoring reaction 'EX_skm_e' since it already exists.
+  Ignoring reaction 'EX_slnt_e' since it already exists.
+  Ignoring reaction 'EX_so3_e' since it already exists.
+  Ignoring reaction 'EX_so4_e' since it already exists.
+  Ignoring reaction 'EX_spmd_e' since it already exists.
+  Ignoring reaction 'EX_stfrnA_e' since it already exists.
+  Ignoring reaction 'EX_stfrnB_e' since it already exists.
+  Ignoring reaction 'EX_succ_e' since it already exists.
+  Ignoring reaction 'EX_sucr_e' since it already exists.
+  Ignoring reaction 'EX_sula_e' since it already exists.
+  Ignoring reaction 'EX_tartr__L_e' since it already exists.
+  Ignoring reaction 'EX_taur_e' since it already exists.
+  Ignoring reaction 'EX_tcynt_e' since it already exists.
+  Ignoring reaction 'EX_tet_e' since it already exists.
+  Ignoring reaction 'EX_thm_e' since it already exists.
+  Ignoring reaction 'EX_thr__L_e' since it already exists.
+  Ignoring reaction 'EX_thym_e' since it already exists.
+  Ignoring reaction 'EX_tnt_e' since it already exists.
+  Ignoring reaction 'EX_tre_e' since it already exists.
+  Ignoring reaction 'EX_trp__L_e' since it already exists.
+  Ignoring reaction 'EX_tsul_e' since it already exists.
+  Ignoring reaction 'EX_tyr__L_e' since it already exists.
+  Ignoring reaction 'EX_uaccg_e' since it already exists.
+  Ignoring reaction 'EX_udcpp_e' since it already exists.
+  Ignoring reaction 'EX_ump_e' since it already exists.
+  Ignoring reaction 'EX_ura_e' since it already exists.
+  Ignoring reaction 'EX_uri_e' since it already exists.
+  Ignoring reaction 'EX_val__L_e' since it already exists.
+  Ignoring reaction 'EX_vanlt_e' since it already exists.
+  Ignoring reaction 'EX_xan_e' since it already exists.
+  Ignoring reaction 'EX_xyl3_e' since it already exists.
+  Ignoring reaction 'EX_xyl__D_e' since it already exists.
+  Ignoring reaction 'EX_xylan4_e' since it already exists.
+  Ignoring reaction 'EX_xylb_e' since it already exists.
+  Ignoring reaction 'EX_zn2_e' since it already exists.
+  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/model.py:667: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+    self.objective = [int(self.reactions[self.reactions.
+  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/layout.py:1425: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+    self.media = pd.concat([self.media, new_row],
+  Traceback (most recent call last):
+    File "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py", line 127, in <module>
+      raise FileExistsError(f"Output directory {args.outdir} already exists. Please choose a different name or remove it.")
+  FileExistsError: Output directory . already exists. Please choose a different name or remove it.
+
+Work dir:
+  /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/1a570fc29510b0e17257506d7ac8ff
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+Jul-14 16:04:14.449 [TaskFinalizer-10] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/29/b503f0975fc369e7d3ea9953ed728c
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.451 [TaskFinalizer-9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_mycobacterium); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/eb/c002fac89e2bd44a94ccce5b7aeebf
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_mycobacterium)` terminated with an error exit status (1)
+Jul-14 16:04:14.452 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_mycobacterium); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d0/8de669ba7248ab5f80b749134fc38d
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_mycobacterium)` terminated with an error exit status (1)
+Jul-14 16:04:14.453 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_rerythropolis); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a6/04fffe5d3121d17493267294f0dfd2
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_rerythropolis)` terminated with an error exit status (1)
+Jul-14 16:04:14.454 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bthuringensis); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/42/c35b89b86b51a48b16aa25d2d53c23
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_bthuringensis)` terminated with an error exit status (1)
+Jul-14 16:04:14.454 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_paenibacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/19/1ccfc68e9f47a2cb4e4b89cdfde4c2
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_paenibacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.455 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_pseudomonas); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/53/14abcd39108a306e2a4681703207fa
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_pseudomonas)` terminated with an error exit status (1)
+Jul-14 16:04:14.455 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pseudomonassp); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/cc/88e5f0f7981934b804112bc64d6781
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_pseudomonassp)` terminated with an error exit status (1)
+Jul-14 16:04:14.456 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_rerythropolis); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d8/090188c4df0f40a85e46a1f7b70c27
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_rerythropolis)` terminated with an error exit status (1)
+Jul-14 16:04:14.457 [TaskFinalizer-10] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_agrobacterium); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2e/ed614ca8a23891d5af08571ae324b7
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_agrobacterium)` terminated with an error exit status (1)
+Jul-14 16:04:14.458 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_rerythropolis); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a3/4d39b44eaae78b2fad0f15e3735c3b
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_rerythropolis)` terminated with an error exit status (1)
+Jul-14 16:04:14.459 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_vparadoxus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7e/c35c73836de985656bb9b8769b760b
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_vparadoxus)` terminated with an error exit status (1)
+Jul-14 16:04:14.459 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_mycobacterium); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/1d/4472f98b2e4afcfe38528ef1fde7bd
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_na_mycobacterium)` terminated with an error exit status (1)
+Jul-14 16:04:14.460 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/02/2e76d8f16cfa425bc781f0df406b7a
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_kb_rt_lb_bacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.461 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/a3/67fc77c2d0ed49f8d39b958d021989
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_bacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.461 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bthuringensis); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/06/e4a8061f9763bd20969fa6616306c5
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_lb_bthuringensis)` terminated with an error exit status (1)
+Jul-14 16:04:14.461 [TaskFinalizer-9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_bacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0c/4a9c3f394c53e1f57d04c88e9c2b4f
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_rt_kb_lb_bacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.462 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_arthrobacter); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/72/e594d05097b005ac97ae9a49d3e5b1
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_gp_lb_arthrobacter)` terminated with an error exit status (1)
+Jul-14 16:04:14.462 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_paenibacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/2d/68f708da578012addbe8d6d514a5ed
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_paenibacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.463 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_mycobacterium); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/6a0629eab72cd225bcd9a8eb1b2465
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_gp_lb_mycobacterium)` terminated with an error exit status (1)
+Jul-14 16:04:14.463 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_agrobacterium); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/37/5d2b2ac4690c0cef428605b3610dc6
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_kb_rt_lb_agrobacterium)` terminated with an error exit status (1)
+Jul-14 16:04:14.464 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_arthrobacter); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/ba/3fdfabff40abc1b2df8fc32e3827c7
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_na_cv_na_arthrobacter)` terminated with an error exit status (1)
+Jul-14 16:04:14.464 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_paenibacillus); work-dir=/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/00/117fbace0a1fdb6a288967bc9cd70b
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_na_paenibacillus)` terminated with an error exit status (1)
+Jul-14 16:04:14.467 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `COMETS:PROCESO_COMETS:COMETS_RUN (rz_pk_cv_lb_arthrobacter)` terminated with an error exit status (1)
+Jul-14 16:04:14.495 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-14 16:04:14.500 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-14 16:04:14.500 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-14 16:04:14.521 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (73)
+Jul-14 16:04:14.712 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=24; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=39; runningCount=-39; retriesCount=0; abortedCount=73; succeedDuration=0ms; failedDuration=2m; cachedDuration=0ms;loadCpus=-39; loadMemory=0; peakRunning=58; peakCpus=58; peakMemory=0; ]
+Jul-14 16:04:14.732 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-14 16:04:14.756 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
