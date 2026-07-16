@@ -28,6 +28,7 @@ cd "$OUTDIR"
 # ==========================
 # Ciclo de Corrección
 # ==========================
+
 for GENOME in "$INDIR"/*.{fna,faa,fasta}; do
     
     [ -e "$GENOME" ] || continue

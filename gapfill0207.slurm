@@ -9,8 +9,8 @@
 eval "$(conda shell.bash hook)"
 conda activate gapseq
 
-INDIR="/mnt/data/sur/users/mmontante/02_resultados/gapseq_models"
-OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/gapseq_fill"
+INDIR="/mnt/data/sur/users/mmontante/02_resultados/cc/gapseq/gapfind"
+OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/cc/gapseq_fill"
 MEDIA="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
 
 mkdir -p "$OUTDIR"

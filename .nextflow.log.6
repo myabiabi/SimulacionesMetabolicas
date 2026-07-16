@@ -1,0 +1,97 @@
+Jul-14 14:34:55.119 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry MEMOTE -profile memote
+Jul-14 14:34:55.296 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
+Jul-14 14:34:55.333 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-14 14:34:55.348 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-14 14:34:55.349 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-14 14:34:55.355 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-14 14:34:55.383 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-14 14:34:55.423 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-14 14:34:55.427 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-14 14:34:55.511 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-14 14:34:55.514 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
+Jul-14 14:34:55.530 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `memote`
+Jul-14 14:34:56.110 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, comets]
+Jul-14 14:34:56.142 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-14 14:34:56.157 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [deadly_hawking] DSL2 - revision: 11f249860e
+Jul-14 14:34:56.159 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-14 14:34:56.159 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-14 14:34:56.229 [main] DEBUG nextflow.Session - Session UUID: 18df50e9-49f3-4b83-be3b-3a5bce73e887
+Jul-14 14:34:56.229 [main] DEBUG nextflow.Session - Run name: deadly_hawking
+Jul-14 14:34:56.232 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-14 14:34:56.242 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-14 14:34:56.248 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-14 14:34:56.276 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.1 build 5913
+  Created: 20-05-2024 09:48 UTC (03:48 CDT)
+  System: Linux 5.14.0-611.54.1.el9_7.x86_64
+  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
+  Encoding: UTF-8 (UTF-8)
+  Process: 4082633@node07.cluster [10.1.1.7]
+  CPUs: 2 - Mem: 503.4 GB (38.8 GB) - Swap: 0 (0)
+Jul-14 14:34:56.304 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work [nfs]
+Jul-14 14:34:56.305 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-14 14:34:56.316 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-14 14:34:56.326 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-14 14:34:56.364 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-14 14:34:56.376 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-14 14:34:56.464 [main] DEBUG nextflow.Session - Session start
+Jul-14 14:34:56.725 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-14 14:34:57.174 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-14 14:34:57.174 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-14 14:34:57.186 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-14 14:34:57.195 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-14 14:34:57.197 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-14 14:34:57.200 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-14 14:34:57.271 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT, MEMOTE_REPORT
+Jul-14 14:34:57.271 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-14 14:34:57.278 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT
+Jul-14 14:34:57.282 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final/; pattern: *.xml; options: [:]
+Jul-14 14:34:57.288 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_96631759bad4ce09: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
+  Script_87f803a9295c7ce0: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+Jul-14 14:34:57.288 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-14 14:34:57.288 [main] DEBUG nextflow.Session - Session await
+Jul-14 14:34:57.657 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (agrobacterium) > jobId: 239709; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/f69b3ca3d2775176451d91af5a2fcc
+Jul-14 14:34:57.657 [Task submitter] INFO  nextflow.Session - [24/f69b3c] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (agrobacterium)
+Jul-14 14:34:57.686 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (arthrobacter) > jobId: 239710; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/31/13b26bf0f64cb93baa62ad6d888c4f
+Jul-14 14:34:57.686 [Task submitter] INFO  nextflow.Session - [31/13b26b] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (arthrobacter)
+Jul-14 14:34:57.701 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bthuringensis) > jobId: 239711; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/f4060a621122c7002606c18ae01a17
+Jul-14 14:34:57.702 [Task submitter] INFO  nextflow.Session - [0a/f4060a] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bthuringensis)
+Jul-14 14:34:57.717 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bacillus) > jobId: 239712; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/92/f52607d932f01081ac82a40338fb02
+Jul-14 14:34:57.717 [Task submitter] INFO  nextflow.Session - [92/f52607] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bacillus)
+Jul-14 14:34:57.734 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (mycobacterium) > jobId: 239713; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/17/b14ec710662118e6080bc4bc71ea8a
+Jul-14 14:34:57.734 [Task submitter] INFO  nextflow.Session - [17/b14ec7] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (mycobacterium)
+Jul-14 14:34:57.749 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (paenibacillus) > jobId: 239714; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6a/69c1c4a572ee7f8998bedf2887ed52
+Jul-14 14:34:57.750 [Task submitter] INFO  nextflow.Session - [6a/69c1c4] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (paenibacillus)
+Jul-14 14:34:57.770 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pseudomonas) > jobId: 239715; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/18/31823f174a4db6b76f13dec58838f3
+Jul-14 14:34:57.770 [Task submitter] INFO  nextflow.Session - [18/31823f] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pseudomonas)
+Jul-14 14:34:57.786 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pumsongensis) > jobId: 239716; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d9/6d10d10054e80dcf5aa89eeac924ea
+Jul-14 14:34:57.786 [Task submitter] INFO  nextflow.Session - [d9/6d10d1] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pumsongensis)
+Jul-14 14:34:57.810 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (vparadoxus) > jobId: 239717; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/4f/f5f2660a431cf205f7e6821bf2d63e
+Jul-14 14:34:57.810 [Task submitter] INFO  nextflow.Session - [4f/f5f266] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (vparadoxus)
+Jul-14 14:34:57.824 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis) > jobId: 239718; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7b/cfd90ccdcabba5d05dbcd2f5493aaa
+Jul-14 14:34:57.825 [Task submitter] INFO  nextflow.Session - [7b/cfd90c] Submitted process > MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis)
+Jul-14 14:35:42.207 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239712; id: 3; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/92/f52607d932f01081ac82a40338fb02 started: 1784061302235; exited: 2026-07-14T20:35:40.304887963Z; ]
+Jul-14 14:35:42.208 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-14 14:35:42.236 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-14 14:35:57.205 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239711; id: 4; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (bthuringensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/0a/f4060a621122c7002606c18ae01a17 started: 1784061302233; exited: 2026-07-14T20:35:55.755773019Z; ]
+Jul-14 14:37:42.210 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239710; id: 2; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (arthrobacter); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/31/13b26bf0f64cb93baa62ad6d888c4f started: 1784061302231; exited: 2026-07-14T20:37:39.207652959Z; ]
+Jul-14 14:38:22.211 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239709; id: 1; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (agrobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/24/f69b3ca3d2775176451d91af5a2fcc started: 1784061302204; exited: 2026-07-14T20:38:18.872079252Z; ]
+Jul-14 14:38:32.213 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239716; id: 8; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pumsongensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/d9/6d10d10054e80dcf5aa89eeac924ea started: 1784061342210; exited: 2026-07-14T20:38:31.247919809Z; ]
+Jul-14 14:38:37.212 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239713; id: 5; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (mycobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/17/b14ec710662118e6080bc4bc71ea8a started: 1784061302238; exited: 2026-07-14T20:38:35.895859926Z; ]
+Jul-14 14:38:37.213 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239714; id: 6; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (paenibacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/6a/69c1c4a572ee7f8998bedf2887ed52 started: 1784061302240; exited: 2026-07-14T20:38:23.69701709Z; ]
+Jul-14 14:39:12.212 [Task monitor] DEBUG nextflow.file.FileHelper - NFS path (true): /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work
+Jul-14 14:39:12.226 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239715; id: 7; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (pseudomonas); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/18/31823f174a4db6b76f13dec58838f3 started: 1784061302241; exited: 2026-07-14T20:38:57.255584743Z; ]
+Jul-14 14:39:12.227 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239717; id: 9; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (vparadoxus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/4f/f5f2660a431cf205f7e6821bf2d63e started: 1784061357206; exited: 2026-07-14T20:39:09.936421374Z; ]
+Jul-14 14:40:02.214 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 239718; id: 10; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7b/cfd90ccdcabba5d05dbcd2f5493aaa started: 1784061462211; exited: -; ]
+Jul-14 14:40:57.217 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 239718; id: 10; name: MEMOTE:PROCESO_MEMOTE:MEMOTE_REPORT (rerythropolis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work/7b/cfd90ccdcabba5d05dbcd2f5493aaa started: 1784061462211; exited: 2026-07-14T20:40:55.250176579Z; ]
+Jul-14 14:40:57.222 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-14 14:41:02.217 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-14 14:41:02.217 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-14 14:41:02.222 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jul-14 14:41:02.223 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jul-14 14:41:02.228 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=10; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=3h 45m 59s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=8; peakCpus=64; peakMemory=64 GB; ]
+Jul-14 14:41:02.368 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-14 14:41:02.423 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jul-14 14:41:02.424 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
