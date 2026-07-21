@@ -1,0 +1,1824 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000151b8ce01936, pid=1152147, tid=1152197
+#
+# JRE version: Java(TM) SE Runtime Environment (20.0.1+9) (build 20.0.1+9-29)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (20.0.1+9-29, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, linux-amd64)
+# Problematic frame:
+# J 6 c1 java.util.concurrent.ConcurrentHashMap.putVal(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; java.base@20.0.1 (432 bytes) @ 0x0000151b8ce01936 [0x0000151b8ce01860+0x00000000000000d6]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h %d %F" (or dumping to /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/core.1152147)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.locks=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/java.nio.file.spi=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.fs=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.http=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.https=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.ftp=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED --add-opens=java.base/java.util.regex=ALL-UNNAMED -Dfile.encoding=UTF-8 -Dcapsule.trampoline -Dcapsule.java.cmd=/opt/apps/oracle-java/20.0.1/bin/java -Dcom.sun.security.enableAIAcaIssuers=true -Djava.awt.headless=true -Djava.io.tmpdir=/tmp /home/mmontante/.nextflow/framework/25.10.4/nextflow-25.10.4-one.jar run main.nf -entry COMETS -profile comets -resume
+
+Host: Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz, 28 cores, 251G, Rocky Linux release 9.7 (Blue Onyx)
+Time: Mon Jul 20 17:55:11 2026 CST elapsed time: 0.055761 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000151ba402b470):  JavaThread "main" [_thread_in_Java, id=1152197, stack(0x0000151ba92ab000,0x0000151ba93ab000)]
+
+Stack: [0x0000151ba92ab000,0x0000151ba93ab000],  sp=0x0000151ba93a91a0,  free space=1016k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J 6 c1 java.util.concurrent.ConcurrentHashMap.putVal(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; java.base@20.0.1 (432 bytes) @ 0x0000151b8ce01936 [0x0000151b8ce01860+0x00000000000000d6]
+j  java.util.concurrent.ConcurrentHashMap.putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+4 java.base@20.0.1
+j  jdk.internal.module.ServicesCatalog.addProviders(Ljava/lang/String;[Ljdk/internal/module/ServicesCatalog$ServiceProvider;)V+33 java.base@20.0.1
+j  jdk.internal.module.ServicesCatalog.register(Ljava/lang/Module;)V+111 java.base@20.0.1
+j  java.lang.Module.defineModules(Ljava/lang/module/Configuration;Ljava/util/function/Function;Ljava/lang/ModuleLayer;)Ljava/util/Map;+747 java.base@20.0.1
+j  java.lang.ModuleLayer.<init>(Ljava/lang/module/Configuration;Ljava/util/List;Ljava/util/function/Function;)V+34 java.base@20.0.1
+j  java.lang.ModuleLayer.defineModules(Ljava/lang/module/Configuration;Ljava/util/List;Ljava/util/function/Function;)Ljava/lang/ModuleLayer$Controller;+36 java.base@20.0.1
+j  java.lang.ModuleLayer.defineModules(Ljava/lang/module/Configuration;Ljava/util/function/Function;)Ljava/lang/ModuleLayer;+6 java.base@20.0.1
+j  jdk.internal.module.ModuleBootstrap.boot2()Ljava/lang/ModuleLayer;+1207 java.base@20.0.1
+j  jdk.internal.module.ModuleBootstrap.boot()Ljava/lang/ModuleLayer;+64 java.base@20.0.1
+j  java.lang.System.initPhase2(ZZ)I+0 java.base@20.0.1
+v  ~StubRoutines::call_stub 0x0000151b94338cc6
+V  [libjvm.so+0x8a84c5]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, JavaThread*)+0x315
+V  [libjvm.so+0x8a8883]  JavaCalls::call_static(JavaValue*, Klass*, Symbol*, Symbol*, JavaCallArguments*, JavaThread*)+0x113
+V  [libjvm.so+0xe672e8]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x758
+V  [libjvm.so+0x959281]  JNI_CreateJavaVM+0x51
+C  [libjli.so+0x39eb]  JavaMain+0x8b
+C  [libjli.so+0x7c59]  ThreadJavaMain+0x9
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 128 (SI_KERNEL), si_addr: 0x0000000000000000
+
+Registers:
+RAX=0x0000000000000265, RBX=0x0084000000000168, RCX=0x000000011f031448, RDX=0x00000007ff019300
+RSP=0x0000151ba93a91a0, RBP=0x0000151ba93a9310, RSI=0x000000011f012a28, RDI=0x0000151b4400c330
+R8 =0x0000000000000001, R9 =0x0000000000000004, R10=0x0000151baa7f1480, R11=0x0000151b8ce01880
+R12=0x0000000000000000, R13=0x0000151ba93a92a8, R14=0x0000151ba93a9330, R15=0x0000151ba402b470
+RIP=0x0000151b8ce01936, EFLAGS=0x0000000000010206, CSGSFS=0x002b000000000033, ERR=0x0000000000000000
+  TRAPNO=0x000000000000000d
+
+
+Register to memory mapping:
+
+RAX=0x0000000000000265 is an unknown value
+RBX=0x0084000000000168 is an unknown value
+RCX=0x000000011f031448 is an oop: java.util.concurrent.CopyOnWriteArrayList 
+{0x000000011f031448} - klass: 'java/util/concurrent/CopyOnWriteArrayList'
+ - ---- fields (total size 3 words):
+ - final transient 'lock' 'Ljava/lang/Object;' @12  a 'java/lang/Object'{0x000000011f031460} (0x23e0628c)
+ - private volatile transient 'array' '[Ljava/lang/Object;' @16  a 'java/lang/Object'[1] {0x000000011f031470} (0x23e0628e)
+RDX=0x00000007ff019300 is an oop: java.lang.String 
+{0x00000007ff019300} - klass: 'java/lang/String'
+ - string: "java.security.Provider"
+ - ---- fields (total size 3 words):
+ - private 'hash' 'I' @12  1822217267 (0x6c9cd433)
+ - private final 'coder' 'B' @16  0 (0x00)
+ - private 'hashIsZero' 'Z' @17  false (0x00)
+ - abstract internal 'flags' 'B' @18  1 (0x01)
+ - private final synchronized 'value' '[B' @20  [B{0x00000007ff0192d8} (0xffe0325b)
+RSP=0x0000151ba93a91a0 is pointing into the stack for thread: 0x0000151ba402b470
+RBP=0x0000151ba93a9310 is pointing into the stack for thread: 0x0000151ba402b470
+RSI=0x000000011f012a28 is an oop: java.util.concurrent.ConcurrentHashMap 
+{0x000000011f012a28} - klass: 'java/util/concurrent/ConcurrentHashMap'
+ - ---- fields (total size 8 words):
+ - transient 'keySet' 'Ljava/util/Set;' @12  NULL (0x00000000)
+ - transient 'values' 'Ljava/util/Collection;' @16  NULL (0x00000000)
+ - private volatile transient 'sizeCtl' 'I' @20  64 (0x00000040)
+ - private volatile transient 'baseCount' 'J' @24  0 (0x0000000000000000)
+ - private volatile transient 'transferIndex' 'I' @32  0 (0x00000000)
+ - private volatile transient 'cellsBusy' 'I' @36  0 (0x00000000)
+ - volatile transient 'table' '[Ljava/util/concurrent/ConcurrentHashMap$Node;' @40  NULL (0x00000000)
+ - private volatile transient 'nextTable' '[Ljava/util/concurrent/ConcurrentHashMap$Node;' @44  NULL (0x00000000)
+ - private volatile transient 'counterCells' '[Ljava/util/concurrent/ConcurrentHashMap$CounterCell;' @48  NULL (0x00000000)
+ - private transient 'keySet' 'Ljava/util/concurrent/ConcurrentHashMap$KeySetView;' @52  NULL (0x00000000)
+ - private transient 'values' 'Ljava/util/concurrent/ConcurrentHashMap$ValuesView;' @56  NULL (0x00000000)
+ - private transient 'entrySet' 'Ljava/util/concurrent/ConcurrentHashMap$EntrySetView;' @60  NULL (0x00000000)
+RDI=0x0000151b4400c330 is pointing into metadata
+R8 =0x0000000000000001 is an unknown value
+R9 =0x0000000000000004 is an unknown value
+R10=0x0000151baa7f1480: <offset 0x000000000136b480> in /opt/apps/oracle-java/20.0.1/lib/server/libjvm.so at 0x0000151ba9486000
+R11=0x0000151b8ce01880 is at entry_point+32 in (nmethod*)0x0000151b8ce01510
+Compiled method (c1)      65    6   !   3       java.util.concurrent.ConcurrentHashMap::putVal (432 bytes)
+ total in heap  [0x0000151b8ce01510,0x0000151b8ce03d58] = 10312
+ relocation     [0x0000151b8ce01658,0x0000151b8ce01858] = 512
+ main code      [0x0000151b8ce01860,0x0000151b8ce03300] = 6816
+ stub code      [0x0000151b8ce03300,0x0000151b8ce033e8] = 232
+ metadata       [0x0000151b8ce033e8,0x0000151b8ce03408] = 32
+ scopes data    [0x0000151b8ce03408,0x0000151b8ce03958] = 1360
+ scopes pcs     [0x0000151b8ce03958,0x0000151b8ce03be8] = 656
+ dependencies   [0x0000151b8ce03be8,0x0000151b8ce03bf0] = 8
+ handler table  [0x0000151b8ce03bf0,0x0000151b8ce03d28] = 312
+ nul chk table  [0x0000151b8ce03d28,0x0000151b8ce03d58] = 48
+R12=0x0 is NULL
+R13=0x0000151ba93a92a8 is pointing into the stack for thread: 0x0000151ba402b470
+R14=0x0000151ba93a9330 is pointing into the stack for thread: 0x0000151ba402b470
+R15=0x0000151ba402b470 is a thread
+
+
+Top of Stack: (sp=0x0000151ba93a91a0)
+0x0000151ba93a91a0:   0000151ba93a92e0 0000151ba9d27806
+0x0000151ba93a91b0:   0000151b94354d10 00000000000003d8
+0x0000151ba93a91c0:   0000151ba402c8f0 0000151ba402c900
+0x0000151ba93a91d0:   0000151ba402ccd8 0000151ba402c900
+0x0000151ba93a91e0:   0000151ba402c800 0000151ba93a9210
+0x0000151ba93a91f0:   000000080076fdd0 0000151ba402b470
+0x0000151ba93a9200:   0000000800105e70 000000011f012a28
+0x0000151ba93a9210:   00000007ff019300 000000011f031448
+0x0000151ba93a9220:   0000000000000001 0000000000000000
+0x0000151ba93a9230:   0000151ba93a9320 0000151b94365a1d
+0x0000151ba93a9240:   0000151b94354d10 0000000000000000
+0x0000151ba93a9250:   0000000000000000 0000151ba93a9380
+0x0000151ba93a9260:   0000151ba93a9320 00000008009098ea
+0x0000151ba93a9270:   0000000800006bb0 0000000800105e70
+0x0000151ba93a9280:   0000151ba402b470 0000000800066a20
+0x0000151ba93a9290:   0000151ba93a9310 0000151b94355503
+0x0000151ba93a92a0:   0000151b94355503 0000000000000001
+0x0000151ba93a92b0:   000000011f031448 00000007ff019300
+0x0000151ba93a92c0:   000000011f012a28 0000151ba93a92c8
+0x0000151ba93a92d0:   0000000800b70f24 0000151ba93a9330
+0x0000151ba93a92e0:   0000000800409de8 0000151b4400dd70
+0x0000151ba93a92f0:   00000007fef07ea8 0000000800066a20
+0x0000151ba93a9300:   0000151ba93a92a8 0000151ba93a9320
+0x0000151ba93a9310:   0000151ba93a9380 0000151b94355953
+0x0000151ba93a9320:   000000011f031448 00000007ff019300
+0x0000151ba93a9330:   000000011f012a28 0000151ba93a9338
+0x0000151ba93a9340:   0000000800b2f4f9 0000151ba93a93b0
+0x0000151ba93a9350:   00000008003d9198 0000000000000000
+0x0000151ba93a9360:   00000007fef103d0 00000008003d8e40
+0x0000151ba93a9370:   0000151ba93a9320 0000151ba93a93a0
+0x0000151ba93a9380:   0000151ba93a9400 0000151b943553aa
+0x0000151ba93a9390:   0000000000000000 000000011f031448 
+
+Instructions: (pc=0x0000151b8ce01936)
+0x0000151b8ce01836:   0a 32 01 7c c1 ea 05 28 00 60 0a 32 01 7c 61 fd
+0x0000151b8ce01846:   05 28 00 60 0a 32 01 7c b9 e9 05 28 00 60 0a 32
+0x0000151b8ce01856:   00 00 00 00 00 00 00 00 00 00 44 8b 56 08 49 bb
+0x0000151b8ce01866:   00 00 00 00 08 00 00 00 4d 03 d3 4c 3b d0 0f 85
+0x0000151b8ce01876:   86 9a 59 07 66 0f 1f 44 00 00 89 84 24 00 c0 fe
+0x0000151b8ce01886:   ff 55 48 81 ec f0 00 00 00 90 41 81 7f 20 01 00
+0x0000151b8ce01896:   00 00 74 05 e8 01 f7 57 07 48 89 74 24 68 48 89
+0x0000151b8ce018a6:   54 24 70 48 89 4c 24 78 44 89 84 24 80 00 00 00
+0x0000151b8ce018b6:   48 bf 30 c3 00 44 1b 15 00 00 8b 9f f4 00 00 00
+0x0000151b8ce018c6:   83 c3 02 89 9f f4 00 00 00 81 e3 fe 07 00 00 83
+0x0000151b8ce018d6:   fb 00 0f 84 2b 16 00 00 48 83 fa 00 48 bf 30 c3
+0x0000151b8ce018e6:   00 44 1b 15 00 00 48 bb 38 01 00 00 00 00 00 00
+0x0000151b8ce018f6:   0f 84 0a 00 00 00 48 bb 48 01 00 00 00 00 00 00
+0x0000151b8ce01906:   48 8b 04 1f 48 8d 40 01 48 89 04 1f 0f 84 0c 15
+0x0000151b8ce01916:   00 00 48 83 f9 00 48 bf 30 c3 00 44 1b 15 00 00
+0x0000151b8ce01926:   48 bb 68 01 00 00 00 00 00 00 0f 84 0a 00 00 00
+0x0000151b8ce01936:   48 bb 58 01 00 00 00 00 00 00 48 8b 04 1f 48 8d
+0x0000151b8ce01946:   40 01 48 89 04 1f 0f 84 d2 14 00 00 48 3b 02 48
+0x0000151b8ce01956:   8b fa 48 bb 30 c3 00 44 1b 15 00 00 8b 7f 08 49
+0x0000151b8ce01966:   ba 00 00 00 00 08 00 00 00 49 03 fa 48 3b bb 98
+0x0000151b8ce01976:   01 00 00 75 0d 48 83 83 a0 01 00 00 01 e9 60 00
+0x0000151b8ce01986:   00 00 48 3b bb a8 01 00 00 75 0d 48 83 83 b0 01
+0x0000151b8ce01996:   00 00 01 e9 4a 00 00 00 48 83 bb 98 01 00 00 00
+0x0000151b8ce019a6:   75 17 48 89 bb 98 01 00 00 48 c7 83 a0 01 00 00
+0x0000151b8ce019b6:   01 00 00 00 e9 29 00 00 00 48 83 bb a8 01 00 00
+0x0000151b8ce019c6:   00 75 17 48 89 bb a8 01 00 00 48 c7 83 b0 01 00
+0x0000151b8ce019d6:   00 01 00 00 00 e9 08 00 00 00 48 83 83 88 01 00
+0x0000151b8ce019e6:   00 01 48 8b f2 66 90 48 b8 ff ff ff ff ff ff ff
+0x0000151b8ce019f6:   ff e8 04 9f 59 07 48 be 30 c3 00 44 1b 15 00 00
+0x0000151b8ce01a06:   48 83 86 c0 01 00 00 01 48 be 98 bf 00 44 1b 15
+0x0000151b8ce01a16:   00 00 8b be f4 00 00 00 83 c7 02 89 be f4 00 00
+0x0000151b8ce01a26:   00 81 e7 fe ff 1f 00 83 ff 00 0f 84 f9 14 00 00 
+
+
+Stack slot to memory mapping:
+stack at sp + 0 slots: 0x0000151ba93a92e0 is pointing into the stack for thread: 0x0000151ba402b470
+stack at sp + 1 slots: 0x0000151ba9d27806: <offset 0x00000000008a1806> in /opt/apps/oracle-java/20.0.1/lib/server/libjvm.so at 0x0000151ba9486000
+stack at sp + 2 slots: 0x0000151b94354d10 is at code_begin+-112 in 
+[CodeBlob (0x0000151b94354d10)]
+Framesize: 0
+BufferBlob (0x0000151b94354d10) used for Interpreter
+stack at sp + 3 slots: 0x00000000000003d8 is an unknown value
+stack at sp + 4 slots: 0x0000151ba402c8f0 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+stack at sp + 5 slots: 0x0000151ba402c900 points into unknown readable memory: 0x6974752e6176616a | 6a 61 76 61 2e 75 74 69
+stack at sp + 6 slots: 0x0000151ba402ccd8 points into unknown readable memory: 0x0000000000000045 | 45 00 00 00 00 00 00 00
+stack at sp + 7 slots: 0x0000151ba402c900 points into unknown readable memory: 0x6974752e6176616a | 6a 61 76 61 2e 75 74 69
+
+
+Compiled method (c1)      69    6   !   3       java.util.concurrent.ConcurrentHashMap::putVal (432 bytes)
+ total in heap  [0x0000151b8ce01510,0x0000151b8ce03d58] = 10312
+ relocation     [0x0000151b8ce01658,0x0000151b8ce01858] = 512
+ main code      [0x0000151b8ce01860,0x0000151b8ce03300] = 6816
+ stub code      [0x0000151b8ce03300,0x0000151b8ce033e8] = 232
+ metadata       [0x0000151b8ce033e8,0x0000151b8ce03408] = 32
+ scopes data    [0x0000151b8ce03408,0x0000151b8ce03958] = 1360
+ scopes pcs     [0x0000151b8ce03958,0x0000151b8ce03be8] = 656
+ dependencies   [0x0000151b8ce03be8,0x0000151b8ce03bf0] = 8
+ handler table  [0x0000151b8ce03bf0,0x0000151b8ce03d28] = 312
+ nul chk table  [0x0000151b8ce03d28,0x0000151b8ce03d58] = 48
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap'
+  # this:     rsi:rsi   = 'java/util/concurrent/ConcurrentHashMap'
+  # parm0:    rdx:rdx   = 'java/lang/Object'
+  # parm1:    rcx:rcx   = 'java/lang/Object'
+  # parm2:    r8        = boolean
+  #           [sp+0x100]  (sp of caller)
+  0x0000151b8ce01860: 448b 5608 | 49bb 0000 | 0000 0800 | 0000 4d03 | d34c 3bd0 
+
+  0x0000151b8ce01874: ;   {runtime_call ic_miss_stub}
+  0x0000151b8ce01874: 0f85 869a | 5907 660f | 1f44 0000 
+[Verified Entry Point]
+  0x0000151b8ce01880: 8984 2400 | c0fe ff55 | 4881 ecf0 | 0000 0090 | 4181 7f20 | 0100 0000 
+
+  0x0000151b8ce01898: ;   {runtime_call StubRoutines (2)}
+  0x0000151b8ce01898: 7405 e801 | f757 0748 | 8974 2468 | 4889 5424 | 7048 894c | 2478 4489 | 8424 8000 
+
+  0x0000151b8ce018b4: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce018b4: 0000 48bf | 30c3 0044 | 1b15 0000 | 8b9f f400 | 0000 83c3 | 0289 9ff4 | 0000 0081 | e3fe 0700 
+  0x0000151b8ce018d4: 0083 fb00 | 0f84 2b16 | 0000 4883 
+
+  0x0000151b8ce018e0: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce018e0: fa00 48bf | 30c3 0044 | 1b15 0000 | 48bb 3801 | 0000 0000 | 0000 0f84 | 0a00 0000 | 48bb 4801 
+  0x0000151b8ce01900: 0000 0000 | 0000 488b | 041f 488d | 4001 4889 | 041f 0f84 | 0c15 0000 | 4883 f900 
+
+  0x0000151b8ce0191c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce0191c: 48bf 30c3 | 0044 1b15 | 0000 48bb | 6801 0000 | 0000 0000 | 0f84 0a00 | 0000 48bb | 5801 0000 
+  0x0000151b8ce0193c: 0000 0000 | 488b 041f | 488d 4001 | 4889 041f | 0f84 d214 | 0000 483b | 0248 8bfa 
+
+  0x0000151b8ce01958: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01958: 48bb 30c3 | 0044 1b15 | 0000 8b7f | 0849 ba00 | 0000 0008 | 0000 0049 | 03fa 483b | bb98 0100 
+  0x0000151b8ce01978: 0075 0d48 | 8383 a001 | 0000 01e9 | 6000 0000 | 483b bba8 | 0100 0075 | 0d48 8383 | b001 0000 
+  0x0000151b8ce01998: 01e9 4a00 | 0000 4883 | bb98 0100 | 0000 7517 | 4889 bb98 | 0100 0048 | c783 a001 | 0000 0100 
+  0x0000151b8ce019b8: 0000 e929 | 0000 0048 | 83bb a801 | 0000 0075 | 1748 89bb | a801 0000 | 48c7 83b0 | 0100 0001 
+  0x0000151b8ce019d8: 0000 00e9 | 0800 0000 | 4883 8388 | 0100 0001 | 488b f266 | 9048 b8ff | ffff ffff 
+
+  0x0000151b8ce019f4: ;   {virtual_call}
+  0x0000151b8ce019f4: ffff ffe8 
+
+  0x0000151b8ce019f8: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop }
+                      ;*invokevirtual hashCode {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@17 (line 1012)
+  0x0000151b8ce019f8: 049f 5907 
+
+  0x0000151b8ce019fc: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce019fc: 48be 30c3 | 0044 1b15 | 0000 4883 | 86c0 0100 
+
+  0x0000151b8ce01a0c: ;   {metadata(method data for {method} {0x0000000800409700} 'spread' '(I)I' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01a0c: 0001 48be | 98bf 0044 | 1b15 0000 | 8bbe f400 | 0000 83c7 | 0289 bef4 | 0000 0081 | e7fe ff1f 
+  0x0000151b8ce01a2c: 0083 ff00 | 0f84 f914 | 0000 488b | f0c1 ee10 | 4833 f081 | e6ff ffff | 7f89 b424 | 8800 0000 
+  0x0000151b8ce01a4c: 488b 7c24 | 688b 5f28 | 48c1 e303 | b800 0000 | 0089 8424 | 8400 0000 | 0f1f 4000 | 4883 fb00 
+  0x0000151b8ce01a6c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01a6c: 49b9 30c3 | 0044 1b15 | 0000 49bb | d001 0000 | 0000 0000 | 0f84 0a00 | 0000 49bb | e001 0000 
+  0x0000151b8ce01a8c: 0000 0000 | 4f8b 2c19 | 4d8d 6d01 | 4f89 2c19 | 0f84 3e00 | 0000 448b | 4b0c 4183 
+
+  0x0000151b8ce01aa8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01aa8: f900 49bb | 30c3 0044 | 1b15 0000 | 49bd f001 | 0000 0000 | 0000 0f85 | 0a00 0000 | 49bd 0002 
+  0x0000151b8ce01ac8: 0000 0000 | 0000 4f8b | 342b 4d8d | 7601 4f89 | 342b 0f85 | 4d00 0000 
+
+  0x0000151b8ce01ae0: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01ae0: 488b df49 | b930 c300 | 441b 1500 | 0049 8381 | 1002 0000 | 0148 8bf7 | 0f1f 8000 
+
+  0x0000151b8ce01afc: ;   {optimized virtual_call}
+  0x0000151b8ce01afc: 0000 00e8 
+
+  0x0000151b8ce01b00: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop }
+                      ;*invokevirtual initTable {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@49 (line 1017)
+  0x0000151b8ce01b00: fc9a 5907 
+
+  0x0000151b8ce01b04: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01b04: 48be 30c3 | 0044 1b15 | 0000 ff86 | 4802 0000 | 8bb4 2484 | 0000 0044 | 8b84 2480 | 0000 0048 
+  0x0000151b8ce01b24: 8b4c 2478 | e9cb 1000 | 0041 ffc9 | 4423 8c24 | 8800 0000 
+
+  0x0000151b8ce01b38: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01b38: 48be 30c3 | 0044 1b15 | 0000 4883 | 8660 0200 | 0001 488b | f349 8bd1 | 4489 8c24 | 8c00 0000 
+  0x0000151b8ce01b58: 4889 9c24 | 9000 0000 | 0f1f 8000 
+
+  0x0000151b8ce01b64: ;   {static_call}
+  0x0000151b8ce01b64: 0000 00e8 
+
+  0x0000151b8ce01b68: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop [144]=Oop }
+                      ;*invokestatic tabAt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@69 (line 1018)
+  0x0000151b8ce01b68: 94a0 5907 | 4889 8424 | 9800 0000 | 4883 f800 
+
+  0x0000151b8ce01b78: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01b78: 48ba 30c3 | 0044 1b15 | 0000 48be | 7002 0000 | 0000 0000 | 0f85 0a00 | 0000 48be | 8002 0000 
+  0x0000151b8ce01b98: 0000 0000 | 488b 3c32 | 488d 7f01 | 4889 3c32 | 0f85 e001 | 0000 8bb4 | 2488 0000 | 0048 8b4c 
+  0x0000151b8ce01bb8: 2478 488b | 5424 7048 
+
+  0x0000151b8ce01bc0: ;   {metadata('java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce01bc0: 8bda 48ba | 5835 1800 | 0800 0000 | 4c8b d94c | 8bce 498b | 87f8 0000 | 0048 8d78 | 2049 3bbf 
+  0x0000151b8ce01be0: 0801 0000 | 0f87 6b13 | 0000 4989 | bff8 0000 | 0048 c700 | 0100 0000 | 488b ca49 | ba00 0000 
+  0x0000151b8ce01c00: 0008 0000 | 0049 2bca | 8948 0848 | 33c9 8948 | 0c48 33c9 | 4889 4810 | 4889 4818 
+
+  0x0000151b8ce01c1c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01c1c: 488b f048 | ba30 c300 | 441b 1500 | 0048 8382 | 9002 0000 
+
+  0x0000151b8ce01c30: ;   {metadata(method data for {method} {0x0000000800183d38} '<init>' '(ILjava/lang/Object;Ljava/lang/Object;)V' in 'java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce01c30: 0148 be30 | cc00 441b | 1500 008b | 96f4 0000 | 0083 c202 | 8996 f400 | 0000 81e2 | feff 1f00 
+  0x0000151b8ce01c50: 83fa 000f | 8409 1300 | 0048 8bf0 
+
+  0x0000151b8ce01c5c: ;   {metadata(method data for {method} {0x0000000800183d38} '<init>' '(ILjava/lang/Object;Ljava/lang/Object;)V' in 'java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce01c5c: 48ba 30cc | 0044 1b15 | 0000 4883 | 8238 0100 
+
+  0x0000151b8ce01c6c: ;   {metadata(method data for {method} {0x00000008004745c8} '<init>' '()V' in 'java/lang/Object')}
+  0x0000151b8ce01c6c: 0001 48be | 409e 0044 | 1b15 0000 | 8b96 f400 | 0000 83c2 | 0289 96f4 | 0000 0081 | e2fe ff1f 
+  0x0000151b8ce01c8c: 0083 fa00 | 0f84 ed12 | 0000 4489 | 480c 410f | be77 4083 | fe00 0f85 | fc12 0000 | 4c8b d349 
+  0x0000151b8ce01cac: c1ea 0344 | 8950 1048 | 8bf0 4833 | f348 c1ee | 1848 83fe | 000f 85fc | 1200 0041 | 0fbe 7740 
+  0x0000151b8ce01ccc: 83fe 000f | 8506 1300 | 004d 8bd3 | 49c1 ea03 | 4489 5014 | f083 4424 | c000 488b | f049 33f3 
+  0x0000151b8ce01cec: 48c1 ee18 | 4883 fe00 | 0f85 0013 
+
+  0x0000151b8ce01cf8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01cf8: 0000 48be | 30c3 0044 | 1b15 0000 | 4883 86a0 | 0200 0001 | 488b b424 | 9000 0000 | 8b94 248c 
+  0x0000151b8ce01d18: ;   {oop(NULL)}
+  0x0000151b8ce01d18: 0000 0048 | b900 0000 | 0000 0000 | 004c 8bc0 | 0f1f 8000 
+
+  0x0000151b8ce01d2c: ;   {static_call}
+  0x0000151b8ce01d2c: 0000 00e8 
+
+  0x0000151b8ce01d30: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop [144]=Oop }
+                      ;*invokestatic casTabAt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@94 (line 1019)
+  0x0000151b8ce01d30: cc9e 5907 
+
+  0x0000151b8ce01d34: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01d34: 83f8 0048 | ba30 c300 | 441b 1500 | 0048 b9c0 | 0200 0000 | 0000 000f | 850a 0000 | 0048 b9b0 
+  0x0000151b8ce01d54: 0200 0000 | 0000 0048 | 8b34 0a48 | 8d76 0148 | 8934 0a0f | 85ef 0f00 | 0048 8b84 | 2490 0000 
+  0x0000151b8ce01d74: 008b b424 | 8400 0000 | 448b 8424 | 8000 0000 | 488b 4c24 | 78e9 6a0e | 0000 8b78 | 0c83 ffff 
+  0x0000151b8ce01d94: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01d94: 48ba 30c3 | 0044 1b15 | 0000 48b9 | e802 0000 | 0000 0000 | 0f85 0a00 | 0000 48b9 | f802 0000 
+  0x0000151b8ce01db4: 0000 0000 | 488b 340a | 488d 7601 | 4889 340a | 0f85 5b00 | 0000 488b 
+
+  0x0000151b8ce01dcc: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01dcc: 7424 6848 | ba30 c300 | 441b 1500 | 0048 8382 | 0803 0000 | 0148 8b94 | 2490 0000 | 0048 8bc8 
+  0x0000151b8ce01dec: 488b 7424 | 6866 0f1f 
+
+  0x0000151b8ce01df4: ;   {optimized virtual_call}
+  0x0000151b8ce01df4: 4400 00e8 
+
+  0x0000151b8ce01df8: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop }
+                      ;*invokevirtual helpTransfer {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@120 (line 1023)
+  0x0000151b8ce01df8: 0498 5907 
+
+  0x0000151b8ce01dfc: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01dfc: 48ba 30c3 | 0044 1b15 | 0000 ff82 | 4003 0000 | 8bb4 2484 | 0000 0044 | 8b84 2480 | 0000 0048 
+  0x0000151b8ce01e1c: 8b4c 2478 | e9d3 0d00 | 0044 8b84 | 2480 0000 | 0041 83f8 
+
+  0x0000151b8ce01e30: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01e30: 0048 ba30 | c300 441b | 1500 0048 | be68 0300 | 0000 0000 | 000f 850a | 0000 0048 | be58 0300 
+  0x0000151b8ce01e50: 0000 0000 | 0048 8b1c | 3248 8d5b | 0148 891c | 320f 850c | 0000 0089 | bc24 a000 | 0000 e90b 
+  0x0000151b8ce01e70: 0200 003b | bc24 8800 
+
+  0x0000151b8ce01e78: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01e78: 0000 48ba | 30c3 0044 | 1b15 0000 | 48be 8803 | 0000 0000 | 0000 0f84 | 0a00 0000 | 48be 7803 
+  0x0000151b8ce01e98: 0000 0000 | 0000 488b | 1c32 488d | 5b01 4889 | 1c32 0f84 | 0c00 0000 | 89bc 24a0 | 0000 00e9 
+  0x0000151b8ce01eb8: c201 0000 | 488b 5424 | 708b 7010 | 48c1 e603 
+
+  0x0000151b8ce01ec8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01ec8: 483b f248 | bb30 c300 | 441b 1500 | 0048 b9a8 | 0300 0000 | 0000 000f | 850a 0000 | 0048 b998 
+  0x0000151b8ce01ee8: 0300 0000 | 0000 004c | 8b0c 0b4d | 8d49 014c | 890c 0b0f | 850c 0000 | 0089 bc24 | a000 0000 
+  0x0000151b8ce01f08: e930 0100 | 0048 83fe 
+
+  0x0000151b8ce01f10: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01f10: 0048 bb30 | c300 441b | 1500 0048 | b9b8 0300 | 0000 0000 | 000f 840a | 0000 0048 | b9c8 0300 
+  0x0000151b8ce01f30: 0000 0000 | 004c 8b0c | 0b4d 8d49 | 014c 890c | 0b89 bc24 | a000 0000 | 0f84 3001 | 0000 488b 
+  0x0000151b8ce01f50: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01f50: da48 b930 | c300 441b | 1500 008b | 5b08 49ba | 0000 0000 | 0800 0000 | 4903 da48 | 3b99 e803 
+  0x0000151b8ce01f70: 0000 750d | 4883 81f0 | 0300 0001 | e960 0000 | 0048 3b99 | f803 0000 | 750d 4883 | 8100 0400 
+  0x0000151b8ce01f90: 0001 e94a | 0000 0048 | 83b9 e803 | 0000 0075 | 1748 8999 | e803 0000 | 48c7 81f0 | 0300 0001 
+  0x0000151b8ce01fb0: 0000 00e9 | 2900 0000 | 4883 b9f8 | 0300 0000 | 7517 4889 | 99f8 0300 | 0048 c781 | 0004 0000 
+  0x0000151b8ce01fd0: 0100 0000 | e908 0000 | 0048 8381 | d803 0000 | 0148 8bda | 488b d648 | 8bf3 6666 | 9048 b8ff 
+  0x0000151b8ce01ff0: ffff ffff 
+
+  0x0000151b8ce01ff4: ;   {virtual_call}
+  0x0000151b8ce01ff4: ffff ffe8 
+
+  0x0000151b8ce01ff8: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop }
+                      ;*invokevirtual equals {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@159 (line 1026)
+  0x0000151b8ce01ff8: 0499 5907 
+
+  0x0000151b8ce01ffc: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce01ffc: 83f8 0048 | b830 c300 | 441b 1500 | 0048 be10 | 0400 0000 | 0000 000f | 840a 0000 | 0048 be20 
+  0x0000151b8ce0201c: 0400 0000 | 0000 0048 | 8b14 3048 | 8d52 0148 | 8914 3048 | 8b84 2498 | 0000 000f | 8441 0000 
+  0x0000151b8ce0203c: 008b 7014 | 48c1 e603 | 4883 fe00 
+
+  0x0000151b8ce02048: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02048: 48ba 30c3 | 0044 1b15 | 0000 48bf | 4004 0000 | 0000 0000 | 0f85 0a00 | 0000 48bf | 3004 0000 
+  0x0000151b8ce02068: 0000 0000 | 488b 1c3a | 488d 5b01 | 4889 1c3a | 0f85 c50c | 0000 488d | b424 d000 | 0000 488b 
+  0x0000151b8ce02088: f848 897e | 0848 8b07 | 4883 c801 | 4889 06f0 | 480f b137 | 0f84 1200 | 0000 482b | c448 2507 
+  0x0000151b8ce020a8: f0ff ff48 | 8906 0f85 | 630f 0000 | 49ff 8778 
+
+  0x0000151b8ce020b8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce020b8: 0400 0048 | be30 c300 | 441b 1500 | 0048 8386 | 5004 0000 | 0148 8bb4 | 2490 0000 | 008b 9424 
+  0x0000151b8ce020d8: 8c00 0000 
+
+  0x0000151b8ce020dc: ;   {static_call}
+  0x0000151b8ce020dc: 6666 90e8 
+
+  0x0000151b8ce020e0: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*invokestatic tabAt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@192 (line 1032)
+  0x0000151b8ce020e0: 1c9b 5907 | 488b bc24 | 9800 0000 
+
+  0x0000151b8ce020ec: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce020ec: 483b c748 | ba30 c300 | 441b 1500 | 0048 be70 | 0400 0000 | 0000 000f | 840a 0000 | 0048 be60 
+  0x0000151b8ce0210c: 0400 0000 | 0000 0048 | 8b1c 3248 | 8d5b 0148 | 891c 320f | 8423 0000 | 008b 8424 | 8400 0000 
+  0x0000151b8ce0212c: ;   {oop(NULL)}
+  0x0000151b8ce0212c: 48bf 0000 | 0000 0000 | 0000 448b | 8424 8000 | 0000 488b | 4c24 78e9 | 2f0a 0000 | 8b94 24a0 
+  0x0000151b8ce0214c: 0000 0083 
+
+  0x0000151b8ce02150: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02150: fa00 48ba | 30c3 0044 | 1b15 0000 | 48be 8004 | 0000 0000 | 0000 0f8c | 0a00 0000 | 48be 9004 
+  0x0000151b8ce02170: 0000 0000 | 0000 488b | 1c32 488d | 5b01 4889 | 1c32 488b | c70f 8cf4 | 0400 00bb | 0100 0000 
+  0x0000151b8ce02190: 899c 24a4 | 0000 008b | b424 8800 | 0000 488b | 5424 708b | 480c 3bce 
+
+  0x0000151b8ce021a8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce021a8: 48b9 30c3 | 0044 1b15 | 0000 49b8 | b004 0000 | 0000 0000 | 0f84 0a00 | 0000 49b8 | a004 0000 
+  0x0000151b8ce021c8: 0000 0000 | 4e8b 0c01 | 4d8d 4901 | 4e89 0c01 | 0f84 0800 | 0000 4c8b | c0e9 7701 | 0000 8b48 
+  0x0000151b8ce021e8: 1048 c1e1 | 0348 3bca 
+
+  0x0000151b8ce021f0: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce021f0: 49b8 30c3 | 0044 1b15 | 0000 49b9 | c004 0000 | 0000 0000 | 0f84 0a00 | 0000 49b9 | d004 0000 
+  0x0000151b8ce02210: 0000 0000 | 4f8b 1c08 | 4d8d 5b01 | 4f89 1c08 | 0f84 cf01 | 0000 4883 
+
+  0x0000151b8ce02228: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02228: f900 49b8 | 30c3 0044 | 1b15 0000 | 49b9 f004 | 0000 0000 | 0000 0f85 | 0a00 0000 | 49b9 e004 
+  0x0000151b8ce02248: 0000 0000 | 0000 4f8b | 1c08 4d8d | 5b01 4f89 | 1c08 0f85 | 0800 0000 | 4c8b c0e9 | f500 0000 
+  0x0000151b8ce02268: 4889 8424 | a800 0000 
+
+  0x0000151b8ce02270: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02270: 4c8b c249 | b930 c300 | 441b 1500 | 0045 8b40 | 0849 ba00 | 0000 0008 | 0000 004d | 03c2 4d3b 
+  0x0000151b8ce02290: 8110 0500 | 0075 0d49 | 8381 1805 | 0000 01e9 | 6000 0000 | 4d3b 8120 | 0500 0075 | 0d49 8381 
+  0x0000151b8ce022b0: 2805 0000 | 01e9 4a00 | 0000 4983 | b910 0500 | 0000 7517 | 4d89 8110 | 0500 0049 | c781 1805 
+  0x0000151b8ce022d0: 0000 0100 | 0000 e929 | 0000 0049 | 83b9 2005 | 0000 0075 | 174d 8981 | 2005 0000 | 49c7 8128 
+  0x0000151b8ce022f0: 0500 0001 | 0000 00e9 | 0800 0000 | 4983 8100 | 0500 0001 | 4c8b c248 | 8bd1 498b | f048 b8ff 
+  0x0000151b8ce02310: ffff ffff 
+
+  0x0000151b8ce02314: ;   {virtual_call}
+  0x0000151b8ce02314: ffff ffe8 
+
+  0x0000151b8ce02318: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [168]=Oop [216]=Oop }
+                      ;*invokevirtual equals {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@242 (line 1039)
+  0x0000151b8ce02318: e495 5907 
+
+  0x0000151b8ce0231c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce0231c: 83f8 0048 | ba30 c300 | 441b 1500 | 0048 be48 | 0500 0000 | 0000 000f | 850a 0000 | 0048 be38 
+  0x0000151b8ce0233c: 0500 0000 | 0000 0048 | 8b3c 3248 | 8d7f 0148 | 893c 324c | 8b84 24a8 | 0000 000f | 859b 0000 
+  0x0000151b8ce0235c: 0041 8b50 | 1848 c1e2 | 0348 83fa 
+
+  0x0000151b8ce02368: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02368: 0048 be30 | c300 441b | 1500 0048 | bfa0 0500 | 0000 0000 | 000f 840a | 0000 0048 | bf90 0500 
+  0x0000151b8ce02388: 0000 0000 | 0048 8b04 | 3e48 8d40 | 0148 8904 | 3e8b 9c24 | a400 0000 | 0f84 1701 | 0000 ffc3 
+  0x0000151b8ce023a8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce023a8: 48be 30c3 | 0044 1b15 | 0000 8bbe | f800 0000 | 83c7 0289 | bef8 0000 | 0081 e7fe | 3f00 0083 
+  0x0000151b8ce023c8: ff00 0f84 | 5f0c 0000 | 4d8b 9780 
+
+  0x0000151b8ce023d4: ; ImmutableOopMap {rdx=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@305 (line 1035)
+                      ;   {poll}
+  0x0000151b8ce023d4: 0300 0041 
+
+  0x0000151b8ce023d8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce023d8: 8502 48be | 30c3 0044 | 1b15 0000 | ff86 d805 | 0000 4c8b | c249 8bc0 | e99b fdff | ff4c 8bc0 
+  0x0000151b8ce023f8: 8b9c 24a4 | 0000 0044 | 8b8c 2480 | 0000 0041 | 8b50 1448 | c1e2 0341 
+
+  0x0000151b8ce02410: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02410: 83f9 0048 | be30 c300 | 441b 1500 | 0048 bf68 | 0500 0000 | 0000 000f | 840a 0000 | 0048 bf58 
+  0x0000151b8ce02430: 0500 0000 | 0000 0048 | 8b04 3e48 | 8d40 0148 | 8904 3e0f | 8417 0000 | 0044 8bac | 2488 0000 
+  0x0000151b8ce02450: 004c 8b74 | 2478 4c8b | 5c24 70e9 | fe01 0000 | 488b 4c24 | 7841 0fbe | 7740 83fe | 000f 85dd 
+  0x0000151b8ce02470: 0b00 004c | 8bd1 49c1 | ea03 4589 | 5014 f083 | 4424 c000 | 498b c048 | 33c1 48c1 | e818 4883 
+  0x0000151b8ce02490: f800 0f85 | d80b 0000 
+
+  0x0000151b8ce02498: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02498: 48be 30c3 | 0044 1b15 | 0000 ff86 | 7805 0000 | 448b ac24 | 8800 0000 | 4c8b f14c | 8b5c 2470 
+  0x0000151b8ce024b8: e9a1 0100 | 008b b424 | 8800 0000 | 448b 8c24 | 8000 0000 | 488b 4c24 | 7848 8b54 | 2470 4c8b 
+  0x0000151b8ce024d8: ;   {metadata('java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce024d8: da48 ba58 | 3518 0008 | 0000 004c | 8bf1 4c8b | ee49 8b87 | f800 0000 | 488d 7820 | 493b bf08 
+  0x0000151b8ce024f8: 0100 000f | 8787 0b00 | 0049 89bf | f800 0000 | 48c7 0001 | 0000 0048 | 8bca 49ba | 0000 0000 
+  0x0000151b8ce02518: 0800 0000 | 492b ca89 | 4808 4833 | c989 480c | 4833 c948 | 8948 1048 | 8948 1848 
+
+  0x0000151b8ce02534: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02534: 8bd0 48b9 | 30c3 0044 | 1b15 0000 | 4883 81b0 | 0500 0001 
+
+  0x0000151b8ce02548: ;   {metadata(method data for {method} {0x0000000800183d38} '<init>' '(ILjava/lang/Object;Ljava/lang/Object;)V' in 'java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce02548: 48ba 30cc | 0044 1b15 | 0000 8b8a | f400 0000 | 83c1 0289 | 8af4 0000 | 0081 e1fe | ff1f 0083 
+  0x0000151b8ce02568: f900 0f84 | 250b 0000 
+
+  0x0000151b8ce02570: ;   {metadata(method data for {method} {0x0000000800183d38} '<init>' '(ILjava/lang/Object;Ljava/lang/Object;)V' in 'java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce02570: 488b d048 | b930 cc00 | 441b 1500 | 0048 8381 | 3801 0000 
+
+  0x0000151b8ce02584: ;   {metadata(method data for {method} {0x00000008004745c8} '<init>' '()V' in 'java/lang/Object')}
+  0x0000151b8ce02584: 0148 ba40 | 9e00 441b | 1500 008b | 8af4 0000 | 0083 c102 | 898a f400 | 0000 81e1 | feff 1f00 
+  0x0000151b8ce025a4: 83f9 000f | 8409 0b00 | 0044 8968 | 0c41 0fbe | 5740 83fa | 000f 8518 | 0b00 004d | 8bd3 49c1 
+  0x0000151b8ce025c4: ea03 4489 | 5010 488b | d049 33d3 | 48c1 ea18 | 4883 fa00 | 0f85 180b | 0000 410f | be57 4083 
+  0x0000151b8ce025e4: fa00 0f85 | 220b 0000 | 4d8b d649 | c1ea 0344 | 8950 14f0 | 8344 24c0 | 0048 8bd0 | 4933 d648 
+  0x0000151b8ce02604: c1ea 1848 | 83fa 000f | 851c 0b00 | 0041 0fbe | 5740 83fa | 000f 8526 | 0b00 004c | 8bd0 49c1 
+  0x0000151b8ce02624: ea03 4589 | 5018 f083 | 4424 c000 | 498b d048 | 33d0 48c1 | ea18 4883 | fa00 0f85 | 210b 0000 
+  0x0000151b8ce02644: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02644: 48ba 30c3 | 0044 1b15 | 0000 ff82 | c005 0000 
+
+  0x0000151b8ce02654: ;   {oop(NULL)}
+  0x0000151b8ce02654: 48ba 0000 | 0000 0000 
+
+  0x0000151b8ce0265c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce0265c: 0000 48b9 | 30c3 0044 | 1b15 0000 | ff81 f005 | 0000 488b | fa48 8bc3 | 4d8b c149 | 8bce e9f8 
+  0x0000151b8ce0267c: 0400 0044 | 8bac 2488 | 0000 0044 | 8b8c 2480 | 0000 004c | 8b74 2478 | 4c8b 5c24 | 7048 83f8 
+  0x0000151b8ce0269c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce0269c: 0075 1749 | b830 c300 | 441b 1500 | 0041 8088 | 0106 0000 | 01e9 f900 | 0000 6690 
+
+  0x0000151b8ce026b8: ;   {no_reloc}
+  0x0000151b8ce026b8: e9cf 0a00 | 0000 0000 | 0000 448b | 4008 49ba | 0000 0000 | 0800 0000 | 4d03 c24c | 3bc6 0f84 
+  0x0000151b8ce026d8: 2a00 0000 | 8b4e 1449 | 3b34 080f | 841d 0000 | 0083 f920 | 0f85 a100 | 0000 4150 
+
+  0x0000151b8ce026f4: ;   {runtime_call slow_subtype_check Runtime1 stub}
+  0x0000151b8ce026f4: 56e8 86b7 | 6507 4158 | 5e83 fe00 | 0f84 8d00 
+
+  0x0000151b8ce02704: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02704: 0000 49b8 | 30c3 0044 | 1b15 0000 | 8b70 0849 | ba00 0000 | 0008 0000 | 0049 03f2 | 493b b018 
+  0x0000151b8ce02724: 0600 0075 | 0d49 8380 | 2006 0000 | 01e9 7e00 | 0000 493b | b028 0600 | 0075 0d49 | 8380 3006 
+  0x0000151b8ce02744: 0000 01e9 | 6800 0000 | 4983 b818 | 0600 0000 | 7517 4989 | b018 0600 | 0049 c780 | 2006 0000 
+  0x0000151b8ce02764: 0100 0000 | e947 0000 | 0049 83b8 | 2806 0000 | 0075 1749 | 89b0 2806 | 0000 49c7 | 8030 0600 
+  0x0000151b8ce02784: 0001 0000 | 00e9 2600 | 0000 e921 
+
+  0x0000151b8ce02790: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02790: 0000 0049 | b830 c300 | 441b 1500 | 0049 83a8 | 0806 0000 | 01e9 0500 | 0000 e905 | 0000 0048 
+  0x0000151b8ce027b0: 33d2 eb0a | 48ba 0100 | 0000 0000 | 0000 83fa 
+
+  0x0000151b8ce027c0: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce027c0: 0048 ba30 | c300 441b | 1500 0048 | b940 0600 | 0000 0000 | 000f 840a | 0000 0048 | b950 0600 
+  0x0000151b8ce027e0: 0000 0000 | 004c 8b04 | 0a4d 8d40 | 014c 8904 | 0a0f 8439 | 0200 0048 | 83f8 0075 
+
+  0x0000151b8ce027fc: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce027fc: 1648 b930 | c300 441b | 1500 0080 | 8959 0600 | 0001 e9f9 | 0000 000f | 1f44 0000 
+
+  0x0000151b8ce02818: ;   {no_reloc}
+  0x0000151b8ce02818: e988 0900 | 0000 0000 | 0000 8b48 | 0849 ba00 | 0000 0008 | 0000 0049 | 03ca 483b | cf0f 8428 
+  0x0000151b8ce02838: 0000 008b | 5714 483b | 3c11 0f84 | 1b00 0000 | 83fa 200f | 859f 0000 
+
+  0x0000151b8ce02850: ;   {runtime_call slow_subtype_check Runtime1 stub}
+  0x0000151b8ce02850: 0051 57e8 | 28b6 6507 | 595f 83ff | 000f 848d 
+
+  0x0000151b8ce02860: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02860: 0000 0048 | b930 c300 | 441b 1500 | 008b 7808 | 49ba 0000 | 0000 0800 | 0000 4903 | fa48 3bb9 
+  0x0000151b8ce02880: 7006 0000 | 750d 4883 | 8178 0600 | 0001 e979 | 0000 0048 | 3bb9 8006 | 0000 750d | 4883 8188 
+  0x0000151b8ce028a0: 0600 0001 | e963 0000 | 0048 83b9 | 7006 0000 | 0075 1748 | 89b9 7006 | 0000 48c7 | 8178 0600 
+  0x0000151b8ce028c0: 0001 0000 | 00e9 4200 | 0000 4883 | b980 0600 | 0000 7517 | 4889 b980 | 0600 0048 | c781 8806 
+  0x0000151b8ce028e0: 0000 0100 | 0000 e921 | 0000 00e9 | 1c00 0000 
+
+  0x0000151b8ce028f0: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce028f0: 48b9 30c3 | 0044 1b15 | 0000 4883 | a960 0600 | 0001 e9a8 | 0800 00e9 | 0000 0000 | 488b f049 
+  0x0000151b8ce02910: 8bd5 498b | cb4d 8bc6 | 0f1f 4400 | 0048 b8ff | ffff ffff 
+
+  0x0000151b8ce02924: ;   {virtual_call}
+  0x0000151b8ce02924: ffff ffe8 
+
+  0x0000151b8ce02928: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*invokevirtual putTreeVal {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@331 (line 1055)
+  0x0000151b8ce02928: d48f 5907 | 4883 f800 
+
+  0x0000151b8ce02930: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02930: 48ba 30c3 | 0044 1b15 | 0000 48b9 | e006 0000 | 0000 0000 | 0f85 0a00 | 0000 48b9 | d006 0000 
+  0x0000151b8ce02950: 0000 0000 | 488b 340a | 488d 7601 | 4889 340a | 0f85 1c00 
+
+  0x0000151b8ce02964: ;   {oop(NULL)}
+  0x0000151b8ce02964: 0000 48b8 | 0000 0000 | 0000 0000 | 448b 8424 | 8000 0000 | 488b 4c24 | 78e9 9100 | 0000 448b 
+  0x0000151b8ce02984: 8424 8000 | 0000 8b50 | 1448 c1e2 | 0341 83f8 
+
+  0x0000151b8ce02994: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02994: 0048 b930 | c300 441b | 1500 0048 | be00 0700 | 0000 0000 | 000f 840a | 0000 0048 | bef0 0600 
+  0x0000151b8ce029b4: 0000 0000 | 0048 8b3c | 3148 8d7f | 0148 893c | 310f 840d | 0000 0048 | 8bc2 488b | 4c24 78e9 
+  0x0000151b8ce029d4: 3b00 0000 | 488b 4c24 | 7841 0fbe | 7740 83fe | 000f 85d2 | 0700 004c | 8bd1 49c1 | ea03 4489 
+  0x0000151b8ce029f4: 5014 f083 | 4424 c000 | 488b f048 | 33f1 48c1 | ee18 4883 | fe00 0f85 | cc07 0000 
+
+  0x0000151b8ce02a10: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02a10: 488b c248 | ba30 c300 | 441b 1500 | 00ff 8210 | 0700 0048 | 8bf8 b802 | 0000 00e9 | 4701 0000 
+  0x0000151b8ce02a30: 4d8b c149 | 8bce 4883 | f800 7516 
+
+  0x0000151b8ce02a3c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02a3c: 48bf 30c3 | 0044 1b15 | 0000 808f | 2107 0000 | 01e9 cc00 
+
+  0x0000151b8ce02a50: ;   {metadata('java/util/concurrent/ConcurrentHashMap$ReservationNode')}
+  0x0000151b8ce02a50: 0000 48bb | b046 1800 | 0800 0000 | 8b70 0849 | ba00 0000 | 0008 0000 | 0049 03f2 | 483b de0f 
+  0x0000151b8ce02a70: 858d 0000 
+
+  0x0000151b8ce02a74: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02a74: 0048 bf30 | c300 441b | 1500 008b | 5808 49ba | 0000 0000 | 0800 0000 | 4903 da48 | 3b9f 3807 
+  0x0000151b8ce02a94: 0000 750d | 4883 8740 | 0700 0001 | e97e 0000 | 0048 3b9f | 4807 0000 | 750d 4883 | 8750 0700 
+  0x0000151b8ce02ab4: 0001 e968 | 0000 0048 | 83bf 3807 | 0000 0075 | 1748 899f | 3807 0000 | 48c7 8740 | 0700 0001 
+  0x0000151b8ce02ad4: 0000 00e9 | 4700 0000 | 4883 bf48 | 0700 0000 | 7517 4889 | 9f48 0700 | 0048 c787 | 5007 0000 
+  0x0000151b8ce02af4: 0100 0000 | e926 0000 | 00e9 2100 
+
+  0x0000151b8ce02b00: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02b00: 0000 48bf | 30c3 0044 | 1b15 0000 | 4883 af28 | 0700 0001 | e905 0000 | 00e9 0500 | 0000 4833 
+  0x0000151b8ce02b20: d2eb 0a48 | ba01 0000 | 0000 0000 | 0083 fa00 
+
+  0x0000151b8ce02b30: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02b30: 48ba 30c3 | 0044 1b15 | 0000 48be | 7007 0000 | 0000 0000 | 0f85 0a00 | 0000 48be | 6007 0000 
+  0x0000151b8ce02b50: 0000 0000 | 488b 3c32 | 488d 7f01 | 4889 3c32 | 0f85 5e02 | 0000 8b84 | 2484 0000 
+
+  0x0000151b8ce02b6c: ;   {oop(NULL)}
+  0x0000151b8ce02b6c: 0048 bf00 | 0000 0000 | 0000 0048 | 8bd8 488d | 8424 d000 | 0000 488b | 1048 85d2 | 0f84 0f00 
+  0x0000151b8ce02b8c: 0000 488b | 7008 f048 | 0fb1 160f | 8557 0600 | 0049 ff8f | 7804 0000 
+
+  0x0000151b8ce02ba4: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02ba4: 48ba 30c3 | 0044 1b15 | 0000 ff82 | 9007 0000 
+
+  0x0000151b8ce02bb4: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02bb4: 83fb 0048 | ba30 c300 | 441b 1500 | 0048 beb8 | 0700 0000 | 0000 000f | 850a 0000 | 0048 bea8 
+  0x0000151b8ce02bd4: 0700 0000 | 0000 0048 | 8b04 3248 | 8d40 0148 | 8904 320f | 8567 0000 | 0048 8b84 | 2490 0000 
+  0x0000151b8ce02bf4: 0048 8bf3 
+
+  0x0000151b8ce02bf8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02bf8: 48ba 30c3 | 0044 1b15 | 0000 8bba | f800 0000 | 83c7 0289 | baf8 0000 | 0081 e7fe | 3f00 0083 
+  0x0000151b8ce02c18: ff00 0f84 | ea05 0000 | 4d8b 9780 
+
+  0x0000151b8ce02c24: ; ImmutableOopMap {rcx=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@420 (line 1074)
+                      ;   {poll}
+  0x0000151b8ce02c24: 0300 0041 
+
+  0x0000151b8ce02c28: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02c28: 8502 48ba | 30c3 0044 | 1b15 0000 | ff82 4008 | 0000 488b | d048 8bc6 | 488b da89 | 8424 8400 
+  0x0000151b8ce02c48: 0000 488b | 7c24 68e9 | 14ee ffff | 488b 9424 | 9000 0000 
+
+  0x0000151b8ce02c5c: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02c5c: 83fb 0848 | b930 c300 | 441b 1500 | 0048 bed8 | 0700 0000 | 0000 000f | 8d0a 0000 | 0048 bec8 
+  0x0000151b8ce02c7c: 0700 0000 | 0000 0048 | 8b04 3148 | 8d40 0148 | 8904 310f | 8d0c 0000 | 0089 9c24 | b800 0000 
+  0x0000151b8ce02c9c: e943 0000 | 0048 89bc | 24b0 0000 | 0089 9c24 | b800 0000 | 448b 8c24 | 8c00 0000 | 488b 7424 
+  0x0000151b8ce02cbc: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02cbc: 6848 b930 | c300 441b | 1500 0048 | 8381 e807 | 0000 0149 | 8bc9 488b 
+
+  0x0000151b8ce02cd4: ;   {optimized virtual_call}
+  0x0000151b8ce02cd4: 7424 68e8 
+
+  0x0000151b8ce02cd8: ; ImmutableOopMap {[104]=Oop [176]=Oop }
+                      ;*invokevirtual treeifyBin {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@409 (line 1068)
+  0x0000151b8ce02cd8: 2489 5907 | 488b bc24 | b000 0000 | 4883 ff00 
+
+  0x0000151b8ce02ce8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02ce8: 48b8 30c3 | 0044 1b15 | 0000 48ba | 3008 0000 | 0000 0000 | 0f85 0a00 | 0000 48ba | 2008 0000 
+  0x0000151b8ce02d08: 0000 0000 | 488b 0c10 | 488d 4901 | 4889 0c10 | 0f85 0c00 | 0000 8b84 | 24b8 0000 | 00e9 4900 
+  0x0000151b8ce02d28: 0000 488b | c748 81c4 | f000 0000 
+
+  0x0000151b8ce02d34: ;   {poll_return}
+  0x0000151b8ce02d34: 5d49 3ba7 | 7803 0000 | 0f87 e904 | 0000 c348 | 8bc6 4881 | c4f0 0000 
+
+  0x0000151b8ce02d4c: ;   {poll_return}
+  0x0000151b8ce02d4c: 005d 493b | a778 0300 | 000f 87e6 | 0400 00c3 | 8b84 2484 
+
+  0x0000151b8ce02d60: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02d60: 0000 0048 | ba30 c300 | 441b 1500 | 00ff 82d0 | 0200 0048 | 8b74 2468 
+
+  0x0000151b8ce02d78: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02d78: 488b d648 | b930 c300 | 441b 1500 | 0048 8381 | 5808 0000 | 0148 ba01 | 0000 0000 | 0000 0048 
+  0x0000151b8ce02d98: 8bc8 0f1f 
+
+  0x0000151b8ce02d9c: ;   {optimized virtual_call}
+  0x0000151b8ce02d9c: 4400 00e8 
+
+  0x0000151b8ce02da0: ; ImmutableOopMap {}
+                      ;*invokevirtual addCount {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@427 (line 1075)
+  0x0000151b8ce02da0: 5c88 5907 
+
+  0x0000151b8ce02da4: ;   {oop(NULL)}
+  0x0000151b8ce02da4: 48b8 0000 | 0000 0000 | 0000 4881 | c4f0 0000 
+
+  0x0000151b8ce02db4: ;   {poll_return}
+  0x0000151b8ce02db4: 005d 493b | a778 0300 | 000f 8794 | 0400 00c3 | 0f1f 4000 
+
+  0x0000151b8ce02dc8: ;   {no_reloc}
+  0x0000151b8ce02dc8: e9af 0400 | 0000 0000 | 0000 e9af | 0400 0048 
+
+  0x0000151b8ce02dd8: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02dd8: 8bd0 48be | 30c3 0044 | 1b15 0000 | 4883 8680 | 0700 0001 
+
+  0x0000151b8ce02dec: ;   {oop("Recursive update"{0x00000007ff03a5c0})}
+  0x0000151b8ce02dec: 48ba c0a5 | 03ff 0700 | 0000 488b | f048 8984 | 24c0 0000 | 0066 0f1f 
+
+  0x0000151b8ce02e04: ;   {optimized virtual_call}
+  0x0000151b8ce02e04: 4400 00e8 
+
+  0x0000151b8ce02e08: ; ImmutableOopMap {[152]=Oop [192]=Oop [216]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@374 (line 1063)
+  0x0000151b8ce02e08: f487 5907 | 488b 8424 
+
+  0x0000151b8ce02e10: ; ImmutableOopMap {rax=Oop [152]=Oop [216]=Oop }
+                      ;*athrow {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@377 (line 1063)
+  0x0000151b8ce02e10: c000 0000 
+
+  0x0000151b8ce02e14: ;   {section_word}
+  0x0000151b8ce02e14: 48ba 142e | e08c 1b15 
+
+  0x0000151b8ce02e1c: ;   {runtime_call handle_exception_nofpu Runtime1 stub}
+  0x0000151b8ce02e1c: 0000 e85d | 9e65 0790 | 0f1f 4000 
+
+  0x0000151b8ce02e28: ;   {no_reloc}
+  0x0000151b8ce02e28: e975 0400 | 0000 0000 | 0000 498b | 87f8 0000 | 0048 8d78 | 3049 3bbf | 0801 0000 | 0f87 6204 
+  0x0000151b8ce02e48: 0000 4989 | bff8 0000 | 0048 c700 | 0100 0000 | 488b ca49 | ba00 0000 | 0008 0000 | 0049 2bca 
+  0x0000151b8ce02e68: 8948 0848 | 33c9 8948 | 0c48 33c9 | 4889 4810 | 4889 4818 | 4889 4820 | 4889 4828 
+
+  0x0000151b8ce02e84: ;   {metadata(method data for {method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02e84: 488b f048 | bf30 c300 | 441b 1500 | 0048 8387 | 7801 0000 | 0148 8bf0 | 4889 8424 | c800 0000 
+  0x0000151b8ce02ea4: ;   {optimized virtual_call}
+  0x0000151b8ce02ea4: 6666 90e8 
+
+  0x0000151b8ce02ea8: ; ImmutableOopMap {[200]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@12 (line 1011)
+  0x0000151b8ce02ea8: 5487 5907 | 488b 8424 | c800 0000 | e933 0400 | 0049 8b87 | 2804 0000 | 4d33 d24d | 8997 2804 
+  0x0000151b8ce02ec8: 0000 4d33 | d24d 8997 | 3004 0000 | 488b f048 | 8d84 24d0 | 0000 0048 | 8b38 4885 | ff0f 840f 
+  0x0000151b8ce02ee8: 0000 0048 | 8b58 08f0 | 480f b13b | 0f85 bf03 | 0000 49ff | 8f78 0400 | 0048 8bc6 | e9e3 0300 
+  0x0000151b8ce02f08: ;   {metadata({method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02f08: 0049 ba50 | 9640 0008 | 0000 004c | 8954 2408 | 48c7 0424 | ffff ffff 
+
+  0x0000151b8ce02f20: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce02f20: e8db db65 
+
+  0x0000151b8ce02f24: ; ImmutableOopMap {rsi=Oop rdx=Oop rcx=Oop [104]=Oop [112]=Oop [120]=Oop }
+                      ;*synchronization entry
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@-1 (line 1011)
+  0x0000151b8ce02f24: 07e9 b4e9 
+
+  0x0000151b8ce02f28: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000151b8ce02f28: ffff e851 
+
+  0x0000151b8ce02f2c: ; ImmutableOopMap {rdx=Oop [104]=Oop [112]=Oop [120]=Oop }
+                      ;*invokevirtual hashCode {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@17 (line 1012)
+                      ;   {metadata({method} {0x0000000800409700} 'spread' '(I)I' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce02f2c: 8565 0749 | ba00 9740 | 0008 0000 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000151b8ce02f44: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce02f44: ffff e8b5 
+
+  0x0000151b8ce02f48: ; ImmutableOopMap {[104]=Oop [112]=Oop [120]=Oop }
+                      ;*synchronization entry
+                      ; - java.util.concurrent.ConcurrentHashMap::spread@-1 (line 697)
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@20 (line 1012)
+  0x0000151b8ce02f48: db65 07e9 | e6ea ffff 
+
+  0x0000151b8ce02f50: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000151b8ce02f50: e82b 8565 
+
+  0x0000151b8ce02f54: ; ImmutableOopMap {rdi=Oop rbx=Oop [104]=Oop [112]=Oop [120]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@41 (line 1016)
+  0x0000151b8ce02f54: 0748 8bd2 
+
+  0x0000151b8ce02f58: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x0000151b8ce02f58: e823 8e65 
+
+  0x0000151b8ce02f5c: ; ImmutableOopMap {rbx=Oop r11=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@83 (line 1019)
+  0x0000151b8ce02f5c: 07e9 baec 
+
+  0x0000151b8ce02f60: ;   {metadata({method} {0x0000000800183d38} '<init>' '(ILjava/lang/Object;Ljava/lang/Object;)V' in 'java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce02f60: ffff 49ba | 383d 1800 | 0800 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x0000151b8ce02f78: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce02f78: ffe8 82db 
+
+  0x0000151b8ce02f7c: ; ImmutableOopMap {rbx=Oop r11=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop }
+                      ;*synchronization entry
+                      ; - java.util.concurrent.ConcurrentHashMap$Node::<init>@-1 (line 631)
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@91 (line 1019)
+  0x0000151b8ce02f7c: 6507 e9d6 
+
+  0x0000151b8ce02f80: ;   {metadata({method} {0x00000008004745c8} '<init>' '()V' in 'java/lang/Object')}
+  0x0000151b8ce02f80: ecff ff49 | bac8 4547 | 0008 0000 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000151b8ce02f98: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce02f98: ffff e861 
+
+  0x0000151b8ce02f9c: ; ImmutableOopMap {rbx=Oop r11=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop }
+                      ;*synchronization entry
+                      ; - java.lang.Object::<init>@-1 (line 45)
+                      ; - java.util.concurrent.ConcurrentHashMap$Node::<init>@1 (line 631)
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@91 (line 1019)
+  0x0000151b8ce02f9c: db65 07e9 | f2ec ffff | 8b70 1048 | c1e6 0348 | 83fe 000f | 84f3 ecff | ff48 8934 
+
+  0x0000151b8ce02fb8: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce02fb8: 24e8 42e1 | 6507 e9e5 | ecff ff48 | 83fb 000f | 84fa ecff | ff48 8904 
+
+  0x0000151b8ce02fd0: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce02fd0: 24e8 2ae4 | 6507 e9ec | ecff ff8b | 7014 48c1 | e603 4883 | fe00 0f84 | e9ec ffff | 4889 3424 
+  0x0000151b8ce02ff0: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce02ff0: e80b e165 | 07e9 dbec | ffff 4983 | fb00 0f84 | f6ec ffff | 4889 0424 
+
+  0x0000151b8ce03008: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce03008: e8f3 e365 | 07e9 e8ec 
+
+  0x0000151b8ce03010: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000151b8ce03010: ffff e869 
+
+  0x0000151b8ce03014: ; ImmutableOopMap {rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop }
+                      ;*getfield hash {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@105 (line 1022)
+  0x0000151b8ce03014: 8465 0748 | 897c 2408 | 4889 3424 
+
+  0x0000151b8ce03020: ;   {runtime_call monitorenter_nofpu Runtime1 stub}
+  0x0000151b8ce03020: e85b b465 
+
+  0x0000151b8ce03024: ; ImmutableOopMap {rdi=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*monitorenter {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@187 (line 1031)
+  0x0000151b8ce03024: 07e9 91f0 
+
+  0x0000151b8ce03028: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000151b8ce03028: ffff e851 
+
+  0x0000151b8ce0302c: ; ImmutableOopMap {rax=Oop rdx=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*getfield hash {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@214 (line 1037)
+                      ;   {metadata({method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce0302c: 8465 0749 | ba50 9640 | 0008 0000 | 004c 8954 | 2408 48c7 | 0424 3101 
+
+  0x0000151b8ce03044: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce03044: 0000 e8b5 
+
+  0x0000151b8ce03048: ; ImmutableOopMap {rdx=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@305 (line 1035)
+  0x0000151b8ce03048: da65 07e9 | 80f3 ffff | 418b 7014 | 48c1 e603 | 4883 fe00 | 0f84 11f4 | ffff 4889 
+
+  0x0000151b8ce03064: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce03064: 3424 e895 | e065 07e9 | 03f4 ffff | 4883 f900 | 0f84 1ef4 | ffff 4c89 
+
+  0x0000151b8ce0307c: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce0307c: 0424 e87d | e365 07e9 | 10f4 ffff 
+
+  0x0000151b8ce03088: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x0000151b8ce03088: 488b d2e8 
+
+  0x0000151b8ce0308c: ; ImmutableOopMap {r8=Oop r11=Oop r14=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@285 (line 1047)
+  0x0000151b8ce0308c: f08c 6507 | e99e f4ff 
+
+  0x0000151b8ce03094: ;   {metadata({method} {0x0000000800183d38} '<init>' '(ILjava/lang/Object;Ljava/lang/Object;)V' in 'java/util/concurrent/ConcurrentHashMap$Node')}
+  0x0000151b8ce03094: ff49 ba38 | 3d18 0008 | 0000 004c | 8954 2408 | 48c7 0424 | ffff ffff 
+
+  0x0000151b8ce030ac: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce030ac: e84f da65 
+
+  0x0000151b8ce030b0: ; ImmutableOopMap {r8=Oop r11=Oop r14=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*synchronization entry
+                      ; - java.util.concurrent.ConcurrentHashMap$Node::<init>@-1 (line 631)
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@293 (line 1047)
+  0x0000151b8ce030b0: 07e9 baf4 
+
+  0x0000151b8ce030b4: ;   {metadata({method} {0x00000008004745c8} '<init>' '()V' in 'java/lang/Object')}
+  0x0000151b8ce030b4: ffff 49ba | c845 4700 | 0800 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x0000151b8ce030cc: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce030cc: ffe8 2eda 
+
+  0x0000151b8ce030d0: ; ImmutableOopMap {r8=Oop r11=Oop r14=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*synchronization entry
+                      ; - java.lang.Object::<init>@-1 (line 45)
+                      ; - java.util.concurrent.ConcurrentHashMap$Node::<init>@1 (line 631)
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@293 (line 1047)
+  0x0000151b8ce030d0: 6507 e9d6 | f4ff ff8b | 5010 48c1 | e203 4883 | fa00 0f84 | d7f4 ffff | 4889 1424 
+
+  0x0000151b8ce030ec: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce030ec: e80f e065 | 07e9 c9f4 | ffff 4983 | fb00 0f84 | def4 ffff | 4889 0424 
+
+  0x0000151b8ce03104: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce03104: e8f7 e265 | 07e9 d0f4 | ffff 8b50 | 1448 c1e2 | 0348 83fa | 000f 84cd | f4ff ff48 
+
+  0x0000151b8ce03120: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce03120: 8914 24e8 | d8df 6507 | e9bf f4ff | ff49 83fe | 000f 84da | f4ff ff48 
+
+  0x0000151b8ce03138: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce03138: 8904 24e8 | c0e2 6507 | e9cc f4ff | ff41 8b50 | 1848 c1e2 | 0348 83fa | 000f 84c8 | f4ff ff48 
+  0x0000151b8ce03158: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce03158: 8914 24e8 | a0df 6507 | e9ba f4ff | ff48 83f8 | 000f 84d5 | f4ff ff4c 
+
+  0x0000151b8ce03170: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce03170: 8904 24e8 | 88e2 6507 | e9c7 f4ff 
+
+  0x0000151b8ce0317c: ;   {metadata(NULL)}
+  0x0000151b8ce0317c: ff48 be00 | 0000 0000 | 0000 00b8 | 000f 050a 
+
+  0x0000151b8ce0318c: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000151b8ce0318c: e86f ca65 
+
+  0x0000151b8ce03190: ; ImmutableOopMap {r11=Oop r14=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*instanceof {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@313 (line 1052)
+  0x0000151b8ce03190: 07e9 22f5 
+
+  0x0000151b8ce03194: ;   {metadata(NULL)}
+  0x0000151b8ce03194: ffff 48bf | 0000 0000 | 0000 0000 | b800 0f05 
+
+  0x0000151b8ce031a4: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000151b8ce031a4: 0ae8 56ca 
+
+  0x0000151b8ce031a8: ; ImmutableOopMap {r11=Oop r14=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*checkcast {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@324 (line 1055)
+  0x0000151b8ce031a8: 6507 e969 | f6ff ff48 
+
+  0x0000151b8ce031b0: ;   {runtime_call throw_class_cast_exception Runtime1 stub}
+  0x0000151b8ce031b0: 8904 24e8 
+
+  0x0000151b8ce031b4: ; ImmutableOopMap {r11=Oop r14=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@324 (line 1055)
+  0x0000151b8ce031b4: c8a6 6507 
+
+  0x0000151b8ce031b8: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000151b8ce031b8: e8c3 8265 
+
+  0x0000151b8ce031bc: ; ImmutableOopMap {rax=Oop [104]=Oop [112]=Oop [120]=Oop [144]=Oop [152]=Oop [216]=Oop }
+                      ;*getfield val {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@342 (line 1057)
+  0x0000151b8ce031bc: 078b 7014 | 48c1 e603 | 4883 fe00 | 0f84 1df8 | ffff 4889 
+
+  0x0000151b8ce031d0: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000151b8ce031d0: 3424 e829 | df65 07e9 | 0ff8 ffff | 4883 f900 | 0f84 2af8 | ffff 4889 
+
+  0x0000151b8ce031e8: ;   {runtime_call g1_post_barrier_slow}
+  0x0000151b8ce031e8: 0424 e811 | e265 07e9 | 1cf8 ffff | 488d 8424 | d000 0000 | 4889 0424 
+
+  0x0000151b8ce03200: ;   {runtime_call monitorexit_nofpu Runtime1 stub}
+  0x0000151b8ce03200: e87b b865 | 07e9 9af9 
+
+  0x0000151b8ce03208: ;   {metadata({method} {0x0000000800409650} 'putVal' '(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;' in 'java/util/concurrent/ConcurrentHashMap')}
+  0x0000151b8ce03208: ffff 49ba | 5096 4000 | 0800 0000 | 4c89 5424 | 0848 c704 | 24a4 0100 
+
+  0x0000151b8ce03220: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000151b8ce03220: 00e8 dad8 
+
+  0x0000151b8ce03224: ; ImmutableOopMap {rcx=Oop rax=Oop [104]=Oop [112]=Oop [120]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@420 (line 1074)
+  0x0000151b8ce03224: 6507 e9f5 
+
+  0x0000151b8ce03228: ;   {internal_word}
+  0x0000151b8ce03228: f9ff ff49 | ba35 2de0 | 8c1b 1500 | 004d 8997 | 9003 0000 
+
+  0x0000151b8ce0323c: ;   {runtime_call SafepointBlob}
+  0x0000151b8ce0323c: e93f f059 
+
+  0x0000151b8ce03240: ;   {internal_word}
+  0x0000151b8ce03240: 0749 ba4e | 2de0 8c1b | 1500 004d | 8997 9003 
+
+  0x0000151b8ce03250: ;   {runtime_call SafepointBlob}
+  0x0000151b8ce03250: 0000 e929 
+
+  0x0000151b8ce03254: ;   {internal_word}
+  0x0000151b8ce03254: f059 0749 | bab6 2de0 | 8c1b 1500 | 004d 8997 | 9003 0000 
+
+  0x0000151b8ce03268: ;   {runtime_call SafepointBlob}
+  0x0000151b8ce03268: e913 f059 
+
+  0x0000151b8ce0326c: ;   {metadata(NULL)}
+  0x0000151b8ce0326c: 0748 ba00 | 0000 0000 | 0000 00b8 | 000f 050a 
+
+  0x0000151b8ce0327c: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000151b8ce0327c: e87f c965 
+
+  0x0000151b8ce03280: ; ImmutableOopMap {[152]=Oop [216]=Oop }
+                      ;*new {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@368 (line 1063)
+  0x0000151b8ce03280: 07e9 42fb | ffff 488b 
+
+  0x0000151b8ce03288: ;   {runtime_call new_instance Runtime1 stub}
+  0x0000151b8ce03288: d2e8 f287 
+
+  0x0000151b8ce0328c: ; ImmutableOopMap {[152]=Oop [216]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@368 (line 1063)
+  0x0000151b8ce0328c: 6507 e944 
+
+  0x0000151b8ce03290: ;   {metadata(NULL)}
+  0x0000151b8ce03290: fbff ff48 | ba00 0000 | 0000 0000 | 00b8 000f 
+
+  0x0000151b8ce032a0: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000151b8ce032a0: 050a e859 
+
+  0x0000151b8ce032a4: ; ImmutableOopMap {}
+                      ;*new {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) java.util.concurrent.ConcurrentHashMap::putVal@8 (line 1011)
+  0x0000151b8ce032a4: c965 07e9 | 7cfb ffff 
+
+  0x0000151b8ce032ac: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x0000151b8ce032ac: 488b d2e8 
+
+  0x0000151b8ce032b0: ; ImmutableOopMap {}
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.util.concurrent.ConcurrentHashMap::putVal@8 (line 1011)
+  0x0000151b8ce032b0: cc8a 6507 | e9cb fbff | ff48 8d84 | 24d0 0000 | 0048 8904 
+
+  0x0000151b8ce032c4: ;   {runtime_call monitorexit_nofpu Runtime1 stub}
+  0x0000151b8ce032c4: 24e8 b6b7 | 6507 e932 | fcff ff49 | 8b87 2804 | 0000 49c7 | 8728 0400 | 0000 0000 | 0049 c787 
+  0x0000151b8ce032e4: 3004 0000 | 0000 0000 | 4881 c4f0 | 0000 005d 
+
+  0x0000151b8ce032f4: ;   {runtime_call unwind_exception Runtime1 stub}
+  0x0000151b8ce032f4: e987 7265 | 07f4 f4f4 | f4f4 f4f4 
+[Stub Code]
+  0x0000151b8ce03300: ;   {no_reloc}
+  0x0000151b8ce03300: 0f1f 4400 
+
+  0x0000151b8ce03304: ;   {static_stub}
+  0x0000151b8ce03304: 0048 bb00 | 0000 0000 
+
+  0x0000151b8ce0330c: ;   {runtime_call}
+  0x0000151b8ce0330c: 0000 00e9 | fbff ffff 
+
+  0x0000151b8ce03314: ;   {static_stub}
+  0x0000151b8ce03314: 9048 bb00 | 0000 0000 
+
+  0x0000151b8ce0331c: ;   {runtime_call}
+  0x0000151b8ce0331c: 0000 00e9 | fbff ffff 
+
+  0x0000151b8ce03324: ;   {static_stub}
+  0x0000151b8ce03324: 9048 bb00 | 0000 0000 
+
+  0x0000151b8ce0332c: ;   {runtime_call}
+  0x0000151b8ce0332c: 0000 00e9 | fbff ffff 
+
+  0x0000151b8ce03334: ;   {static_stub}
+  0x0000151b8ce03334: 9048 bb00 | 0000 0000 
+
+  0x0000151b8ce0333c: ;   {runtime_call}
+  0x0000151b8ce0333c: 0000 00e9 | fbff ffff 
+
+  0x0000151b8ce03344: ;   {static_stub}
+  0x0000151b8ce03344: 9048 bb00 | 0000 0000 
+
+  0x0000151b8ce0334c: ;   {runtime_call}
+  0x0000151b8ce0334c: 0000 00e9 | fbff ffff 
+[Exception Handler]
+  0x0000151b8ce03354: ;   {runtime_call handle_exception_from_callee Runtime1 stub}
+  0x0000151b8ce03354: e827 9f65 
+
+  0x0000151b8ce03358: ;   {external_word}
+  0x0000151b8ce03358: 0748 bf90 | d23f aa1b | 1500 0048 
+
+  0x0000151b8ce03364: ;   {runtime_call MacroAssembler::debug64(char*, long, long*)}
+  0x0000151b8ce03364: 83e4 f0e8 | 24b3 201d 
+
+  0x0000151b8ce0336c: ;   {section_word}
+  0x0000151b8ce0336c: f449 ba6d | 33e0 8c1b | 1500 0041 
+
+  0x0000151b8ce03378: ;   {runtime_call DeoptimizationBlob}
+  0x0000151b8ce03378: 52e9 a2e1 
+
+  0x0000151b8ce0337c: ;   {static_stub}
+  0x0000151b8ce0337c: 5907 48bb | 0000 0000 | 0000 0000 
+
+  0x0000151b8ce03388: ;   {runtime_call}
+  0x0000151b8ce03388: e9fb ffff 
+
+  0x0000151b8ce0338c: ;   {static_stub}
+  0x0000151b8ce0338c: ff48 bb00 | 0000 0000 
+
+  0x0000151b8ce03394: ;   {runtime_call}
+  0x0000151b8ce03394: 0000 00e9 | fbff ffff 
+
+  0x0000151b8ce0339c: ;   {static_stub}
+  0x0000151b8ce0339c: 48bb 0000 | 0000 0000 
+
+  0x0000151b8ce033a4: ;   {runtime_call}
+  0x0000151b8ce033a4: 0000 e9fb 
+
+  0x0000151b8ce033a8: ;   {static_stub}
+  0x0000151b8ce033a8: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x0000151b8ce033b4: ;   {runtime_call}
+  0x0000151b8ce033b4: 00e9 fbff 
+
+  0x0000151b8ce033b8: ;   {static_stub}
+  0x0000151b8ce033b8: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x0000151b8ce033c4: ;   {runtime_call}
+  0x0000151b8ce033c4: e9fb ffff 
+
+  0x0000151b8ce033c8: ;   {static_stub}
+  0x0000151b8ce033c8: ff48 bb00 | 0000 0000 
+
+  0x0000151b8ce033d0: ;   {runtime_call}
+  0x0000151b8ce033d0: 0000 00e9 | fbff ffff 
+
+  0x0000151b8ce033d8: ;   {static_stub}
+  0x0000151b8ce033d8: 48bb 0000 | 0000 0000 
+
+  0x0000151b8ce033e0: ;   {runtime_call}
+  0x0000151b8ce033e0: 0000 e9fb | ffff fff4 
+[/MachCode]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000151ba4126df0, length=8, elements={
+0x0000151ba402b470, 0x0000151ba411d1c0, 0x0000151ba411e700, 0x0000151ba41200d0,
+0x0000151ba4121570, 0x0000151ba4122a00, 0x0000151ba4124430, 0x0000151ba41259e0
+}
+
+Java Threads: ( => current thread )
+=>0x0000151ba402b470 JavaThread "main" [_thread_in_Java, id=1152197, stack(0x0000151ba92ab000,0x0000151ba93ab000)]
+  0x0000151ba411d1c0 JavaThread "Reference Handler" daemon [_thread_blocked, id=1152204, stack(0x0000151b5ddfe000,0x0000151b5defe000)]
+  0x0000151ba411e700 JavaThread "Finalizer" daemon [_thread_blocked, id=1152205, stack(0x0000151b5dcfe000,0x0000151b5ddfe000)]
+  0x0000151ba41200d0 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1152206, stack(0x0000151b5dbfe000,0x0000151b5dcfe000)]
+  0x0000151ba4121570 JavaThread "Service Thread" daemon [_thread_blocked, id=1152207, stack(0x0000151b5dafe000,0x0000151b5dbfe000)]
+  0x0000151ba4122a00 JavaThread "Monitor Deflation Thread" daemon [_thread_blocked, id=1152208, stack(0x0000151b5d9fe000,0x0000151b5dafe000)]
+  0x0000151ba4124430 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=1152209, stack(0x0000151b5d8fe000,0x0000151b5d9fe000)]
+  0x0000151ba41259e0 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=1152210, stack(0x0000151b5d7fe000,0x0000151b5d8fe000)]
+
+Other Threads:
+  0x0000151ba410dc40 VMThread "VM Thread" [stack: 0x0000151b5df00000,0x0000151b5e000000] [id=1152203]
+  0x0000151ba405e0f0 WorkerThread "GC Thread#0" [stack: 0x0000151ba8326000,0x0000151ba8426000] [id=1152198]
+  0x0000151ba406e2b0 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000151ba8224000,0x0000151ba8324000] [id=1152199]
+  0x0000151ba406f1e0 WorkerThread "G1 Conc#0" [stack: 0x0000151ba8122000,0x0000151ba8222000] [id=1152200]
+  0x0000151ba40e41d0 ConcurrentGCThread "G1 Refine#0" [stack: 0x0000151b641ff000,0x0000151b642ff000] [id=1152201]
+  0x0000151ba40e5120 ConcurrentGCThread "G1 Service" [stack: 0x0000151b640fd000,0x0000151b641fd000] [id=1152202]
+
+Threads with active compile tasks:
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x00000000a0000000, size: 30208 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000800000000-0x0000000800c75000-0x0000000800c75000), size 13062144, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Compressed class space mapped at: 0x0000000801000000-0x0000000841000000, reserved size: 1073741824
+Narrow klass base: 0x0000000800000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 3 size 8 Array Of Cards #cards 128 size 272 Howl #buckets 8 coarsen threshold 29491 Howl Bitmap #cards 4096 size 528 coarsen threshold 3686 Card regions per heap region 1 cards per card region 32768
+ CPUs: 28 total, 2 available
+ Memory: 251G
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (Zero based)
+ Heap Region Size: 16M
+ Heap Min Capacity: 16M
+ Heap Initial Capacity: 2G
+ Heap Max Capacity: 30208M
+ Pre-touch: Disabled
+ Parallel Workers: 2
+ Concurrent Workers: 1
+ Concurrent Refinement Workers: 2
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 2129920K, used 16364K [0x00000000a0000000, 0x0000000800000000)
+  region size 16384K, 1 young (16384K), 0 survivors (0K)
+ Metaspace       used 77K, committed 192K, reserved 1114112K
+  class space    used 2K, committed 64K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start, PB=parsable bottom
+|   0|0x00000000a0000000, 0x00000000a0000000, 0x00000000a1000000|  0%| F|  |TAMS 0x00000000a0000000| PB 0x00000000a0000000| Untracked 
+|   1|0x00000000a1000000, 0x00000000a1000000, 0x00000000a2000000|  0%| F|  |TAMS 0x00000000a1000000| PB 0x00000000a1000000| Untracked 
+|   2|0x00000000a2000000, 0x00000000a2000000, 0x00000000a3000000|  0%| F|  |TAMS 0x00000000a2000000| PB 0x00000000a2000000| Untracked 
+|   3|0x00000000a3000000, 0x00000000a3000000, 0x00000000a4000000|  0%| F|  |TAMS 0x00000000a3000000| PB 0x00000000a3000000| Untracked 
+|   4|0x00000000a4000000, 0x00000000a4000000, 0x00000000a5000000|  0%| F|  |TAMS 0x00000000a4000000| PB 0x00000000a4000000| Untracked 
+|   5|0x00000000a5000000, 0x00000000a5000000, 0x00000000a6000000|  0%| F|  |TAMS 0x00000000a5000000| PB 0x00000000a5000000| Untracked 
+|   6|0x00000000a6000000, 0x00000000a6000000, 0x00000000a7000000|  0%| F|  |TAMS 0x00000000a6000000| PB 0x00000000a6000000| Untracked 
+|   7|0x00000000a7000000, 0x00000000a7000000, 0x00000000a8000000|  0%| F|  |TAMS 0x00000000a7000000| PB 0x00000000a7000000| Untracked 
+|   8|0x00000000a8000000, 0x00000000a8000000, 0x00000000a9000000|  0%| F|  |TAMS 0x00000000a8000000| PB 0x00000000a8000000| Untracked 
+|   9|0x00000000a9000000, 0x00000000a9000000, 0x00000000aa000000|  0%| F|  |TAMS 0x00000000a9000000| PB 0x00000000a9000000| Untracked 
+|  10|0x00000000aa000000, 0x00000000aa000000, 0x00000000ab000000|  0%| F|  |TAMS 0x00000000aa000000| PB 0x00000000aa000000| Untracked 
+|  11|0x00000000ab000000, 0x00000000ab000000, 0x00000000ac000000|  0%| F|  |TAMS 0x00000000ab000000| PB 0x00000000ab000000| Untracked 
+|  12|0x00000000ac000000, 0x00000000ac000000, 0x00000000ad000000|  0%| F|  |TAMS 0x00000000ac000000| PB 0x00000000ac000000| Untracked 
+|  13|0x00000000ad000000, 0x00000000ad000000, 0x00000000ae000000|  0%| F|  |TAMS 0x00000000ad000000| PB 0x00000000ad000000| Untracked 
+|  14|0x00000000ae000000, 0x00000000ae000000, 0x00000000af000000|  0%| F|  |TAMS 0x00000000ae000000| PB 0x00000000ae000000| Untracked 
+|  15|0x00000000af000000, 0x00000000af000000, 0x00000000b0000000|  0%| F|  |TAMS 0x00000000af000000| PB 0x00000000af000000| Untracked 
+|  16|0x00000000b0000000, 0x00000000b0000000, 0x00000000b1000000|  0%| F|  |TAMS 0x00000000b0000000| PB 0x00000000b0000000| Untracked 
+|  17|0x00000000b1000000, 0x00000000b1000000, 0x00000000b2000000|  0%| F|  |TAMS 0x00000000b1000000| PB 0x00000000b1000000| Untracked 
+|  18|0x00000000b2000000, 0x00000000b2000000, 0x00000000b3000000|  0%| F|  |TAMS 0x00000000b2000000| PB 0x00000000b2000000| Untracked 
+|  19|0x00000000b3000000, 0x00000000b3000000, 0x00000000b4000000|  0%| F|  |TAMS 0x00000000b3000000| PB 0x00000000b3000000| Untracked 
+|  20|0x00000000b4000000, 0x00000000b4000000, 0x00000000b5000000|  0%| F|  |TAMS 0x00000000b4000000| PB 0x00000000b4000000| Untracked 
+|  21|0x00000000b5000000, 0x00000000b5000000, 0x00000000b6000000|  0%| F|  |TAMS 0x00000000b5000000| PB 0x00000000b5000000| Untracked 
+|  22|0x00000000b6000000, 0x00000000b6000000, 0x00000000b7000000|  0%| F|  |TAMS 0x00000000b6000000| PB 0x00000000b6000000| Untracked 
+|  23|0x00000000b7000000, 0x00000000b7000000, 0x00000000b8000000|  0%| F|  |TAMS 0x00000000b7000000| PB 0x00000000b7000000| Untracked 
+|  24|0x00000000b8000000, 0x00000000b8000000, 0x00000000b9000000|  0%| F|  |TAMS 0x00000000b8000000| PB 0x00000000b8000000| Untracked 
+|  25|0x00000000b9000000, 0x00000000b9000000, 0x00000000ba000000|  0%| F|  |TAMS 0x00000000b9000000| PB 0x00000000b9000000| Untracked 
+|  26|0x00000000ba000000, 0x00000000ba000000, 0x00000000bb000000|  0%| F|  |TAMS 0x00000000ba000000| PB 0x00000000ba000000| Untracked 
+|  27|0x00000000bb000000, 0x00000000bb000000, 0x00000000bc000000|  0%| F|  |TAMS 0x00000000bb000000| PB 0x00000000bb000000| Untracked 
+|  28|0x00000000bc000000, 0x00000000bc000000, 0x00000000bd000000|  0%| F|  |TAMS 0x00000000bc000000| PB 0x00000000bc000000| Untracked 
+|  29|0x00000000bd000000, 0x00000000bd000000, 0x00000000be000000|  0%| F|  |TAMS 0x00000000bd000000| PB 0x00000000bd000000| Untracked 
+|  30|0x00000000be000000, 0x00000000be000000, 0x00000000bf000000|  0%| F|  |TAMS 0x00000000be000000| PB 0x00000000be000000| Untracked 
+|  31|0x00000000bf000000, 0x00000000bf000000, 0x00000000c0000000|  0%| F|  |TAMS 0x00000000bf000000| PB 0x00000000bf000000| Untracked 
+|  32|0x00000000c0000000, 0x00000000c0000000, 0x00000000c1000000|  0%| F|  |TAMS 0x00000000c0000000| PB 0x00000000c0000000| Untracked 
+|  33|0x00000000c1000000, 0x00000000c1000000, 0x00000000c2000000|  0%| F|  |TAMS 0x00000000c1000000| PB 0x00000000c1000000| Untracked 
+|  34|0x00000000c2000000, 0x00000000c2000000, 0x00000000c3000000|  0%| F|  |TAMS 0x00000000c2000000| PB 0x00000000c2000000| Untracked 
+|  35|0x00000000c3000000, 0x00000000c3000000, 0x00000000c4000000|  0%| F|  |TAMS 0x00000000c3000000| PB 0x00000000c3000000| Untracked 
+|  36|0x00000000c4000000, 0x00000000c4000000, 0x00000000c5000000|  0%| F|  |TAMS 0x00000000c4000000| PB 0x00000000c4000000| Untracked 
+|  37|0x00000000c5000000, 0x00000000c5000000, 0x00000000c6000000|  0%| F|  |TAMS 0x00000000c5000000| PB 0x00000000c5000000| Untracked 
+|  38|0x00000000c6000000, 0x00000000c6000000, 0x00000000c7000000|  0%| F|  |TAMS 0x00000000c6000000| PB 0x00000000c6000000| Untracked 
+|  39|0x00000000c7000000, 0x00000000c7000000, 0x00000000c8000000|  0%| F|  |TAMS 0x00000000c7000000| PB 0x00000000c7000000| Untracked 
+|  40|0x00000000c8000000, 0x00000000c8000000, 0x00000000c9000000|  0%| F|  |TAMS 0x00000000c8000000| PB 0x00000000c8000000| Untracked 
+|  41|0x00000000c9000000, 0x00000000c9000000, 0x00000000ca000000|  0%| F|  |TAMS 0x00000000c9000000| PB 0x00000000c9000000| Untracked 
+|  42|0x00000000ca000000, 0x00000000ca000000, 0x00000000cb000000|  0%| F|  |TAMS 0x00000000ca000000| PB 0x00000000ca000000| Untracked 
+|  43|0x00000000cb000000, 0x00000000cb000000, 0x00000000cc000000|  0%| F|  |TAMS 0x00000000cb000000| PB 0x00000000cb000000| Untracked 
+|  44|0x00000000cc000000, 0x00000000cc000000, 0x00000000cd000000|  0%| F|  |TAMS 0x00000000cc000000| PB 0x00000000cc000000| Untracked 
+|  45|0x00000000cd000000, 0x00000000cd000000, 0x00000000ce000000|  0%| F|  |TAMS 0x00000000cd000000| PB 0x00000000cd000000| Untracked 
+|  46|0x00000000ce000000, 0x00000000ce000000, 0x00000000cf000000|  0%| F|  |TAMS 0x00000000ce000000| PB 0x00000000ce000000| Untracked 
+|  47|0x00000000cf000000, 0x00000000cf000000, 0x00000000d0000000|  0%| F|  |TAMS 0x00000000cf000000| PB 0x00000000cf000000| Untracked 
+|  48|0x00000000d0000000, 0x00000000d0000000, 0x00000000d1000000|  0%| F|  |TAMS 0x00000000d0000000| PB 0x00000000d0000000| Untracked 
+|  49|0x00000000d1000000, 0x00000000d1000000, 0x00000000d2000000|  0%| F|  |TAMS 0x00000000d1000000| PB 0x00000000d1000000| Untracked 
+|  50|0x00000000d2000000, 0x00000000d2000000, 0x00000000d3000000|  0%| F|  |TAMS 0x00000000d2000000| PB 0x00000000d2000000| Untracked 
+|  51|0x00000000d3000000, 0x00000000d3000000, 0x00000000d4000000|  0%| F|  |TAMS 0x00000000d3000000| PB 0x00000000d3000000| Untracked 
+|  52|0x00000000d4000000, 0x00000000d4000000, 0x00000000d5000000|  0%| F|  |TAMS 0x00000000d4000000| PB 0x00000000d4000000| Untracked 
+|  53|0x00000000d5000000, 0x00000000d5000000, 0x00000000d6000000|  0%| F|  |TAMS 0x00000000d5000000| PB 0x00000000d5000000| Untracked 
+|  54|0x00000000d6000000, 0x00000000d6000000, 0x00000000d7000000|  0%| F|  |TAMS 0x00000000d6000000| PB 0x00000000d6000000| Untracked 
+|  55|0x00000000d7000000, 0x00000000d7000000, 0x00000000d8000000|  0%| F|  |TAMS 0x00000000d7000000| PB 0x00000000d7000000| Untracked 
+|  56|0x00000000d8000000, 0x00000000d8000000, 0x00000000d9000000|  0%| F|  |TAMS 0x00000000d8000000| PB 0x00000000d8000000| Untracked 
+|  57|0x00000000d9000000, 0x00000000d9000000, 0x00000000da000000|  0%| F|  |TAMS 0x00000000d9000000| PB 0x00000000d9000000| Untracked 
+|  58|0x00000000da000000, 0x00000000da000000, 0x00000000db000000|  0%| F|  |TAMS 0x00000000da000000| PB 0x00000000da000000| Untracked 
+|  59|0x00000000db000000, 0x00000000db000000, 0x00000000dc000000|  0%| F|  |TAMS 0x00000000db000000| PB 0x00000000db000000| Untracked 
+|  60|0x00000000dc000000, 0x00000000dc000000, 0x00000000dd000000|  0%| F|  |TAMS 0x00000000dc000000| PB 0x00000000dc000000| Untracked 
+|  61|0x00000000dd000000, 0x00000000dd000000, 0x00000000de000000|  0%| F|  |TAMS 0x00000000dd000000| PB 0x00000000dd000000| Untracked 
+|  62|0x00000000de000000, 0x00000000de000000, 0x00000000df000000|  0%| F|  |TAMS 0x00000000de000000| PB 0x00000000de000000| Untracked 
+|  63|0x00000000df000000, 0x00000000df000000, 0x00000000e0000000|  0%| F|  |TAMS 0x00000000df000000| PB 0x00000000df000000| Untracked 
+|  64|0x00000000e0000000, 0x00000000e0000000, 0x00000000e1000000|  0%| F|  |TAMS 0x00000000e0000000| PB 0x00000000e0000000| Untracked 
+|  65|0x00000000e1000000, 0x00000000e1000000, 0x00000000e2000000|  0%| F|  |TAMS 0x00000000e1000000| PB 0x00000000e1000000| Untracked 
+|  66|0x00000000e2000000, 0x00000000e2000000, 0x00000000e3000000|  0%| F|  |TAMS 0x00000000e2000000| PB 0x00000000e2000000| Untracked 
+|  67|0x00000000e3000000, 0x00000000e3000000, 0x00000000e4000000|  0%| F|  |TAMS 0x00000000e3000000| PB 0x00000000e3000000| Untracked 
+|  68|0x00000000e4000000, 0x00000000e4000000, 0x00000000e5000000|  0%| F|  |TAMS 0x00000000e4000000| PB 0x00000000e4000000| Untracked 
+|  69|0x00000000e5000000, 0x00000000e5000000, 0x00000000e6000000|  0%| F|  |TAMS 0x00000000e5000000| PB 0x00000000e5000000| Untracked 
+|  70|0x00000000e6000000, 0x00000000e6000000, 0x00000000e7000000|  0%| F|  |TAMS 0x00000000e6000000| PB 0x00000000e6000000| Untracked 
+|  71|0x00000000e7000000, 0x00000000e7000000, 0x00000000e8000000|  0%| F|  |TAMS 0x00000000e7000000| PB 0x00000000e7000000| Untracked 
+|  72|0x00000000e8000000, 0x00000000e8000000, 0x00000000e9000000|  0%| F|  |TAMS 0x00000000e8000000| PB 0x00000000e8000000| Untracked 
+|  73|0x00000000e9000000, 0x00000000e9000000, 0x00000000ea000000|  0%| F|  |TAMS 0x00000000e9000000| PB 0x00000000e9000000| Untracked 
+|  74|0x00000000ea000000, 0x00000000ea000000, 0x00000000eb000000|  0%| F|  |TAMS 0x00000000ea000000| PB 0x00000000ea000000| Untracked 
+|  75|0x00000000eb000000, 0x00000000eb000000, 0x00000000ec000000|  0%| F|  |TAMS 0x00000000eb000000| PB 0x00000000eb000000| Untracked 
+|  76|0x00000000ec000000, 0x00000000ec000000, 0x00000000ed000000|  0%| F|  |TAMS 0x00000000ec000000| PB 0x00000000ec000000| Untracked 
+|  77|0x00000000ed000000, 0x00000000ed000000, 0x00000000ee000000|  0%| F|  |TAMS 0x00000000ed000000| PB 0x00000000ed000000| Untracked 
+|  78|0x00000000ee000000, 0x00000000ee000000, 0x00000000ef000000|  0%| F|  |TAMS 0x00000000ee000000| PB 0x00000000ee000000| Untracked 
+|  79|0x00000000ef000000, 0x00000000ef000000, 0x00000000f0000000|  0%| F|  |TAMS 0x00000000ef000000| PB 0x00000000ef000000| Untracked 
+|  80|0x00000000f0000000, 0x00000000f0000000, 0x00000000f1000000|  0%| F|  |TAMS 0x00000000f0000000| PB 0x00000000f0000000| Untracked 
+|  81|0x00000000f1000000, 0x00000000f1000000, 0x00000000f2000000|  0%| F|  |TAMS 0x00000000f1000000| PB 0x00000000f1000000| Untracked 
+|  82|0x00000000f2000000, 0x00000000f2000000, 0x00000000f3000000|  0%| F|  |TAMS 0x00000000f2000000| PB 0x00000000f2000000| Untracked 
+|  83|0x00000000f3000000, 0x00000000f3000000, 0x00000000f4000000|  0%| F|  |TAMS 0x00000000f3000000| PB 0x00000000f3000000| Untracked 
+|  84|0x00000000f4000000, 0x00000000f4000000, 0x00000000f5000000|  0%| F|  |TAMS 0x00000000f4000000| PB 0x00000000f4000000| Untracked 
+|  85|0x00000000f5000000, 0x00000000f5000000, 0x00000000f6000000|  0%| F|  |TAMS 0x00000000f5000000| PB 0x00000000f5000000| Untracked 
+|  86|0x00000000f6000000, 0x00000000f6000000, 0x00000000f7000000|  0%| F|  |TAMS 0x00000000f6000000| PB 0x00000000f6000000| Untracked 
+|  87|0x00000000f7000000, 0x00000000f7000000, 0x00000000f8000000|  0%| F|  |TAMS 0x00000000f7000000| PB 0x00000000f7000000| Untracked 
+|  88|0x00000000f8000000, 0x00000000f8000000, 0x00000000f9000000|  0%| F|  |TAMS 0x00000000f8000000| PB 0x00000000f8000000| Untracked 
+|  89|0x00000000f9000000, 0x00000000f9000000, 0x00000000fa000000|  0%| F|  |TAMS 0x00000000f9000000| PB 0x00000000f9000000| Untracked 
+|  90|0x00000000fa000000, 0x00000000fa000000, 0x00000000fb000000|  0%| F|  |TAMS 0x00000000fa000000| PB 0x00000000fa000000| Untracked 
+|  91|0x00000000fb000000, 0x00000000fb000000, 0x00000000fc000000|  0%| F|  |TAMS 0x00000000fb000000| PB 0x00000000fb000000| Untracked 
+|  92|0x00000000fc000000, 0x00000000fc000000, 0x00000000fd000000|  0%| F|  |TAMS 0x00000000fc000000| PB 0x00000000fc000000| Untracked 
+|  93|0x00000000fd000000, 0x00000000fd000000, 0x00000000fe000000|  0%| F|  |TAMS 0x00000000fd000000| PB 0x00000000fd000000| Untracked 
+|  94|0x00000000fe000000, 0x00000000fe000000, 0x00000000ff000000|  0%| F|  |TAMS 0x00000000fe000000| PB 0x00000000fe000000| Untracked 
+|  95|0x00000000ff000000, 0x00000000ff000000, 0x0000000100000000|  0%| F|  |TAMS 0x00000000ff000000| PB 0x00000000ff000000| Untracked 
+|  96|0x0000000100000000, 0x0000000100000000, 0x0000000101000000|  0%| F|  |TAMS 0x0000000100000000| PB 0x0000000100000000| Untracked 
+|  97|0x0000000101000000, 0x0000000101000000, 0x0000000102000000|  0%| F|  |TAMS 0x0000000101000000| PB 0x0000000101000000| Untracked 
+|  98|0x0000000102000000, 0x0000000102000000, 0x0000000103000000|  0%| F|  |TAMS 0x0000000102000000| PB 0x0000000102000000| Untracked 
+|  99|0x0000000103000000, 0x0000000103000000, 0x0000000104000000|  0%| F|  |TAMS 0x0000000103000000| PB 0x0000000103000000| Untracked 
+| 100|0x0000000104000000, 0x0000000104000000, 0x0000000105000000|  0%| F|  |TAMS 0x0000000104000000| PB 0x0000000104000000| Untracked 
+| 101|0x0000000105000000, 0x0000000105000000, 0x0000000106000000|  0%| F|  |TAMS 0x0000000105000000| PB 0x0000000105000000| Untracked 
+| 102|0x0000000106000000, 0x0000000106000000, 0x0000000107000000|  0%| F|  |TAMS 0x0000000106000000| PB 0x0000000106000000| Untracked 
+| 103|0x0000000107000000, 0x0000000107000000, 0x0000000108000000|  0%| F|  |TAMS 0x0000000107000000| PB 0x0000000107000000| Untracked 
+| 104|0x0000000108000000, 0x0000000108000000, 0x0000000109000000|  0%| F|  |TAMS 0x0000000108000000| PB 0x0000000108000000| Untracked 
+| 105|0x0000000109000000, 0x0000000109000000, 0x000000010a000000|  0%| F|  |TAMS 0x0000000109000000| PB 0x0000000109000000| Untracked 
+| 106|0x000000010a000000, 0x000000010a000000, 0x000000010b000000|  0%| F|  |TAMS 0x000000010a000000| PB 0x000000010a000000| Untracked 
+| 107|0x000000010b000000, 0x000000010b000000, 0x000000010c000000|  0%| F|  |TAMS 0x000000010b000000| PB 0x000000010b000000| Untracked 
+| 108|0x000000010c000000, 0x000000010c000000, 0x000000010d000000|  0%| F|  |TAMS 0x000000010c000000| PB 0x000000010c000000| Untracked 
+| 109|0x000000010d000000, 0x000000010d000000, 0x000000010e000000|  0%| F|  |TAMS 0x000000010d000000| PB 0x000000010d000000| Untracked 
+| 110|0x000000010e000000, 0x000000010e000000, 0x000000010f000000|  0%| F|  |TAMS 0x000000010e000000| PB 0x000000010e000000| Untracked 
+| 111|0x000000010f000000, 0x000000010f000000, 0x0000000110000000|  0%| F|  |TAMS 0x000000010f000000| PB 0x000000010f000000| Untracked 
+| 112|0x0000000110000000, 0x0000000110000000, 0x0000000111000000|  0%| F|  |TAMS 0x0000000110000000| PB 0x0000000110000000| Untracked 
+| 113|0x0000000111000000, 0x0000000111000000, 0x0000000112000000|  0%| F|  |TAMS 0x0000000111000000| PB 0x0000000111000000| Untracked 
+| 114|0x0000000112000000, 0x0000000112000000, 0x0000000113000000|  0%| F|  |TAMS 0x0000000112000000| PB 0x0000000112000000| Untracked 
+| 115|0x0000000113000000, 0x0000000113000000, 0x0000000114000000|  0%| F|  |TAMS 0x0000000113000000| PB 0x0000000113000000| Untracked 
+| 116|0x0000000114000000, 0x0000000114000000, 0x0000000115000000|  0%| F|  |TAMS 0x0000000114000000| PB 0x0000000114000000| Untracked 
+| 117|0x0000000115000000, 0x0000000115000000, 0x0000000116000000|  0%| F|  |TAMS 0x0000000115000000| PB 0x0000000115000000| Untracked 
+| 118|0x0000000116000000, 0x0000000116000000, 0x0000000117000000|  0%| F|  |TAMS 0x0000000116000000| PB 0x0000000116000000| Untracked 
+| 119|0x0000000117000000, 0x0000000117000000, 0x0000000118000000|  0%| F|  |TAMS 0x0000000117000000| PB 0x0000000117000000| Untracked 
+| 120|0x0000000118000000, 0x0000000118000000, 0x0000000119000000|  0%| F|  |TAMS 0x0000000118000000| PB 0x0000000118000000| Untracked 
+| 121|0x0000000119000000, 0x0000000119000000, 0x000000011a000000|  0%| F|  |TAMS 0x0000000119000000| PB 0x0000000119000000| Untracked 
+| 122|0x000000011a000000, 0x000000011a000000, 0x000000011b000000|  0%| F|  |TAMS 0x000000011a000000| PB 0x000000011a000000| Untracked 
+| 123|0x000000011b000000, 0x000000011b000000, 0x000000011c000000|  0%| F|  |TAMS 0x000000011b000000| PB 0x000000011b000000| Untracked 
+| 124|0x000000011c000000, 0x000000011c000000, 0x000000011d000000|  0%| F|  |TAMS 0x000000011c000000| PB 0x000000011c000000| Untracked 
+| 125|0x000000011d000000, 0x000000011d000000, 0x000000011e000000|  0%| F|  |TAMS 0x000000011d000000| PB 0x000000011d000000| Untracked 
+| 126|0x000000011e000000, 0x000000011e000000, 0x000000011f000000|  0%| F|  |TAMS 0x000000011e000000| PB 0x000000011e000000| Untracked 
+| 127|0x000000011f000000, 0x000000011f5c2998, 0x0000000120000000| 36%| E|  |TAMS 0x000000011f000000| PB 0x000000011f000000| Complete 
+|1886|0x00000007fe000000, 0x00000007fef79000, 0x00000007ff000000| 96%|OA|  |TAMS 0x00000007fe000000| PB 0x00000007fe000000| Untracked 
+|1887|0x00000007ff000000, 0x00000007ff082000, 0x0000000800000000|  3%|CA|  |TAMS 0x00000007ff000000| PB 0x00000007ff000000| Untracked 
+
+Card table byte_map: [0x0000151b85800000,0x0000151b89300000] _byte_map_base: 0x0000151b85300000
+
+Marking Bits: (CMBitMap*) 0x0000151ba405eb90
+ Bits: [0x0000151b64400000, 0x0000151b81c00000)
+
+Polling page: 0x0000151baaab7000
+
+Metaspace:
+
+Usage:
+  Non-class:     75.62 KB used.
+      Class:      2.02 KB used.
+       Both:     77.64 KB used.
+
+Virtual space:
+  Non-class space:       64.00 MB reserved,     128.00 KB ( <1%) committed,  1 nodes.
+      Class space:        1.00 GB reserved,      64.00 KB ( <1%) committed,  1 nodes.
+             Both:        1.06 GB reserved,     192.00 KB ( <1%) committed. 
+
+Chunk freelists:
+   Non-Class:  0 bytes
+       Class:  3.75 MB
+        Both:  3.75 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 21.00 MB
+CDS: on
+MetaspaceReclaimPolicy: balanced
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - new_chunks_are_fully_committed: 0.
+ - uncommit_free_chunks: 1.
+ - use_allocation_guard: 0.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 0.
+num_arena_births: 2.
+num_arena_deaths: 0.
+num_vsnodes_births: 2.
+num_vsnodes_deaths: 0.
+num_space_committed: 3.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 0.
+num_chunks_taken_from_freelist: 3.
+num_chunk_merges: 0.
+num_chunk_splits: 1.
+num_chunks_enlarged: 0.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120036Kb used=8Kb max_used=8Kb free=120028Kb
+ bounds [0x0000151b948c7000, 0x0000151b94b37000, 0x0000151b9be00000]
+CodeHeap 'profiled nmethods': size=120032Kb used=36Kb max_used=36Kb free=119995Kb
+ bounds [0x0000151b8ce00000, 0x0000151b8d070000, 0x0000151b94338000]
+CodeHeap 'non-nmethods': size=5692Kb used=1200Kb max_used=1213Kb free=4492Kb
+ bounds [0x0000151b94338000, 0x0000151b945a8000, 0x0000151b948c7000]
+ total_blobs=312 nmethods=28 adapters=197
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (19 events):
+Event: 0.040 Thread 0x0000151ba41259e0    1       3       java.lang.String::hashCode (60 bytes)
+Event: 0.041 Thread 0x0000151ba41259e0 nmethod 1 0x0000151b8ce00010 code [0x0000151b8ce001c0, 0x0000151b8ce00520]
+Event: 0.042 Thread 0x0000151ba41259e0    2       3       java.lang.Object::<init> (1 bytes)
+Event: 0.042 Thread 0x0000151ba41259e0 nmethod 2 0x0000151b8ce00610 code [0x0000151b8ce007a0, 0x0000151b8ce008a8]
+Event: 0.044 Thread 0x0000151ba41259e0    3       3       java.util.concurrent.ConcurrentHashMap::tabAt (22 bytes)
+Event: 0.044 Thread 0x0000151ba41259e0 nmethod 3 0x0000151b8ce00910 code [0x0000151b8ce00aa0, 0x0000151b8ce00d88]
+Event: 0.045 Thread 0x0000151ba41259e0    4       3       jdk.internal.misc.Unsafe::getReferenceAcquire (7 bytes)
+Event: 0.045 Thread 0x0000151ba41259e0 nmethod 4 0x0000151b8ce00e90 code [0x0000151b8ce01020, 0x0000151b8ce01188]
+Event: 0.045 Thread 0x0000151ba41259e0    5       3       java.util.concurrent.ConcurrentHashMap::spread (10 bytes)
+Event: 0.045 Thread 0x0000151ba41259e0 nmethod 5 0x0000151b8ce01210 code [0x0000151b8ce013a0, 0x0000151b8ce01490]
+Event: 0.045 Thread 0x0000151ba41259e0    6   !   3       java.util.concurrent.ConcurrentHashMap::putVal (432 bytes)
+Event: 0.049 Thread 0x0000151ba41259e0 nmethod 6 0x0000151b8ce01510 code [0x0000151b8ce01860, 0x0000151b8ce033e8]
+Event: 0.049 Thread 0x0000151ba41259e0   10       3       java.util.ImmutableCollections$SetN$SetNIterator::next (90 bytes)
+Event: 0.049 Thread 0x0000151ba41259e0 nmethod 10 0x0000151b8ce03d90 code [0x0000151b8ce03f40, 0x0000151b8ce04250]
+Event: 0.049 Thread 0x0000151ba41259e0    7       3       java.util.concurrent.ConcurrentHashMap$Node::<init> (20 bytes)
+Event: 0.049 Thread 0x0000151ba41259e0 nmethod 7 0x0000151b8ce04390 code [0x0000151b8ce04520, 0x0000151b8ce04758]
+Event: 0.050 Thread 0x0000151ba41259e0   12       3       java.util.concurrent.ConcurrentHashMap::addCount (280 bytes)
+Event: 0.052 Thread 0x0000151ba41259e0 nmethod 12 0x0000151b8ce04810 code [0x0000151b8ce04a40, 0x0000151b8ce053a0]
+Event: 0.052 Thread 0x0000151ba41259e0   22       3       java.util.HashMap::putVal (300 bytes)
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (2 events):
+Event: 0.004 Loaded shared library /opt/apps/oracle-java/20.0.1/lib/libjava.so
+Event: 0.025 Loaded shared library /opt/apps/oracle-java/20.0.1/lib/libjsvml.so
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (2 events):
+Event: 0.034 Loading class sun/nio/cs/UTF_8$Encoder
+Event: 0.034 Loading class sun/nio/cs/UTF_8$Encoder done
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (16 events):
+Event: 0.003 Protecting memory [0x0000151ba92ab000,0x0000151ba92af000] with protection modes 0
+Event: 0.025 Thread 0x0000151ba402b470 Thread added: 0x0000151ba402b470
+Event: 0.036 Thread 0x0000151ba411d1c0 Thread added: 0x0000151ba411d1c0
+Event: 0.036 Protecting memory [0x0000151b5ddfe000,0x0000151b5de02000] with protection modes 0
+Event: 0.036 Thread 0x0000151ba411e700 Thread added: 0x0000151ba411e700
+Event: 0.037 Protecting memory [0x0000151b5dcfe000,0x0000151b5dd02000] with protection modes 0
+Event: 0.037 Thread 0x0000151ba41200d0 Thread added: 0x0000151ba41200d0
+Event: 0.037 Protecting memory [0x0000151b5dbfe000,0x0000151b5dc02000] with protection modes 0
+Event: 0.037 Thread 0x0000151ba4121570 Thread added: 0x0000151ba4121570
+Event: 0.037 Protecting memory [0x0000151b5dafe000,0x0000151b5db02000] with protection modes 0
+Event: 0.037 Thread 0x0000151ba4122a00 Thread added: 0x0000151ba4122a00
+Event: 0.037 Protecting memory [0x0000151b5d9fe000,0x0000151b5da02000] with protection modes 0
+Event: 0.037 Thread 0x0000151ba4124430 Thread added: 0x0000151ba4124430
+Event: 0.037 Protecting memory [0x0000151b5d8fe000,0x0000151b5d902000] with protection modes 0
+Event: 0.038 Thread 0x0000151ba41259e0 Thread added: 0x0000151ba41259e0
+Event: 0.039 Protecting memory [0x0000151b5d7fe000,0x0000151b5d802000] with protection modes 0
+
+
+Dynamic libraries:
+a0000000-120000000 rw-p 00000000 00:00 0 
+120000000-7fe000000 ---p 00000000 00:00 0 
+7fe000000-7fef00000 rw-p 00000000 00:00 0 
+7fef00000-7fef79000 rw-p 00d34000 00:32 2690282609                       /opt/apps/oracle-java/20.0.1/lib/server/classes.jsa
+7fef79000-7ff000000 rw-p 00000000 00:00 0 
+7ff000000-7ff082000 rw-p 00cb2000 00:32 2690282609                       /opt/apps/oracle-java/20.0.1/lib/server/classes.jsa
+7ff082000-800000000 rw-p 00000000 00:00 0 
+800000000-800481000 rw-p 00001000 00:32 2690282609                       /opt/apps/oracle-java/20.0.1/lib/server/classes.jsa
+800481000-800c75000 r--p 00482000 00:32 2690282609                       /opt/apps/oracle-java/20.0.1/lib/server/classes.jsa
+800c75000-801040000 ---p 00000000 00:00 0 
+801040000-801050000 rw-p 00000000 00:00 0 
+801050000-841000000 ---p 00000000 00:00 0 
+151b14000000-151b1408d000 rw-p 00000000 00:00 0 
+151b1408d000-151b18000000 ---p 00000000 00:00 0 
+151b18000000-151b1805e000 rw-p 00000000 00:00 0 
+151b1805e000-151b1c000000 ---p 00000000 00:00 0 
+151b20000000-151b20021000 rw-p 00000000 00:00 0 
+151b20021000-151b24000000 ---p 00000000 00:00 0 
+151b24000000-151b24021000 rw-p 00000000 00:00 0 
+151b24021000-151b28000000 ---p 00000000 00:00 0 
+151b2c000000-151b2c021000 rw-p 00000000 00:00 0 
+151b2c021000-151b30000000 ---p 00000000 00:00 0 
+151b30000000-151b30021000 rw-p 00000000 00:00 0 
+151b30021000-151b34000000 ---p 00000000 00:00 0 
+151b38000000-151b38021000 rw-p 00000000 00:00 0 
+151b38021000-151b3c000000 ---p 00000000 00:00 0 
+151b3c000000-151b3c021000 rw-p 00000000 00:00 0 
+151b3c021000-151b40000000 ---p 00000000 00:00 0 
+151b44000000-151b44020000 rw-p 00000000 00:00 0 
+151b44020000-151b48000000 ---p 00000000 00:00 0 
+151b48000000-151b48021000 rw-p 00000000 00:00 0 
+151b48021000-151b4c000000 ---p 00000000 00:00 0 
+151b4c000000-151b4c021000 rw-p 00000000 00:00 0 
+151b4c021000-151b50000000 ---p 00000000 00:00 0 
+151b54000000-151b54021000 rw-p 00000000 00:00 0 
+151b54021000-151b58000000 ---p 00000000 00:00 0 
+151b58000000-151b58021000 rw-p 00000000 00:00 0 
+151b58021000-151b5c000000 ---p 00000000 00:00 0 
+151b5d412000-151b5d7fe000 rw-p 00000000 00:00 0 
+151b5d7fe000-151b5d802000 ---p 00000000 00:00 0 
+151b5d802000-151b5d8fe000 rw-p 00000000 00:00 0 
+151b5d8fe000-151b5d902000 ---p 00000000 00:00 0 
+151b5d902000-151b5d9fe000 rw-p 00000000 00:00 0 
+151b5d9fe000-151b5da02000 ---p 00000000 00:00 0 
+151b5da02000-151b5dafe000 rw-p 00000000 00:00 0 
+151b5dafe000-151b5db02000 ---p 00000000 00:00 0 
+151b5db02000-151b5dbfe000 rw-p 00000000 00:00 0 
+151b5dbfe000-151b5dc02000 ---p 00000000 00:00 0 
+151b5dc02000-151b5dcfe000 rw-p 00000000 00:00 0 
+151b5dcfe000-151b5dd02000 ---p 00000000 00:00 0 
+151b5dd02000-151b5ddfe000 rw-p 00000000 00:00 0 
+151b5ddfe000-151b5de02000 ---p 00000000 00:00 0 
+151b5de02000-151b5defe000 rw-p 00000000 00:00 0 
+151b5defe000-151b5deff000 ---p 00000000 00:00 0 
+151b5deff000-151b5e000000 rw-p 00000000 00:00 0 
+151b5e000000-151b60021000 rw-p 00000000 00:00 0 
+151b60021000-151b64000000 ---p 00000000 00:00 0 
+151b6402b000-151b640f9000 r-xp 00000000 00:32 1075234338                 /opt/apps/oracle-java/20.0.1/lib/libjsvml.so
+151b640f9000-151b640fa000 r--p 000cd000 00:32 1075234338                 /opt/apps/oracle-java/20.0.1/lib/libjsvml.so
+151b640fa000-151b640fb000 rw-p 000ce000 00:32 1075234338                 /opt/apps/oracle-java/20.0.1/lib/libjsvml.so
+151b640fb000-151b640fc000 ---p 00000000 00:00 0 
+151b640fc000-151b641fd000 rw-p 00000000 00:00 0 
+151b641fd000-151b641fe000 ---p 00000000 00:00 0 
+151b641fe000-151b642ff000 rw-p 00000000 00:00 0 
+151b642ff000-151b66400000 rw-p 00000000 00:00 0 
+151b66400000-151b81b80000 ---p 00000000 00:00 0 
+151b81b80000-151b81c00000 rw-p 00000000 00:00 0 
+151b81c2a000-151b81c7f000 r--p 00000000 fd:00 1610677145                 /usr/lib/locale/C.utf8/LC_CTYPE
+151b81c7f000-151b82100000 rw-p 00000000 00:00 0 
+151b82100000-151b857f0000 ---p 00000000 00:00 0 
+151b857f0000-151b85c00000 rw-p 00000000 00:00 0 
+151b85c00000-151b892f0000 ---p 00000000 00:00 0 
+151b892f0000-151b89700000 rw-p 00000000 00:00 0 
+151b89700000-151b8cdf0000 ---p 00000000 00:00 0 
+151b8cdf0000-151b8ce00000 rw-p 00000000 00:00 0 
+151b8ce00000-151b8d070000 rwxp 00000000 00:00 0 
+151b8d070000-151b94338000 ---p 00000000 00:00 0 
+151b94338000-151b945a8000 rwxp 00000000 00:00 0 
+151b945a8000-151b948c7000 ---p 00000000 00:00 0 
+151b948c7000-151b94b37000 rwxp 00000000 00:00 0 
+151b94b37000-151b9be00000 ---p 00000000 00:00 0 
+151b9be06000-151b9bea2000 rw-p 00000000 00:00 0 
+151b9bede000-151ba4000000 r--s 00000000 00:32 1075234354                 /opt/apps/oracle-java/20.0.1/lib/modules
+151ba4000000-151ba4181000 rw-p 00000000 00:00 0 
+151ba4181000-151ba8000000 ---p 00000000 00:00 0 
+151ba801f000-151ba8120000 rw-p 00000000 00:00 0 
+151ba8120000-151ba8121000 ---p 00000000 00:00 0 
+151ba8121000-151ba8222000 rw-p 00000000 00:00 0 
+151ba8222000-151ba8223000 ---p 00000000 00:00 0 
+151ba8223000-151ba8324000 rw-p 00000000 00:00 0 
+151ba8324000-151ba8325000 ---p 00000000 00:00 0 
+151ba8325000-151ba8426000 rw-p 00000000 00:00 0 
+151ba8426000-151ba871a000 rw-p 00000000 00:00 0 
+151ba871a000-151ba8800000 ---p 00000000 00:00 0 
+151ba8800000-151ba90d4000 r--s 00000000 fd:00 1611280658                 /var/lib/sss/mc/passwd
+151ba90e0000-151ba919b000 rw-p 00000000 00:00 0 
+151ba919b000-151ba9281000 ---p 00000000 00:00 0 
+151ba9281000-151ba92a7000 r-xp 00000000 00:32 1075234330                 /opt/apps/oracle-java/20.0.1/lib/libjava.so
+151ba92a7000-151ba92a8000 ---p 00026000 00:32 1075234330                 /opt/apps/oracle-java/20.0.1/lib/libjava.so
+151ba92a8000-151ba92a9000 r--p 00026000 00:32 1075234330                 /opt/apps/oracle-java/20.0.1/lib/libjava.so
+151ba92a9000-151ba92aa000 rw-p 00027000 00:32 1075234330                 /opt/apps/oracle-java/20.0.1/lib/libjava.so
+151ba92aa000-151ba92ab000 rw-p 00000000 00:00 0 
+151ba92ab000-151ba92af000 ---p 00000000 00:00 0 
+151ba92af000-151ba93ab000 rw-p 00000000 00:00 0 
+151ba93ab000-151ba93b8000 r--p 00000000 fd:00 169835                     /usr/lib64/libm.so.6
+151ba93b8000-151ba9428000 r-xp 0000d000 fd:00 169835                     /usr/lib64/libm.so.6
+151ba9428000-151ba9484000 r--p 0007d000 fd:00 169835                     /usr/lib64/libm.so.6
+151ba9484000-151ba9485000 r--p 000d8000 fd:00 169835                     /usr/lib64/libm.so.6
+151ba9485000-151ba9486000 rw-p 000d9000 fd:00 169835                     /usr/lib64/libm.so.6
+151ba9486000-151baa6a2000 r-xp 00000000 00:32 2690282612                 /opt/apps/oracle-java/20.0.1/lib/server/libjvm.so
+151baa6a2000-151baa76c000 r--p 0121b000 00:32 2690282612                 /opt/apps/oracle-java/20.0.1/lib/server/libjvm.so
+151baa76c000-151baa7a1000 rw-p 012e5000 00:32 2690282612                 /opt/apps/oracle-java/20.0.1/lib/server/libjvm.so
+151baa7a1000-151baa800000 rw-p 00000000 00:00 0 
+151baa800000-151baa829000 r--p 00000000 fd:00 169478                     /usr/lib64/libc.so.6
+151baa829000-151baa99e000 r-xp 00029000 fd:00 169478                     /usr/lib64/libc.so.6
+151baa99e000-151baa9f6000 r--p 0019e000 fd:00 169478                     /usr/lib64/libc.so.6
+151baa9f6000-151baa9fa000 r--p 001f6000 fd:00 169478                     /usr/lib64/libc.so.6
+151baa9fa000-151baa9fc000 rw-p 001fa000 fd:00 169478                     /usr/lib64/libc.so.6
+151baa9fc000-151baaa09000 rw-p 00000000 00:00 0 
+151baaa25000-151baaa26000 r--p 00000000 fd:00 1610677150                 /usr/lib/locale/C.utf8/LC_NUMERIC
+151baaa26000-151baaa27000 r--p 00000000 fd:00 1610677153                 /usr/lib/locale/C.utf8/LC_TIME
+151baaa27000-151baaa2e000 r--s 00000000 fd:00 1075287776                 /usr/lib64/gconv/gconv-modules.cache
+151baaa2e000-151baaa30000 r--p 00000000 fd:00 169914                     /usr/lib64/libnss_sss.so.2
+151baaa30000-151baaa38000 r-xp 00002000 fd:00 169914                     /usr/lib64/libnss_sss.so.2
+151baaa38000-151baaa3a000 r--p 0000a000 fd:00 169914                     /usr/lib64/libnss_sss.so.2
+151baaa3a000-151baaa3b000 r--p 0000b000 fd:00 169914                     /usr/lib64/libnss_sss.so.2
+151baaa3b000-151baaa3c000 rw-p 0000c000 fd:00 169914                     /usr/lib64/libnss_sss.so.2
+151baaa3c000-151baaa3d000 r--p 00000000 fd:00 1610677144                 /usr/lib/locale/C.utf8/LC_COLLATE
+151baaa3d000-151baaa3e000 r--p 00000000 fd:00 1610677148                 /usr/lib/locale/C.utf8/LC_MONETARY
+151baaa3e000-151baaa3f000 r--p 00000000 fd:00 28652                      /usr/lib/locale/C.utf8/LC_MESSAGES/SYS_LC_MESSAGES
+151baaa3f000-151baaa40000 r--p 00000000 fd:00 1610677151                 /usr/lib/locale/C.utf8/LC_PAPER
+151baaa40000-151baaa45000 rw-p 00000000 00:00 0 
+151baaa45000-151baaa4c000 ---p 00000000 00:00 0 
+151baaa4c000-151baaa67000 r-xp 00000000 00:32 1075234334                 /opt/apps/oracle-java/20.0.1/lib/libjimage.so
+151baaa67000-151baaa68000 ---p 0001b000 00:32 1075234334                 /opt/apps/oracle-java/20.0.1/lib/libjimage.so
+151baaa68000-151baaa6a000 r--p 0001b000 00:32 1075234334                 /opt/apps/oracle-java/20.0.1/lib/libjimage.so
+151baaa6a000-151baaa6b000 rw-p 0001d000 00:32 1075234334                 /opt/apps/oracle-java/20.0.1/lib/libjimage.so
+151baaa6b000-151baaa6c000 r--p 00000000 fd:00 170046                     /usr/lib64/librt.so.1
+151baaa6c000-151baaa6d000 r-xp 00001000 fd:00 170046                     /usr/lib64/librt.so.1
+151baaa6d000-151baaa6e000 r--p 00002000 fd:00 170046                     /usr/lib64/librt.so.1
+151baaa6e000-151baaa6f000 r--p 00002000 fd:00 170046                     /usr/lib64/librt.so.1
+151baaa6f000-151baaa70000 rw-p 00003000 fd:00 170046                     /usr/lib64/librt.so.1
+151baaa70000-151baaa75000 rw-p 00000000 00:00 0 
+151baaa75000-151baaa76000 r--p 00000000 fd:00 169553                     /usr/lib64/libdl.so.2
+151baaa76000-151baaa77000 r-xp 00001000 fd:00 169553                     /usr/lib64/libdl.so.2
+151baaa77000-151baaa78000 r--p 00002000 fd:00 169553                     /usr/lib64/libdl.so.2
+151baaa78000-151baaa79000 r--p 00002000 fd:00 169553                     /usr/lib64/libdl.so.2
+151baaa79000-151baaa7a000 rw-p 00003000 fd:00 169553                     /usr/lib64/libdl.so.2
+151baaa7a000-151baaa7b000 r--p 00000000 fd:00 170015                     /usr/lib64/libpthread.so.0
+151baaa7b000-151baaa7c000 r-xp 00001000 fd:00 170015                     /usr/lib64/libpthread.so.0
+151baaa7c000-151baaa7d000 r--p 00002000 fd:00 170015                     /usr/lib64/libpthread.so.0
+151baaa7d000-151baaa7e000 r--p 00002000 fd:00 170015                     /usr/lib64/libpthread.so.0
+151baaa7e000-151baaa7f000 rw-p 00003000 fd:00 170015                     /usr/lib64/libpthread.so.0
+151baaa7f000-151baaa8d000 r-xp 00000000 00:32 1075234335                 /opt/apps/oracle-java/20.0.1/lib/libjli.so
+151baaa8d000-151baaa8e000 ---p 0000e000 00:32 1075234335                 /opt/apps/oracle-java/20.0.1/lib/libjli.so
+151baaa8e000-151baaa8f000 r--p 0000e000 00:32 1075234335                 /opt/apps/oracle-java/20.0.1/lib/libjli.so
+151baaa8f000-151baaa90000 rw-p 0000f000 00:32 1075234335                 /opt/apps/oracle-java/20.0.1/lib/libjli.so
+151baaa90000-151baaa93000 r--p 00000000 fd:00 170262                     /usr/lib64/libz.so.1.2.11
+151baaa93000-151baaaa1000 r-xp 00003000 fd:00 170262                     /usr/lib64/libz.so.1.2.11
+151baaaa1000-151baaaa7000 r--p 00011000 fd:00 170262                     /usr/lib64/libz.so.1.2.11
+151baaaa7000-151baaaa8000 ---p 00017000 fd:00 170262                     /usr/lib64/libz.so.1.2.11
+151baaaa8000-151baaaa9000 r--p 00017000 fd:00 170262                     /usr/lib64/libz.so.1.2.11
+151baaaa9000-151baaaaa000 rw-p 00000000 00:00 0 
+151baaaaa000-151baaaab000 r--p 00000000 fd:00 1610677149                 /usr/lib/locale/C.utf8/LC_NAME
+151baaaab000-151baaaac000 r--p 00000000 fd:00 1610677143                 /usr/lib/locale/C.utf8/LC_ADDRESS
+151baaaac000-151baaaad000 r--p 00000000 fd:00 1610677152                 /usr/lib/locale/C.utf8/LC_TELEPHONE
+151baaaad000-151baaaae000 r--p 00000000 fd:00 1610677147                 /usr/lib/locale/C.utf8/LC_MEASUREMENT
+151baaaae000-151baaaaf000 r--p 00000000 fd:00 1610677146                 /usr/lib/locale/C.utf8/LC_IDENTIFICATION
+151baaaaf000-151baaab7000 rw-s 00000000 fd:00 4177728                    /tmp/hsperfdata_mmontante/1152147
+151baaab7000-151baaab8000 ---p 00000000 00:00 0 
+151baaab8000-151baaab9000 r--p 00000000 00:00 0 
+151baaab9000-151baaaba000 ---p 00000000 00:00 0 
+151baaaba000-151baaabc000 rw-p 00000000 00:00 0 
+151baaabc000-151baaabe000 r--p 00000000 fd:00 144996                     /usr/lib64/ld-linux-x86-64.so.2
+151baaabe000-151baaae6000 r-xp 00002000 fd:00 144996                     /usr/lib64/ld-linux-x86-64.so.2
+151baaae6000-151baaaf2000 r--p 0002a000 fd:00 144996                     /usr/lib64/ld-linux-x86-64.so.2
+151baaaf2000-151baaaf4000 r--p 00036000 fd:00 144996                     /usr/lib64/ld-linux-x86-64.so.2
+151baaaf4000-151baaaf6000 rw-p 00038000 fd:00 144996                     /usr/lib64/ld-linux-x86-64.so.2
+55963e192000-55963e193000 r-xp 00000000 00:32 8601814240                 /opt/apps/oracle-java/20.0.1/bin/java
+55963e194000-55963e195000 r--p 00001000 00:32 8601814240                 /opt/apps/oracle-java/20.0.1/bin/java
+55963e195000-55963e196000 rw-p 00002000 00:32 8601814240                 /opt/apps/oracle-java/20.0.1/bin/java
+55963e8c8000-55963e90e000 rw-p 00000000 00:00 0                          [heap]
+7ffe17332000-7ffe17355000 rw-p 00000000 00:00 0                          [stack]
+7ffe173d2000-7ffe173d6000 r--p 00000000 00:00 0                          [vvar]
+7ffe173d6000-7ffe173d8000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.locks=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/java.nio.file.spi=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.fs=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.http=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.https=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.ftp=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED --add-opens=java.base/java.util.regex=ALL-UNNAMED -Dfile.encoding=UTF-8 -Dcapsule.trampoline -Dcapsule.java.cmd=/opt/apps/oracle-java/20.0.1/bin/java -Dcom.sun.security.enableAIAcaIssuers=true -Djava.awt.headless=true -Djava.io.tmpdir=/tmp 
+java_command: /home/mmontante/.nextflow/framework/25.10.4/nextflow-25.10.4-one.jar run main.nf -entry COMETS -profile comets -resume
+java_class_path (initial): /home/mmontante/.nextflow/framework/25.10.4/nextflow-25.10.4-one.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 2                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 2                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 16777216                                  {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 2147483648                                {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 31675383808                               {product} {ergonomic}
+   size_t MaxNewSize                               = 18991808512                               {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 16777216                                  {product} {ergonomic}
+   size_t MinHeapSize                              = 16777216                                  {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5826188                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122916026                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122916026                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 31675383808                            {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+JAVA_HOME=/opt/apps/oracle-java/20.0.1
+PATH=/opt/apps/oracle-java/20.0.1/bin:/opt/apps/nextflow/25.10.4:/mnt/data/sur/modules/pkgs/mamba/main/condabin:/home/mmontante/.local/bin:/home/mmontante/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+LD_LIBRARY_PATH=/opt/apps/oracle-java/20.0.1/lib:/opt/apps/nextflow/25.10.4/lib
+SHELL=/bin/bash
+LANG=C.UTF-8
+TERM=xterm-256color
+TMPDIR=/tmp
+
+Active Locale:
+LC_ALL=C.UTF-8
+LC_COLLATE=C.UTF-8
+LC_CTYPE=C.UTF-8
+LC_MESSAGES=C.UTF-8
+LC_MONETARY=C.UTF-8
+LC_NUMERIC=C.UTF-8
+LC_TIME=C.UTF-8
+
+Signal Handlers:
+   SIGSEGV: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+    SIGBUS: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+    SIGFPE: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+   SIGPIPE: javaSignalHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGXFSZ: javaSignalHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+    SIGILL: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+   SIGUSR2: SR_handler in libjvm.so, mask=00000000000000000000000000000000, flags=SA_RESTART|SA_SIGINFO, blocked
+    SIGHUP: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+    SIGINT: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGTERM: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGQUIT: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGTRAP: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+Rocky Linux release 9.7 (Blue Onyx)
+uname: Linux 5.14.0-611.54.1.el9_7.x86_64 #1 SMP PREEMPT_DYNAMIC Tue May 5 16:52:47 UTC 2026 x86_64
+OS uptime: 59 days 3:29 hours
+libc: glibc 2.34 NPTL 2.34 
+rlimit (soft/hard): STACK infinity/infinity , CORE infinity/infinity , NPROC 61493/1029539 , NOFILE 131072/131072 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK infinity/infinity
+load average: 21.87 21.69 21.59
+
+/proc/meminfo:
+MemTotal:       263886960 kB
+MemFree:        16579848 kB
+MemAvailable:   225047348 kB
+Buffers:             664 kB
+Cached:         206707712 kB
+SwapCached:            0 kB
+Active:         45576820 kB
+Inactive:       192530424 kB
+Active(anon):   31695564 kB
+Inactive(anon):   255676 kB
+Active(file):   13881256 kB
+Inactive(file): 192274748 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Zswap:                 0 kB
+Zswapped:              0 kB
+Dirty:               168 kB
+Writeback:             4 kB
+AnonPages:      29037332 kB
+Mapped:           978368 kB
+Shmem:            552360 kB
+KReclaimable:    4159540 kB
+Slab:            4970560 kB
+SReclaimable:    4159540 kB
+SUnreclaim:       811020 kB
+KernelStack:       29088 kB
+PageTables:        91116 kB
+SecPageTables:      2056 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    131943480 kB
+Committed_AS:   44113104 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      480888 kB
+VmallocChunk:          0 kB
+Percpu:            82944 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   8482816 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+Unaccepted:            0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:     1174232 kB
+DirectMap2M:    57317376 kB
+DirectMap1G:    211812352 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled: [always] madvise never
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter): always defer defer+madvise [madvise] never
+
+Process Memory:
+Virtual Size: 34118112K (peak: 34118176K)
+Resident Set Size: 52624K (peak: 52624K) (anon: 28260K, file: 24364K, shmem: 0K)
+Swapped out: 0K
+C-Heap outstanding allocations: 13361K, retained: 1562K
+glibc malloc tunables: (default)
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads): 2059079
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have): 65530
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers): 4194304
+
+container (cgroup) information:
+container_type: cgroupv2
+cpu_cpuset_cpus: not supported
+cpu_memory_nodes: not supported
+active_processor_count: 2
+cpu_quota: no quota
+cpu_period: 100000
+cpu_shares: no shares
+memory_limit_in_bytes: unlimited
+memory_and_swap_limit_in_bytes: unlimited
+memory_soft_limit_in_bytes: unlimited
+memory_usage_in_bytes: 30668 k
+memory_max_usage_in_bytes: not supported
+memory_swap_current_in_bytes: unlimited
+memory_swap_max_limit_in_bytes: unlimited
+maximum number of tasks: not supported
+current number of tasks: not supported
+
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU: total 28 (initial active 2) (14 cores per cpu, 2 threads per core) family 6 model 79 stepping 1 microcode 0xb000040, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, rtm, adx, fma, vzeroupper, clflush, rdtscp, f16c
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 pti ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm rdt_a rdseed adx smap intel_pt xsaveopt cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts vnmi md_clear flush_l1d
+
+Online cpus: 0-27
+Offline cpus: 
+BIOS frequency limitation: <Not Available>
+Frequency switch latency (ns): 20000
+Available cpu frequencies: <Not Available>
+Current governor: performance
+Core performance/turbo boost: <Not Available>
+
+Memory: 4k page, physical 263886960k(16579848k free), swap 0k(0k free)
+Page Sizes: 4k
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (20.0.1+9-29) for linux-amd64 JRE (20.0.1+9-29), built on 2023-03-07T13:56:11Z by "mach5one" with gcc 11.2.0
+
+END.

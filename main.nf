@@ -2,6 +2,25 @@ nextflow.enable.dsl=2
 
 include { PROCESO_MEMOTE } from './memote.nf'
 include { PROCESO_COMETS } from './comets.nf'
+include { PROCESO_COMBOS } from './combos.nf'
+
+
+def combinationsOf(list, k) {
+    def lst = list as ArrayList
+    if (k == 0) return [[]]
+    if (lst.size() < k) return []
+    def result = []
+    for (int i = 0; i <= lst.size() - k; i++) {
+        def head = lst[i]
+        def rest = (i + 1 < lst.size()) ? lst[(i + 1)..-1] : []
+        combinationsOf(rest, k - 1).each { combo ->
+            result << ([head] + combo)
+        }
+    }
+    return result
+}
+
+
 
 workflow MEMOTE {
     models_ch = Channel.fromPath(params.memote_input)
@@ -16,7 +35,18 @@ workflow COMETS {
 }
 
 
+workflow COMBOS {
+    cepas_ch = Channel.fromPath("${params.gem_path}/*.xml")
+                    .map { it.baseName }
+                    .collect()
 
+    combos_ch = cepas_ch.flatMap { cepas ->
+        def cepasList = cepas as ArrayList
+        (2..4).collectMany { tam -> combinationsOf(cepasList, tam) }
+    }
+
+    PROCESO_COMBOS(combos_ch)
+}
 
 // workflow por defecto (opcional), por si corres sin -entry
 workflow {

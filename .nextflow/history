@@ -26,3 +26,20 @@
 2026-07-16 13:52:39	-	lonely_yalow	-	e788265a5e6bf744c8176be816d26d4b	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
 2026-07-16 14:00:44	7m 14s	desperate_thompson	ERR	e788265a5e6bf744c8176be816d26d4b	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
 2026-07-16 15:15:10	5m 19s	special_mendel	ERR	e788265a5e6bf744c8176be816d26d4b	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-16 16:42:35	3.9s	pensive_fourier	ERR	d741b85acc3306531343e40d8fbf947a	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMBOS -profile combos -resume
+2026-07-16 16:44:18	3.1s	jovial_cray	ERR	d741b85acc3306531343e40d8fbf947a	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMBOS -profile combos -resume
+2026-07-16 16:54:49	3.7s	distraught_church	ERR	1da03efc306d13150651b6155cc77c24	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMBOS -profile combos -resume
+2026-07-16 17:00:53	3.4s	mad_bhaskara	ERR	420c27bdebfd838d71bd26bd75e052df	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMBOS -profile combos -resume
+2026-07-16 17:04:55	8m 9s	confident_lamarck	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMBOS -profile combos -resume
+2026-07-16 17:33:27	2d 1h 15m 3s	stupefied_ardinghelli	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMBOS -profile combos -resume
+2026-07-20 12:58:12	6m 19s	soggy_gutenberg	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 13:09:18	-	jovial_cori	-	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 13:10:34	-	amazing_poitras	-	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 13:12:31	9.1s	elated_gautier	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 13:15:11	8.9s	compassionate_franklin	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 13:42:59	4m 49s	stupefied_moriondo	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 13:55:40	4m 14s	hopeful_sanger	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 14:03:31	4m 14s	berserk_caravaggio	ERR	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 14:21:35	6m 24s	marvelous_fermi	OK	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 15:31:18	3m 44s	special_carlsson	OK	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-20 17:57:10	7m 9s	furious_pesquet	OK	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume

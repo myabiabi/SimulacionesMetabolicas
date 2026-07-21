@@ -1,61 +1,115 @@
-Jul-14 15:49:10.474 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
-Jul-14 15:49:11.043 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
-Jul-14 15:49:11.155 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
-Jul-14 15:49:11.243 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-14 15:49:11.245 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-14 15:49:11.265 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
-Jul-14 15:49:11.346 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-14 15:49:11.480 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-14 15:49:11.489 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-14 15:49:11.643 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-14 15:49:11.664 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
-Jul-14 15:49:11.711 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
-Jul-14 15:49:13.654 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, comets]
-Jul-14 15:49:13.777 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jul-14 15:49:13.842 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [admiring_cuvier] DSL2 - revision: e788265a5e
-Jul-14 15:49:13.844 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-14 15:49:13.845 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-14 15:49:14.050 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
-Jul-14 15:49:14.051 [main] DEBUG nextflow.Session - Run name: admiring_cuvier
-Jul-14 15:49:14.053 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-14 15:49:14.105 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-14 15:49:14.130 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-14 15:49:14.213 [main] DEBUG nextflow.cli.CmdRun - 
+Jul-20 13:10:32.758 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
+Jul-20 13:10:33.301 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
+Jul-20 13:10:33.357 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-20 13:10:33.409 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 13:10:33.411 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 13:10:33.414 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-20 13:10:33.468 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 13:10:33.508 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-20 13:10:33.511 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-20 13:10:33.617 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-20 13:10:33.622 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
+Jul-20 13:10:33.630 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
+Jul-20 13:10:34.513 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, combos, comets]
+Jul-20 13:10:34.589 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-20 13:10:34.673 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [amazing_poitras] DSL2 - revision: fa16a41979
+Jul-20 13:10:34.675 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 13:10:34.675 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-20 13:10:34.810 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
+Jul-20 13:10:34.811 [main] DEBUG nextflow.Session - Run name: amazing_poitras
+Jul-20 13:10:34.812 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-20 13:10:34.849 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-20 13:10:34.857 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-20 13:10:34.929 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 24.04.1 build 5913
   Created: 20-05-2024 09:48 UTC (03:48 CDT)
-  System: Linux 5.14.0-611.54.1.el9_7.x86_64
+  System: Linux 5.14.0-503.23.2.el9_5.x86_64
   Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
   Encoding: UTF-8 (UTF-8)
-  Process: 2582039@node15.cluster [10.1.1.15]
-  CPUs: 1 - Mem: 251.7 GB (39.7 GB) - Swap: 0 (0)
-Jul-14 15:49:14.387 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/work [nfs]
-Jul-14 15:49:14.388 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-14 15:49:14.408 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-14 15:49:14.462 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-14 15:49:14.587 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-14 15:49:14.639 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 2; maxThreads: 1000
-Jul-14 15:49:14.680 [main] ERROR nextflow.cli.Launcher - Unable to acquire lock on session with ID 8c6003f4-4bcf-4884-814b-30b1e126a99f
-
-Common reasons for this error are:
- - You are trying to resume the execution of an already running pipeline
- - A previous execution was abruptly interrupted, leaving the session open
-
-You can see which process is holding the lock file by using the following command:
- - lsof /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/.nextflow/cache/8c6003f4-4bcf-4884-814b-30b1e126a99f/db/LOCK
-java.io.IOException: Unable to acquire lock on session with ID 8c6003f4-4bcf-4884-814b-30b1e126a99f
-
-Common reasons for this error are:
- - You are trying to resume the execution of an already running pipeline
- - A previous execution was abruptly interrupted, leaving the session open
-
-You can see which process is holding the lock file by using the following command:
- - lsof /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/.nextflow/cache/8c6003f4-4bcf-4884-814b-30b1e126a99f/db/LOCK
-	at nextflow.cache.DefaultCacheStore.openDb(DefaultCacheStore.groovy:91)
-	at nextflow.cache.DefaultCacheStore.open(DefaultCacheStore.groovy:106)
-	at nextflow.cache.DefaultCacheStore.open(DefaultCacheStore.groovy)
-	at nextflow.cache.CacheDB.open(CacheDB.groovy:59)
-	at nextflow.Session.init(Session.groovy:430)
-	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:129)
-	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
-	at nextflow.cli.Launcher.run(Launcher.groovy:503)
-	at nextflow.cli.Launcher.main(Launcher.groovy:657)
+  Process: 581422@node09.cluster [10.1.1.9]
+  CPUs: 2 - Mem: 251.7 GB (30.7 GB) - Swap: 4 GB (4 GB)
+Jul-20 13:10:35.023 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
+Jul-20 13:10:35.024 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-20 13:10:35.042 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 13:10:35.053 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 13:10:35.154 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-20 13:10:35.184 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-20 13:10:35.364 [main] DEBUG nextflow.Session - Session start
+Jul-20 13:10:35.368 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
+Jul-20 13:10:36.019 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 13:10:36.666 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-20 13:10:36.667 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-20 13:10:36.680 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-20 13:10:36.690 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-20 13:10:36.693 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-20 13:10:36.697 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-20 13:10:36.784 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-20 13:10:36.785 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-20 13:10:36.792 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-20 13:10:36.797 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/faltantes/; pattern: *.xml; options: [:]
+Jul-20 13:10:36.799 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_f9c8ebba4fd576ca: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./comets.nf
+  Script_172e96b54e5081a1: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
+  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./combos.nf
+Jul-20 13:10:36.800 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-20 13:10:36.800 [main] DEBUG nextflow.Session - Session await
+Jul-20 13:10:37.210 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [63/7592f6] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_sshinii)
+Jul-20 13:10:37.217 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [75/a71fea] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_cv_lb_mm_Bacillus_thuringiensis_111_x)
+Jul-20 13:10:37.273 [Actor Thread 1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-20 13:10:37.292 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [bd/29c737] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_mm_mleteus)
+Jul-20 13:10:37.327 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [46/1213a2] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Micrococcus_luteus_149_a)
+Jul-20 13:10:37.334 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [9a/068b65] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_cv_lb_Bacillus_thuringiensis_111_x)
+Jul-20 13:10:37.371 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [3c/5dae4b] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_lb_batrophaeus)
+Jul-20 13:10:37.375 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [db/05d6cd] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Micrococcus_luteus_149_a)
+Jul-20 13:10:37.399 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [07/d0121c] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_binfantis)
+Jul-20 13:10:37.440 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [b3/f9dde9] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Priestia_megaterium_447_x)
+Jul-20 13:10:37.451 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [7c/7b2bd7] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_mm_Corynebacterium_sp_29_x)
+Jul-20 13:10:37.493 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [a3/ea16ad] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_cv_lb_Bacillus_infantis_161_d)
+Jul-20 13:10:37.577 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [67/1fcc4c] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Priestia_megaterium_447_x)
+Jul-20 13:10:37.644 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [78/f883b4] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_infantis_161_d)
+Jul-20 13:10:37.650 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [c3/d19f23] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Bacillus_infantis_161_d)
+Jul-20 13:10:37.698 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [b6/6cea63] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_mleteus)
+Jul-20 13:10:37.735 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Staphylococcus_shinii_154_a) > jobId: 242242; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b6/3ad58d5eb6962cdcc62a93edf7d490
+Jul-20 13:10:37.735 [Task submitter] INFO  nextflow.Session - [b6/3ad58d] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Staphylococcus_shinii_154_a)
+Jul-20 13:10:37.741 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [8c/56686c] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Metabacillus_indicus_450_x)
+Jul-20 13:10:37.756 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [e0/f1de42] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Staphylococcus_arlettae_99_b)
+Jul-20 13:10:37.782 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [d0/37ff79] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Corynebacterium_sp_29_x)
+Jul-20 13:10:37.794 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [d1/5c4846] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Bacillus_infantis_161_d)
+Jul-20 13:10:37.809 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [77/c07e83] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Metabacillus_indicus_450_x)
+Jul-20 13:10:37.846 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Bacillus_atrophaeus_90_x) > jobId: 242243; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/6c/b2cc391b84f652971fbf5fe4c158be
+Jul-20 13:10:37.847 [Task submitter] INFO  nextflow.Session - [6c/b2cc39] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Bacillus_atrophaeus_90_x)
+Jul-20 13:10:37.859 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [ef/0d6b6f] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Bacillus_altitudinis_23_x)
+Jul-20 13:10:37.866 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [53/2ce102] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_cv_lb_Staphylococcus_arlettae_99_b)
+Jul-20 13:10:37.923 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [5b/35b612] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Staphylococcus_shinii_154_a)
+Jul-20 13:10:37.950 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Micrococcus_luteus_149_a) > jobId: 242244; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7d/1de806746121bc0f9cc98b7af3b0f5
+Jul-20 13:10:37.950 [Task submitter] INFO  nextflow.Session - [7d/1de806] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Micrococcus_luteus_149_a)
+Jul-20 13:10:37.954 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [dd/f1f091] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_thuringiensis_111_x)
+Jul-20 13:10:37.981 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [8b/bf40ba] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Priestia_megaterium_447_x)
+Jul-20 13:10:37.988 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [8e/10ced4] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_lb_mleteus)
+Jul-20 13:10:38.014 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_batrophaeus) > jobId: 242245; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b3/0c73fd832daa2d1655d07edac9df1c
+Jul-20 13:10:38.014 [Task submitter] INFO  nextflow.Session - [b3/0c73fd] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_batrophaeus)
+Jul-20 13:10:38.057 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [ed/5ae3f0] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_mm_Staphylococcus_shinii_154_a)
+Jul-20 13:10:38.089 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Corynebacterium_sp_29_x) > jobId: 242246; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/2d/e8ea2aff1fe6d6f381a16250fc7f66
+Jul-20 13:10:38.090 [Task submitter] INFO  nextflow.Session - [2d/e8ea2a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Corynebacterium_sp_29_x)
+Jul-20 13:10:38.117 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [11/74a106] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_bthuringiensis)
+Jul-20 13:10:38.119 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [63/9e1535] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Bacillus_thuringiensis_111_x)
+Jul-20 13:10:38.148 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [9a/d8dbe5] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_cv_lb_Staphylococcus_shinii_154_a)
+Jul-20 13:10:38.165 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a) > jobId: 242247; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a9/ba02c693150cd6089045a3638fed6d
+Jul-20 13:10:38.165 [Task submitter] INFO  nextflow.Session - [a9/ba02c6] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a)
+Jul-20 13:10:38.193 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a) > jobId: 242248; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d7/278f2608cfc3b0c301989299d7ceb6
+Jul-20 13:10:38.193 [Task submitter] INFO  nextflow.Session - [d7/278f26] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)
+Jul-20 13:10:38.213 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Staphylococcus_arlettae_99_b) > jobId: 242249; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/51/b8126bb08917426201f905da154696
+Jul-20 13:10:38.213 [Task submitter] INFO  nextflow.Session - [51/b8126b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Staphylococcus_arlettae_99_b)
+Jul-20 13:10:38.234 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_arlettae_99_b) > jobId: 242250; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/8b/5ebd3a831fa1010a590ba2a159f830
+Jul-20 13:10:38.234 [Task submitter] INFO  nextflow.Session - [8b/5ebd3a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_arlettae_99_b)
+Jul-20 13:10:38.261 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_thuringiensis_111_x) > jobId: 242251; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/0d/457ce9f03c6b63fec7485b542bb084
+Jul-20 13:10:38.261 [Task submitter] INFO  nextflow.Session - [0d/457ce9] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_thuringiensis_111_x)
+Jul-20 13:10:38.294 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_altitudinis_23_x) > jobId: 242252; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/66/01d5132f9f259825fabd68ac91c7f3
+Jul-20 13:10:38.294 [Task submitter] INFO  nextflow.Session - [66/01d513] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_altitudinis_23_x)
+Jul-20 13:10:38.314 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Metabacillus_indicus_450_x) > jobId: 242253; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/08/b903b0b30eb38732d094535f3ae692
+Jul-20 13:10:38.314 [Task submitter] INFO  nextflow.Session - [08/b903b0] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Metabacillus_indicus_450_x)
+Jul-20 13:10:38.333 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_infantis_161_d) > jobId: 242254; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/80/b86993aa2aed084f25fe1c8ee1f2c8
+Jul-20 13:10:38.333 [Task submitter] INFO  nextflow.Session - [80/b86993] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_infantis_161_d)
+Jul-20 13:10:38.355 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_altitudinis_23_x) > jobId: 242255; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/1e/2d5a6570909b8e15f4d29d47e62d3f
+Jul-20 13:10:38.355 [Task submitter] INFO  nextflow.Session - [1e/2d5a65] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_altitudinis_23_x)

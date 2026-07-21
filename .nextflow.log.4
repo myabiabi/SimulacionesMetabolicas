@@ -1,123 +1,169 @@
-Jul-16 13:50:01.746 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
-Jul-16 13:50:02.141 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
-Jul-16 13:50:02.208 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
-Jul-16 13:50:02.283 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-16 13:50:02.285 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-16 13:50:02.294 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
-Jul-16 13:50:02.332 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-16 13:50:02.433 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-16 13:50:02.439 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-16 13:50:02.518 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-16 13:50:02.523 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1d3e6d34] - activable => nextflow.secret.LocalSecretsProvider@1d3e6d34
-Jul-16 13:50:02.541 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
-Jul-16 13:50:03.404 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, comets]
-Jul-16 13:50:03.500 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
-Jul-16 13:50:03.526 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [mighty_kilby] DSL2 - revision: 4ad2119fb2
-Jul-16 13:50:03.528 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-16 13:50:03.528 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-16 13:50:03.607 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
-Jul-16 13:50:03.608 [main] DEBUG nextflow.Session - Run name: mighty_kilby
-Jul-16 13:50:03.609 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-16 13:50:03.622 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-16 13:50:03.629 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-16 13:50:03.664 [main] DEBUG nextflow.cli.CmdRun - 
+Jul-20 13:55:38.954 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
+Jul-20 13:55:39.203 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
+Jul-20 13:55:39.227 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-20 13:55:39.296 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-20 13:55:39.297 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-20 13:55:39.301 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-20 13:55:39.318 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-20 13:55:39.360 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-20 13:55:39.365 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-20 13:55:39.436 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-20 13:55:39.440 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
+Jul-20 13:55:39.450 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
+Jul-20 13:55:40.133 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, combos, comets]
+Jul-20 13:55:40.184 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-20 13:55:40.202 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [hopeful_sanger] DSL2 - revision: fa16a41979
+Jul-20 13:55:40.204 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-20 13:55:40.204 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-20 13:55:40.291 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
+Jul-20 13:55:40.294 [main] DEBUG nextflow.Session - Run name: hopeful_sanger
+Jul-20 13:55:40.295 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-20 13:55:40.306 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-20 13:55:40.313 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-20 13:55:40.357 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 24.04.1 build 5913
   Created: 20-05-2024 09:48 UTC (03:48 CDT)
-  System: Linux 5.14.0-503.14.1.el9_5.x86_64
+  System: Linux 5.14.0-503.23.2.el9_5.x86_64
   Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
   Encoding: UTF-8 (UTF-8)
-  Process: 730946@node05.cluster [10.1.1.5]
-  CPUs: 2 - Mem: 251.3 GB (22.9 GB) - Swap: 0 (0)
-Jul-16 13:50:03.747 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
-Jul-16 13:50:03.748 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-16 13:50:03.764 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-16 13:50:03.779 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-16 13:50:03.887 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-16 13:50:03.904 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
-Jul-16 13:50:04.176 [main] DEBUG nextflow.Session - Session start
-Jul-16 13:50:04.181 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
-Jul-16 13:50:04.425 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-Jul-16 13:50:04.434 [main] ERROR nextflow.cli.Launcher - Script compilation error
-- file : /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
-- cause: The LHS of an assignment should be a variable or a field accessing expression @ line 1, column 1.
-   +nextflow.enable.dsl=2
-   ^
+  Process: 624929@node09.cluster [10.1.1.9]
+  CPUs: 2 - Mem: 251.7 GB (28.6 GB) - Swap: 4 GB (4 GB)
+Jul-20 13:55:40.430 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
+Jul-20 13:55:40.430 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-20 13:55:40.444 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-20 13:55:40.456 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-20 13:55:40.555 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-20 13:55:40.565 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-20 13:55:40.645 [main] DEBUG nextflow.Session - Session start
+Jul-20 13:55:40.648 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
+Jul-20 13:55:41.258 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-20 13:55:41.865 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-20 13:55:41.865 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-20 13:55:41.877 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-20 13:55:41.886 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-20 13:55:41.888 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-20 13:55:41.892 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-20 13:55:41.973 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-20 13:55:41.973 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-20 13:55:41.980 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-20 13:55:41.984 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/faltantes2/; pattern: *.xml; options: [:]
+Jul-20 13:55:41.985 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_f9c8ebba4fd576ca: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./comets.nf
+  Script_172e96b54e5081a1: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
+  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./combos.nf
+Jul-20 13:55:41.985 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-20 13:55:41.985 [main] DEBUG nextflow.Session - Session await
+Jul-20 13:55:42.289 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [a3/4ac1cd] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Staphylococcus_arlettae_99_b)
+Jul-20 13:55:42.336 [Actor Thread 1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-20 13:55:42.350 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [35/6c09ec] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Micrococcus_luteus_149_a)
+Jul-20 13:55:42.373 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [55/090313] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_arlettae_99_b)
+Jul-20 13:55:42.398 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [be/c73857] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_altitudinis_23_x)
+Jul-20 13:55:42.406 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [b6/593610] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_infantis_161_d)
+Jul-20 13:55:42.419 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [c7/ce7d2b] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_thuringiensis_111_x)
+Jul-20 13:55:42.433 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [81/da1bff] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Metabacillus_indicus_450_x)
+Jul-20 13:55:42.452 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [db/d604b1] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Bacillus_atrophaeus_90_x)
+Jul-20 13:55:42.493 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_altitudinis_23_x) > jobId: 242310; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/79/4e91af48f479dd7af277c78ceab814
+Jul-20 13:55:42.493 [Task submitter] INFO  nextflow.Session - [79/4e91af] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_altitudinis_23_x)
+Jul-20 13:55:42.547 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a) > jobId: 242311; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/be/fc847f0ade2fc374dda80cdd5e1aac
+Jul-20 13:55:42.547 [Task submitter] INFO  nextflow.Session - [be/fc847f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)
+Jul-20 13:55:42.572 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a) > jobId: 242312; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/f1/53b21b5a64bc9ee13ce21c840566c8
+Jul-20 13:55:42.573 [Task submitter] INFO  nextflow.Session - [f1/53b21b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a)
+Jul-20 13:59:51.913 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242311; id: 5; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a); status: COMPLETED; exit: 137; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/be/fc847f0ade2fc374dda80cdd5e1aac started: 1784577346911; exited: 2026-07-20T19:59:51.841788779Z; ]
+Jul-20 13:59:51.914 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-20 13:59:51.922 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/be/fc847f0ade2fc374dda80cdd5e1aac
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
+Jul-20 13:59:52.281 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)'
 
-1 error
+Caused by:
+  Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
 
-nextflow.exception.ScriptCompilationException: Script compilation error
-- file : /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
-- cause: The LHS of an assignment should be a variable or a field accessing expression @ line 1, column 1.
-   +nextflow.enable.dsl=2
-   ^
 
-1 error
+Command executed:
 
-	at nextflow.script.ScriptParser.parse0(ScriptParser.groovy:196)
-	at nextflow.script.ScriptParser.parse(ScriptParser.groovy:206)
-	at nextflow.script.ScriptRunner.parseScript(ScriptRunner.groovy:229)
-	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:136)
-	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
-	at nextflow.cli.Launcher.run(Launcher.groovy:503)
-	at nextflow.cli.Launcher.main(Launcher.groovy:657)
-Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
-Script_167b44ea5d835b63: 1: The LHS of an assignment should be a variable or a field accessing expression @ line 1, column 1.
-   +nextflow.enable.dsl=2
-   ^
+  eval "$(mamba shell hook --shell bash)"
+  mamba activate python3
+  module load COMETS
+  
+  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py \
+    --gem_path /mnt/data/sur/users/mmontante/faltantes2 \
+    --strains cc_pk_cv_lb_Staphylococcus_shinii_154_a \
+    --media mm \
+    --cycles 10000 \
+    --media_dil 0.1 \
+    --media_vol 0.03 \
+    --outdir out_cc_pk_cv_lb_Staphylococcus_shinii_154_a
 
-1 error
+Command exit status:
+  137
 
-	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:292)
-	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:148)
-	at org.apache.groovy.parser.antlr4.AstBuilder.collectSyntaxError(AstBuilder.java:4753)
-	at org.apache.groovy.parser.antlr4.AstBuilder.createParsingFailedException(AstBuilder.java:4732)
-	at org.apache.groovy.parser.antlr4.AstBuilder.createParsingFailedException(AstBuilder.java:4689)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitAssignmentExprAlt(AstBuilder.java:3222)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitAssignmentExprAlt(AstBuilder.java:169)
-	at org.apache.groovy.parser.antlr4.GroovyParser$AssignmentExprAltContext.accept(GroovyParser.java:9020)
-	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:20)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visit(AstBuilder.java:4406)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitCommandExpression(AstBuilder.java:2275)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitCommandExprAlt(AstBuilder.java:2260)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitCommandExprAlt(AstBuilder.java:169)
-	at org.apache.groovy.parser.antlr4.GroovyParser$CommandExprAltContext.accept(GroovyParser.java:8221)
-	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)
-	at org.apache.groovy.parser.antlr4.GroovyParserBaseVisitor.visitExpressionStmtAlt(GroovyParserBaseVisitor.java:369)
-	at org.apache.groovy.parser.antlr4.GroovyParser$ExpressionStmtAltContext.accept(GroovyParser.java:6923)
-	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:48)
-	at org.apache.groovy.parser.antlr4.GroovyParserBaseVisitor.visitScriptStatement(GroovyParserBaseVisitor.java:425)
-	at org.apache.groovy.parser.antlr4.GroovyParser$ScriptStatementContext.accept(GroovyParser.java:477)
-	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:20)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visit(AstBuilder.java:4406)
-	at org.apache.groovy.parser.antlr4.AstBuilder.lambda$visitScriptStatements$0(AstBuilder.java:314)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitScriptStatements(AstBuilder.java:315)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitCompilationUnit(AstBuilder.java:272)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visitCompilationUnit(AstBuilder.java:169)
-	at org.apache.groovy.parser.antlr4.GroovyParser$CompilationUnitContext.accept(GroovyParser.java:323)
-	at groovyjarjarantlr4.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:20)
-	at org.apache.groovy.parser.antlr4.AstBuilder.visit(AstBuilder.java:4406)
-	at org.apache.groovy.parser.antlr4.AstBuilder.buildAST(AstBuilder.java:262)
-	at org.apache.groovy.parser.antlr4.Antlr4ParserPlugin.buildAST(Antlr4ParserPlugin.java:58)
-	at org.codehaus.groovy.control.SourceUnit.buildAST(SourceUnit.java:256)
-	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
-	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1921)
-	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
-	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:663)
-	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:373)
-	at groovy.lang.GroovyClassLoader.lambda$parseClass$2(GroovyClassLoader.java:316)
-	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.compute(StampedCommonCache.java:163)
-	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.getAndPut(StampedCommonCache.java:154)
-	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:314)
-	at groovy.lang.GroovyShell.parseClass(GroovyShell.java:572)
-	at groovy.lang.GroovyShell.parse(GroovyShell.java:585)
-	at groovy.lang.GroovyShell.parse(GroovyShell.java:639)
-	at groovy.lang.GroovyShell.parse(GroovyShell.java:643)
-	at nextflow.script.ScriptParser.parse0(ScriptParser.groovy:175)
-	... 6 common frames omitted
+Command output:
+  (empty)
+
+Command error:
+  Ignoring reaction 'EX_pi_e' since it already exists.
+  Ignoring reaction 'EX_ppal_e' since it already exists.
+  Ignoring reaction 'EX_ppap_e' since it already exists.
+  Ignoring reaction 'EX_ppi_e' since it already exists.
+  Ignoring reaction 'EX_pro__L_e' since it already exists.
+  Ignoring reaction 'EX_prohisglu_e' since it already exists.
+  Ignoring reaction 'EX_ptrc_e' since it already exists.
+  Ignoring reaction 'EX_pyovd_kt_e' since it already exists.
+  Ignoring reaction 'EX_raffin_e' since it already exists.
+  Ignoring reaction 'EX_rib__D_e' since it already exists.
+  Ignoring reaction 'EX_ribflv_e' since it already exists.
+  Ignoring reaction 'EX_s_e' since it already exists.
+  Ignoring reaction 'EX_salc_e' since it already exists.
+  Ignoring reaction 'EX_salchs4_e' since it already exists.
+  Ignoring reaction 'EX_salchs4fe_e' since it already exists.
+  Ignoring reaction 'EX_salcn_e' since it already exists.
+  Ignoring reaction 'EX_sbt__D_e' since it already exists.
+  Ignoring reaction 'EX_sel_e' since it already exists.
+  Ignoring reaction 'EX_ser__D_e' since it already exists.
+  Ignoring reaction 'EX_ser__L_e' since it already exists.
+  Ignoring reaction 'EX_serglugly_e' since it already exists.
+  Ignoring reaction 'EX_slnt_e' since it already exists.
+  Ignoring reaction 'EX_so3_e' since it already exists.
+  Ignoring reaction 'EX_so4_e' since it already exists.
+  Ignoring reaction 'EX_spmd_e' since it already exists.
+  Ignoring reaction 'EX_stfrnA_e' since it already exists.
+  Ignoring reaction 'EX_stfrnB_e' since it already exists.
+  Ignoring reaction 'EX_succ_e' since it already exists.
+  Ignoring reaction 'EX_sucr_e' since it already exists.
+  Ignoring reaction 'EX_tcynt_e' since it already exists.
+  Ignoring reaction 'EX_tet_e' since it already exists.
+  Ignoring reaction 'EX_thm_e' since it already exists.
+  Ignoring reaction 'EX_thr__L_e' since it already exists.
+  Ignoring reaction 'EX_thymd_e' since it already exists.
+  Ignoring reaction 'EX_tnt_e' since it already exists.
+  Ignoring reaction 'EX_tre_e' since it already exists.
+  Ignoring reaction 'EX_trp__L_e' since it already exists.
+  Ignoring reaction 'EX_tsul_e' since it already exists.
+  Ignoring reaction 'EX_tyr__L_e' since it already exists.
+  Ignoring reaction 'EX_ura_e' since it already exists.
+  Ignoring reaction 'EX_urea_e' since it already exists.
+  Ignoring reaction 'EX_val__L_e' since it already exists.
+  Ignoring reaction 'EX_xan_e' since it already exists.
+  Ignoring reaction 'EX_xyl__D_e' since it already exists.
+  Ignoring reaction 'EX_zn2_e' since it already exists.
+  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/model.py:667: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+    self.objective = [int(self.reactions[self.reactions.
+  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/layout.py:1425: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+    self.media = pd.concat([self.media, new_row],
+  .command.sh: line 13: 625417 Killed                  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path /mnt/data/sur/users/mmontante/faltantes2 --strains cc_pk_cv_lb_Staphylococcus_shinii_154_a --media mm --cycles 10000 --media_dil 0.1 --media_vol 0.03 --outdir out_cc_pk_cv_lb_Staphylococcus_shinii_154_a
+
+Work dir:
+  /mnt/data/sur/users/mmontante/02_resultados/nf_work/be/fc847f0ade2fc374dda80cdd5e1aac
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Jul-20 13:59:52.291 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
+Jul-20 13:59:52.311 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-20 13:59:52.311 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-20 13:59:52.336 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-20 13:59:52.349 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (2)
+Jul-20 13:59:52.458 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=8; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=2; succeedDuration=0ms; failedDuration=4m 5s; cachedDuration=27m 57s;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=3; peakMemory=0; ]
+Jul-20 13:59:52.458 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-20 13:59:52.461 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-20 13:59:53.750 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-20 13:59:53.815 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
