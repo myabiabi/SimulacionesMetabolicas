@@ -59,21 +59,23 @@ for archivo in *_prokka_gapseq_lb.xml.xml.xml; do
     mv "$archivo" "${nombre_base}.xml"
 done
 ```
-
+rz_pk_lb_consenso_vparadoxus.xml
+rz_pk_lb_mergem_vparadoxus.xml
 ```
-for archivo in rz_pk_gp_lbST*_prokka_gapseq_lb.xml.xml.xml; do
+for archivo in *.xml; do
     # 1. Quitamos el prefijo del inicio usando '#'
-    sin_prefijo="${archivo#rz_pk_gp_lb}"
-    
+    sin_prefijo="${archivo#rz_pk_lb_consenso_}"
+    prefijo= "rz_pk_lb_mergem"
     # 2. Quitamos todo el bloque de texto del final usando '%'
-    nombre_limpio="${sin_prefijo%_prokka_gapseq_lb.xml.xml.xml}"
+    nombre_limpio="${prefijo}${sin_prefijo%.xml}"
     
     # 3. Renombramos al formato limpio final
     mv "$archivo" "${nombre_limpio}.xml"
 done
 ```
 
-STXXX.xml
+
+
 ```
 for archivo in ST*; do
     # 1. Obtener el nombre base eliminando el PREFIJO largo del inicio
@@ -84,9 +86,8 @@ for archivo in ST*; do
     mv "$archivo" "${prefijo}${nombre_base}.xml"
 done
 ```
-
 ```
-for archivo in *.xml.xml; do
+for archivo in *.xml; do
     # Elimina el último .xml del nombre actual
     nombre_base="${archivo%.xml}"
     
@@ -98,6 +99,10 @@ cancelar todos los jobs
 ```
 scancel -u $USER
 ```
+
+
+find . -type f -name "na_*" -exec cp {} /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz \;
+
 ## 🧬 Notas
 
 
@@ -1240,22 +1245,282 @@ echo "¡Proceso completo!"
 
 cc_pk_cv_mm_Staphylococcus_shinii_154_a.xml
 
+## 21/06/26
+
+Bacillus.fna_assembly.RAST.fbamodel.xml
+rz_kb_rt_na_Bacillus.xml
+
+
+for archivo in *.fna_assembly.RAST.fbamodel.xml; do
+    # Elimina la cadena del final
+    nombre_base="${archivo%.fna_assembly.RAST.fbamodel.xml}"
+
+    # Prefijo
+    prefijo="rz_kb_rt_na"
+
+    # Renombrar
+    mv "$archivo" "${prefijo}_${nombre_base}.xml"
+done
+
+## GEMSEMBLER
+
+```
+import os
+import cobra
+from cobra.io import read_sbml_model, write_sbml_model
+
+# 1. Imports principales de gemsembler (Limpiados y sin duplicados)
+from gemsembler import (
+    GatheredModels,
+    read_supermodel_from_json,
+    get_models_with_all_confidence_levels,
+    get_model_of_interest
+)
+
+# 2. Funciones downstream para análisis posterior
+from gemsembler.downstream import (
+    glycolysis,
+    pentose_phosphate,
+    tca,
+    biomass,
+    get_met_neighborhood,
+    run_growth_full_flux_analysis,
+    pathway_of_interest,
+    GLYCOLYSIS_GLOBAL,
+    PENTOSE_PHOSPHATE_PATHWAY_GLOBAL,
+    TCA_GLOBAL,
+    COFACTORS_GLOBAL
+)
+
+from gemsembler import (
+    GatheredModels,
+    get_model_of_interest,
+    get_models_with_all_confidence_levels
+)
+
+# ==========================
+# Modelos de entrada
+# ==========================
+
+ecoli_example = [
+    {
+        "model_id": "ecoli_carveme",
+        "path_to_model": "./02_resultados/modelos_core/ec_na_cv_na_ecoli.xml",
+        "model_type": "carveme"
+    },
+    {
+        "model_id": "ecoli_modelseed",
+        "path_to_model": "./02_resultados/modelos_core/ec_na_kb_na_ecoli.xml",
+        "model_type": "modelseed"
+    }
+]
+
+# ==========================
+# Directorio de salida
+# ==========================
+
+output_dir = "./gemsembler_output_ecoli/"
+
+# ==========================
+# Cargar modelos
+# ==========================
+
+gathered = GatheredModels()
+
+for model in ecoli_example:
+    gathered.add_model(**model)
+
+# ==========================
+# Conversión y ensamblaje
+# ==========================
+
+gathered.run()
+
+supermodel_ecoli = gathered.assemble_supermodel(
+    output_dir,
+    path_final_genome_nt="/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/others/ecoli.fna",
+    path_final_genome_aa="/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/others/ecoli.faa"
+)
+
+# ==========================
+# Revisar niveles disponibles
+# ==========================
+
+print("\nNiveles disponibles:")
+
+if hasattr(supermodel_ecoli, "get_all_confidence_levels"):
+    print(supermodel_ecoli.get_all_confidence_levels())
+
+print("\nAtributos del supermodelo:")
+print(dir(supermodel_ecoli))
+
+# ==========================
+# Generar modelos de confianza
+# ==========================
+
+try:
+    supermodel_ecoli.at_least_in(2)
+
+    core2_model = get_model_of_interest(
+        supermodel_ecoli,
+        "core2",
+        f"{output_dir}/ecoli_core2.xml"
+    )
+
+    print("Modelo core2 exportado correctamente.")
+
+except Exception as e:
+    print(f"\nNo fue posible generar core2: {e}")
+
+```
+
+
+/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq/gapfind/
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+############3
+Running initial convertion
+Running 1st structural convertion
+Running structural suggestions for metabolites
+Running 2d structural convertion
+Introducing periplasmic compartment
+Downloading assembly from NCBI
+Building BLAST database
+Building BLAST database
+Assembling Supermodel
+Creating metabolites for supermodel
+Creating reactions for supermodel
+Creating genes for supermodel
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/creation.py:1373: UserWarning: 
+Warning! File /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output/bthuringensis/tmp_gene_conversion/bthuringensis_carveme_blast.tsv can't be opened.
+  warnings.warn(f"\nWarning! File {str(blast_file)} can't be opened.")
+No genes will be  used for bthuringensis_carveme
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/creation.py:1373: UserWarning: 
+Warning! File /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output/bthuringensis/tmp_gene_conversion/bthuringensis_modelseed_blast.tsv can't be opened.
+  warnings.warn(f"\nWarning! File {str(blast_file)} can't be opened.")
+No genes will be  used for bthuringensis_modelseed
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/creation.py:1373: UserWarning: 
+Warning! File /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output/bthuringensis/tmp_gene_conversion/bthuringensis_gapseq_blast.tsv can't be opened.
+  warnings.warn(f"\nWarning! File {str(blast_file)} can't be opened.")
+No genes will be  used for bthuringensis_gapseq
+Connecting supermodel network
+Finalizing supermodel attributes
+(<Model assembly at 0x7fb158ba84c0>,
+ {'COBRA_CHECK': [],
+  'COBRA_ERROR': [],
+  'COBRA_FATAL': [],
+  'COBRA_WARNING': [],
+  'SBML_ERROR': [],
+  'SBML_FATAL': [],
+  'SBML_SCHEMA_ERROR': [],
+  'SBML_WARNING': []})
+Results are saved in 'comparison' attribute as core2
+(<Model core2 at 0x7fb1573bcaf0>,
+ {'COBRA_CHECK': [],
+  'COBRA_ERROR': [],
+  'COBRA_FATAL': [],
+  'COBRA_WARNING': [],
+  'SBML_ERROR': [],
+  'SBML_FATAL': [],
+  'SBML_SCHEMA_ERROR': [],
+  'SBML_WARNING': []})
+Results are saved in 'comparison' attribute as core3
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/anticreation.py:269: UserWarning: Some expected biomass products are not found: adp_c h_c pi_c ppi_c
+  warnings.warn(
+There are no boundary reactions in this model. Therefore, specific types of boundary reactions such as 'exchanges', 'demands' or 'sinks' cannot be identified.
+SBML errors in validation, check error log for details.
+COBRA warnings in validation, check error log for details.
+(<Model core3 at 0x7fb158ba9f60>,
+ {'COBRA_CHECK': [],
+  'COBRA_ERROR': [],
+  'COBRA_FATAL': [],
+  'COBRA_WARNING': ['No metabolites in model'],
+  'SBML_ERROR': ['E0 (Error): SBML component consistency (core, L29); Cannot '
+                 'have a reaction with neither reactants nor products; A '
+                 '<reaction> definition must contain at least one '
+                 '<speciesReference>, either in its <listOfReactants> or its '
+                 '<listOfProducts>. A reaction without any reactant or product '
+                 'species is not permitted, regardless of whether the reaction '
+                 'has any modifier species.\n'
+                 'Reference: L3V1 Section 4.11.3\n'
+                 " The <reaction> with id 'R_Biomass' does not contain any "
+                 'reactants or products. \n'],
+  'SBML_FATAL': [],
+  'SBML_SCHEMA_ERROR': [],
+  'SBML_WARNING': []})
+bthuringensis completada.
+Running initial convertion
+Running 1st structural convertion
+Running structural suggestions for metabolites
+Running 2d structural convertion
+Introducing periplasmic compartment
+Downloading assembly from NCBI
+Building BLAST database
+Building BLAST database
+Assembling Supermodel
+Creating metabolites for supermodel
+Creating reactions for supermodel
+Creating genes for supermodel
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/creation.py:1373: UserWarning: 
+Warning! File /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output/mycobacterium/tmp_gene_conversion/mycobacterium_carveme_blast.tsv can't be opened.
+  warnings.warn(f"\nWarning! File {str(blast_file)} can't be opened.")
+No genes will be  used for mycobacterium_carveme
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/creation.py:1373: UserWarning: 
+Warning! File /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output/mycobacterium/tmp_gene_conversion/mycobacterium_modelseed_blast.tsv can't be opened.
+  warnings.warn(f"\nWarning! File {str(blast_file)} can't be opened.")
+No genes will be  used for mycobacterium_modelseed
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/creation.py:1373: UserWarning: 
+Warning! File /home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output/mycobacterium/tmp_gene_conversion/mycobacterium_gapseq_blast.tsv can't be opened.
+  warnings.warn(f"\nWarning! File {str(blast_file)} can't be opened.")
+No genes will be  used for mycobacterium_gapseq
+Connecting supermodel network
+Finalizing supermodel attributes
+(<Model assembly at 0x7fb1555c0cd0>,
+ {'COBRA_CHECK': [],
+  'COBRA_ERROR': [],
+  'COBRA_FATAL': [],
+  'COBRA_WARNING': [],
+  'SBML_ERROR': [],
+  'SBML_FATAL': [],
+  'SBML_SCHEMA_ERROR': [],
+  'SBML_WARNING': []})
+Results are saved in 'comparison' attribute as core2
+(<Model core2 at 0x7fb153df9e70>,
+ {'COBRA_CHECK': [],
+  'COBRA_ERROR': [],
+  'COBRA_FATAL': [],
+  'COBRA_WARNING': [],
+  'SBML_ERROR': [],
+  'SBML_FATAL': [],
+  'SBML_SCHEMA_ERROR': [],
+  'SBML_WARNING': []})
+Results are saved in 'comparison' attribute as core3
+/home/abigaylmontantearenas/anaconda3/envs/gemsembler/lib/python3.10/site-packages/gemsembler/anticreation.py:269: UserWarning: Some expected biomass products are not found: adp_c h_c pi_c ppi_c
+  warnings.warn(
+There are no boundary reactions in this model. Therefore, specific types of boundary reactions such as 'exchanges', 'demands' or 'sinks' cannot be identified.
+SBML errors in validation, check error log for details.
+COBRA warnings in validation, check error log for details.
+(<Model core3 at 0x7fb153e9fd60>,
+ {'COBRA_CHECK': [],
+  'COBRA_ERROR': [],
+  'COBRA_FATAL': [],
+  'COBRA_WARNING': ['No metabolites in model'],
+  'SBML_ERROR': ['E0 (Error): SBML component consistency (core, L29); Cannot '
+                 'have a reaction with neither reactants nor products; A '
+                 '<reaction> definition must contain at least one '
+                 '<speciesReference>, either in its <listOfReactants> or its '
+                 '<listOfProducts>. A reaction without any reactant or product '
+                 'species is not permitted, regardless of whether the reaction '
+                 'has any modifier species.\n'
+                 'Reference: L3V1 Section 4.11.3\n'
+                 " The <reaction> with id 'R_Biomass' does not contain any "
+                 'reactants or products. \n'],
+  'SBML_FATAL': [],
+  'SBML_SCHEMA_ERROR': [],
+  'SBML_WARNING': []})
+mycobacterium completada.
 
 
 

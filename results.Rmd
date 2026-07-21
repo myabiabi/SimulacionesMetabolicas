@@ -20,7 +20,7 @@ library(ggrepel)
 library(growthcurver)
 library(ggbeeswarm)
 library(DescTools)
-
+install.packages(DescTools)
 
 variables <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/evaluacion/variables_totales.csv"
 gemn <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/gem"

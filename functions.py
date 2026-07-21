@@ -45,7 +45,7 @@ def variables_totales(gem_path, output_dir, output_filename):
 import os
 import glob
 import cobra
-import mergem
+#import mergem
 
 def mergem_function(ruta_input, ruta_output, lista_patrones):
     """
@@ -106,7 +106,59 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
     return resultados_totales
 
 
-model = cobra.io.read_sbml_model("/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz/rz_na_cv_lb_paenibacillus.xml")
+
+import glob
+import os
+
+def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/mergem/models"):
+    bacterias = []
+    for carpeta in sorted(glob.glob(os.path.join(data_dir, "*"))):
+        if not os.path.isdir(carpeta):
+            continue
+        id_bacteria = os.path.basename(carpeta)
+
+        genoma_nt = os.path.join(carpeta, "genome.fna")
+        genoma_aa = os.path.join(carpeta, "genome.faa")
+
+        modelos = []
+
+        # --- AQUÍ va el cambio, reemplazando el for anterior ---
+        tipos_archivo = {
+            "rz_pk_lb_carveme": "carveme",
+            "rz_pk_lb_modelseed": "modelseed",
+            "rz_pk_lb_gapseq": "gapseq",
+        }
+
+        for nombre_archivo, tipo_real in tipos_archivo.items():
+            path_modelo = os.path.join(carpeta, f"{nombre_archivo}.xml")
+            if os.path.exists(path_modelo):
+                modelos.append({
+                    "model_id": f"{id_bacteria}_{tipo_real}",
+                    "path_to_model": path_modelo,
+                    "model_type": tipo_real,
+                })
+        # --------------------------------------------------------
+
+        if not modelos:
+            print(f"{id_bacteria}: no se encontraron modelos")
+            continue
+
+        bacterias.append({
+            "id_bacteria": id_bacteria,
+            "genoma_nt": genoma_nt,
+            "genoma_aa": genoma_aa,
+            "modelos": modelos,
+        })
+
+    return bacterias
+
+
+
+
+
+
+
+
 
 # # Print the total number of reactions
 # print(f"Total reactions: {len(model.reactions)}")
@@ -164,3 +216,4 @@ model = cobra.io.read_sbml_model("/home/abigaylmontantearenas/Documents/proyecto
 # # Execute
 # final_df = defmedio(data_url, medio_names)
 # print(final_df[[final_df.columns[0], 'name']])
+
