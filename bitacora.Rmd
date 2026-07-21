@@ -94,7 +94,10 @@ for archivo in *.xml.xml; do
     mv "$archivo" "$nombre_base"
 done
 ```
-
+cancelar todos los jobs
+```
+scancel -u $USER
+```
 ## 🧬 Notas
 
 
@@ -1235,7 +1238,7 @@ done
 
 echo "¡Proceso completo!"
 
-
+cc_pk_cv_mm_Staphylococcus_shinii_154_a.xml
 
 
 
