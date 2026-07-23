@@ -1,79 +1,235 @@
-Jul-20 15:31:16.739 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
-Jul-20 15:31:17.307 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
-Jul-20 15:31:17.357 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
-Jul-20 15:31:17.468 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-20 15:31:17.470 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-20 15:31:17.477 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
-Jul-20 15:31:17.509 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-20 15:31:17.549 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-20 15:31:17.554 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-20 15:31:17.642 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-20 15:31:17.647 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1d3e6d34] - activable => nextflow.secret.LocalSecretsProvider@1d3e6d34
-Jul-20 15:31:17.659 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
-Jul-20 15:31:18.475 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, combos, comets]
-Jul-20 15:31:18.563 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jul-20 15:31:18.588 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [special_carlsson] DSL2 - revision: fa16a41979
-Jul-20 15:31:18.590 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-20 15:31:18.590 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-20 15:31:18.669 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
-Jul-20 15:31:18.670 [main] DEBUG nextflow.Session - Run name: special_carlsson
-Jul-20 15:31:18.671 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-20 15:31:18.684 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-20 15:31:18.692 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-20 15:31:18.724 [main] DEBUG nextflow.cli.CmdRun - 
-  Version: 24.04.1 build 5913
-  Created: 20-05-2024 09:48 UTC (03:48 CDT)
-  System: Linux 5.14.0-570.42.2.el9_6.x86_64
-  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
+Jul-23 11:46:05.277 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry DOALL -profile doall -resume
+Jul-23 11:46:05.502 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
+Jul-23 11:46:05.528 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
+Jul-23 11:46:05.558 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-23 11:46:05.559 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-23 11:46:05.563 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-23 11:46:05.581 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Jul-23 11:46:05.766 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-23 11:46:05.850 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-23 11:46:05.853 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-23 11:46:05.877 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `doall`
+Jul-23 11:46:06.461 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [doall, gapseq, memote, combos, comets]
+Jul-23 11:46:06.483 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-23 11:46:06.484 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-23 11:46:06.513 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-23 11:46:06.517 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@34aeacd1] - activable => nextflow.secret.LocalSecretsProvider@34aeacd1
+Jul-23 11:46:06.545 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-23 11:46:06.569 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [scruffy_hamilton] DSL2 - revision: 43756043fc
+Jul-23 11:46:06.660 [main] DEBUG nextflow.Session - Session UUID: c72135a9-0d3c-4157-b4e7-6ff7b22f3730
+Jul-23 11:46:06.662 [main] DEBUG nextflow.Session - Run name: scruffy_hamilton
+Jul-23 11:46:06.663 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-23 11:46:06.678 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-23 11:46:06.687 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-23 11:46:06.730 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.10.4 build 11173
+  Created: 10-02-2026 15:17 UTC (09:17 CDT)
+  System: Linux 5.14.0-503.14.1.el9_5.x86_64
+  Runtime: Groovy 4.0.28 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
   Encoding: UTF-8 (UTF-8)
-  Process: 1977404@node02.cluster [10.1.1.2]
-  CPUs: 2 - Mem: 1006.8 GB (212.7 GB) - Swap: 4 GB (3.3 GB)
-Jul-20 15:31:18.788 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
-Jul-20 15:31:18.789 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-20 15:31:18.803 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-20 15:31:18.814 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-20 15:31:18.905 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-20 15:31:18.920 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
-Jul-20 15:31:19.254 [main] DEBUG nextflow.Session - Session start
-Jul-20 15:31:19.258 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
-Jul-20 15:31:20.014 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-20 15:31:20.793 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
-Jul-20 15:31:20.793 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
-Jul-20 15:31:20.808 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
-Jul-20 15:31:20.871 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
-Jul-20 15:31:20.876 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
-Jul-20 15:31:20.882 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
-Jul-20 15:31:20.966 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
-Jul-20 15:31:20.967 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
-Jul-20 15:31:20.974 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
-Jul-20 15:31:20.978 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/faltantes/; pattern: *.xml; options: [:]
-Jul-20 15:31:20.983 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_f9c8ebba4fd576ca: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./comets.nf
-  Script_172e96b54e5081a1: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
-  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
-  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./combos.nf
-Jul-20 15:31:20.983 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jul-20 15:31:20.983 [main] DEBUG nextflow.Session - Session await
-Jul-20 15:31:21.903 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [e0/f1de42] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Staphylococcus_arlettae_99_b)
-Jul-20 15:31:21.972 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Staphylococcus_shinii_154_a) > jobId: 242346; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/04d2d4dda00775550109d3e2d576d3
-Jul-20 15:31:21.972 [Task submitter] INFO  nextflow.Session - [3e/04d2d4] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Staphylococcus_shinii_154_a)
-Jul-20 15:31:21.986 [Actor Thread 4] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-20 15:31:22.016 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_batrophaeus) > jobId: 242347; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/40/2db6f5d05348c2fc13df7ac38417ba
-Jul-20 15:31:22.016 [Task submitter] INFO  nextflow.Session - [40/2db6f5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_batrophaeus)
-Jul-20 15:31:22.037 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Corynebacterium_sp_29_x) > jobId: 242348; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/1c/0a796c80b230c798c4a432b8977e9e
-Jul-20 15:31:22.038 [Task submitter] INFO  nextflow.Session - [1c/0a796c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Corynebacterium_sp_29_x)
-Jul-20 15:33:50.892 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242346; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Staphylococcus_shinii_154_a); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/04d2d4dda00775550109d3e2d576d3 started: 1784583085886; exited: 2026-07-20T21:33:47.337271782Z; ]
-Jul-20 15:33:50.894 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-20 15:34:10.894 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242348; id: 3; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_na_kb_rt_na_Corynebacterium_sp_29_x); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/1c/0a796c80b230c798c4a432b8977e9e started: 1784583085905; exited: 2026-07-20T21:34:06.673184273Z; ]
-Jul-20 15:34:55.893 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242347; id: 2; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_kb_rt_na_batrophaeus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/40/2db6f5d05348c2fc13df7ac38417ba started: 1784583085903; exited: 2026-07-20T21:34:55.028966765Z; ]
-Jul-20 15:34:55.900 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jul-20 15:35:00.891 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
-Jul-20 15:35:00.892 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-20 15:35:00.896 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
-Jul-20 15:35:00.897 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
-Jul-20 15:35:00.904 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=0; ignoredCount=0; cachedCount=1; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=8m 39s; failedDuration=0ms; cachedDuration=3m 55s;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=3; peakMemory=300 GB; ]
-Jul-20 15:35:00.904 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
-Jul-20 15:35:00.907 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
-Jul-20 15:35:02.187 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-20 15:35:02.274 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Jul-20 15:35:02.275 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Process: 2949279@node05.cluster [10.1.1.5]
+  CPUs: 2 - Mem: 251.3 GB (30.2 GB) - Swap: 0 (0)
+Jul-23 11:46:06.783 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
+Jul-23 11:46:06.784 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-23 11:46:06.799 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-23 11:46:06.814 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-23 11:46:06.818 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Jul-23 11:46:06.910 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-23 11:46:06.925 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-23 11:46:07.139 [main] DEBUG nextflow.Session - Session start
+Jul-23 11:46:07.147 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
+Jul-23 11:46:07.588 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-23 11:46:08.630 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-23 11:46:08.631 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-23 11:46:08.650 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-23 11:46:08.662 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-23 11:46:08.665 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-23 11:46:08.668 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-23 11:46:08.702 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'DOALL:PROCESO_DOALL:GAPSEQ_DOALL': maxForks=0; fair=false; array=0
+Jul-23 11:46:08.764 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: DOALL:PROCESO_DOALL:GAPSEQ_DOALL, COMBO_RUN, GAPSEQ_DOALL, MEMOTE_REPORT, COMETS_RUN, GAPFILL_PIPELINE
+Jul-23 11:46:08.767 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-23 11:46:08.775 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL
+Jul-23 11:46:08.776 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_7c2db3297c79f300: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/comets.nf
+  Script_bbdef05a02eaf98c: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/memote.nf
+  Script_2c6a3d0984946119: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/gap_fill.nf
+  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/combos.nf
+  Script_278f9509f74c5b50: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/gap_doall.nf
+Jul-23 11:46:08.776 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-23 11:46:08.776 [main] DEBUG nextflow.Session - Session await
+Jul-23 11:46:08.777 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/01_data/cc/prokka/protein_files/; pattern: *.faa; options: [:]
+Jul-23 11:46:09.089 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b) > jobId: 244977; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805
+Jul-23 11:46:09.089 [Task submitter] INFO  nextflow.Session - [26/ec5073] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b)
+Jul-23 11:46:09.127 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x) > jobId: 244978; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1
+Jul-23 11:46:09.127 [Task submitter] INFO  nextflow.Session - [48/a0c6fa] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x)
+Jul-23 11:46:09.146 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x) > jobId: 244979; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417
+Jul-23 11:46:09.146 [Task submitter] INFO  nextflow.Session - [d9/196a2f] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x)
+Jul-23 11:46:09.164 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x) > jobId: 244980; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d
+Jul-23 11:46:09.164 [Task submitter] INFO  nextflow.Session - [a6/3a6cdb] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x)
+Jul-23 11:46:09.181 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x) > jobId: 244981; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed
+Jul-23 11:46:09.183 [Task submitter] INFO  nextflow.Session - [d6/da033b] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x)
+Jul-23 11:46:09.201 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a) > jobId: 244982; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff
+Jul-23 11:46:09.201 [Task submitter] INFO  nextflow.Session - [ea/54196b] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a)
+Jul-23 11:46:09.218 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d) > jobId: 244983; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce
+Jul-23 11:46:09.218 [Task submitter] INFO  nextflow.Session - [56/001b6f] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d)
+Jul-23 11:46:09.236 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x) > jobId: 244984; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753
+Jul-23 11:46:09.237 [Task submitter] INFO  nextflow.Session - [ec/76062d] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x)
+Jul-23 11:46:09.270 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x) > jobId: 244985; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3
+Jul-23 11:46:09.271 [Task submitter] INFO  nextflow.Session - [19/bbcc14] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x)
+Jul-23 11:46:09.287 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a) > jobId: 244986; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513
+Jul-23 11:46:09.288 [Task submitter] INFO  nextflow.Session - [07/9300f2] Submitted process > DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a)
+Jul-23 11:51:13.694 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 11:56:13.714 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:01:13.731 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:06:13.748 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:11:13.768 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:16:13.784 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:21:13.799 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:26:13.809 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:31:13.823 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:36:13.838 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:41:13.851 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:46:13.862 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:51:13.878 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]
+Jul-23 12:56:13.889 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 244977; id: 1; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_arlettae_99_b); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/26/ec50738922ab22b525d9b1f860a805 started: 1784828793675; exited: -; ]
+~> TaskHandler[jobId: 244978; id: 2; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_atrophaeus_90_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/a0c6faa6ff0aa38bf326a2d4d35ee1 started: 1784828793681; exited: -; ]
+~> TaskHandler[jobId: 244979; id: 3; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_altitudinis_23_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/196a2fac7563792f22274b0bb6d417 started: 1784828793682; exited: -; ]
+~> TaskHandler[jobId: 244980; id: 4; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Priestia_megaterium_447_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a6/3a6cdb5ccbd02283e3147c3df3943d started: 1784828808677; exited: -; ]
+~> TaskHandler[jobId: 244981; id: 6; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_thuringiensis_111_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d6/da033b6b007b2a9bc43e0d497421ed started: 1784828808680; exited: -; ]
+~> TaskHandler[jobId: 244982; id: 5; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Micrococcus_luteus_149_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ea/54196b631c372c0aacf148df3cefff started: 1784828808681; exited: -; ]
+~> TaskHandler[jobId: 244983; id: 8; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Bacillus_infantis_161_d); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/001b6f9be6ccb156c6b79a3c0f90ce started: 1784828808738; exited: -; ]
+~> TaskHandler[jobId: 244984; id: 7; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Corynebacterium_sp_29_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/76062dbfa5d9ba676962fa36835753 started: 1784828808739; exited: -; ]
+~> TaskHandler[jobId: 244985; id: 9; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Metabacillus_indicus_450_x); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/19/bbcc1470f51681c3d7e6405e248ae3 started: 1784828808740; exited: -; ]
+~> TaskHandler[jobId: 244986; id: 10; name: DOALL:PROCESO_DOALL:GAPSEQ_DOALL (Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/07/9300f2887af8bb88615849e93a1513 started: 1784828808741; exited: -; ]

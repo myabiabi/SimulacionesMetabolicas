@@ -43,3 +43,11 @@
 2026-07-20 14:21:35	6m 24s	marvelous_fermi	OK	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
 2026-07-20 15:31:18	3m 44s	special_carlsson	OK	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
 2026-07-20 17:57:10	7m 9s	furious_pesquet	OK	fa16a419790133412150221a2030fb54	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-21 15:56:45	-	fervent_nobel	-	cd52be1c1d3ff81c807e7a257bbbcee2	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry GAPSEQ -profile gapseq -resume
+2026-07-21 16:06:14	3m 4s	infallible_feynman	ERR	8ceade9680f389dbc7ce96c1bf1709b2	8c6003f4-4bcf-4884-814b-30b1e126a99f	nextflow run main.nf -entry GAPFILL -profile gapseq -resume
+2026-07-21 18:50:21	34m 49s	fabulous_panini	OK	8ceade9680f389dbc7ce96c1bf1709b2	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry MEMOTE -profile memote
+2026-07-21 19:25:13	48.7s	nauseous_rubens	ERR	8ceade9680f389dbc7ce96c1bf1709b2	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-22 12:54:35	7.5s	jolly_stone	OK	8ceade9680f389dbc7ce96c1bf1709b2	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-22 12:58:31	14m 53s	cheesy_spence	OK	8ceade9680f389dbc7ce96c1bf1709b2	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-22 14:12:24	5h 20m 4s	sick_mclean	OK	43756043fccc7db1ac7e6e65abd12e17	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-23 11:46:06	-	scruffy_hamilton	-	43756043fccc7db1ac7e6e65abd12e17	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume

@@ -1,173 +1,404 @@
-Jul-20 14:03:30.175 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
-Jul-20 14:03:30.458 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.1
-Jul-20 14:03:30.478 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
-Jul-20 14:03:30.530 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-20 14:03:30.531 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-20 14:03:30.535 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
-Jul-20 14:03:30.552 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-20 14:03:30.579 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-20 14:03:30.582 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-20 14:03:30.658 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-20 14:03:30.662 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@23eee4b8] - activable => nextflow.secret.LocalSecretsProvider@23eee4b8
-Jul-20 14:03:30.677 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
-Jul-20 14:03:31.420 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, combos, comets]
-Jul-20 14:03:31.482 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jul-20 14:03:31.508 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [berserk_caravaggio] DSL2 - revision: fa16a41979
-Jul-20 14:03:31.534 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-20 14:03:31.535 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-20 14:03:31.601 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
-Jul-20 14:03:31.603 [main] DEBUG nextflow.Session - Run name: berserk_caravaggio
-Jul-20 14:03:31.604 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-20 14:03:31.614 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-20 14:03:31.621 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-20 14:03:31.657 [main] DEBUG nextflow.cli.CmdRun - 
-  Version: 24.04.1 build 5913
-  Created: 20-05-2024 09:48 UTC (03:48 CDT)
-  System: Linux 5.14.0-503.23.2.el9_5.x86_64
-  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
+Jul-22 12:58:30.605 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
+Jul-22 12:58:30.719 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
+Jul-22 12:58:30.741 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
+Jul-22 12:58:30.787 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-22 12:58:30.788 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-22 12:58:30.791 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-22 12:58:30.807 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Jul-22 12:58:30.961 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-22 12:58:31.012 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-22 12:58:31.015 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-22 12:58:31.078 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
+Jul-22 12:58:31.520 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [gapseq, memote, combos, comets]
+Jul-22 12:58:31.536 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-22 12:58:31.536 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-22 12:58:31.553 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-22 12:58:31.555 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@42fb8c87] - activable => nextflow.secret.LocalSecretsProvider@42fb8c87
+Jul-22 12:58:31.566 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-22 12:58:31.582 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [cheesy_spence] DSL2 - revision: 8ceade9680
+Jul-22 12:58:31.633 [main] DEBUG nextflow.Session - Session UUID: c72135a9-0d3c-4157-b4e7-6ff7b22f3730
+Jul-22 12:58:31.634 [main] DEBUG nextflow.Session - Run name: cheesy_spence
+Jul-22 12:58:31.634 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-22 12:58:31.642 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-22 12:58:31.647 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-22 12:58:31.665 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.10.4 build 11173
+  Created: 10-02-2026 15:17 UTC (09:17 CDT)
+  System: Linux 5.14.0-570.42.2.el9_6.x86_64
+  Runtime: Groovy 4.0.28 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
   Encoding: UTF-8 (UTF-8)
-  Process: 636819@node09.cluster [10.1.1.9]
-  CPUs: 2 - Mem: 251.7 GB (29.1 GB) - Swap: 4 GB (4 GB)
-Jul-20 14:03:31.724 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
-Jul-20 14:03:31.725 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-20 14:03:31.737 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-20 14:03:31.748 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jul-20 14:03:31.841 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-20 14:03:31.852 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
-Jul-20 14:03:32.010 [main] DEBUG nextflow.Session - Session start
-Jul-20 14:03:32.013 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
-Jul-20 14:03:32.635 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-20 14:03:33.243 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
-Jul-20 14:03:33.243 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
-Jul-20 14:03:33.255 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
-Jul-20 14:03:33.265 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
-Jul-20 14:03:33.267 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
-Jul-20 14:03:33.271 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
-Jul-20 14:03:33.356 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
-Jul-20 14:03:33.357 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
-Jul-20 14:03:33.363 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
-Jul-20 14:03:33.364 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_f9c8ebba4fd576ca: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./comets.nf
-  Script_172e96b54e5081a1: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
-  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./memote.nf
-  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/./combos.nf
-Jul-20 14:03:33.364 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jul-20 14:03:33.364 [main] DEBUG nextflow.Session - Session await
-Jul-20 14:03:33.366 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/faltantes2/; pattern: *.xml; options: [:]
-Jul-20 14:03:33.698 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [a3/4ac1cd] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_na_Staphylococcus_arlettae_99_b)
-Jul-20 14:03:33.785 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [35/6c09ec] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Micrococcus_luteus_149_a)
-Jul-20 14:03:33.785 [Actor Thread 1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-20 14:03:33.815 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [55/090313] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_arlettae_99_b)
-Jul-20 14:03:33.858 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [be/c73857] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_altitudinis_23_x)
-Jul-20 14:03:33.877 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [b6/593610] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_infantis_161_d)
-Jul-20 14:03:33.893 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [c7/ce7d2b] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Bacillus_thuringiensis_111_x)
-Jul-20 14:03:33.907 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [81/da1bff] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Metabacillus_indicus_450_x)
-Jul-20 14:03:33.912 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_altitudinis_23_x) > jobId: 242314; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/41/f5f44bc9c235a10c8338a41ae91f56
-Jul-20 14:03:33.912 [Task submitter] INFO  nextflow.Session - [41/f5f44b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Bacillus_altitudinis_23_x)
-Jul-20 14:03:33.927 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [db/d604b1] Cached process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Bacillus_atrophaeus_90_x)
-Jul-20 14:03:33.954 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a) > jobId: 242315; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e8/f645218f564a82288f993ec3fae10e
-Jul-20 14:03:33.955 [Task submitter] INFO  nextflow.Session - [e8/f64521] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)
-Jul-20 14:03:34.008 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a) > jobId: 242316; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b7/282479f24ddd0c69fa86ac8f010d1a
-Jul-20 14:03:34.008 [Task submitter] INFO  nextflow.Session - [b7/282479] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a)
-Jul-20 14:07:43.430 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242315; id: 5; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a); status: COMPLETED; exit: 137; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e8/f645218f564a82288f993ec3fae10e started: 1784577818291; exited: 2026-07-20T20:07:42.271832853Z; ]
-Jul-20 14:07:43.446 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jul-20 14:07:43.494 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242316; id: 11; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a); status: COMPLETED; exit: 137; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b7/282479f24ddd0c69fa86ac8f010d1a started: 1784577818293; exited: 2026-07-20T20:07:40.253841883Z; ]
-Jul-20 14:07:43.598 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/e8/f645218f564a82288f993ec3fae10e
-  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
-Jul-20 14:07:43.648 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)'
-
-Caused by:
-  Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
-
-
-Command executed:
-
-  eval "$(mamba shell hook --shell bash)"
-  mamba activate python3
-  module load COMETS
-  
-  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py \
-    --gem_path /mnt/data/sur/users/mmontante/faltantes2 \
-    --strains cc_pk_cv_lb_Staphylococcus_shinii_154_a \
-    --media mm \
-    --cycles 10000 \
-    --media_dil 0.1 \
-    --media_vol 0.03 \
-    --outdir out_cc_pk_cv_lb_Staphylococcus_shinii_154_a
-
-Command exit status:
-  137
-
-Command output:
-  (empty)
-
-Command error:
-  Ignoring reaction 'EX_pi_e' since it already exists.
-  Ignoring reaction 'EX_ppal_e' since it already exists.
-  Ignoring reaction 'EX_ppap_e' since it already exists.
-  Ignoring reaction 'EX_ppi_e' since it already exists.
-  Ignoring reaction 'EX_pro__L_e' since it already exists.
-  Ignoring reaction 'EX_prohisglu_e' since it already exists.
-  Ignoring reaction 'EX_ptrc_e' since it already exists.
-  Ignoring reaction 'EX_pyovd_kt_e' since it already exists.
-  Ignoring reaction 'EX_raffin_e' since it already exists.
-  Ignoring reaction 'EX_rib__D_e' since it already exists.
-  Ignoring reaction 'EX_ribflv_e' since it already exists.
-  Ignoring reaction 'EX_s_e' since it already exists.
-  Ignoring reaction 'EX_salc_e' since it already exists.
-  Ignoring reaction 'EX_salchs4_e' since it already exists.
-  Ignoring reaction 'EX_salchs4fe_e' since it already exists.
-  Ignoring reaction 'EX_salcn_e' since it already exists.
-  Ignoring reaction 'EX_sbt__D_e' since it already exists.
-  Ignoring reaction 'EX_sel_e' since it already exists.
-  Ignoring reaction 'EX_ser__D_e' since it already exists.
-  Ignoring reaction 'EX_ser__L_e' since it already exists.
-  Ignoring reaction 'EX_serglugly_e' since it already exists.
-  Ignoring reaction 'EX_slnt_e' since it already exists.
-  Ignoring reaction 'EX_so3_e' since it already exists.
-  Ignoring reaction 'EX_so4_e' since it already exists.
-  Ignoring reaction 'EX_spmd_e' since it already exists.
-  Ignoring reaction 'EX_stfrnA_e' since it already exists.
-  Ignoring reaction 'EX_stfrnB_e' since it already exists.
-  Ignoring reaction 'EX_succ_e' since it already exists.
-  Ignoring reaction 'EX_sucr_e' since it already exists.
-  Ignoring reaction 'EX_tcynt_e' since it already exists.
-  Ignoring reaction 'EX_tet_e' since it already exists.
-  Ignoring reaction 'EX_thm_e' since it already exists.
-  Ignoring reaction 'EX_thr__L_e' since it already exists.
-  Ignoring reaction 'EX_thymd_e' since it already exists.
-  Ignoring reaction 'EX_tnt_e' since it already exists.
-  Ignoring reaction 'EX_tre_e' since it already exists.
-  Ignoring reaction 'EX_trp__L_e' since it already exists.
-  Ignoring reaction 'EX_tsul_e' since it already exists.
-  Ignoring reaction 'EX_tyr__L_e' since it already exists.
-  Ignoring reaction 'EX_ura_e' since it already exists.
-  Ignoring reaction 'EX_urea_e' since it already exists.
-  Ignoring reaction 'EX_val__L_e' since it already exists.
-  Ignoring reaction 'EX_xan_e' since it already exists.
-  Ignoring reaction 'EX_xyl__D_e' since it already exists.
-  Ignoring reaction 'EX_zn2_e' since it already exists.
-  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/model.py:667: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
-    self.objective = [int(self.reactions[self.reactions.
-  /mnt/data/sur/modules/pkgs/COMETS/2.12.3/lib/cometspy-master/cometspy/layout.py:1425: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
-    self.media = pd.concat([self.media, new_row],
-  .command.sh: line 13: 637165 Killed                  python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path /mnt/data/sur/users/mmontante/faltantes2 --strains cc_pk_cv_lb_Staphylococcus_shinii_154_a --media mm --cycles 10000 --media_dil 0.1 --media_vol 0.03 --outdir out_cc_pk_cv_lb_Staphylococcus_shinii_154_a
-
-Work dir:
-  /mnt/data/sur/users/mmontante/02_resultados/nf_work/e8/f645218f564a82288f993ec3fae10e
-
-Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
-Jul-20 14:07:43.652 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/b7/282479f24ddd0c69fa86ac8f010d1a
-  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_mm_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
-Jul-20 14:07:43.674 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_lb_Staphylococcus_shinii_154_a)` terminated with an error exit status (137)
-Jul-20 14:07:43.704 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
-Jul-20 14:07:43.705 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jul-20 14:07:43.705 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-20 14:07:43.767 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (1)
-Jul-20 14:07:43.802 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=2; ignoredCount=0; cachedCount=8; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=1; succeedDuration=0ms; failedDuration=8m 10s; cachedDuration=27m 57s;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=3; peakMemory=0; ]
-Jul-20 14:07:43.802 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
-Jul-20 14:07:43.804 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
-Jul-20 14:07:44.710 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-20 14:07:44.744 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Process: 3057120@node02.cluster [10.1.1.2]
+  CPUs: 2 - Mem: 1006.8 GB (121.6 GB) - Swap: 4 GB (3.3 GB)
+Jul-22 12:58:31.695 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
+Jul-22 12:58:31.696 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-22 12:58:31.705 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-22 12:58:31.713 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-22 12:58:31.716 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Jul-22 12:58:31.755 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-22 12:58:31.764 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-22 12:58:31.876 [main] DEBUG nextflow.Session - Session start
+Jul-22 12:58:31.882 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
+Jul-22 12:58:32.193 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-22 12:58:32.749 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-22 12:58:32.749 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-22 12:58:32.762 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-22 12:58:32.771 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-22 12:58:32.773 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-22 12:58:32.775 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-22 12:58:32.796 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'COMETS:PROCESO_COMETS:COMETS_RUN': maxForks=0; fair=false; array=0
+Jul-22 12:58:32.826 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, GAPFILL_PIPELINE, COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-22 12:58:32.828 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-22 12:58:32.833 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-22 12:58:32.834 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_7c2db3297c79f300: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/comets.nf
+  Script_60cc6ee1ab540a01: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/memote.nf
+  Script_2c6a3d0984946119: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/gap_fill.nf
+  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/combos.nf
+Jul-22 12:58:32.834 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-22 12:58:32.834 [main] DEBUG nextflow.Session - Session await
+Jul-22 12:58:32.837 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/consenso/; pattern: *.xml; options: [:]
+Jul-22 12:58:33.107 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core1) > jobId: 243952; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/bb/e98931f8f9fb8fa32b186b3b215429
+Jul-22 12:58:33.107 [Task submitter] INFO  nextflow.Session - [bb/e98931] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core1)
+Jul-22 12:58:33.131 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bacillus) > jobId: 243953; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/87/67a5531a7ad9e9c6ec10b1f2997cab
+Jul-22 12:58:33.131 [Task submitter] INFO  nextflow.Session - [87/67a553] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bacillus)
+Jul-22 12:58:33.146 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core3) > jobId: 243954; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5c/f2bf5f597c5038897f1ca6c76954f4
+Jul-22 12:58:33.146 [Task submitter] INFO  nextflow.Session - [5c/f2bf5f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core3)
+Jul-22 12:58:33.160 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core3) > jobId: 243955; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/52/28611eb2b86e23493e4aac5686feeb
+Jul-22 12:58:33.161 [Task submitter] INFO  nextflow.Session - [52/28611e] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core3)
+Jul-22 12:58:33.191 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core2) > jobId: 243956; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/af/d251160dc014abbc5e86a64d6ed380
+Jul-22 12:58:33.191 [Task submitter] INFO  nextflow.Session - [af/d25116] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core2)
+Jul-22 12:58:33.232 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_pseudomonas) > jobId: 243957; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7e/0b88a800f420d5de66dbe0e1a3de88
+Jul-22 12:58:33.233 [Task submitter] INFO  nextflow.Session - [7e/0b88a8] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_pseudomonas)
+Jul-22 12:58:33.267 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core2) > jobId: 243958; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5e/daef49e8f45471887197ef408be5ce
+Jul-22 12:58:33.267 [Task submitter] INFO  nextflow.Session - [5e/daef49] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core2)
+Jul-22 12:58:33.290 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core3) > jobId: 243959; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/77/927ce0b81f48adbb697e42325a0f71
+Jul-22 12:58:33.291 [Task submitter] INFO  nextflow.Session - [77/927ce0] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core3)
+Jul-22 12:58:33.331 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core2) > jobId: 243960; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/96/1d98e6dfc3f12e8de430ed068af89e
+Jul-22 12:58:33.331 [Task submitter] INFO  nextflow.Session - [96/1d98e6] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core2)
+Jul-22 12:58:33.349 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_agrobacterium) > jobId: 243961; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/32/37191cc1a97a324c34c7231de285c9
+Jul-22 12:58:33.349 [Task submitter] INFO  nextflow.Session - [32/37191c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_agrobacterium)
+Jul-22 12:58:33.367 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core2) > jobId: 243962; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/8f/3da50d06168d28b2b33d324b0fb727
+Jul-22 12:58:33.368 [Task submitter] INFO  nextflow.Session - [8f/3da50d] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core2)
+Jul-22 12:58:33.416 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_arthrobacter) > jobId: 243963; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/00/cfc08025a1bc650798bffd8bd8e434
+Jul-22 12:58:33.416 [Task submitter] INFO  nextflow.Session - [00/cfc080] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_arthrobacter)
+Jul-22 12:58:33.433 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core3) > jobId: 243964; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/6e1b00765fe24042f7c29926392018
+Jul-22 12:58:33.433 [Task submitter] INFO  nextflow.Session - [48/6e1b00] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core3)
+Jul-22 12:58:33.494 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core2) > jobId: 243965; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/68/4870995bff30e91d3ad2be54d82f40
+Jul-22 12:58:33.495 [Task submitter] INFO  nextflow.Session - [68/487099] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core2)
+Jul-22 12:58:33.507 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core3) > jobId: 243966; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/db/2f9a075076dce292ca332163c74f02
+Jul-22 12:58:33.508 [Task submitter] INFO  nextflow.Session - [db/2f9a07] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core3)
+Jul-22 12:58:33.544 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core3) > jobId: 243967; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b8/89b8e9e32bfcf08c3c41e3f1ec3b8f
+Jul-22 12:58:33.544 [Task submitter] INFO  nextflow.Session - [b8/89b8e9] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core3)
+Jul-22 12:58:33.557 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core3) > jobId: 243968; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/09/a3a71baaeb985998a5b3076daf9c10
+Jul-22 12:58:33.557 [Task submitter] INFO  nextflow.Session - [09/a3a71b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core3)
+Jul-22 12:58:33.602 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core2) > jobId: 243969; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/41/c3deb5adfc055aab41b6ac0465acd4
+Jul-22 12:58:33.602 [Task submitter] INFO  nextflow.Session - [41/c3deb5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core2)
+Jul-22 12:58:33.621 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_vparadoxus) > jobId: 243970; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/8b/9ae0ce59c05ca5b1664b620c10d85b
+Jul-22 12:58:33.622 [Task submitter] INFO  nextflow.Session - [8b/9ae0ce] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_vparadoxus)
+Jul-22 12:58:33.647 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core3) > jobId: 243971; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/73/640c6b23e60a4f1f47a6b59f647cc8
+Jul-22 12:58:33.647 [Task submitter] INFO  nextflow.Session - [73/640c6b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core3)
+Jul-22 12:58:33.690 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bthuringensis) > jobId: 243972; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/20/2e364ff4c8fbc008486f4f7ca97a0c
+Jul-22 12:58:33.691 [Task submitter] INFO  nextflow.Session - [20/2e364f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bthuringensis)
+Jul-22 12:58:33.712 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core2) > jobId: 243973; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d0/c8b727641ba08ad3a47c2978bcb4ce
+Jul-22 12:58:33.713 [Task submitter] INFO  nextflow.Session - [d0/c8b727] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core2)
+Jul-22 12:58:33.749 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bacillus) > jobId: 243974; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d5/f9077c48bc6be62a971e885600bcd1
+Jul-22 12:58:33.749 [Task submitter] INFO  nextflow.Session - [d5/f9077c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bacillus)
+Jul-22 12:58:33.761 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core3) > jobId: 243975; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/31/66a66fd67eeb99fbbe8597feb5df55
+Jul-22 12:58:33.761 [Task submitter] INFO  nextflow.Session - [31/66a66f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core3)
+Jul-22 12:58:33.798 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core2) > jobId: 243976; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/30/5390e46ad01a0ed76df35f31921031
+Jul-22 12:58:33.799 [Task submitter] INFO  nextflow.Session - [30/5390e4] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core2)
+Jul-22 12:58:33.812 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core2) > jobId: 243977; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/23/e2c91eeab209dd2559a0e26e023fc1
+Jul-22 12:58:33.812 [Task submitter] INFO  nextflow.Session - [23/e2c91e] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core2)
+Jul-22 12:58:33.831 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core3) > jobId: 243978; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/01/bcced7ee78e63b6de5066ac0ac10e8
+Jul-22 12:58:33.832 [Task submitter] INFO  nextflow.Session - [01/bcced7] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core3)
+Jul-22 12:58:33.883 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bthuringensis_core1) > jobId: 243979; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/16/a8b519359ab5db1ad1bb557c1c7368
+Jul-22 12:58:33.883 [Task submitter] INFO  nextflow.Session - [16/a8b519] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bthuringensis_core1)
+Jul-22 12:58:33.899 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bthuringensis) > jobId: 243980; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a0/a1c2fee47d36ebe2638d8c8f0579b2
+Jul-22 12:58:33.899 [Task submitter] INFO  nextflow.Session - [a0/a1c2fe] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bthuringensis)
+Jul-22 12:58:33.950 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core3) > jobId: 243981; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e6/457086ba0c0f1e34c377f21360e13b
+Jul-22 12:58:33.951 [Task submitter] INFO  nextflow.Session - [e6/457086] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core3)
+Jul-22 12:58:33.964 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core2) > jobId: 243982; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/da/04763c575ba3060db028873bf2ed22
+Jul-22 12:58:33.964 [Task submitter] INFO  nextflow.Session - [da/04763c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core2)
+Jul-22 12:58:34.009 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core3) > jobId: 243983; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/01/1a3d65fabe664cf5c781e8f099018b
+Jul-22 12:58:34.009 [Task submitter] INFO  nextflow.Session - [01/1a3d65] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core3)
+Jul-22 12:58:34.024 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core2) > jobId: 243984; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/90/4cc1551a2839fdb2ef117f9a694500
+Jul-22 12:58:34.024 [Task submitter] INFO  nextflow.Session - [90/4cc155] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core2)
+Jul-22 12:58:34.077 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core2) > jobId: 243985; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/b5d514ecd3d7d06217037ec39dcd3a
+Jul-22 12:58:34.077 [Task submitter] INFO  nextflow.Session - [d9/b5d514] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core2)
+Jul-22 12:58:34.091 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core2) > jobId: 243986; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/47/2d45703a2741b146b7ebe20e128e53
+Jul-22 12:58:34.091 [Task submitter] INFO  nextflow.Session - [47/2d4570] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core2)
+Jul-22 12:58:34.117 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_mycobacterium) > jobId: 243987; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/65/f2d94cecfba623143ec1e20af397ef
+Jul-22 12:58:34.117 [Task submitter] INFO  nextflow.Session - [65/f2d94c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_mycobacterium)
+Jul-22 12:58:34.148 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core2) > jobId: 243988; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/f0/a028dc76fca75f9290865cbbe8e258
+Jul-22 12:58:34.149 [Task submitter] INFO  nextflow.Session - [f0/a028dc] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core2)
+Jul-22 12:58:34.160 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core3) > jobId: 243989; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5d/b804fed6b51139baf521254e134373
+Jul-22 12:58:34.160 [Task submitter] INFO  nextflow.Session - [5d/b804fe] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core3)
+Jul-22 12:58:34.200 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core3) > jobId: 243990; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/42/f09f07733a875806195136ff8d9289
+Jul-22 12:58:34.201 [Task submitter] INFO  nextflow.Session - [42/f09f07] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core3)
+Jul-22 12:58:34.217 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_arthrobacter) > jobId: 243991; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/de/78fc45f55a54a618a5f25132d82ab9
+Jul-22 12:58:34.217 [Task submitter] INFO  nextflow.Session - [de/78fc45] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_arthrobacter)
+Jul-22 12:58:34.271 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core2) > jobId: 243992; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/c2/30a67386e3013cbb55345975ba9822
+Jul-22 12:58:34.271 [Task submitter] INFO  nextflow.Session - [c2/30a673] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core2)
+Jul-22 12:58:34.312 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core2) > jobId: 243993; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/4e/6a5e82eb7d48784657d3841cedbaea
+Jul-22 12:58:34.312 [Task submitter] INFO  nextflow.Session - [4e/6a5e82] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core2)
+Jul-22 12:58:34.338 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_agrobacterium) > jobId: 243994; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ff/608026fcf4fa71e355045f8566b847
+Jul-22 12:58:34.338 [Task submitter] INFO  nextflow.Session - [ff/608026] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_agrobacterium)
+Jul-22 12:58:34.386 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_vparadoxus) > jobId: 243995; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7b/6e68e14634e53eca65cd9288126f37
+Jul-22 12:58:34.386 [Task submitter] INFO  nextflow.Session - [7b/6e68e1] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_vparadoxus)
+Jul-22 12:58:34.399 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_pseudomonas) > jobId: 243996; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ab/1327afca01d695e17ab11d213c11d2
+Jul-22 12:58:34.399 [Task submitter] INFO  nextflow.Session - [ab/1327af] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_pseudomonas)
+Jul-22 12:58:34.456 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core3) > jobId: 243997; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/18/23dcf76c70269c3002e27087c713bc
+Jul-22 12:58:34.456 [Task submitter] INFO  nextflow.Session - [18/23dcf7] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core3)
+Jul-22 12:58:34.473 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_paenibacillus) > jobId: 243998; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/0c/b0b74a026a2a01dd62a15dc96a09e2
+Jul-22 12:58:34.473 [Task submitter] INFO  nextflow.Session - [0c/b0b74a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_paenibacillus)
+Jul-22 12:58:34.499 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core3) > jobId: 243999; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/bc/4f876819ad1054c5d127df7e704e9d
+Jul-22 12:58:34.499 [Task submitter] INFO  nextflow.Session - [bc/4f8768] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core3)
+Jul-22 12:58:34.530 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core2) > jobId: 244000; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b7/62196bcd169dd937c1c807dc988386
+Jul-22 12:58:34.530 [Task submitter] INFO  nextflow.Session - [b7/62196b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core2)
+Jul-22 12:58:34.542 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core2) > jobId: 244001; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e7/08172f37adc9ad4ee02bf0eaee3f24
+Jul-22 12:58:34.542 [Task submitter] INFO  nextflow.Session - [e7/08172f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core2)
+Jul-22 12:58:34.570 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core2) > jobId: 244002; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e6/c5251f67b5e09268eae5c720966aac
+Jul-22 12:58:34.570 [Task submitter] INFO  nextflow.Session - [e6/c5251f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core2)
+Jul-22 12:58:34.604 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core2) > jobId: 244003; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/c3dd5b74e6beb5ed25175c3c25a646
+Jul-22 12:58:34.604 [Task submitter] INFO  nextflow.Session - [3e/c3dd5b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core2)
+Jul-22 12:58:34.650 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core3) > jobId: 244004; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/32/c5e8305619ff5d4912400c890053ab
+Jul-22 12:58:34.650 [Task submitter] INFO  nextflow.Session - [32/c5e830] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core3)
+Jul-22 12:58:34.661 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core3) > jobId: 244005; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/a939ab986a214cfd312583f453b811
+Jul-22 12:58:34.661 [Task submitter] INFO  nextflow.Session - [3e/a939ab] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core3)
+Jul-22 12:58:34.692 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_mycobacterium) > jobId: 244006; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/90/49e45c340552e0cf22dd795181f1a9
+Jul-22 12:58:34.692 [Task submitter] INFO  nextflow.Session - [90/49e45c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_mycobacterium)
+Jul-22 12:58:34.703 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core3) > jobId: 244007; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/24/4da19459b4444745a3637510264f99
+Jul-22 12:58:34.703 [Task submitter] INFO  nextflow.Session - [24/4da194] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core3)
+Jul-22 12:58:34.740 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core1) > jobId: 244008; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/11/8c23aa1cc286ea21a12ff74d9ed848
+Jul-22 12:58:34.740 [Task submitter] INFO  nextflow.Session - [11/8c23aa] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core1)
+Jul-22 12:58:34.759 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_paenibacillus) > jobId: 244009; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/cd/d9be516b2637d05177a19e9b77f8f5
+Jul-22 12:58:34.759 [Task submitter] INFO  nextflow.Session - [cd/d9be51] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_paenibacillus)
+Jul-22 12:58:34.787 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core3) > jobId: 244010; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/fd/ef3b86e75fb071bcced6b40050e828
+Jul-22 12:58:34.787 [Task submitter] INFO  nextflow.Session - [fd/ef3b86] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core3)
+Jul-22 12:58:34.859 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core3) > jobId: 244011; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/cd017e81a2416065b27ce28cd38d5a
+Jul-22 12:58:34.859 [Task submitter] INFO  nextflow.Session - [85/cd017e] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core3)
+Jul-22 12:58:34.871 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core2) > jobId: 244012; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/05/abdbd50c4d9a8337d65cb937e7ba4b
+Jul-22 12:58:34.871 [Task submitter] INFO  nextflow.Session - [05/abdbd5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core2)
+Jul-22 12:58:34.889 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core2) > jobId: 244013; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/c0/59e91a5208da8cacd7d4926b5173f3
+Jul-22 12:58:34.890 [Task submitter] INFO  nextflow.Session - [c0/59e91a] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core2)
+Jul-22 12:58:34.910 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core1) > jobId: 244014; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/0d9d56424353cbb58be8b6f114ef84
+Jul-22 12:58:34.910 [Task submitter] INFO  nextflow.Session - [85/0d9d56] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core1)
+Jul-22 12:58:34.950 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_rerythropolis) > jobId: 244015; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/cc/755981c57b2b375e6e0deab29a6233
+Jul-22 12:58:34.950 [Task submitter] INFO  nextflow.Session - [cc/755981] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_rerythropolis)
+Jul-22 12:58:34.972 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core3) > jobId: 244016; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/78/50cbf45177cca96b897eb6b0da9500
+Jul-22 12:58:34.972 [Task submitter] INFO  nextflow.Session - [78/50cbf4] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core3)
+Jul-22 12:58:35.023 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core1) > jobId: 244017; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/79/d75732e12a3eeb26d4406fff785d29
+Jul-22 12:58:35.023 [Task submitter] INFO  nextflow.Session - [79/d75732] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core1)
+Jul-22 12:58:35.035 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core2) > jobId: 244018; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ee/b2ed1bfa7fea2cbfbf9e97eb86bbf6
+Jul-22 12:58:35.035 [Task submitter] INFO  nextflow.Session - [ee/b2ed1b] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core2)
+Jul-22 12:58:35.055 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core2) > jobId: 244019; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/3cc00f5bd8686c1b5b981459820f40
+Jul-22 12:58:35.055 [Task submitter] INFO  nextflow.Session - [48/3cc00f] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core2)
+Jul-22 12:58:35.103 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core3) > jobId: 244020; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/c8/5eafede861e83ca287193969098e3c
+Jul-22 12:58:35.104 [Task submitter] INFO  nextflow.Session - [c8/5eafed] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core3)
+Jul-22 12:58:35.116 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core3) > jobId: 244021; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/33/680e9889b48bb459fdd6963e636319
+Jul-22 12:58:35.116 [Task submitter] INFO  nextflow.Session - [33/680e98] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core3)
+Jul-22 12:58:57.780 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243954; id: 4; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5c/f2bf5f597c5038897f1ca6c76954f4 started: 1784746717798; exited: 2026-07-22T18:58:57.761182805Z; ]
+Jul-22 12:58:57.781 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-22 12:58:57.783 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243955; id: 3; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/52/28611eb2b86e23493e4aac5686feeb started: 1784746717799; exited: 2026-07-22T18:58:57.761182805Z; ]
+Jul-22 12:58:57.792 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/5c/f2bf5f597c5038897f1ca6c76954f4
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core3)` terminated with an error exit status (1)
+Jul-22 12:58:57.798 [TaskFinalizer-1] INFO  nextflow.processor.TaskProcessor - [5c/f2bf5f] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:58:57.799 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/52/28611eb2b86e23493e4aac5686feeb
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core3)` terminated with an error exit status (1)
+Jul-22 12:58:57.800 [TaskFinalizer-2] INFO  nextflow.processor.TaskProcessor - [52/28611e] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:59:02.781 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243968; id: 16; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/09/a3a71baaeb985998a5b3076daf9c10 started: 1784746742780; exited: 2026-07-22T18:59:00.108172574Z; ]
+Jul-22 12:59:02.783 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/09/a3a71baaeb985998a5b3076daf9c10
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core3)` terminated with an error exit status (1)
+Jul-22 12:59:02.783 [TaskFinalizer-3] INFO  nextflow.processor.TaskProcessor - [09/a3a71b] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:59:12.782 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243959; id: 8; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/77/927ce0b81f48adbb697e42325a0f71 started: 1784746717802; exited: 2026-07-22T18:58:57.745182875Z; ]
+Jul-22 12:59:12.784 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/77/927ce0b81f48adbb697e42325a0f71
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core3)` terminated with an error exit status (1)
+Jul-22 12:59:12.784 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [77/927ce0] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:59:12.785 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243964; id: 12; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/6e1b00765fe24042f7c29926392018 started: 1784746717810; exited: 2026-07-22T18:58:57.745182875Z; ]
+Jul-22 12:59:12.787 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243966; id: 14; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/db/2f9a075076dce292ca332163c74f02 started: 1784746752785; exited: 2026-07-22T18:59:00.045172848Z; ]
+Jul-22 12:59:12.789 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/48/6e1b00765fe24042f7c29926392018
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core3)` terminated with an error exit status (1)
+Jul-22 12:59:12.789 [TaskFinalizer-5] INFO  nextflow.processor.TaskProcessor - [48/6e1b00] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:59:12.790 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243967; id: 17; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b8/89b8e9e32bfcf08c3c41e3f1ec3b8f started: 1784746752788; exited: 2026-07-22T18:59:00.045172848Z; ]
+Jul-22 12:59:12.795 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/db/2f9a075076dce292ca332163c74f02
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core3)` terminated with an error exit status (1)
+Jul-22 12:59:12.795 [TaskFinalizer-6] INFO  nextflow.processor.TaskProcessor - [db/2f9a07] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:59:12.796 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243971; id: 20; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/73/640c6b23e60a4f1f47a6b59f647cc8 started: 1784746752793; exited: 2026-07-22T18:59:02.262163184Z; ]
+Jul-22 12:59:12.796 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/b8/89b8e9e32bfcf08c3c41e3f1ec3b8f
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core3)` terminated with an error exit status (1)
+Jul-22 12:59:12.797 [TaskFinalizer-7] INFO  nextflow.processor.TaskProcessor - [b8/89b8e9] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 12:59:12.802 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/73/640c6b23e60a4f1f47a6b59f647cc8
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core3)` terminated with an error exit status (1)
+Jul-22 12:59:12.802 [TaskFinalizer-8] INFO  nextflow.processor.TaskProcessor - [73/640c6b] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:00:42.797 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243960; id: 9; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/96/1d98e6dfc3f12e8de430ed068af89e started: 1784746717803; exited: 2026-07-22T19:00:19.558765744Z; ]
+Jul-22 13:00:42.868 [TaskFinalizer-9] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-22 13:00:52.786 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243956; id: 5; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/af/d251160dc014abbc5e86a64d6ed380 started: 1784746717800; exited: 2026-07-22T19:00:50.724603633Z; ]
+Jul-22 13:00:57.785 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243975; id: 24; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/31/66a66fd67eeb99fbbe8597feb5df55 started: 1784746852786; exited: 2026-07-22T19:00:53.074589988Z; ]
+Jul-22 13:00:57.787 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/31/66a66fd67eeb99fbbe8597feb5df55
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core3)` terminated with an error exit status (1)
+Jul-22 13:00:57.787 [TaskFinalizer-2] INFO  nextflow.processor.TaskProcessor - [31/66a66f] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:01:22.786 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243969; id: 18; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/41/c3deb5adfc055aab41b6ac0465acd4 started: 1784746742783; exited: 2026-07-22T19:01:21.437425301Z; ]
+Jul-22 13:02:07.788 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243976; id: 26; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_vparadoxus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/30/5390e46ad01a0ed76df35f31921031 started: 1784746857785; exited: 2026-07-22T19:02:04.849209237Z; ]
+Jul-22 13:02:17.790 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243978; id: 27; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/01/bcced7ee78e63b6de5066ac0ac10e8 started: 1784746937789; exited: 2026-07-22T19:01:53.894258102Z; ]
+Jul-22 13:02:17.792 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/01/bcced7ee78e63b6de5066ac0ac10e8
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core3)` terminated with an error exit status (1)
+Jul-22 13:02:17.792 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [01/bcced7] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:02:22.789 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243977; id: 25; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/23/e2c91eeab209dd2559a0e26e023fc1 started: 1784746882787; exited: 2026-07-22T19:02:18.799147014Z; ]
+Jul-22 13:02:22.790 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243981; id: 30; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e6/457086ba0c0f1e34c377f21360e13b started: 1784746942789; exited: 2026-07-22T19:02:22.172131969Z; ]
+Jul-22 13:02:22.793 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/e6/457086ba0c0f1e34c377f21360e13b
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core3)` terminated with an error exit status (1)
+Jul-22 13:02:22.793 [TaskFinalizer-7] INFO  nextflow.processor.TaskProcessor - [e6/457086] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_paenibacillus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:02:27.788 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243983; id: 32; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/01/1a3d65fabe664cf5c781e8f099018b started: 1784746942791; exited: 2026-07-22T19:02:24.404122013Z; ]
+Jul-22 13:02:27.790 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/01/1a3d65fabe664cf5c781e8f099018b
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core3)` terminated with an error exit status (1)
+Jul-22 13:02:27.790 [TaskFinalizer-6] INFO  nextflow.processor.TaskProcessor - [01/1a3d65] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:02:47.788 [Task monitor] DEBUG nextflow.file.FileHelper - FS path type (true): /mnt/data/sur/users/mmontante/02_resultados/nf_work
+Jul-22 13:02:47.802 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243962; id: 11; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_agrobacterium_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/8f/3da50d06168d28b2b33d324b0fb727 started: 1784746717805; exited: 2026-07-22T19:02:21.84913341Z; ]
+Jul-22 13:02:47.812 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243965; id: 15; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/68/4870995bff30e91d3ad2be54d82f40 started: 1784746717811; exited: 2026-07-22T19:01:51.568268477Z; ]
+Jul-22 13:03:22.789 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243982; id: 31; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/da/04763c575ba3060db028873bf2ed22 started: 1784746962797; exited: 2026-07-22T19:03:16.570909643Z; ]
+Jul-22 13:03:27.790 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243984; id: 33; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bacillus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/90/4cc1551a2839fdb2ef117f9a694500 started: 1784746947789; exited: 2026-07-22T19:03:22.969885981Z; ]
+Jul-22 13:03:37.790 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 49 -- submitted tasks are shown below
+~> TaskHandler[jobId: 243952; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core1); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/bb/e98931f8f9fb8fa32b186b3b215429 started: 1784746717779; exited: -; ]
+~> TaskHandler[jobId: 243953; id: 2; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bacillus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/87/67a5531a7ad9e9c6ec10b1f2997cab started: 1784746717797; exited: -; ]
+~> TaskHandler[jobId: 243957; id: 6; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_pseudomonas); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7e/0b88a800f420d5de66dbe0e1a3de88 started: 1784746717800; exited: -; ]
+~> TaskHandler[jobId: 243958; id: 7; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core2); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5e/daef49e8f45471887197ef408be5ce started: 1784746717801; exited: -; ]
+~> TaskHandler[jobId: 243961; id: 10; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_agrobacterium); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/32/37191cc1a97a324c34c7231de285c9 started: 1784746717804; exited: -; ]
+~> TaskHandler[jobId: 243963; id: 13; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_arthrobacter); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/00/cfc08025a1bc650798bffd8bd8e434 started: 1784746717809; exited: -; ]
+~> TaskHandler[jobId: 243970; id: 19; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_vparadoxus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/8b/9ae0ce59c05ca5b1664b620c10d85b started: 1784746752793; exited: -; ]
+~> TaskHandler[jobId: 243972; id: 21; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bthuringensis); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/20/2e364ff4c8fbc008486f4f7ca97a0c started: 1784746742784; exited: -; ]
+~> TaskHandler[jobId: 243973; id: 22; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core2); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d0/c8b727641ba08ad3a47c2978bcb4ce started: 1784746752801; exited: -; ]
+~> TaskHandler[jobId: 243974; id: 23; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bacillus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d5/f9077c48bc6be62a971e885600bcd1 started: 1784746842800; exited: -; ]
+.. remaining tasks omitted.
+Jul-22 13:03:42.791 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243952; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/bb/e98931f8f9fb8fa32b186b3b215429 started: 1784746717779; exited: 2026-07-22T19:03:04.370954759Z; ]
+Jul-22 13:03:52.793 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243972; id: 21; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bthuringensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/20/2e364ff4c8fbc008486f4f7ca97a0c started: 1784746742784; exited: 2026-07-22T19:03:52.192777916Z; ]
+Jul-22 13:04:07.796 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243989; id: 38; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5d/b804fed6b51139baf521254e134373 started: 1784747047794; exited: 2026-07-22T19:03:55.044812552Z; ]
+Jul-22 13:04:07.797 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243990; id: 39; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/42/f09f07733a875806195136ff8d9289 started: 1784747047796; exited: 2026-07-22T19:03:57.311876499Z; ]
+Jul-22 13:04:07.797 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/5d/b804fed6b51139baf521254e134373
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core3)` terminated with an error exit status (1)
+Jul-22 13:04:07.798 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [5d/b804fe] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_bacillus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:04:07.798 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/42/f09f07733a875806195136ff8d9289
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core3)` terminated with an error exit status (1)
+Jul-22 13:04:07.799 [TaskFinalizer-7] INFO  nextflow.processor.TaskProcessor - [42/f09f07] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:04:37.795 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243986; id: 34; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/47/2d45703a2741b146b7ebe20e128e53 started: 1784747022803; exited: 2026-07-22T19:04:09.480823957Z; ]
+Jul-22 13:04:42.804 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243985; id: 35; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_mycobacterium_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d9/b5d514ecd3d7d06217037ec39dcd3a started: 1784746992790; exited: 2026-07-22T19:04:05.513841085Z; ]
+Jul-22 13:04:47.805 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243958; id: 7; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5e/daef49e8f45471887197ef408be5ce started: 1784746717801; exited: 2026-07-22T19:03:52.698776044Z; ]
+Jul-22 13:04:47.813 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243973; id: 22; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d0/c8b727641ba08ad3a47c2978bcb4ce started: 1784746752801; exited: 2026-07-22T19:04:17.713788409Z; ]
+Jul-22 13:04:47.814 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243988; id: 37; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_pumsongensis_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/f0/a028dc76fca75f9290865cbbe8e258 started: 1784747032793; exited: 2026-07-22T19:04:45.254669494Z; ]
+Jul-22 13:05:12.796 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243993; id: 41; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_mycobacterium_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/4e/6a5e82eb7d48784657d3841cedbaea started: 1784747082805; exited: 2026-07-22T19:05:05.413582458Z; ]
+Jul-22 13:05:12.801 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243997; id: 46; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/18/23dcf76c70269c3002e27087c713bc started: 1784747112799; exited: 2026-07-22T19:05:09.148566333Z; ]
+Jul-22 13:05:12.802 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/18/23dcf76c70269c3002e27087c713bc
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core3)` terminated with an error exit status (1)
+Jul-22 13:05:12.802 [TaskFinalizer-1] INFO  nextflow.processor.TaskProcessor - [18/23dcf7] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_bthuringensis_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:05:17.796 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243992; id: 42; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/c2/30a67386e3013cbb55345975ba9822 started: 1784747047801; exited: 2026-07-22T19:05:06.488577817Z; ]
+Jul-22 13:05:27.794 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243953; id: 2; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/87/67a5531a7ad9e9c6ec10b1f2997cab started: 1784746717797; exited: 2026-07-22T19:05:26.680490638Z; ]
+Jul-22 13:05:32.795 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243980; id: 28; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_bthuringensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a0/a1c2fee47d36ebe2638d8c8f0579b2 started: 1784746927788; exited: 2026-07-22T19:05:32.058467419Z; ]
+Jul-22 13:05:32.796 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243999; id: 48; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/bc/4f876819ad1054c5d127df7e704e9d started: 1784747127796; exited: 2026-07-22T19:05:29.073480306Z; ]
+Jul-22 13:05:32.799 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/bc/4f876819ad1054c5d127df7e704e9d
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core3)` terminated with an error exit status (1)
+Jul-22 13:05:32.799 [TaskFinalizer-5] INFO  nextflow.processor.TaskProcessor - [bc/4f8768] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_agrobacterium_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:05:52.803 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243979; id: 29; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bthuringensis_core1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/16/a8b519359ab5db1ad1bb557c1c7368 started: 1784746937791; exited: 2026-07-22T19:05:42.680421559Z; ]
+Jul-22 13:06:17.797 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243974; id: 23; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_bacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d5/f9077c48bc6be62a971e885600bcd1 started: 1784746842800; exited: 2026-07-22T19:06:03.641331068Z; ]
+Jul-22 13:06:27.798 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244000; id: 49; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_pumsongensis_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b7/62196bcd169dd937c1c807dc988386 started: 1784747132799; exited: 2026-07-22T19:06:22.815248636Z; ]
+Jul-22 13:06:42.806 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244001; id: 50; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_vparadoxus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e7/08172f37adc9ad4ee02bf0eaee3f24 started: 1784747132800; exited: 2026-07-22T19:06:39.1281785Z; ]
+Jul-22 13:06:42.810 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244010; id: 59; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/fd/ef3b86e75fb071bcced6b40050e828 started: 1784747202809; exited: 2026-07-22T19:06:41.315169099Z; ]
+Jul-22 13:06:42.817 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/fd/ef3b86e75fb071bcced6b40050e828
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core3)` terminated with an error exit status (1)
+Jul-22 13:06:42.817 [TaskFinalizer-2] INFO  nextflow.processor.TaskProcessor - [fd/ef3b86] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_bacillus_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:06:47.797 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243957; id: 6; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_pseudomonas); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7e/0b88a800f420d5de66dbe0e1a3de88 started: 1784746717800; exited: 2026-07-22T19:06:45.620150591Z; ]
+Jul-22 13:06:47.806 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243970; id: 19; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_vparadoxus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/8b/9ae0ce59c05ca5b1664b620c10d85b started: 1784746752793; exited: 2026-07-22T19:06:18.21126843Z; ]
+Jul-22 13:06:47.807 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244002; id: 51; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bacillus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/e6/c5251f67b5e09268eae5c720966aac started: 1784747142804; exited: 2026-07-22T19:06:37.592185105Z; ]
+Jul-22 13:06:47.809 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244011; id: 60; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/cd017e81a2416065b27ce28cd38d5a started: 1784747202810; exited: 2026-07-22T19:06:43.476159808Z; ]
+Jul-22 13:06:47.811 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/85/cd017e81a2416065b27ce28cd38d5a
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core3)` terminated with an error exit status (1)
+Jul-22 13:06:47.811 [TaskFinalizer-5] INFO  nextflow.processor.TaskProcessor - [85/cd017e] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_bthuringensis_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:07:22.798 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244004; id: 54; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/32/c5e8305619ff5d4912400c890053ab started: 1784747202806; exited: 2026-07-22T19:06:20.705257707Z; ]
+Jul-22 13:07:22.799 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244005; id: 53; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/a939ab986a214cfd312583f453b811 started: 1784747202807; exited: 2026-07-22T19:06:23.061247578Z; ]
+Jul-22 13:07:22.800 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/32/c5e8305619ff5d4912400c890053ab
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core3)` terminated with an error exit status (1)
+Jul-22 13:07:22.800 [TaskFinalizer-7] INFO  nextflow.processor.TaskProcessor - [32/c5e830] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_agrobacterium_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:07:22.801 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/a939ab986a214cfd312583f453b811
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core3)` terminated with an error exit status (1)
+Jul-22 13:07:22.801 [TaskFinalizer-6] INFO  nextflow.processor.TaskProcessor - [3e/a939ab] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_pumsongensis_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:07:22.802 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244007; id: 55; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/24/4da19459b4444745a3637510264f99 started: 1784747202808; exited: 2026-07-22T19:06:25.383237595Z; ]
+Jul-22 13:07:22.806 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244016; id: 65; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/78/50cbf45177cca96b897eb6b0da9500 started: 1784747242805; exited: 2026-07-22T19:07:21.287997243Z; ]
+Jul-22 13:07:22.806 [TaskFinalizer-9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/78/50cbf45177cca96b897eb6b0da9500
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core3)` terminated with an error exit status (1)
+Jul-22 13:07:22.807 [TaskFinalizer-9] INFO  nextflow.processor.TaskProcessor - [78/50cbf4] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_arthrobacter_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:07:22.808 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/24/4da19459b4444745a3637510264f99
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core3)` terminated with an error exit status (1)
+Jul-22 13:07:22.808 [TaskFinalizer-7] INFO  nextflow.processor.TaskProcessor - [24/4da194] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:07:47.806 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243961; id: 10; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_agrobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/32/37191cc1a97a324c34c7231de285c9 started: 1784746717804; exited: 2026-07-22T19:07:19.049006869Z; ]
+Jul-22 13:07:47.815 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243963; id: 13; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_arthrobacter); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/00/cfc08025a1bc650798bffd8bd8e434 started: 1784746717809; exited: 2026-07-22T19:07:17.852012015Z; ]
+Jul-22 13:07:47.818 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244003; id: 52; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_paenibacillus_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/3e/c3dd5b74e6beb5ed25175c3c25a646 started: 1784747177798; exited: 2026-07-22T19:07:00.093088366Z; ]
+Jul-22 13:07:47.818 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244012; id: 61; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/05/abdbd50c4d9a8337d65cb937e7ba4b started: 1784747207810; exited: 2026-07-22T19:07:43.839900287Z; ]
+Jul-22 13:07:57.799 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244013; id: 62; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_na_arthrobacter_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/c0/59e91a5208da8cacd7d4926b5173f3 started: 1784747242803; exited: 2026-07-22T19:07:46.137890405Z; ]
+Jul-22 13:08:22.798 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243987; id: 36; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_mycobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/65/f2d94cecfba623143ec1e20af397ef started: 1784747007790; exited: 2026-07-22T19:08:19.054749037Z; ]
+Jul-22 13:08:22.800 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244020; id: 70; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/c8/5eafede861e83ca287193969098e3c started: 1784747302799; exited: 2026-07-22T19:08:21.330739298Z; ]
+Jul-22 13:08:22.801 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/c8/5eafede861e83ca287193969098e3c
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core3)` terminated with an error exit status (1)
+Jul-22 13:08:22.802 [TaskFinalizer-8] INFO  nextflow.processor.TaskProcessor - [c8/5eafed] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:08:27.800 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244021; id: 69; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core3); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/33/680e9889b48bb459fdd6963e636319 started: 1784747302801; exited: 2026-07-22T19:08:23.548729807Z; ]
+Jul-22 13:08:27.801 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core3); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/33/680e9889b48bb459fdd6963e636319
+  error [nextflow.exception.ProcessFailedException]: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core3)` terminated with an error exit status (1)
+Jul-22 13:08:27.801 [TaskFinalizer-6] INFO  nextflow.processor.TaskProcessor - [33/680e98] NOTE: Process `COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core3)` terminated with an error exit status (1) -- Error is ignored
+Jul-22 13:08:37.798 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 13 -- submitted tasks are shown below
+~> TaskHandler[jobId: 243991; id: 40; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_arthrobacter); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/de/78fc45f55a54a618a5f25132d82ab9 started: 1784747047800; exited: -; ]
+~> TaskHandler[jobId: 243994; id: 43; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_agrobacterium); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ff/608026fcf4fa71e355045f8566b847 started: 1784747082806; exited: -; ]
+~> TaskHandler[jobId: 243995; id: 45; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_vparadoxus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7b/6e68e14634e53eca65cd9288126f37 started: 1784747087815; exited: -; ]
+~> TaskHandler[jobId: 243996; id: 44; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_pseudomonas); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ab/1327afca01d695e17ab11d213c11d2 started: 1784747112797; exited: -; ]
+~> TaskHandler[jobId: 243998; id: 47; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_paenibacillus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/0c/b0b74a026a2a01dd62a15dc96a09e2 started: 1784747112806; exited: -; ]
+~> TaskHandler[jobId: 244006; id: 56; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_mycobacterium); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/90/49e45c340552e0cf22dd795181f1a9 started: 1784747187798; exited: -; ]
+~> TaskHandler[jobId: 244008; id: 57; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core1); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/11/8c23aa1cc286ea21a12ff74d9ed848 started: 1784747202808; exited: -; ]
+~> TaskHandler[jobId: 244009; id: 58; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_paenibacillus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/cd/d9be516b2637d05177a19e9b77f8f5 started: 1784747202808; exited: -; ]
+~> TaskHandler[jobId: 244014; id: 63; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core1); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/0d9d56424353cbb58be8b6f114ef84 started: 1784747242803; exited: -; ]
+~> TaskHandler[jobId: 244015; id: 64; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_rerythropolis); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/cc/755981c57b2b375e6e0deab29a6233 started: 1784747242804; exited: -; ]
+.. remaining tasks omitted.
+Jul-22 13:08:47.799 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244018; id: 67; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_arthrobacter_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ee/b2ed1bfa7fea2cbfbf9e97eb86bbf6 started: 1784747267820; exited: 2026-07-22T19:08:45.010637965Z; ]
+Jul-22 13:08:57.801 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244019; id: 68; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/48/3cc00f5bd8686c1b5b981459820f40 started: 1784747307798; exited: 2026-07-22T19:08:43.480644512Z; ]
+Jul-22 13:09:47.821 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243991; id: 40; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_arthrobacter); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/de/78fc45f55a54a618a5f25132d82ab9 started: 1784747047800; exited: 2026-07-22T19:09:22.822476438Z; ]
+Jul-22 13:09:47.829 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243994; id: 43; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_agrobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ff/608026fcf4fa71e355045f8566b847 started: 1784747082806; exited: 2026-07-22T19:09:14.67751101Z; ]
+Jul-22 13:10:17.803 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243998; id: 47; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_paenibacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/0c/b0b74a026a2a01dd62a15dc96a09e2 started: 1784747112806; exited: 2026-07-22T19:10:05.957293885Z; ]
+Jul-22 13:11:17.806 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244006; id: 56; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_mycobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/90/49e45c340552e0cf22dd795181f1a9 started: 1784747187798; exited: 2026-07-22T19:11:15.748995629Z; ]
+Jul-22 13:11:47.817 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244008; id: 57; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_agrobacterium_core1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/11/8c23aa1cc286ea21a12ff74d9ed848 started: 1784747202808; exited: 2026-07-22T19:11:04.765042692Z; ]
+Jul-22 13:11:47.826 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244009; id: 58; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_paenibacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/cd/d9be516b2637d05177a19e9b77f8f5 started: 1784747202808; exited: 2026-07-22T19:11:19.612979071Z; ]
+Jul-22 13:12:07.809 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243995; id: 45; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_vparadoxus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/7b/6e68e14634e53eca65cd9288126f37 started: 1784747087815; exited: 2026-07-22T19:12:07.481773932Z; ]
+Jul-22 13:12:32.810 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244015; id: 64; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_rz_pk_lb_mergem_rerythropolis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/cc/755981c57b2b375e6e0deab29a6233 started: 1784747242804; exited: 2026-07-22T19:12:17.551730776Z; ]
+Jul-22 13:12:32.810 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244017; id: 66; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_arthrobacter_core1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/79/d75732e12a3eeb26d4406fff785d29 started: 1784747242809; exited: 2026-07-22T19:12:10.685760201Z; ]
+Jul-22 13:12:57.809 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 244014; id: 63; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_na_pumsongensis_core1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/0d9d56424353cbb58be8b6f114ef84 started: 1784747242803; exited: 2026-07-22T19:12:50.793588213Z; ]
+Jul-22 13:13:17.809 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243996; id: 44; name: COMETS:PROCESO_COMETS:COMETS_RUN (consenso_lb_rz_pk_lb_mergem_pseudomonas); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ab/1327afca01d695e17ab11d213c11d2 started: 1784747112797; exited: 2026-07-22T19:12:44.601614779Z; ]
+Jul-22 13:13:17.817 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-22 13:13:22.809 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-22 13:13:22.809 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-22 13:13:22.814 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jul-22 13:13:22.815 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jul-22 13:13:22.827 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=46; failedCount=24; ignoredCount=24; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=2h 48m; failedDuration=4m 15s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=21; peakCpus=21; peakMemory=2.1 TB; ]
+Jul-22 13:13:22.887 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-22 13:13:23.859 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-22 13:13:23.873 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-22 13:13:24.105 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jul-22 13:13:24.105 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

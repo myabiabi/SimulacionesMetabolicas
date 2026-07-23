@@ -3,7 +3,8 @@ nextflow.enable.dsl=2
 include { PROCESO_MEMOTE } from './memote.nf'
 include { PROCESO_COMETS } from './comets.nf'
 include { PROCESO_COMBOS } from './combos.nf'
-
+include { PROCESO_DOALL } from './gap_doall.nf'
+include { PROCESO_FILL } from './gap_fill.nf'
 
 def combinationsOf(list, k) {
     def lst = list as ArrayList
@@ -48,7 +49,12 @@ workflow COMBOS {
     PROCESO_COMBOS(combos_ch)
 }
 
-// workflow por defecto (opcional), por si corres sin -entry
-workflow {
-    MEMOTE()
+workflow DOALL {
+    genomes_ch = Channel.fromPath("${params.genomes}")
+    PROCESO_DOALL(genomes_ch)
+}
+
+workflow FILL {
+    drafts_ch = Channel.fromPath("${params.fill_indir}/*-draft.RDS")
+    PROCESO_FILL(drafts_ch)
 }

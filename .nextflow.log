@@ -1,77 +1,91 @@
-Jul-20 17:57:08.729 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
-Jul-20 17:57:09.186 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
-Jul-20 17:57:09.231 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
-Jul-20 17:57:09.275 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-20 17:57:09.277 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-20 17:57:09.283 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Jul-20 17:57:09.323 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
-Jul-20 17:57:09.660 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-20 17:57:09.779 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-20 17:57:09.783 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-20 17:57:09.817 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
-Jul-20 17:57:10.476 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [memote, combos, comets]
-Jul-20 17:57:10.499 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-20 17:57:10.499 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-20 17:57:10.520 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-20 17:57:10.523 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@5114b7c7] - activable => nextflow.secret.LocalSecretsProvider@5114b7c7
-Jul-20 17:57:10.536 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jul-20 17:57:10.556 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [furious_pesquet] DSL2 - revision: fa16a41979
-Jul-20 17:57:10.619 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
-Jul-20 17:57:10.619 [main] DEBUG nextflow.Session - Run name: furious_pesquet
-Jul-20 17:57:10.620 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-20 17:57:10.629 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-20 17:57:10.635 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-20 17:57:10.661 [main] DEBUG nextflow.cli.CmdRun - 
-  Version: 25.10.4 build 11173
-  Created: 10-02-2026 15:17 UTC (09:17 CDT)
-  System: Linux 5.14.0-611.54.1.el9_7.x86_64
-  Runtime: Groovy 4.0.28 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
-  Encoding: UTF-8 (UTF-8)
-  Process: 1153501@node15.cluster [10.1.1.15]
-  CPUs: 2 - Mem: 251.7 GB (15.4 GB) - Swap: 0 (0)
-Jul-20 17:57:10.708 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
-Jul-20 17:57:10.709 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-20 17:57:10.727 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-20 17:57:10.744 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Jul-20 17:57:10.748 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
-Jul-20 17:57:10.796 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-20 17:57:10.807 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
-Jul-20 17:57:11.301 [main] DEBUG nextflow.Session - Session start
-Jul-20 17:57:11.314 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
-Jul-20 17:57:11.808 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-20 17:57:12.391 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
-Jul-20 17:57:12.391 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
-Jul-20 17:57:12.406 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
-Jul-20 17:57:12.416 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
-Jul-20 17:57:12.419 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
-Jul-20 17:57:12.431 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
-Jul-20 17:57:12.459 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'COMETS:PROCESO_COMETS:COMETS_RUN': maxForks=0; fair=false; array=0
-Jul-20 17:57:12.497 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
-Jul-20 17:57:12.499 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
-Jul-20 17:57:12.505 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
-Jul-20 17:57:12.506 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_f9c8ebba4fd576ca: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/comets.nf
-  Script_172e96b54e5081a1: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
-  Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/memote.nf
-  Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/combos.nf
-Jul-20 17:57:12.506 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jul-20 17:57:12.506 [main] DEBUG nextflow.Session - Session await
-Jul-20 17:57:12.513 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/faltantes/; pattern: *.xml; options: [:]
-Jul-20 17:57:13.106 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Staphylococcus_shinii_154_a) > jobId: 242465; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/dc/33a5c5cd45fdcd0fe811535c12c5c6
-Jul-20 17:57:13.107 [Task submitter] INFO  nextflow.Session - [dc/33a5c5] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Staphylococcus_shinii_154_a)
-Jul-20 18:02:17.442 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
-~> TaskHandler[jobId: 242465; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Staphylococcus_shinii_154_a); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/dc/33a5c5cd45fdcd0fe811535c12c5c6 started: 1784591837428; exited: -; ]
-Jul-20 18:04:12.451 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 242465; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (cc_pk_cv_mm_Staphylococcus_shinii_154_a); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/dc/33a5c5cd45fdcd0fe811535c12c5c6 started: 1784591837428; exited: 2026-07-21T00:04:10.223606884Z; ]
-Jul-20 18:04:12.453 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-20 18:04:12.550 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-20 18:04:12.560 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jul-20 18:04:17.450 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
-Jul-20 18:04:17.451 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-20 18:04:17.455 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
-Jul-20 18:04:17.455 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
-Jul-20 18:04:17.470 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=1; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=6m 56s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=100 GB; ]
-Jul-20 18:04:17.545 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
-Jul-20 18:04:18.990 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
-Jul-20 18:04:19.000 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-20 18:04:19.059 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Jul-20 18:04:19.060 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+Jul-23 12:34:35.577 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry FILL -profile fill -resume
+Jul-23 12:34:35.825 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
+Jul-23 12:34:35.846 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
+Jul-23 12:34:35.866 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-23 12:34:35.868 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-23 12:34:35.870 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-23 12:34:35.892 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Jul-23 12:34:36.061 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-23 12:34:36.135 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-23 12:34:36.139 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-23 12:34:36.194 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `fill`
+Jul-23 12:34:36.505 [main] ERROR nextflow.cli.Launcher - Unable to parse config file: '/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config'
+
+  Compile failed for sources FixedSetSources[name='/groovy/script/ScriptF1311EA4C5FC7B29AFA7ED57AB0EE5FC/_nf_config_f30de425']. Cause: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+  /groovy/script/ScriptF1311EA4C5FC7B29AFA7ED57AB0EE5FC/_nf_config_f30de425: 83: Unexpected input: '{\n        process.executor = 'slurm'\n        process.cpus      = 4\n        process.memory    = '16 GB'\n        process.time      = '24h'\n    }\n}' @ line 83, column 1.
+     }
+     ^
+  
+  1 error
+
+ch.artecat.grengine.except.CompileException: Compile failed for sources FixedSetSources[name='/groovy/script/ScriptF1311EA4C5FC7B29AFA7ED57AB0EE5FC/_nf_config_f30de425']. Cause: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/groovy/script/ScriptF1311EA4C5FC7B29AFA7ED57AB0EE5FC/_nf_config_f30de425: 83: Unexpected input: '{\n        process.executor = 'slurm'\n        process.cpus      = 4\n        process.memory    = '16 GB'\n        process.time      = '24h'\n    }\n}' @ line 83, column 1.
+   }
+   ^
+
+1 error
+
+	at ch.artecat.grengine.code.groovy.DefaultGroovyCompiler.compile(DefaultGroovyCompiler.java:260)
+	at ch.artecat.grengine.load.DefaultTopCodeCache.getUpToDateCode(DefaultTopCodeCache.java:80)
+	at ch.artecat.grengine.load.LayeredClassLoader.getTopLoader(LayeredClassLoader.java:251)
+	at ch.artecat.grengine.load.LayeredClassLoader.loadMainClass(LayeredClassLoader.java:202)
+	at ch.artecat.grengine.engine.LayeredEngine.loadMainClass(LayeredEngine.java:198)
+	at ch.artecat.grengine.Grengine.loadMainClass(Grengine.java:679)
+	at ch.artecat.grengine.BaseGrengine.load(BaseGrengine.java:538)
+	at ch.artecat.grengine.BaseGrengine.load(BaseGrengine.java:421)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.parser.v1.ConfigParserV1.loadScript(ConfigParserV1.groovy:211)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.parser.v1.ConfigParserV1.parse(ConfigParserV1.groovy:296)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.ConfigBuilder.parse0(ConfigBuilder.groovy:454)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.ConfigBuilder.merge0(ConfigBuilder.groovy:438)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.ConfigBuilder.buildConfig0(ConfigBuilder.groovy:395)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.ConfigBuilder.buildGivenFiles(ConfigBuilder.groovy:336)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.ConfigBuilder.buildConfigObject(ConfigBuilder.groovy:833)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.config.ConfigBuilder.build(ConfigBuilder.groovy:846)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:360)
+	at nextflow.cli.Launcher.run(Launcher.groovy:515)
+	at nextflow.cli.Launcher.main(Launcher.groovy:675)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+/groovy/script/ScriptF1311EA4C5FC7B29AFA7ED57AB0EE5FC/_nf_config_f30de425: 83: Unexpected input: '{\n        process.executor = 'slurm'\n        process.cpus      = 4\n        process.memory    = '16 GB'\n        process.time      = '24h'\n    }\n}' @ line 83, column 1.
+   }
+   ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:292)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:148)
+	at org.apache.groovy.parser.antlr4.AstBuilder.collectSyntaxError(AstBuilder.java:4739)
+	at org.apache.groovy.parser.antlr4.AstBuilder.access$100(AstBuilder.java:169)
+	at org.apache.groovy.parser.antlr4.AstBuilder$3.syntaxError(AstBuilder.java:4750)
+	at groovyjarjarantlr4.v4.runtime.ProxyErrorListener.syntaxError(ProxyErrorListener.java:44)
+	at groovyjarjarantlr4.v4.runtime.Parser.notifyErrorListeners(Parser.java:543)
+	at groovyjarjarantlr4.v4.runtime.DefaultErrorStrategy.notifyErrorListeners(DefaultErrorStrategy.java:154)
+	at org.apache.groovy.parser.antlr4.internal.DescriptiveErrorStrategy.reportNoViableAlternative(DescriptiveErrorStrategy.java:92)
+	at groovyjarjarantlr4.v4.runtime.DefaultErrorStrategy.reportError(DefaultErrorStrategy.java:139)
+	at org.apache.groovy.parser.antlr4.GroovyParser.pathExpression(GroovyParser.java:9897)
+	at org.apache.groovy.parser.antlr4.GroovyParser.postfixExpression(GroovyParser.java:8274)
+	at org.apache.groovy.parser.antlr4.GroovyParser.expression(GroovyParser.java:9061)
+	at org.apache.groovy.parser.antlr4.GroovyParser.commandExpression(GroovyParser.java:9699)
+	at org.apache.groovy.parser.antlr4.GroovyParser.statementExpression(GroovyParser.java:8233)
+	at org.apache.groovy.parser.antlr4.GroovyParser.statement(GroovyParser.java:7078)
+	at org.apache.groovy.parser.antlr4.GroovyParser.scriptStatement(GroovyParser.java:517)
+	at org.apache.groovy.parser.antlr4.GroovyParser.scriptStatements(GroovyParser.java:427)
+	at org.apache.groovy.parser.antlr4.GroovyParser.compilationUnit(GroovyParser.java:363)
+	at org.apache.groovy.parser.antlr4.AstBuilder.buildCST(AstBuilder.java:243)
+	at org.apache.groovy.parser.antlr4.AstBuilder.buildCST(AstBuilder.java:221)
+	at org.apache.groovy.parser.antlr4.AstBuilder.buildAST(AstBuilder.java:262)
+	at org.apache.groovy.parser.antlr4.Antlr4ParserPlugin.buildAST(Antlr4ParserPlugin.java:58)
+	at org.codehaus.groovy.control.SourceUnit.buildAST(SourceUnit.java:256)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1921)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:631)
+	at ch.artecat.grengine.code.groovy.DefaultGroovyCompiler.compile(DefaultGroovyCompiler.java:229)
+	... 26 common frames omitted

@@ -1,6 +1,8 @@
 process COMETS_RUN {
     tag "$strain"
 
+    errorStrategy 'ignore'    // <-- ignora el modelo fallido y continúa
+    
     publishDir "${params.outbase}/${strain}", mode: 'copy'
 
     cpus 1
