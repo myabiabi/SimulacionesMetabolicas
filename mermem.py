@@ -12,7 +12,7 @@
 from functions import variables_totales
 
 variables_totales(
-    gem_path="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/gemsembler_output",
-    output_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion",
-    output_filename="gemsembler_variables_totales.csv"
+    gem_path="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/models/rz",
+    output_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/rz",
+    output_filename="rz_variables_totales.csv"
 )

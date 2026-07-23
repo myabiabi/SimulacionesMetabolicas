@@ -75,13 +75,13 @@ done
 ```
 
 
-
+Bacillus_thuringiensis_111_x.xml
 ```
-for archivo in ST*; do
+for archivo in *.xml; do
     # 1. Obtener el nombre base eliminando el PREFIJO largo del inicio
     nombre_base="${archivo%.xml}"
     
-    prefijo="rz_pk_gp_lb_"
+    prefijo="cc_na_gap_lb_"
     # 2. Renombrar el archivo cambiando el prefijo y agregando .xml
     mv "$archivo" "${prefijo}${nombre_base}.xml"
 done
@@ -1251,12 +1251,12 @@ Bacillus.fna_assembly.RAST.fbamodel.xml
 rz_kb_rt_na_Bacillus.xml
 
 
-for archivo in *.fna_assembly.RAST.fbamodel.xml; do
+for archivo in *.xml; do
     # Elimina la cadena del final
-    nombre_base="${archivo%.fna_assembly.RAST.fbamodel.xml}"
+    nombre_base="${archivo%.xml}"
 
     # Prefijo
-    prefijo="rz_kb_rt_na"
+    prefijo="consenso"
 
     # Renombrar
     mv "$archivo" "${prefijo}_${nombre_base}.xml"
@@ -1529,12 +1529,7 @@ mycobacterium completada.
 
 
 
-
-
-
-
-
-
+##################
 
 
 

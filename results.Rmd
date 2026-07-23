@@ -20,7 +20,6 @@ library(ggrepel)
 library(growthcurver)
 library(ggbeeswarm)
 library(DescTools)
-install.packages(DescTools)
 
 variables <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/evaluacion/variables_totales.csv"
 gemn <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/gem"
@@ -66,14 +65,14 @@ name_bac <- c(
 ## 1. Comparar número de variables
 ```{r}
 
-variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/variables_totales.csv"
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/rz/rz_variables_totales.csv"
 df <- read_csv(variables_file)
 
 names(df) <- trimws(names(df))
 
 df$Method <- factor(
   df$Method,
-  levels = c("CV", "KB", "GP")
+  levels = c("CV", "KB", "GP", "MG", "GS")
 )
 
 df_long <- df %>%
@@ -113,7 +112,9 @@ general <- ggplot(
     values = c(
       CV = "#79CDCD",
       KB = "#BCEE68",
-      GP = "#FFC0CB"
+      GP = "#FFC0CB",
+      MG = "#F4A020",
+      GS = "#EE82EE"
     ),
     labels = c(
       CV = "CarveMe",
@@ -125,12 +126,16 @@ general <- ggplot(
     values = c(
       CV = "#528B8B",
       KB = "#6E8B3D",
-      GP = "#C71585"
+      GP = "#C71585",
+      MG = "#FF6D00",
+      GS = "#A020F0"
     ),
     labels = c(
       CV = "CarveMe",
       KB = "KBase",
-      GP = "gapseq"
+      GP = "gapseq",
+      MG = "mergem",
+      GS = "gemsembler"
     )
   ) +
   labs(
@@ -152,19 +157,35 @@ ggsave(
 )
 print(general)
 
-# Metodos CarveMe
-# Filtrar únicamente los métodos de KBase
+# Métodos CarveMe
+# Filtrar únicamente los métodos de CarveMe
 df_long_cv <- df_long %>%
-  filter(Reconstruction %in% c("CV", "PK_CV"))
+  filter(Reconstruction %in% c("CV", "CV_LB", "PK_CV", "PK_CV_LB"))
 
 # Definir el orden de los grupos
 df_long_cv$Reconstruction <- factor(
   df_long_cv$Reconstruction,
-  levels = c("CV", "PK_CV")
+  levels = c("CV", "CV_LB", "PK_CV", "PK_CV_LB")
 )
 
+# Paleta de colores unificada
+colores_carve <- c(
+  CV       = "#000080",  
+  CV_LB    = "#48AAAD",
+  PK_CV    = "#4169E1",
+  PK_CV_LB = "#016064"
+)
+
+etiquetas_carve <- c(
+  "CarveMe",
+  "CarveMe + Gapfilling",
+  "Prokka + CarveMe",
+  "Prokka + CarveMe + Gapfilling"
+)
+
+# Creación de la gráfica
 carve <- ggplot(
-  df_long_cv,
+  df_long_cv, # Usar el dataframe filtrado
   aes(
     x = Variable,
     y = Value,
@@ -187,30 +208,18 @@ carve <- ggplot(
     alpha = 0.8
   ) +
   scale_fill_manual(
-    values = c(
-      "CV"    = "#000080",  
-      "PK_CV" = "#4169E1"   
-    ),
-    labels = c(
-      "CarveMe",
-      "Prokka + CarveMe"
-    )
+    values = colores_carve,
+    labels = etiquetas_carve
   ) +
   scale_color_manual(
-    values = c(
-      "CV"    = "#191970",
-      "PK_CV" = "#1E90FF"
-    ),
-    labels = c(
-      "CarveMe",
-      "Prokka + CarveMe"
-    )
+    values = colores_carve,
+    labels = etiquetas_carve
   ) +
   labs(
     x = "",
     y = "Count",
-    fill = "Method",
-    color = "Method"
+    fill = "Reconstruction",
+    color = "Reconstruction"
   ) +
   theme_bw() +
   theme(
@@ -222,25 +231,46 @@ carve <- ggplot(
     )
   )
 
+# Mostrar la gráfica
 print(carve)
 
-# Metodo kbase
-library(dplyr)
-library(ggplot2)
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_cv.png", 
+  plot = carve, # Se especifica 'carve' en lugar de 'general'
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
 
+# KBASE
 # Filtrar únicamente los métodos de KBase
-df_long_kb <- df_long %>%
-  filter(Reconstruction %in% c("RT_KB", "PK_RT_KB"))
+df_long_kb<- df_long %>%
+  filter(Reconstruction %in% c("RT_KB", "RT_KB_LB", "PK_RT_KB", "PK_RT_KB_LB"))
 
 # Definir el orden de los grupos
 df_long_kb$Reconstruction <- factor(
   df_long_kb$Reconstruction,
-  levels = c("RT_KB", "PK_RT_KB")
+  levels = c("RT_KB", "RT_KB_LB", "PK_RT_KB", "PK_RT_KB_LB")
 )
 
-# Gráfica
+# Paleta de colores unificada
+colores_kb <- c(
+  RT_KB       = "#2E8B57",
+  RT_KB_LB    = "#98FB98",
+  PK_RT_KB    = "#98FA35",
+  PK_RT_KB_LB = "#1E5631"
+)
+etiquetas_kb <- c(
+  "KBase",
+  "KBase + Gapfilling",
+  "Prokka + KBase",
+  "Prokka + KBase + Gapfilling"
+)
+# Creación de la gráfica
 kbase <- ggplot(
-  df_long_kb,
+  df_long_kb, # Usar el dataframe filtrado
   aes(
     x = Variable,
     y = Value,
@@ -263,30 +293,18 @@ kbase <- ggplot(
     alpha = 0.8
   ) +
   scale_fill_manual(
-    values = c(
-      "RT_KB"    = "#F0FFF0",
-      "PK_RT_KB" = "#98FB98"
-    ),
-    labels = c(
-      "KBase",
-      "Prokka + KBase"
-    )
+    values = colores_kb,
+    labels = etiquetas_kb
   ) +
   scale_color_manual(
-    values = c(
-      "RT_KB"    = "#2E8B57",
-      "PK_RT_KB" = "#006400"
-    ),
-    labels = c(
-      "KBase",
-      "Prokka + KBase"
-    )
+    values = colores_kb,
+    labels = etiquetas_kb
   ) +
   labs(
     x = "",
     y = "Count",
-    fill = "Method",
-    color = "Method"
+    fill = "Reconstruction",
+    color = "Reconstruction"
   ) +
   theme_bw() +
   theme(
@@ -298,23 +316,44 @@ kbase <- ggplot(
     )
   )
 
+# Mostrar la gráfica
 print(kbase)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_kb.png", 
+  plot = kbase, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
 
 #########
 
 # Filtrar únicamente los métodos de KBase
-df_long_gp <- df_long %>%
-  filter(Reconstruction %in% c("GP", "PK_GP"))
+df_long_gp<- df_long %>%
+  filter(Reconstruction %in% c("GP_LB", "PK_GP_LB"))
 
 # Definir el orden de los grupos
 df_long_gp$Reconstruction <- factor(
   df_long_gp$Reconstruction,
-  levels = c("GP", "PK_GP")
+  levels = c("GP_LB", "PK_GP_LB")
 )
 
-# Gráfica
+# Paleta de colores unificada
+colores_gp <- c(
+  "GP_LB"    = "#C71585",
+  "PK_GP_LB" = "#FFB6C1"
+)
+etiquetas_gp <- c(
+  "GapSeq + Gapfilling",
+  "Prokka + GapSeq + Gapfilling"
+)
+# Creación de la gráfica
 gapseq <- ggplot(
-  df_long_gp,
+  df_long_gp, # Usar el dataframe filtrado
   aes(
     x = Variable,
     y = Value,
@@ -337,30 +376,18 @@ gapseq <- ggplot(
     alpha = 0.8
   ) +
   scale_fill_manual(
-    values = c(
-      "GP"    = "#FFE4E1",
-      "PK_GP" = "#E75480"
-    ),
-    labels = c(
-      "Gapseq",
-      "Prokka + Gapseq"
-    )
+    values = colores_gp,
+    labels = etiquetas_gp
   ) +
   scale_color_manual(
-    values = c(
-      "GP"    = "#C71585",
-      "PK_GP" = "#FFB6C1"
-    ),
-    labels = c(
-      "Gapseq",
-      "Prokka + Gapseq"
-    )
+    values = colores_gp,
+    labels = etiquetas_gp
   ) +
   labs(
     x = "",
     y = "Count",
-    fill = "Method",
-    color = "Method"
+    fill = "Reconstruction",
+    color = "Reconstruction"
   ) +
   theme_bw() +
   theme(
@@ -372,36 +399,136 @@ gapseq <- ggplot(
     )
   )
 
+# Mostrar la gráfica
 print(gapseq)
 
-install.packages("cowplot")
-# Cargar la librería
-library(cowplot)
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_gp.png", 
+  plot = gapseq, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
+#################################
+# Filtrar únicamente los métodos de KBase
+df_long_consenso<- df_long %>%
+  filter(Reconstruction %in% c("GS1", "GS2", "GS3", "LB_GS1", "LB_GS2", "LB_GS3", "MG", "MG_LB"))
+
+# Definir el orden de los grupos
+df_long_consenso$Reconstruction <- factor(
+  df_long_consenso$Reconstruction,
+  levels = c("GS1", "GS2", "GS3", "LB_GS1", "LB_GS2", "LB_GS3", "MG", "MG_LB")
+)
+
+# Paleta de colores unificada
+colores_consenso <- c(
+  "GS1"      = "#7B1FA2", 
+  "GS2"      = "#C2185B", 
+  "GS3"      = "#D81B60", 
+  "LB_GS1"   = "#E1BEE7", 
+  "LB_GS2"   = "#F8BBD0", 
+  "LB_GS3"   = "#FFCDD2",
+  "MG"      = "#B35400", 
+  "MG_LB"    = "#FFB74D"
+)
+etiquetas_consenso <- c(
+  "Gemsember core 1",
+  "Gemsember core 2",
+  "Gemsember core 3",
+  "Gemsember core 1 + Gapfilling",
+  "Gemsember core 2 + Gapfilling",
+  "Gemsember core 3 + Gapfilling",
+  "Mergem",
+  "Mergem + Gapfilling"
+)
+# Creación de la gráfica
+consenso <- ggplot(
+  df_long_consenso, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_consenso,
+    labels = etiquetas_consenso
+  ) +
+  scale_color_manual(
+    values = colores_consenso,
+    labels = etiquetas_consenso
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(consenso)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_consenso.png", 
+  plot = consenso, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 )
+
+
+
+##############################
+
+
 
 # Combinar las gráficas en 3 columnas
 grafica_final <- plot_grid(
-  carve, kbase, gapseq, 
-  labels = c("A", "B", "C"), # Etiquetas para cada panel
-  ncol = 3,                  # Número de columnas
+  carve, kbase, gapseq, consenso, 
+  labels = c("A", "B", "C", "D"), # Etiquetas para cada panel
+  ncol = 2,                  # Número de columnas
   align = "h"                # Alinea horizontalmente los ejes de las gráficas
 )
 
-# Suponiendo que usaste 'patchwork' o 'cowplot' para crear 'grafica_final'
-# Modifica los valores de width y height a tu gusto (están en pulgadas por defecto)
 
 ggsave(
   filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_reconstruccion.png", 
   plot = grafica_final, 
-  width = 18,           # Mayor ancho para que los 3 paneles respiren bien
-  height = 7,           # Alto proporcional
-  units = "in",         # Unidades: "in" (pulgadas), "cm" (centímetros) o "mm"
-  dpi = 600             # 600 DPI es una calidad extremadamente alta (ideal para impresión/publicación)
+  width = 18,          
+  height = 7,          
+  units = "in",         
+  dpi = 600           
 )
 
-# Mostrar la gráfica
-print(grafica_final)
 
-# Guardar la imagen única
 ```
 ## 2. MEMOTE 
 
@@ -440,6 +567,51 @@ bacterial_auc <- AUC(x = growth_data$Time,
                     method = "trapezoid")
 
 print(bacterial_auc)
+
+##############################
+base_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/simulaciones/rz/indi"
+output_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/simulaciones/rz/biomass"
+
+# Crear la carpeta de destino si aún no existe
+if (!dir.exists(output_path)) {
+  dir.create(output_path, recursive = TRUE)
+}
+
+# 2. Buscar TODOS los archivos biomass.txt
+biomass_files <- list.files(
+  path = base_path, 
+  pattern = "^biomass\\.txt$", 
+  full.names = TRUE, 
+  recursive = TRUE
+)
+
+# 3. Iterar sobre cada archivo
+for (old_name in biomass_files) {
+  # dirname(old_name)                -> carpeta donde está el .txt (subcarpeta interna)
+  # dirname(dirname(old_name))         -> carpeta superior (ID de la bacteria)
+  # basename(dirname(dirname(...)))  -> extrae solo el nombre de esa carpeta superior
+  
+  bacteria_id <- basename(dirname(dirname(old_name)))
+  
+  # Definir la nueva ruta con el ID de la bacteria
+  new_name <- file.path(output_path, paste0(bacteria_id, ".txt"))
+  
+  # Copiar y eliminar el original
+  if (file.copy(from = old_name, to = new_name, overwrite = TRUE)) {
+    file.remove(old_name)
+    message("listi: ", bacteria_id)
+  } else {
+    warning("falta: ", old_name)
+  }
+}
+
+
+# Prueba rápida para ver qué encuentra R
+files_found <- list.files(path = base_path, recursive = TRUE)
+head(files_found, 10)
+##########################
+
+
 
 ```
 
@@ -1815,7 +1987,7 @@ for (com in levels(all_data$com)) {
 
 ######################################
 
-library(tidyr) # Para pivotar los datos
+library(tidyr) 
 
 # 1. Combinar AUC y Biomasa en un solo formato largo (long format)
 comparison_data <- auc_data %>%
