@@ -94,11 +94,10 @@ general <- ggplot(
     fill = Method
   )
 ) +
-  geom_boxplot(
-    alpha = 0.4,
-    outlier.shape = NA,
-    position = position_dodge(width = 0.8)
-  ) +
+  #geom_boxplot(
+    #alpha = 0.4,
+    #outlier.shape = NA,
+    #position = position_dodge(width = 0.8)) +
   geom_jitter(
     aes(color = Method),
     position = position_jitterdodge(

@@ -13,9 +13,9 @@ output:
 * **carveme** 
 
 ```
-for file in *.fasta; do
-    nombre=$(basename "$file" .fasta)
-    carve "$file" --dna -g LB -o "rz_na_cv_lb_${nombre}.xml"
+for file in *.faa; do
+    nombre=$(basename "$file" .faa)
+    carve "$file" -g LB -o "rz_pk_cv_lb_${nombre}.xml"
 done
 ```
 
@@ -37,7 +37,7 @@ scp -r directorio/que/quieres/copiar mmontante@fenix.lavis.unam.mx:/directorio/d
 scp -r /home/abigaylmontantearenas/Documents/proyecto_tesis/01_data mmontante@fenix.lavis.unam.mx:/mnt/data/sur/users/mmontante
 
 * **actualizar copias de repos**
-git push lab devfe
+git push lab dev
 
 * **tamaño de un archivo**
 ls -lh archivo
@@ -45,18 +45,14 @@ ls -lh archivo
 Corynebacterium_sp_29_x.fasta_assembly.RAST.fbamodel.xml
 .fbamodel.xml
 
-rz_pk_gp_lbST00042_prokka_gapseq_lb.xml.xml.xml
-
+Bacillus_altitudinis_23_x-draft.xml
 ```
-for archivo in *_prokka_gapseq_lb.xml.xml.xml; do
-    # 1. Elimina la cadena exacta del final del archivo original
-    nombre_base="${archivo%_prokka_gapseq_lb.xml.xml.xml}"
-    
+for archivo in *-draft.xml; do
     # 2. Definir el prefijo (sin el guion bajo al final para que quede pegado a ST)
-    #prefijo="rz_pk_gp_lb"
+    #prefijo="cc_na_gp_na"
     
     # 3. Renombrar el archivo combinando todo
-    mv "$archivo" "${nombre_base}.xml"
+    mv "$archivo" "${prefijo}${nombre_base}.xml"
 done
 ```
 rz_pk_lb_consenso_vparadoxus.xml
@@ -941,9 +937,9 @@ module load COMETS
 
 echo "[INFO] Starting Python script at $(date)"
 
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00042 --cycles 40000 --outdir ./resultados4/com1
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00042 --cycles 4000 --outdir ./resultados4/com1
 
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00046 --cycles 40000 --outdir ./resultados4/com2
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST00046 --cycles 4000 --outdir ./resultados4/com2
 
 python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_data/rizo/carveme/prokka --strains ST0060 --cycles 40000 --outdir ./resultados4/com3
 
@@ -1535,10 +1531,67 @@ mycobacterium completada.
 
 
 
+    python ${params.comets_script} \\
+      --gem_path ${params.gem_path} \\
+      --strains ${strain} \\
+      --media ${params.media} \\
+      --cycles ${params.cycles} \\
+      --media_dil ${params.media_dil} \\
+      --media_vol ${params.media_vol} \\
+      --outdir out_${strain}
+    """
+}
 
 
 
+###########################
 
+#!/bin/bash
+#SBATCH --job-name=com_results
+#SBATCH --output=%x.log
+#SBATCH --error=%x.error
+#SBATCH --time=1000:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+
+echo "========================================="
+echo "Job started on: $(date)"
+echo "Running on host: $(hostname)"
+echo "Working directory: $(pwd)"
+echo "========================================="
+
+eval "$(mamba shell hook --shell bash)"
+mamba activate python3
+module load COMETS
+
+echo "[INFO] Starting Python script at $(date)"
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains vparadoxus --cycles 400000 --outdir ./com1
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains arthrobacter --cycles 400000 --outdir ./com2
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains bacillus --cycles 400000 --outdir ./com3
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains bthuringensis --cycles 400000 --outdir ./com4
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains mycobacterium --cycles 400000 --outdir ./com5
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains paenibacillus --cycles 400000 --outdir ./com6
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/cv_final --strains pseudomonas --cycles 400000 --outdir ./com7
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/cv_final --strains pseudomonas --cycles 400000 --outdir ./com8
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/cv_final --strains pumsongensis --cycles 400000 --outdir ./com9
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ../02_resultados/rz/models/cv_final --strains rerythropoli --cycles 400000 --outdir ./com10
+
+
+echo "[INFO] Python script finished at $(date)"
+
+echo "========================================="
+echo "Pipeline done at: $(date)"
+echo "========================================="
 
 
 
