@@ -134,7 +134,7 @@ def comets(ruta_csv_syncoms, patron_xml, threads, cycles, mass, media, newpath):
     os.chdir(original_path)
     print(f"\nProceso finalizado. Resultados en: {root_path}")
 
-def media(name="lb", dil=1, vol=1):
+def media(name="lb", dil=0.1, vol=1):
     name = name.lower()  
     res = {}
 
@@ -327,6 +327,6 @@ def set_sim_params(args):
     sim_params.set_param("maxCycles", args.cycles)
     sim_params.set_param("maxSpaceBiomass", 10) # gr DW
     sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
-    sim_params.set_param("spaceWidth", 5) # cm
+    sim_params.set_param("spaceWidth", 3.107233) # cm
 
     return sim_params

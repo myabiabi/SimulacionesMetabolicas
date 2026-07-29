@@ -58,7 +58,7 @@ def process_arguments():
     parser.add_argument("--media_dil",
                         help="Dilution factor for the media. Example: 0.1 for 1/10 dilution.",
                         type=float,
-                        default=1)
+                        default=0.1)
     parser.add_argument("--media_vol",
                          help="Volume of media to use.",
                          type=float,
