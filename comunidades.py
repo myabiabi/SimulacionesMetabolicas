@@ -9,6 +9,7 @@ GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final"
 
 # CAMBIO CRUCIAL: Dejamos esto relativo porque tu script original 
 # ya se encarga de concatenarlo con la ruta base interna (/mnt/data/sur/users/mmontante/)
+
 OUTDIR_BASE = "02_resultados/rz/com"
 
 if not os.path.exists(OUTDIR_BASE):
