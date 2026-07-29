@@ -3,3 +3,5 @@
 .current_layout*
 .current_package*
 __pycache__/*
+.nextflow/
+.nextflow.log*
