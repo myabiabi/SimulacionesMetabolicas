@@ -1,0 +1,2577 @@
+---
+title: "Results"
+author: "abi :)"
+date: "2026-05-04"
+output: html_document
+---
+Cargar librerias 
+```{r}
+library(tidyverse)
+library(stringr)
+library(ggplot2)
+library(readr)     
+library(ggplot2)   
+library(dplyr)     
+library(stringr)   
+library(fs)     
+library(igraph)
+library(pracma)
+library(ggrepel)
+library(growthcurver)
+library(ggbeeswarm)
+library(DescTools)
+
+variables <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/evaluacion/variables_totales.csv"
+gemn <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/gem"
+memote <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/evaluacion/memote.csv"
+
+#######
+monoculture_lb <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/biomass/individuales/lb"
+monoculture_lb10 <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/biomass/individuales/lb10"
+results <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/resultados3"
+experimental <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/resultados_experimentales/data_test_single_strains.csv"
+output_folder <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/graph"
+
+
+colores_bac <- c(
+  ST00060 = "#D4807C", 
+  ST00094 = "#C76662", 
+  ST00101 = "#5F9EAD", 
+  ST00110 = "#B7464C", 
+  ST00164 = "#9E3345", 
+  ST00143 = "#752530", 
+  ST00042 = "#80B6B3", 
+  ST00109 = "#3D788E", 
+  ST00154 = "#26526B", 
+  ST00046 = "#1A3749"
+)
+
+name_bac <- c(
+  ST00060 = "Arthrobacter sp.",
+  ST00094 = "Rhodococcus erythropolis", 
+  ST00101 = "Pseudomonas sp.",
+  ST00110 = "Variovorax paradoxus", 
+  ST00164 = "Bacillus thuringiensis",
+  ST00143 = "Paenibacillus sp.", 
+  ST00042 = "Pseudomonas umsongensis",
+  ST00109 = "Mycobacterium sp.", 
+  ST00154 = "Agrobacterium sp.",
+  ST00046 = "Bacillus sp."
+)
+```
+
+# Evaluar el modelo 
+
+## 1. Comparar número de variables
+```{r}
+
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/rz/rz_variables_totales.csv"
+df <- read_csv(variables_file)
+
+names(df) <- trimws(names(df))
+
+df$Method <- factor(
+  df$Method,
+  levels = c("CV", "KB", "GP", "MG", "GS")
+)
+
+df_long <- df %>%
+  pivot_longer(
+    cols = c(
+      Reactions,
+      Metabolites,
+      Genes
+    ),
+    names_to = "Variable",
+    values_to = "Value"
+  )
+
+general <- ggplot(
+  df_long,
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Method
+  )
+) +
+  #geom_boxplot(
+    #alpha = 0.4,
+    #outlier.shape = NA,
+    #position = position_dodge(width = 0.8)) +
+  geom_jitter(
+    aes(color = Method),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2,
+    alpha = 0.9
+  ) +
+  scale_fill_manual(
+    values = c(
+      CV = "#79CDCD",
+      KB = "#BCEE68",
+      GP = "#FFC0CB",
+      MG = "#F4A020",
+      GS = "#EE82EE"
+    ),
+    labels = c(
+      CV = "CarveMe",
+      KB = "KBase",
+      GP = "gapseq"
+    )
+  ) +
+  scale_color_manual(
+    values = c(
+      CV = "#528B8B",
+      KB = "#6E8B3D",
+      GP = "#C71585",
+      MG = "#FF6D00",
+      GS = "#A020F0"
+    ),
+    labels = c(
+      CV = "CarveMe",
+      KB = "KBase",
+      GP = "gapseq",
+      MG = "mergem",
+      GS = "gemsembler"
+    )
+  ) +
+  labs(
+    fill = "Method",
+    color = "Method",
+    x = "",
+    y = "Count"
+  ) +
+  guides(color = "none") +
+  theme_bw()
+
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos.png", 
+  plot = general, 
+  width = 18,           # Mayor ancho para que los 3 paneles respiren bien
+  height = 7,           # Alto proporcional
+  units = "in",         # Unidades: "in" (pulgadas), "cm" (centímetros) o "mm"
+  dpi = 600             # 600 DPI es una calidad extremadamente alta (ideal para impresión/publicación)
+)
+print(general)
+
+# Métodos CarveMe
+# Filtrar únicamente los métodos de CarveMe
+df_long_cv <- df_long %>%
+  filter(Reconstruction %in% c("CV", "CV_LB", "PK_CV", "PK_CV_LB"))
+
+# Definir el orden de los grupos
+df_long_cv$Reconstruction <- factor(
+  df_long_cv$Reconstruction,
+  levels = c("CV", "CV_LB", "PK_CV", "PK_CV_LB")
+)
+
+# Paleta de colores unificada
+colores_carve <- c(
+  CV       = "#000080",  
+  CV_LB    = "#48AAAD",
+  PK_CV    = "#4169E1",
+  PK_CV_LB = "#016064"
+)
+
+etiquetas_carve <- c(
+  "CarveMe",
+  "CarveMe + Gapfilling",
+  "Prokka + CarveMe",
+  "Prokka + CarveMe + Gapfilling"
+)
+
+# Creación de la gráfica
+carve <- ggplot(
+  df_long_cv, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_carve,
+    labels = etiquetas_carve
+  ) +
+  scale_color_manual(
+    values = colores_carve,
+    labels = etiquetas_carve
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(carve)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_cv.png", 
+  plot = carve, # Se especifica 'carve' en lugar de 'general'
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
+# KBASE
+# Filtrar únicamente los métodos de KBase
+df_long_kb<- df_long %>%
+  filter(Reconstruction %in% c("RT_KB", "RT_KB_LB", "PK_RT_KB", "PK_RT_KB_LB"))
+
+# Definir el orden de los grupos
+df_long_kb$Reconstruction <- factor(
+  df_long_kb$Reconstruction,
+  levels = c("RT_KB", "RT_KB_LB", "PK_RT_KB", "PK_RT_KB_LB")
+)
+
+# Paleta de colores unificada
+colores_kb <- c(
+  RT_KB       = "#2E8B57",
+  RT_KB_LB    = "#98FB98",
+  PK_RT_KB    = "#98FA35",
+  PK_RT_KB_LB = "#1E5631"
+)
+etiquetas_kb <- c(
+  "KBase",
+  "KBase + Gapfilling",
+  "Prokka + KBase",
+  "Prokka + KBase + Gapfilling"
+)
+# Creación de la gráfica
+kbase <- ggplot(
+  df_long_kb, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_kb,
+    labels = etiquetas_kb
+  ) +
+  scale_color_manual(
+    values = colores_kb,
+    labels = etiquetas_kb
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(kbase)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_kb.png", 
+  plot = kbase, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
+
+#########
+
+# Filtrar únicamente los métodos de KBase
+df_long_gp<- df_long %>%
+  filter(Reconstruction %in% c("GP_LB", "PK_GP_LB"))
+
+# Definir el orden de los grupos
+df_long_gp$Reconstruction <- factor(
+  df_long_gp$Reconstruction,
+  levels = c("GP_LB", "PK_GP_LB")
+)
+
+# Paleta de colores unificada
+colores_gp <- c(
+  "GP_LB"    = "#C71585",
+  "PK_GP_LB" = "#FFB6C1"
+)
+etiquetas_gp <- c(
+  "GapSeq + Gapfilling",
+  "Prokka + GapSeq + Gapfilling"
+)
+# Creación de la gráfica
+gapseq <- ggplot(
+  df_long_gp, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_gp,
+    labels = etiquetas_gp
+  ) +
+  scale_color_manual(
+    values = colores_gp,
+    labels = etiquetas_gp
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(gapseq)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_gp.png", 
+  plot = gapseq, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
+#################################
+# Filtrar únicamente los métodos de KBase
+df_long_consenso<- df_long %>%
+  filter(Reconstruction %in% c("GS1", "GS2", "GS3", "LB_GS1", "LB_GS2", "LB_GS3", "MG", "MG_LB"))
+
+# Definir el orden de los grupos
+df_long_consenso$Reconstruction <- factor(
+  df_long_consenso$Reconstruction,
+  levels = c("GS1", "GS2", "GS3", "LB_GS1", "LB_GS2", "LB_GS3", "MG", "MG_LB")
+)
+
+# Paleta de colores unificada
+colores_consenso <- c(
+  "GS1"      = "#7B1FA2", 
+  "GS2"      = "#C2185B", 
+  "GS3"      = "#D81B60", 
+  "LB_GS1"   = "#E1BEE7", 
+  "LB_GS2"   = "#F8BBD0", 
+  "LB_GS3"   = "#FFCDD2",
+  "MG"      = "#B35400", 
+  "MG_LB"    = "#FFB74D"
+)
+etiquetas_consenso <- c(
+  "Gemsember core 1",
+  "Gemsember core 2",
+  "Gemsember core 3",
+  "Gemsember core 1 + Gapfilling",
+  "Gemsember core 2 + Gapfilling",
+  "Gemsember core 3 + Gapfilling",
+  "Mergem",
+  "Mergem + Gapfilling"
+)
+# Creación de la gráfica
+consenso <- ggplot(
+  df_long_consenso, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_consenso,
+    labels = etiquetas_consenso
+  ) +
+  scale_color_manual(
+    values = colores_consenso,
+    labels = etiquetas_consenso
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(consenso)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_consenso.png", 
+  plot = consenso, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 )
+
+
+
+##############################
+
+
+
+# Combinar las gráficas en 3 columnas
+grafica_final <- plot_grid(
+  carve, kbase, gapseq, consenso, 
+  labels = c("A", "B", "C", "D"), # Etiquetas para cada panel
+  ncol = 2,                  # Número de columnas
+  align = "h"                # Alinea horizontalmente los ejes de las gráficas
+)
+
+
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/graficas/metodos_reconstruccion.png", 
+  plot = grafica_final, 
+  width = 18,          
+  height = 7,          
+  units = "in",         
+  dpi = 600           
+)
+
+
+```
+## 2. MEMOTE 
+
+## 3. Tabla promedios 
+
+```{r}
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/evaluacion/variables_totales.csv"
+df <- read_csv(variables_file, show_col_types = FALSE)
+reacts <- mean(df$Reactions)
+mets <- mean(df$Metabolites)
+gens <- mean(df$Genes)
+
+cat("--- Mean Values for Thesis Models ---\n")
+cat("Average Reactions:  ", reacts, "\n")
+cat("Average Metabolites:", mets, "\n")
+cat("Average Genes:      ", gens, "\n")
+
+```
+
+
+
+## 3. Area bajo la curva, velocidad
+
+```{r}
+# Load the DescTools package for the trapezoid AUC calculation
+
+# Example dataframe for bacterial growth
+growth_data <- data.frame(
+  Time = c(0, 2, 4, 6, 8, 10, 12),
+  OD = c(0.05, 0.08, 0.15, 0.40, 0.80, 0.95, 0.96)
+)
+
+# Calculate AUC using the trapezoid method
+bacterial_auc <- AUC(x = growth_data$Time, 
+                    y = growth_data$OD, 
+                    method = "trapezoid")
+
+print(bacterial_auc)
+
+##############################
+base_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/simulaciones/rz/indi"
+output_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/simulaciones/rz/biomass"
+
+# Crear la carpeta de destino si aún no existe
+if (!dir.exists(output_path)) {
+  dir.create(output_path, recursive = TRUE)
+}
+
+# 2. Buscar TODOS los archivos biomass.txt
+biomass_files <- list.files(
+  path = base_path, 
+  pattern = "^biomass\\.txt$", 
+  full.names = TRUE, 
+  recursive = TRUE
+)
+
+# 3. Iterar sobre cada archivo
+for (old_name in biomass_files) {
+  # dirname(old_name)                -> carpeta donde está el .txt (subcarpeta interna)
+  # dirname(dirname(old_name))         -> carpeta superior (ID de la bacteria)
+  # basename(dirname(dirname(...)))  -> extrae solo el nombre de esa carpeta superior
+  
+  bacteria_id <- basename(dirname(dirname(old_name)))
+  
+  # Definir la nueva ruta con el ID de la bacteria
+  new_name <- file.path(output_path, paste0(bacteria_id, ".txt"))
+  
+  # Copiar y eliminar el original
+  if (file.copy(from = old_name, to = new_name, overwrite = TRUE)) {
+    file.remove(old_name)
+    message("listi: ", bacteria_id)
+  } else {
+    warning("falta: ", old_name)
+  }
+}
+
+
+# Prueba rápida para ver qué encuentra R
+files_found <- list.files(path = base_path, recursive = TRUE)
+head(files_found, 10)
+##########################
+
+
+
+```
+
+
+## 3. Tipo de medio 
+
+```{r}
+# ====================================== Numero de variables ======================================
+df_variables <- read.csv(variables)
+long_data <- df_variables %>%
+  pivot_longer(
+    cols = c(Total_Reactions, Total_Metabolites, Total_Genes),
+    names_to = "Variable",
+    values_to = "Count"
+  )
+
+ggplot(long_data, aes(x = Group, y = Count, fill = Group)) +
+  geom_boxplot() +
+  facet_wrap(~ Variable, 
+             scales = "free_y",
+              labeller = as_labeller(c(
+                "Total_Reactions" = "Total Reactions",
+                "Total_Metabolites" = "Total Metabolites",
+                "Total_Genes" = "Total Genes"
+  ))
+  ) + 
+  theme_minimal() +
+  labs(x = "Reconstruction Method", y = "Count")
+
+# ====================================== MEMOTE  ======================================
+# Leer datos 
+df_memote <- read.csv(memote, header = TRUE, stringsAsFactors = FALSE)
+
+df_memote <- df_memote %>%
+  separate_wider_delim(
+    cols = ID, 
+    delim = "_", 
+    names = c("Strain", "Method"), 
+    too_many = "merge"
+  ) %>%
+  mutate(score = as.numeric(score))
+
+df_memote$Method <- factor(df_memote$Method, levels = unique(df_memote$Method))
+
+# Eliminar NA en score (importante para el plot)
+df_memote_plot <- df_memote %>% filter(!is.na(score))
+
+# Gráfica beeswarm
+ggplot(df_memote_plot, aes(x = Method, y = score, color = Method)) +
+  geom_beeswarm(size = 2, alpha = 0.8) +
+  theme_minimal() +
+  labs(
+    x = "Method",
+    y = "Score",
+    title = "Beeswarm plot de scores por método"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "none"
+  )
+
+```
+## 4. Comparar datos experimentales 
+
+```{r}
+# ====================================== Datos experimentales ======================================
+# Ruta del archivo
+
+# Leer datos
+df_experimental <- read.csv(experimental, header = TRUE, stringsAsFactors = FALSE)
+df_experimental28 <- df_experimental %>% slice(11:20)
+
+# Pasar a formato largo y quitar temperatura
+df_long28 <- df_experimental28 %>%
+  select(-temp) %>%
+  pivot_longer(cols = starts_with("t_"),
+               names_to = "time",
+               values_to = "OD") %>%
+  mutate(
+    time = recode(time,
+                  "t_0" = 0,
+                  "t_1" = 24,
+                  "t_2" = 48,
+                  "t_3" = 72),
+    time = as.numeric(time)
+  )
+
+# Gráfica
+ggplot(df_long28, aes(x = time, y = OD, group = strain, color = strain)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  theme_minimal() +
+  labs(
+    x = "Tiempo (horas)",
+    y = "OD",
+    title = "Crecimiento bacteriano en el tiempo"
+  ) +
+  theme(
+    legend.position = "right",
+    axis.text.x = element_text(size = 10)
+  )
+##################################################################
+df_experimental32 <- df_experimental %>% slice(11:20)
+# Pasar a formato largo y quitar temperatura
+df_long32 <- df_experimental32 %>%
+  select(-temp) %>%
+  pivot_longer(cols = starts_with("t_"),
+               names_to = "time",
+               values_to = "OD") %>%
+  mutate(
+    time = recode(time,
+                  "t_0" = 0,
+                  "t_1" = 24,
+                  "t_2" = 48,
+                  "t_3" = 72),
+    time = as.numeric(time)
+  )
+
+# Gráfica
+ggplot(df_long32, aes(x = time, y = OD, group = strain, color = strain)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  theme_minimal() +
+  labs(
+    x = "Tiempo (horas)",
+    y = "OD",
+    title = "Crecimiento bacteriano en el tiempo"
+  ) +
+  theme(
+    legend.position = "right",
+    axis.text.x = element_text(size = 10)
+  )
+```
+## COmparacion datos experimentales
+```{r}
+colores_bac <- c(
+  STECOLI = "#00FF00", 
+  ST00060 = "#D4807C", 
+  ST00094 = "#C76662", 
+  ST00101 = "#5F9EAD", 
+  ST00110 = "#B7464C", 
+  ST00164 = "#9E3345", 
+  ST00143 = "#752530", 
+  ST00042 = "#80B6B3", 
+  ST00109 = "#3D788E", 
+  ST00154 = "#26526B", 
+  ST00046 = "#1A3749"
+)
+
+name_bac <- c(
+  STECOLI = "Escherichia coli", 
+  ST00060 = "Arthrobacter sp.",
+  ST00094 = "Rhodococcus erythropolis", 
+  ST00101 = "Pseudomonas sp.",
+  ST00110 = "Variovorax paradoxus", 
+  ST00164 = "Bacillus thuringiensis",
+  ST00143 = "Paenibacillus sp.", 
+  ST00042 = "Pseudomonas umsongensis",
+  ST00109 = "Mycobacterium sp.", 
+  ST00154 = "Agrobacterium sp.",
+  ST00046 = "Bacillus sp."
+)
+
+
+base_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/resultados"
+
+op_dirs <- list.dirs(base_path, recursive = FALSE)
+op_dirs <- op_dirs[grepl("/op[0-9]+$", op_dirs)]
+
+biomass_files <- file.path(op_dirs, "biomass.txt")
+biomass_files <- biomass_files[file.exists(biomass_files)]
+
+sim_data <- data.frame()
+
+for (file_path in biomass_files) {
+  
+  op_id <- basename(dirname(file_path))
+  df <- read.table(file_path, header = FALSE)
+  
+  if (ncol(df) < 5) next
+  
+  colnames(df) <- c("time", "c2", "c3", "model", "value")
+  
+  df$time <- as.numeric(df$time) * 0.1
+  df$value <- as.numeric(df$value)
+  
+  model_id <- str_extract(df$model[1], "^[^_]+")
+  
+  if (is.na(model_id) || !model_id %in% names(colores_bac)) next
+  
+  df$model_id <- model_id
+  df$source <- "simulation"
+  
+  sim_data <- bind_rows(sim_data, df)
+}
+
+
+file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/resultados_experimentales/data_test_single_strains.csv"
+
+exp_data <- read.csv(file, header = TRUE, stringsAsFactors = FALSE)
+
+exp_data <- exp_data %>%
+  select(-temp) %>%
+  pivot_longer(cols = starts_with("t_"),
+               names_to = "time",
+               values_to = "value") %>%
+  mutate(
+    time = recode(time,
+                  "t_0" = 0,
+                  "t_1" = 24,
+                  "t_2" = 48,
+                  "t_3" = 72),
+    time = as.numeric(time),
+    model_id = strain,
+    source = "experiment"
+  ) %>%
+  filter(model_id %in% names(colores_bac))
+
+
+all_data <- bind_rows(sim_data, exp_data)
+
+all_data$species <- name_bac[all_data$model_id]
+
+
+p <- ggplot(all_data,
+            aes(x = time, y = value,
+                group = interaction(model_id, source))) +
+
+  geom_line(aes(color = model_id, linetype = source), linewidth = 1) +
+
+  scale_color_manual(values = colores_bac, labels = name_bac) +
+
+  scale_linetype_manual(values = c(simulation = "solid",
+                                   experiment = "dashed")) +
+
+  scale_x_continuous(breaks = seq(0, 100, by = 24)) +
+  scale_y_continuous(trans = "log10") +
+  labs(
+    title = "Simulación vs experimento de crecimiento bacteriano",
+    x = "Tiempo (h)",
+    y = "Biomasa / OD",
+    color = "Especie",
+    linetype = "Origen"
+  ) +
+
+  theme_bw(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold.italic"),
+    panel.grid.minor = element_blank()
+  )
+
+print(p)
+
+
+output_folder <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/graph"
+dir_create(output_folder)
+
+ggsave(
+  file.path(output_folder, "simulation_vs_experiment.png"),
+  p,
+  width = 12,
+  height = 8,
+  dpi = 300
+)
+
+
+
+
+
+
+# Asegurémonos de que la carpeta de salida existe
+if(!dir.exists(output_folder)) dir.create(output_folder, recursive = TRUE)
+
+lista_especies <- unique(all_data$species)
+
+for (esp in lista_especies) {
+  
+  if (is.na(esp)) next
+  
+  # 1. Filtrar datos
+  data_subset <- all_data %>% filter(species == esp)
+  
+  # 2. Crear la gráfica (USANDO ESCALA LINEAL para evitar errores de log10(0))
+  p_individual <- ggplot(data_subset, 
+                         aes(x = time, y = value, group = source)) +
+    
+    # Dibujar líneas (simulación sólida, experimento punteada)
+    geom_line(aes(linetype = source, color = model_id), linewidth = 1.2) +
+    
+    # Colores manuales
+    scale_color_manual(values = colores_bac, guide = "none") +
+    scale_linetype_manual(values = c(simulation = "solid", experiment = "dashed")) +
+    
+    # Escala de tiempo corregida
+    scale_x_continuous(breaks = seq(0, 100, by = 12), limits = c(0, 100)) +
+    
+    # Quitamos scale_y_log10() temporalmente para asegurar que grafique aunque sea 0
+    # Si quieres logaritmo después, lo añadimos cuando sepamos que esto funciona
+    
+    labs(
+      title = paste("Bacteria:", esp),
+      subtitle = "Comparativa: Sólida = Simulación | Punteada = Experimento",
+      x = "Tiempo (h)",
+      y = "Biomasa / OD"
+    ) +
+    
+    theme_bw(base_size = 14) +
+    theme(plot.title = element_text(face = "bold.italic"))
+
+  # 3. Mostrar en la ventana de Plots para confirmar
+  print(p_individual)
+  
+  # 4. Guardar con un nombre de archivo muy simple para evitar errores de sistema
+  nombre_archivo <- paste0("test_", which(lista_especies == esp), ".png")
+  ruta_final <- file.path(output_folder, nombre_archivo)
+  
+  ggsave(ruta_final, p_individual, width = 8, height = 6, dpi = 300)
+  
+  message("Procesada bacteria: ", esp, " -> Guardada como: ", nombre_archivo)
+}
+
+
+#################
+
+library(tidyverse)
+library(stringr)
+
+
+colores_bac <- c(
+  STECOLI = "#00FF00", ST00060 = "#D4807C", ST00094 = "#C76662", 
+  ST00101 = "#5F9EAD", ST00110 = "#B7464C", ST00164 = "#9E3345", 
+  ST00143 = "#752530", ST00042 = "#80B6B3", ST00109 = "#3D788E", 
+  ST00154 = "#26526B", ST00046 = "#1A3749"
+)
+
+name_bac <- c(
+  STECOLI = "Escherichia coli", ST00060 = "Arthrobacter sp.",
+  ST00094 = "Rhodococcus erythropolis", ST00101 = "Pseudomonas sp.",
+  ST00110 = "Variovorax paradoxus", ST00164 = "Bacillus thuringiensis",
+  ST00143 = "Paenibacillus sp.", ST00042 = "Pseudomonas umsongensis",
+  ST00109 = "Mycobacterium sp.", ST00154 = "Agrobacterium sp.",
+  ST00046 = "Bacillus sp."
+)
+
+
+base_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/resultados"
+op_dirs <- list.dirs(base_path, recursive = FALSE)
+op_dirs <- op_dirs[grepl("/op[0-9]+$", op_dirs)]
+biomass_files <- file.path(op_dirs, "biomass.txt")
+biomass_files <- biomass_files[file.exists(biomass_files)]
+
+sim_data <- data.frame()
+
+for (file_path in biomass_files) {
+  df <- read.table(file_path, header = FALSE)
+  if (ncol(df) < 5) next
+  
+  colnames(df) <- c("time", "c2", "c3", "model_name", "value")
+  
+  # Extraer ID (ej: ST00042) del nombre del archivo de comandos
+  m_id <- str_extract(df$model_name[1], "ST[0-9]+")
+  
+  if (is.na(m_id) || !m_id %in% names(colores_bac)) next
+  
+  # Sumar biomasa de todas las celdas y convertir ciclos a horas
+  df_summed <- df %>%
+    group_by(time) %>%
+    summarise(value = sum(value, na.rm = TRUE)) %>%
+    mutate(
+      time = as.numeric(time) * 0.1, # 1000 ciclos = 100 horas
+      model_id = m_id,
+      source = "simulation"
+    )
+  
+  sim_data <- bind_rows(sim_data, df_summed)
+}
+
+
+file_exp <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/resultados_experimentales/data_test_single_strains.csv"
+exp_data <- read.csv(file_exp, header = TRUE)
+
+exp_data_clean <- exp_data %>%
+  select(-any_of("temp")) %>%
+  pivot_longer(cols = starts_with("t_"), names_to = "time", values_to = "value") %>%
+  mutate(
+    time = as.numeric(recode(time, "t_0"=0, "t_1"=24, "t_2"=48, "t_3"=72)),
+    model_id = strain,
+    source = "experiment"
+  ) %>%
+  filter(model_id %in% names(colores_bac))
+
+
+all_data <- bind_rows(sim_data, exp_data_clean)
+all_data$species <- name_bac[all_data$model_id]
+
+
+output_folder <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/graph"
+if(!dir.exists(output_folder)) dir.create(output_folder, recursive = TRUE)
+
+especies_list <- unique(all_data$species)
+
+for (esp in especies_list) {
+  if (is.na(esp)) next
+  
+  data_subset <- all_data %>% filter(species == esp)
+  
+  p <- ggplot(data_subset, aes(x = time, y = value, color = model_id)) +
+    # Línea sólida para simulación, punteada para experimento
+    geom_line(aes(linetype = source), linewidth = 1.2) +
+    # Puntos para el experimento (muestras reales)
+    geom_point(data = filter(data_subset, source == "experiment"), size = 2) +
+    
+    # Escalas
+    scale_y_log10() + # Logarítmico para ver 1e-8 y 1.2 en la misma gráfica
+    scale_x_continuous(breaks = seq(0, 100, by = 12), limits = c(0, 100)) +
+    scale_color_manual(values = colores_bac, guide = "none") +
+    scale_linetype_manual(values = c(simulation = "solid", experiment = "dashed")) +
+    
+    # Etiquetas y Estética
+    labs(
+      title = paste("Bacteria:", esp),
+      subtitle = "Simulación (COMETS) vs Experimento (OD) | Escala Log10",
+      x = "Tiempo (h)",
+      y = "Valor (Biomasa Total / OD)",
+      linetype = "Origen"
+    ) +
+    theme_bw(base_size = 14) +
+    theme(
+      plot.title = element_text(face = "bold.italic"),
+      legend.position = "bottom"
+    )
+
+  # Guardar
+  nombre_archivo <- paste0("crecimiento_", gsub(" ", "_", esp), ".png")
+  ggsave(file.path(output_folder, nombre_archivo), p, width = 9, height = 6, dpi = 300)
+  
+  print(p) # Muestra la gráfica en RStudio
+}
+
+message("¡Proceso completado! Revisa la carpeta: ", output_folder)
+
+
+```
+# Curvas de crecimiento 
+## 1. Individuales 
+
+```{r}
+# ====================================== Individuales ======================================
+
+# buscar carpetas
+op_dirs <- list.dirs(results, recursive = FALSE)
+op_dirs <- op_dirs[grepl("/com", op_dirs)]
+
+biomass_files <- file.path(op_dirs, "biomass.txt")
+biomass_files <- biomass_files[file.exists(biomass_files)]
+
+dir_create(output_folder)
+
+
+for (file_path in biomass_files) {
+  
+  op_id <- basename(dirname(file_path))
+  
+  df <- read.table(file_path, header = FALSE)
+  
+  if (ncol(df) < 5) {
+    warning(paste("Formato incorrecto:", file_path))
+    next
+  }
+  
+  colnames(df) <- c("time", "c2", "c3", "model", "biomass")
+  
+  df$time <- as.numeric(df$time)
+  df$biomass <- as.numeric(df$biomass)
+  
+  # ordenar (clave para AUC)
+  df <- df %>% arrange(time)
+  
+  model_id <- str_remove(df$model[1], "\\.cmd$")
+  
+  if (!model_id %in% names(colores_bac)) {
+    warning(paste("ID not found:", model_id))
+    next
+  }
+  
+  # =========================
+  # CALCULAR AUC
+  # =========================
+  auc_value <- trapz(df$time, df$biomass)
+  
+  # =========================
+  # GRAFICA
+  # =========================
+  p <- ggplot(df, aes(x = time, y = biomass)) +
+    
+    # área sombreada
+    geom_area(
+      fill = colores_bac[model_id],
+      alpha = 0.3
+    ) +
+    
+    # curva
+    geom_line(
+      linewidth = 1.3,
+      color = colores_bac[model_id]
+    ) +
+    
+    # texto AUC
+    annotate(
+      "text",
+      x = max(df$time) * 0.7,
+      y = max(df$biomass) * 0.9,
+      label = paste0("AUC = ", format(auc_value, scientific = TRUE, digits = 2)),
+      size = 5,
+      hjust = 0
+    ) +
+    
+    labs(
+      title = paste("Growth curve", name_bac[model_id], "-", op_id),
+      x = "Cycles",
+      y = expression(paste(italic("Biomass"), " (g)"))
+    ) +
+    
+    theme_bw(base_size = 14)
+  
+  print(p)
+  
+  output_file <- file.path(
+    output_folder,
+    paste0("growth_AUC_", model_id, "_", op_id, ".png")
+  )
+  
+  ggsave(output_file, p, width = 10, height = 7, dpi = 300)
+}
+```
+## 2. Individules (una sola) 
+```{r}
+# ====================================== Individuales (sola una) ======================================
+op_dirs <- list.dirs(base_path, recursive = FALSE)
+op_dirs <- op_dirs[grepl("/com[0-9]+$", op_dirs)]
+
+biomass_files <- file.path(op_dirs, "biomass.txt")
+biomass_files <- biomass_files[file.exists(biomass_files)]
+
+#-------------------------
+# LEER DATOS
+#-------------------------
+all_data <- data.frame()
+
+for (file_path in biomass_files) {
+  
+  op_id <- basename(dirname(file_path))
+  
+  df <- read.table(file_path, header = FALSE)
+  if (ncol(df) < 5) next
+  
+  colnames(df) <- c("time", "c2", "c3", "model", "biomass")
+  
+  df$time <- as.numeric(df$time)
+  df$hours <- df$time * 0.1
+  df$biomass <- as.numeric(df$biomass)
+  
+  df$model_id <- str_remove(df$model, "\\.cmd$")
+  
+  # filtrar solo los modelos definidos
+  df <- df %>% filter(model_id %in% names(colores_bac))
+  
+  # mapear nombres
+  df$species <- name_bac[match(df$model_id, names(name_bac))]
+  df$op <- op_id
+  
+  all_data <- bind_rows(all_data, df)
+}
+
+#-------------------------
+# ORDEN POR BIOMASA
+#-------------------------
+orden_biomasa <- all_data %>%
+  group_by(model_id) %>%
+  summarise(final_biomass = max(biomass, na.rm = TRUE)) %>%
+  arrange(desc(final_biomass)) %>%
+  pull(model_id)
+
+all_data$model_id <- factor(all_data$model_id, levels = orden_biomasa)
+
+labels_italicas <- lapply(
+  name_bac[orden_biomasa],
+  function(x) bquote(italic(.(x)))
+)
+
+#-------------------------
+# GRAFICA CRECIMIENTO
+#-------------------------
+p <- ggplot(all_data, aes(x = hours, y = biomass, group = interaction(model_id, op))) +
+  geom_line(aes(color = model_id), linewidth = 1) +
+  scale_color_manual(values = colores_bac[orden_biomasa], labels = labels_italicas) +
+  scale_y_log10() +
+  labs(
+    title = "Monoculture bacterial growth",
+    x = "Time (h)",
+    y = expression(italic(log[10]) ~ Biomass ~ "(g)"),
+    color = "Strains"
+  ) +
+  theme_bw(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold.italic"),
+    panel.grid.minor = element_blank()
+  )
+
+print(p)
+
+#-------------------------
+# OUTPUT
+#-------------------------
+output_folder <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/graph"
+dir_create(output_folder)
+
+ggsave(file.path(output_folder, "all_growth_curves.png"), p, width = 12, height = 8, dpi = 300)
+
+#-------------------------
+# BIOMASA FINAL
+#-------------------------
+final_biomass <- all_data %>%
+  arrange(model_id, op, hours) %>%
+  group_by(model_id, op) %>%
+  slice_tail(n = 1) %>%
+  ungroup()
+
+final_summary <- final_biomass %>%
+  group_by(model_id) %>%
+  summarise(
+    mean_final = mean(biomass, na.rm = TRUE),
+    sd_final = sd(biomass, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(final_plot = mean_final + 1e-10) %>%
+  arrange(desc(final_plot))
+
+final_summary$model_id <- factor(final_summary$model_id, levels = final_summary$model_id)
+
+labels_italicas_final <- lapply(
+  name_bac[levels(final_summary$model_id)],
+  function(x) bquote(italic(.(x)))
+)
+
+p_final <- ggplot(final_summary, aes(x = model_id, y = final_plot, color = model_id)) +
+  geom_point(size = 5) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(mean_final - sd_final, 1e-10),
+      ymax = mean_final + sd_final
+    ),
+    width = 0.2
+  ) +
+  geom_text(aes(label = format(mean_final, scientific = TRUE, digits = 2)), vjust = -1) +
+  scale_color_manual(values = colores_bac[levels(final_summary$model_id)]) +
+  scale_x_discrete(labels = labels_italicas_final) +
+  scale_y_log10() +
+  labs(
+    title = "Final biomass (log10)",
+    x = "Strains",
+    y = expression(log[10] ~ Biomass)
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "none")
+
+print(p_final)
+
+ggsave(file.path(output_folder, "final_biomass.png"), p_final, width = 10, height = 6, dpi = 300)
+
+#-------------------------
+# AUC
+#-------------------------
+auc_summary <- all_data %>%
+  arrange(model_id, op, hours) %>%
+  group_by(model_id, op) %>%
+  summarise(AUC = trapz(hours, biomass), .groups = "drop") %>%
+  group_by(model_id) %>%
+  summarise(
+    mean_AUC = mean(AUC, na.rm = TRUE),
+    sd_AUC = sd(AUC, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(AUC_plot = mean_AUC + 1e-10) %>%
+  arrange(desc(AUC_plot))
+
+auc_summary$model_id <- factor(auc_summary$model_id, levels = auc_summary$model_id)
+
+labels_italicas_auc <- lapply(
+  name_bac[levels(auc_summary$model_id)],
+  function(x) bquote(italic(.(x)))
+)
+
+p_auc <- ggplot(auc_summary, aes(x = model_id, y = AUC_plot, color = model_id)) +
+  geom_point(size = 5) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(mean_AUC - sd_AUC, 1e-10),
+      ymax = mean_AUC + sd_AUC
+    ),
+    width = 0.2
+  ) +
+  geom_text(aes(label = format(mean_AUC, scientific = TRUE, digits = 2)), vjust = -1) +
+  scale_color_manual(values = colores_bac[levels(auc_summary$model_id)]) +
+  scale_x_discrete(labels = labels_italicas_auc) +
+  scale_y_log10() +
+  labs(title = "AUC (log10)", x = "Strains", y = expression(log[10] ~ AUC)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "none")
+
+print(p_auc)
+
+ggsave(file.path(output_folder, "AUC.png"), p_auc, width = 10, height = 6, dpi = 300)
+#-------------------------
+# COMBINADA (EJE X LIMPIO)
+#-------------------------
+
+# 1. Crear los labels combinados para la leyenda
+labels_completos <- lapply(
+  levels(combined$model_id),
+  function(id) {
+    nombre <- name_bac[[id]]
+    bquote(italic(.(nombre)) ~ "(" * .(id) * ")")
+  }
+)
+
+p_combined <- ggplot(combined, aes(x = model_id, y = value_plot, color = model_id)) +
+  geom_point(aes(shape = type), size = 4, position = position_dodge(width = 0.5)) +
+  # Mantenemos las etiquetas sobre los puntos para identificar qué es qué visualmente
+  geom_text_repel(aes(label = model_id), size = 3, show.legend = FALSE) + 
+  
+  scale_color_manual(
+    values = colores_bac[levels(combined$model_id)],
+    labels = labels_completos
+  ) +
+  
+  scale_shape_manual(values = c("AUC" = 16, "Final biomass" = 17)) +
+  scale_y_log10() +
+  labs(
+    title = "AUC vs Final biomass", 
+    y = expression(log[10] ~ Value),
+    x = "Strains",
+    color = "Species (ID)",
+    shape = "Metric"
+  ) +
+  theme_bw() +
+  theme(
+    # --- ESTO ELIMINA LOS VALORES DEL EJE X ---
+    axis.text.x = element_blank(),  # Quita el texto (ST00...)
+    axis.ticks.x = element_blank(), # Quita las pequeñas líneas de graduación
+    # -----------------------------------------
+    legend.text.align = 0,
+    panel.grid.major.x = element_blank() # Opcional: quita líneas verticales para limpieza
+  )
+
+print(p_combined)
+
+# Guardar la versión final
+ggsave(file.path(output_folder, "combined_clean.png"), p_combined, width = 11, height = 6, dpi = 300)
+```
+## 3. Comunidad con integrantes 
+```{r}
+# ====================================== Comunidad con integrantes ======================================
+
+com_dirs <- list.dirs(results, recursive = FALSE)
+com_dirs <- com_dirs[grepl("/com", com_dirs)]
+
+dir_create(output_folder)
+
+all_data <- data.frame()
+
+for (com_path in com_dirs) {
+  
+  com_id <- basename(com_path)
+  com_id <- sub("^com_?", "C", com_id)
+  
+  file_path <- file.path(com_path, "biomass.txt")
+  if (!file.exists(file_path)) next
+  
+  df <- read.table(file_path, header = FALSE)
+  if (ncol(df) < 5) next
+  
+  colnames(df) <- c("time", "c2", "c3", "model", "biomass")
+  
+  df$time <- as.numeric(df$time * 0.1)
+  df$biomass <- as.numeric(df$biomass)
+  
+  df$model_id <- str_remove(df$model, "\\.cmd$")
+  df <- df %>% filter(model_id %in% names(colores_bac))
+  
+  df$species <- name_bac[df$model_id]
+  df$com <- com_id
+  
+  all_data <- bind_rows(all_data, df)
+}
+
+all_data$com_num <- as.numeric(str_extract(all_data$com, "[0-9]+"))
+
+all_data$com <- factor(
+  all_data$com,
+  levels = paste0("C", sort(unique(all_data$com_num)))
+)
+
+
+orden_biomasa <- all_data %>%
+  group_by(model_id) %>%
+  summarise(final_biomass = max(biomass, na.rm = TRUE)) %>%
+  arrange(desc(final_biomass)) %>%
+  pull(model_id)
+
+all_data$model_id <- factor(all_data$model_id, levels = orden_biomasa)
+
+labels_italicas <- lapply(name_bac[orden_biomasa], function(x) bquote(italic(.(x))))
+
+
+plot_base <- function(df, titulo) {
+  ggplot(df, aes(x = time, y = biomass, color = model_id)) +
+    geom_line(linewidth = 1) +
+    scale_color_manual(
+      values = colores_bac[orden_biomasa],
+      labels = labels_italicas
+    ) +
+    scale_y_log10() +
+    labs(
+      title = titulo,
+      x = "Time (h)",
+      y = expression(italic(log[10]) ~ Biomass ~ "(g)"),
+      color = "Strains"
+    ) +
+    theme_bw(base_size = 13) +
+    theme(
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank()
+    )
+}
+
+# 1. IMÁGENES INDIVIDUALES
+for (com in levels(all_data$com)) {
+  
+  df_sub <- all_data %>% filter(com == !!com)
+  
+  p <- plot_base(df_sub, paste("Community", com))
+  
+  print(p)  
+  
+  ggsave(
+    file.path(output_folder, paste0("community_", com, ".png")),
+    p,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+
+# 2. C1–C6
+p1 <- plot_base(
+  all_data %>% filter(com_num <= 6),
+  "Communities C1–C6"
+) +
+  facet_wrap(~com, ncol = 3)
+
+print(p1)  # ✅ correcto
+
+ggsave(
+  file.path(output_folder, "communities_C1_C6.png"),
+  p1,
+  width = 12,
+  height = 8,
+  dpi = 300
+)
+
+
+# 3. C7–C12
+p2 <- plot_base(
+  all_data %>% filter(com_num > 6),
+  "Communities C7–C12"
+) +
+  facet_wrap(~com, ncol = 3)
+
+print(p2)  # ✅ correcto
+
+ggsave(
+  file.path(output_folder, "communities_C7_C12.png"),
+  p2,
+  width = 12,
+  height = 8,
+  dpi = 300
+)
+
+# BIOMASA FINAL
+
+library(dplyr)
+library(ggplot2)
+library(pracma)
+
+# =========================
+# BIOMASA FINAL POR COMUNIDAD
+# =========================
+
+final_data <- all_data %>%
+  arrange(model_id, com, time) %>%   # 🔥 ordenar correctamente
+  group_by(model_id, com) %>%
+  slice_tail(n = 1) %>%              # 🔥 último valor real
+  ungroup() %>%
+  select(model_id, com, final_biomass = biomass)
+
+# =========================
+# GRAFICAS (MISMO FORMATO QUE AUC)
+# =========================
+
+for (com_id in levels(all_data$com)) {
+  
+  df_plot <- final_data %>% filter(com == com_id)
+  
+  # evitar problemas con log
+  df_plot <- df_plot %>%
+    mutate(final_plot = final_biomass + 1e-10)
+  
+  # ordenar como en AUC
+  df_plot <- df_plot %>%
+    arrange(desc(final_plot)) %>%
+    mutate(model_id = factor(model_id, levels = model_id))
+  
+  # etiquetas en cursiva (nombres científicos)
+  labels_italicas <- lapply(
+    name_bac[levels(df_plot$model_id)],
+    function(x) bquote(italic(.(x)))
+  )
+  
+  # =========================
+  # GRAFICA
+  # =========================
+  
+  p_final <- ggplot(df_plot, aes(x = model_id, y = final_plot, color = model_id)) +
+    
+    # 🔹 puntos
+    geom_point(size = 4) +
+    
+    # 🔹 línea (igual que AUC)
+    geom_line(aes(group = 1), linewidth = 0.6, alpha = 0.5) +
+    
+    # 🔹 valores
+    geom_text(
+      aes(label = format(final_biomass, scientific = TRUE, digits = 2)),
+      vjust = -0.8,
+      size = 3.5
+    ) +
+    
+    scale_color_manual(values = colores_bac[levels(df_plot$model_id)]) +
+    
+    scale_x_discrete(labels = labels_italicas) +
+    
+    scale_y_log10() +
+    
+    labs(
+      title = paste("Final biomass (log10) - Community", com_id),
+      x = "Strains",
+      y = expression(log[10] ~ Final~biomass~"(g)")
+    ) +
+    
+    theme_bw(base_size = 13) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank(),
+      legend.position = "none"
+    )
+  
+  print(p_final)
+  
+  # =========================
+  # GUARDAR
+  # =========================
+  
+  ggsave(
+    file.path(output_folder, paste0("final_biomass_", com_id, ".png")),
+    p_final,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+
+
+# AUC POR COMUNIDAD
+
+auc_data <- all_data %>%
+  arrange(model_id, com, time) %>%
+  group_by(model_id, com) %>%
+  summarise(
+    AUC = trapz(time, biomass),
+    .groups = "drop"
+  )
+
+# GRAFICAS 
+for (com in levels(all_data$com)) {
+  
+  # filtrar comunidad
+  df_auc <- auc_data %>% filter(com == !!com)
+  
+  # evitar ceros para log
+  df_auc <- df_auc %>%
+    mutate(AUC_plot = AUC + 1e-10)
+  
+  # ordenar por AUC
+  df_auc <- df_auc %>%
+    arrange(desc(AUC_plot)) %>%
+    mutate(model_id = factor(model_id, levels = model_id))
+  
+  # etiquetas en cursiva
+  labels_italicas_auc <- lapply(
+    name_bac[levels(df_auc$model_id)],
+    function(x) bquote(italic(.(x)))
+  )
+
+  p_auc <- ggplot(df_auc, aes(x = model_id, y = AUC_plot, color = model_id)) +
+    
+    geom_point(size = 4) +
+    
+    # línea opcional para comparar
+    geom_line(aes(group = 1), linewidth = 0.6, alpha = 0.5) +
+    
+    # valores
+    geom_text(
+      aes(label = format(AUC, scientific = TRUE, digits = 2)),
+      vjust = -0.8,
+      size = 3.5
+    ) +
+    
+    scale_color_manual(values = colores_bac[levels(df_auc$model_id)]) +
+    
+    scale_x_discrete(labels = labels_italicas_auc) +
+    
+    scale_y_log10() +
+    
+    labs(
+      title = paste("AUC (log10) - Community", com),
+      x = "Strains",
+      y = expression(log[10] ~ AUC)
+    ) +
+    
+    theme_bw(base_size = 13) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank(),
+      legend.position = "none"
+    )
+  
+  print(p_auc)
+  
+  ggsave(
+    file.path(output_folder, paste0("AUC_points_", com, ".png")),
+    p_auc,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+```
+## 4. Comunidad total
+```{r}
+
+# ====================================== Comunidad total =======================================================
+com_dirs <- list.dirs(results, recursive = FALSE)
+com_dirs <- com_dirs[grepl("/com", com_dirs)]
+
+dir_create(output_folder)
+
+# =========================
+# CARGA DE DATOS
+# =========================
+all_data <- data.frame()
+
+for (com_path in com_dirs) {
+  
+  com_id <- basename(com_path)
+  com_id <- sub("^com_?", "C", com_id)
+  
+  file_path <- file.path(com_path, "biomass.txt")
+  if (!file.exists(file_path)) next
+  
+  df <- read.table(file_path, header = FALSE)
+  if (ncol(df) < 5) next
+  
+  colnames(df) <- c("time", "c2", "c3", "model", "biomass")
+  
+  df$time <- as.numeric(df$time * 0.1)  # convertir a horas
+  df$biomass <- as.numeric(df$biomass)
+  
+  df$model_id <- str_remove(df$model, "\\.cmd$")
+  df <- df %>% filter(model_id %in% names(colores_bac))
+  
+  df$com <- com_id
+  
+  all_data <- bind_rows(all_data, df)
+}
+
+# =========================
+# ORDEN NUMÉRICO DE COMUNIDADES
+# =========================
+all_data$com_num <- as.numeric(str_extract(all_data$com, "[0-9]+"))
+
+all_data$com <- factor(
+  all_data$com,
+  levels = paste0("C", sort(unique(all_data$com_num)))
+)
+
+# =========================
+# BIOMASA TOTAL POR COMUNIDAD
+# =========================
+total_data <- all_data %>%
+  group_by(com, com_num, time) %>%
+  summarise(total_biomass = sum(biomass), .groups = "drop")
+
+# =========================
+# FUNCIÓN DE PLOT
+# =========================
+plot_base_total <- function(df, titulo) {
+  ggplot(df, aes(x = time, y = total_biomass)) +
+    geom_line(linewidth = 1.2, color = "#2C3E50") +
+    scale_y_log10() +
+    labs(
+      title = titulo,
+      x = "Time (h)",
+      y = expression(italic(log[10]) ~ "Total biomass (g)")
+    ) +
+    theme_bw(base_size = 13) +
+    theme(
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank()
+    )
+}
+
+# =========================
+# 1) IMÁGENES INDIVIDUALES
+# =========================
+for (com in levels(total_data$com)) {
+  
+  df_sub <- total_data %>% filter(com == !!com)
+  
+  p <- plot_base_total(df_sub, paste("Community", com))
+  
+  print(p)
+  
+  ggsave(
+    file.path(output_folder, paste0("total_biomass_", com, ".png")),
+    p,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+```
+## 5. Comunidad total resumen
+```{r}
+# =========================
+# 2) RESUMEN C1–C6
+# =========================
+p1 <- plot_base_total(
+  total_data %>% filter(com_num <= 6),
+  "Total biomass – Communities C1–C6"
+) +
+  facet_wrap(~com, ncol = 3)
+
+print(p1)
+
+ggsave(
+  file.path(output_folder, "total_biomass_C1_C6.png"),
+  p1,
+  width = 12,
+  height = 8,
+  dpi = 300
+)
+
+# =========================
+# 3) RESUMEN C7–C12
+# =========================
+p2 <- plot_base_total(
+  total_data %>% filter(com_num > 6),
+  "Total biomass – Communities C7–C12"
+) +
+  facet_wrap(~com, ncol = 3)
+
+(p2)
+
+ggsave(
+  file.path(output_folder, "total_biomass_C7_C12.png"),
+  p2,
+  width = 12,
+  height = 8,
+  dpi = 300
+)
+
+```
+
+
+
+# Productividad 
+##  individual vs comunidad 
+```{r}
+
+```
+## Biomasa, AUC, Ranking
+```{r}
+
+# =========================
+# BIOMASA FINAL POR COMUNIDAD
+# =========================
+
+final_data <- all_data %>%
+  arrange(model_id, com, time) %>%   # 🔥 ordenar correctamente
+  group_by(model_id, com) %>%
+  slice_tail(n = 1) %>%              # 🔥 último valor real
+  ungroup() %>%
+  select(model_id, com, final_biomass = biomass)
+
+# =========================
+# GRAFICAS (MISMO FORMATO QUE AUC)
+# =========================
+
+for (com_id in levels(all_data$com)) {
+  
+  df_plot <- final_data %>% filter(com == com_id)
+  
+  # evitar problemas con log
+  df_plot <- df_plot %>%
+    mutate(final_plot = final_biomass + 1e-10)
+  
+  # ordenar como en AUC
+  df_plot <- df_plot %>%
+    arrange(desc(final_plot)) %>%
+    mutate(model_id = factor(model_id, levels = model_id))
+  
+  # etiquetas en cursiva (nombres científicos)
+  labels_italicas <- lapply(
+    name_bac[levels(df_plot$model_id)],
+    function(x) bquote(italic(.(x)))
+  )
+  
+  # =========================
+  # GRAFICA
+  # =========================
+  
+  p_final <- ggplot(df_plot, aes(x = model_id, y = final_plot, color = model_id)) +
+    
+    # 🔹 puntos
+    geom_point(size = 4) +
+    
+    # 🔹 línea (igual que AUC)
+    geom_line(aes(group = 1), linewidth = 0.6, alpha = 0.5) +
+    
+    # 🔹 valores
+    geom_text(
+      aes(label = format(final_biomass, scientific = TRUE, digits = 2)),
+      vjust = -0.8,
+      size = 3.5
+    ) +
+    
+    scale_color_manual(values = colores_bac[levels(df_plot$model_id)]) +
+    
+    scale_x_discrete(labels = labels_italicas) +
+    
+    scale_y_log10() +
+    
+    labs(
+      title = paste("Final biomass (log10) - Community", com_id),
+      x = "Strains",
+      y = expression(log[10] ~ Final~biomass~"(g)")
+    ) +
+    
+    theme_bw(base_size = 13) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank(),
+      legend.position = "none"
+    )
+  
+  print(p_final)
+  
+  # =========================
+  # GUARDAR
+  # =========================
+  
+  ggsave(
+    file.path(output_folder, paste0("final_biomass_", com_id, ".png")),
+    p_final,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+
+
+# AUC POR COMUNIDAD
+
+auc_data <- all_data %>%
+  arrange(model_id, com, time) %>%
+  group_by(model_id, com) %>%
+  summarise(
+    AUC = trapz(time, biomass),
+    .groups = "drop"
+  )
+
+# GRAFICAS 
+for (com in levels(all_data$com)) {
+  
+  # filtrar comunidad
+  df_auc <- auc_data %>% filter(com == !!com)
+  
+  # evitar ceros para log
+  df_auc <- df_auc %>%
+    mutate(AUC_plot = AUC + 1e-10)
+  
+  # ordenar por AUC
+  df_auc <- df_auc %>%
+    arrange(desc(AUC_plot)) %>%
+    mutate(model_id = factor(model_id, levels = model_id))
+  
+  # etiquetas en cursiva
+  labels_italicas_auc <- lapply(
+    name_bac[levels(df_auc$model_id)],
+    function(x) bquote(italic(.(x)))
+  )
+
+  p_auc <- ggplot(df_auc, aes(x = model_id, y = AUC_plot, color = model_id)) +
+    
+    geom_point(size = 4) +
+    
+    # línea opcional para comparar
+    geom_line(aes(group = 1), linewidth = 0.6, alpha = 0.5) +
+    
+    # valores
+    geom_text(
+      aes(label = format(AUC, scientific = TRUE, digits = 2)),
+      vjust = -0.8,
+      size = 3.5
+    ) +
+    
+    scale_color_manual(values = colores_bac[levels(df_auc$model_id)]) +
+    
+    scale_x_discrete(labels = labels_italicas_auc) +
+    
+    scale_y_log10() +
+    
+    labs(
+      title = paste("AUC (log10) - Community", com),
+      x = "Strains",
+      y = expression(log[10] ~ AUC)
+    ) +
+    
+    theme_bw(base_size = 13) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank(),
+      legend.position = "none"
+    )
+  
+  print(p_auc)
+  
+  ggsave(
+    file.path(output_folder, paste0("AUC_points_", com, ".png")),
+    p_auc,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+
+
+
+######################################
+
+library(tidyr) 
+
+# 1. Combinar AUC y Biomasa en un solo formato largo (long format)
+comparison_data <- auc_data %>%
+  inner_join(final_data, by = c("model_id", "com")) %>%
+  # Pasamos a formato largo para que ggplot pueda distinguir entre las dos métricas
+  pivot_longer(cols = c(AUC, final_biomass), 
+               names_to = "metric", 
+               values_to = "value") %>%
+  # Sumamos el offset para log10 y aplicamos etiquetas de cepa (ST001...)
+  mutate(value_plot = value + 1e-10,
+         label_st = model_id) 
+
+# 2. Bucle para generar las 12 gráficas (una por comunidad)
+for (com_id in levels(all_data$com)) {
+  
+  # Filtrar por comunidad
+  df_comp <- comparison_data %>% filter(com == com_id)
+  
+  # Determinar orden basado en el valor de AUC (para que la línea sea descendente)
+  orden_strains <- df_comp %>% 
+    filter(metric == "AUC") %>% 
+    arrange(desc(value)) %>% 
+    pull(model_id)
+  
+  df_comp$model_id <- factor(df_comp$model_id, levels = orden_strains)
+  
+  # Preparar etiquetas en cursiva para la leyenda
+  levels_actuales <- levels(df_comp$model_id)
+  labels_italicas_comp <- lapply(name_bac[levels_actuales], function(x) bquote(italic(.(x))))
+  
+  # =========================
+  # GRAFICA COMPARATIVA
+  # =========================
+  p_comp <- ggplot(df_comp, aes(x = model_id, y = value_plot, color = model_id, shape = metric)) +
+    # Guías verticales para conectar los puntos de la misma cepa
+    geom_line(aes(group = model_id), color = "grey80", alpha = 0.5) +
+    # Puntos (AUC) y Triángulos (Biomasa)
+    geom_point(size = 4) +
+    # Etiquetas de texto (ST00110, etc.) al lado de los puntos
+    geom_text(aes(label = label_st), 
+              hjust = -0.2, vjust = 0.5, size = 3, show.legend = FALSE) +
+    # Colores manuales
+    scale_color_manual(values = colores_bac[levels_actuales], labels = labels_italicas_comp) +
+    # Formas: Círculo para AUC, Triángulo para Biomasa
+    scale_shape_manual(values = c("AUC" = 16, "final_biomass" = 17),
+                       labels = c("AUC", "Final biomass")) +
+    scale_y_log10() +
+    labs(
+      title = paste("AUC vs Final biomass (log10) -", com_id),
+      x = "Strains",
+      y = expression(log[10] ~ Value),
+      shape = "Metric",
+      color = "Strains"
+    ) +
+    theme_bw(base_size = 13) +
+    theme(
+      axis.text.x = element_blank(), # Quitamos texto x porque ya tenemos etiquetas en los puntos
+      axis.ticks.x = element_blank(),
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank(),
+      legend.text.align = 0
+    )
+  
+  print(p_comp)
+  
+  # Guardar
+  ggsave(
+    file.path(output_folder, paste0("comparison_AUC_Biomass_", com_id, ".png")),
+    p_comp,
+    width = 9,
+    height = 6,
+    dpi = 300
+  )
+}
+
+```
+## 1. Biomasa final
+```{r}
+# =========================
+# GRÁFICA DE BARRAS: COLORES DIFERENTES Y ETIQUETAS
+# =========================
+
+# 1. Calcular la biomasa final (último tiempo registrado)
+final_biomass_comm <- total_data %>%
+  group_by(com) %>%
+  filter(time == max(time)) %>%
+  ungroup()
+
+# 2. Generar la gráfica con colores por comunidad
+p_bars <- ggplot(final_biomass_comm, aes(x = com, y = total_biomass, fill = com)) +
+  geom_col(color = "black", show.legend = FALSE) +
+  
+  # AGREGAR ETIQUETAS DE VALOR (Notación científica)
+  geom_text(
+    aes(label = format(total_biomass, scientific = TRUE, digits = 3)),
+    vjust = -0.5,    
+    size = 3.5,      
+    fontface = "bold"
+  ) +
+  
+  # Usar una paleta con colores distintos para cada barra
+  # "Paired" es buena para hasta 12 categorías
+  scale_fill_brewer(palette = "Paired") + 
+  
+  # Expandir el eje Y para que la etiqueta no se corte
+  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) + 
+  
+  labs(
+    title = "Final Total Biomass per Community",
+    subtitle = "Sum of all bacterial strains at the end of simulation",
+    x = "Community ID",
+    y = "Total Biomass (g)"
+  ) +
+  theme_bw(base_size = 14) + # Usamos theme_bw para consistencia con tus otras gráficas
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.major.x = element_blank()
+  )
+
+# Mostrar y guardar
+print(p_bars)
+
+ggsave(
+  file.path(output_folder, "final_biomass_bars_multi_color.png"),
+  p_bars,
+  width = 11,
+  height = 7,
+  dpi = 300
+)
+
+
+#############################
+# =========================
+# GRÁFICA DE BARRAS: AUC POR COMUNIDAD (Usando pracma)
+# =========================
+library(pracma)
+
+# 1. Calcular el AUC para cada comunidad usando la regla del trapecio
+# Usamos total_data porque ya tiene la biomasa sumada de todos los modelos por punto de tiempo
+auc_comm_data <- total_data %>%
+  group_by(com) %>%
+  summarise(
+    # trapz(x, y) de la paquetería pracma
+    total_auc = pracma::trapz(time, total_biomass),
+    .groups = "drop"
+  )
+
+# 2. Generar la gráfica de barras de AUC
+p_auc_bars <- ggplot(auc_comm_data, aes(x = com, y = total_auc, fill = com)) +
+  geom_col(color = "black", show.legend = FALSE) +
+  
+  # AGREGAR ETIQUETAS DE VALOR (AUC)
+  geom_text(
+    aes(label = format(total_auc, scientific = TRUE, digits = 3)),
+    vjust = -0.5,    
+    size = 3.5,      
+    fontface = "bold"
+  ) +
+  
+  # Usar una paleta de colores variada (Paired)
+  scale_fill_brewer(palette = "Paired") + 
+  
+  # Ajustar escala Y para que quepan las etiquetas y no se corten arriba
+  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) + 
+  
+  labs(
+    title = "Total AUC per Community",
+    subtitle = "Calculated using trapezoidal rule (pracma)",
+    x = "Community ID",
+    y = "Total AUC (Biomass × h)"
+  ) +
+  theme_bw(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.major.x = element_blank()
+  )
+
+# Mostrar la gráfica en la consola
+print(p_auc_bars)
+
+# 3. Guardar el archivo
+ggsave(
+  file.path(output_folder, "total_AUC_bars_pracma.png"),
+  p_auc_bars,
+  width = 11,
+  height = 7,
+  dpi = 300
+)
+
+
+```
+## 2. Frecuencia relativa
+```{r}
+
+com_dirs <- list.dirs(results, recursive = FALSE)
+com_dirs <- com_dirs[grepl("/com", com_dirs)]
+
+dir_create(output_folder)
+
+# =========================
+# CARGA DE DATOS
+# =========================
+all_data <- data.frame()
+
+for (com_path in com_dirs) {
+  
+  com_id <- basename(com_path)
+  com_id <- sub("^com_?", "C", com_id)
+  
+  file_path <- file.path(com_path, "biomass.txt")
+  if (!file.exists(file_path)) next
+  
+  df <- read.table(file_path, header = FALSE)
+  if (ncol(df) < 5) next
+  
+  colnames(df) <- c("time", "c2", "c3", "model", "biomass")
+  
+  df$time <- as.numeric(df$time)
+  df$biomass <- as.numeric(df$biomass)
+  
+  df$model_id <- str_remove(df$model, "\\.cmd$")
+  df <- df %>% filter(model_id %in% names(colores_bac))
+  
+  df$com <- com_id
+  
+  all_data <- bind_rows(all_data, df)
+}
+
+# =========================
+# TIEMPOS DE INTERÉS
+# =========================
+times_keep <- c(0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500, 420, 440, 460, 480, 500, 520, 540, 560, 580, 600 )
+
+data_sel <- all_data %>%
+  filter(time %in% times_keep)
+
+# =========================
+# ABUNDANCIA RELATIVA POR TIEMPO
+# =========================
+rel_time <- data_sel %>%
+  group_by(com, time, model_id) %>%
+  summarise(biomass = sum(biomass), .groups = "drop") %>%
+  group_by(com, time) %>%
+  mutate(rel_abund = biomass / sum(biomass))
+
+# =========================
+# ORDEN GLOBAL DE ESPECIES
+# =========================
+orden_biomasa <- rel_time %>%
+  group_by(model_id) %>%
+  summarise(total = sum(rel_abund)) %>%
+  arrange(desc(total)) %>%
+  pull(model_id)
+
+rel_time$model_id <- factor(rel_time$model_id, levels = orden_biomasa)
+
+# =========================
+# LOOP POR COMUNIDAD
+# =========================
+for (com in unique(rel_time$com)) {
+  
+  df_plot <- rel_time %>% filter(com == !!com)
+  
+  p <- ggplot(df_plot, aes(x = factor(time), y = rel_abund, fill = model_id)) +
+    geom_bar(stat = "identity") +
+    scale_fill_manual(
+      values = colores_bac[orden_biomasa],
+      labels = name_bac[orden_biomasa]
+    ) +
+    scale_y_continuous(
+      breaks = seq(0, 1, by = 0.8),
+      expand = c(0, 0))
+    labs(
+      title = paste("Relative abundance over time –", com),
+      x = "Time",
+      y = "Relative abundance",
+      fill = "Species"
+    ) +
+    theme_bw(base_size = 13) +
+    theme(
+      plot.title = element_text(face = "bold.italic"),
+      panel.grid.minor = element_blank()
+    )
+  
+  print(p)
+  
+  ggsave(
+    file.path(output_folder, paste0("rel_abundance_", com, ".png")),
+    p,
+    width = 8,
+    height = 6,
+    dpi = 300
+  )
+}
+
+################
+# =========================
+# ORDEN NUMÉRICO Y FILTRADO
+# =========================
+# Asegurar que el factor de comunidad esté ordenado numéricamente (C1, C2... C10)
+rel_time$com_num <- as.numeric(str_extract(rel_time$com, "[0-9]+"))
+rel_time$com <- factor(
+  rel_time$com, 
+  levels = paste0("C", sort(unique(rel_time$com_num)))
+)
+
+# =========================
+# FUNCIÓN PARA EL GRID
+# =========================
+plot_rel_abund_grid <- function(df, titulo) {
+  ggplot(df, aes(x = factor(time), y = rel_abund, fill = model_id)) +
+    geom_bar(stat = "identity", width = 0.9) +
+    facet_wrap(~com, ncol = 3) + # 3 columnas para que quepan bien en una hoja
+    scale_fill_manual(
+      values = colores_bac,
+      labels = lapply(name_bac[names(colores_bac)], function(x) bquote(italic(.(x)))),
+      name = "Species"
+    ) +
+    scale_y_continuous(expand = c(0, 0), breaks = seq(0, 1, by = 0.5)) +
+    labs(
+      title = titulo,
+      x = "Time (steps)",
+      y = "Relative abundance"
+    ) +
+    theme_bw(base_size = 14) +
+    theme(
+      plot.title = element_text(face = "bold.italic", size = 16),
+      # Rotación y tamaño pequeño para que los pasos de tiempo sean legibles
+      axis.text.x = element_text(angle = 90, vjust = 0.5, size = 7), 
+      legend.text.align = 0,
+      panel.spacing = unit(1, "lines"),
+      strip.background = element_rect(fill = "gray90"), # Color de fondo de las etiquetas C1, C2...
+      strip.text = element_text(face = "bold")
+    )
+}
+
+
+
+
+```
+## 3.  BIOMASSA FINAL (PRODUCTIVIDAD) INVIDIVDUAL VS COMUNIDAD 
+```{r}
+
+path_op  <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/comparasion/"
+path_com <- path_op
+
+op_dirs  <- list.dirs(path_op, recursive = FALSE)
+op_dirs  <- op_dirs[grepl("/op[0-9]+", op_dirs)]
+
+com_dirs <- list.dirs(path_com, recursive = FALSE)
+com_dirs <- com_dirs[grepl("/com[0-9]+", com_dirs)]
+
+# ==============================================================================
+# LOOP PRINCIPAL
+# ==============================================================================
+for (op_path in op_dirs) {
+  
+  file_op <- file.path(op_path, "biomass.txt")
+  if (!file.exists(file_op)) next
+  
+  df_op_raw <- read.table(file_op, header = FALSE, stringsAsFactors = FALSE)
+  if (ncol(df_op_raw) < 5) next
+  colnames(df_op_raw) <- c("time", "x", "y", "model", "biomass")
+  
+  id_cepa <- str_remove(str_trim(df_op_raw$model[1]), "\\.cmd$")
+  if (is.na(id_cepa) || id_cepa == "") next
+  
+  # Sumatoria total por tiempo para la Individual
+  df_op <- df_op_raw %>%
+    group_by(time, model) %>%
+    summarise(biomass_total = sum(biomass), .groups = "drop")
+  
+  color_cepa <- ifelse(id_cepa %in% names(colores_bac), colores_bac[id_cepa], "#999999")
+  
+  message("Procesando cepa: ", id_cepa)
+
+  data_cepa_completa <- df_op %>%
+    mutate(ID = id_cepa, Origen = "Individual", time_h = time * 0.1) %>%
+    select(time_h, biomass = biomass_total, ID, Origen)
+
+  for (com_path in com_dirs) {
+    file_com <- file.path(com_path, "biomass.txt")
+    if (!file.exists(file_com)) next
+    
+    df_com_raw <- read.table(file_com, header = FALSE, stringsAsFactors = FALSE)
+    colnames(df_com_raw) <- c("time", "x", "y", "model", "biomass")
+    
+    df_match <- df_com_raw %>% 
+      filter(str_detect(model, id_cepa)) %>%
+      group_by(time, model) %>%
+      summarise(biomass_total = sum(biomass), .groups = "drop")
+    
+    if (nrow(df_match) > 0) {
+      df_com_curve <- df_match %>%
+        mutate(ID = id_cepa, Origen = basename(com_path), time_h = time * 0.1) %>%
+        select(time_h, biomass = biomass_total, ID, Origen)
+      
+      data_cepa_completa <- rbind(data_cepa_completa, df_com_curve)
+    }
+  }
+
+  if (length(unique(data_cepa_completa$Origen)) > 1) {
+    
+    # --- LÓGICA DE ORDENAMIENTO PERSONALIZADO ---
+    data_barras <- data_cepa_completa %>%
+      group_by(Origen) %>%
+      filter(time_h == max(time_h)) %>%
+      summarise(Biomasa = sum(biomass), .groups = "drop")
+    
+    # 1. Separamos la individual
+    orden_comunidades <- data_barras %>%
+      filter(Origen != "Individual") %>%
+      arrange(desc(Biomasa)) %>% # Orden de mayor a menor biomasa
+      pull(Origen)
+    
+    # 2. Creamos los niveles: primero "Individual", luego las comunidades ordenadas
+    niveles_finales <- c("Individual", orden_comunidades)
+    
+    # 3. Aplicamos el factor
+    data_barras <- data_barras %>%
+      mutate(Origen = factor(Origen, levels = niveles_finales))
+
+    # FIGURA 1: BARRAS
+    p1 <- ggplot(data_barras, aes(x = Origen, y = Biomasa)) +
+      geom_col(fill = color_cepa, color = "black", width = 0.6) + 
+      theme_minimal() +
+      labs(title = paste("Biomasa Final Total:", id_cepa), 
+           subtitle = "Orden: Individual seguido de Comunidades (Mayor a Menor)",
+           x = "Condición", y = "Biomasa Total (g)") +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+    # FIGURA 2: CURVAS (También respetarán el orden en la leyenda si se desea)
+    data_cepa_completa <- data_cepa_completa %>%
+      mutate(Origen = factor(Origen, levels = niveles_finales))
+
+    p2 <- ggplot(data_cepa_completa, aes(x = time_h, y = biomass, group = Origen)) +
+      geom_line(aes(linetype = Origen == "Individual"), 
+                color = color_cepa, 
+                linewidth = 1) +
+      scale_linetype_manual(values = c("TRUE" = "solid", "FALSE" = "dashed"),
+                            labels = c("TRUE" = "Individual", "FALSE" = "Comunidad")) +
+      theme_minimal() +
+      labs(title = paste("Dinámica de Crecimiento:", id_cepa), 
+           x = "Tiempo (h)", y = "Biomasa Total (g)",
+           linetype = "Condición") +
+      theme(legend.position = "bottom")
+
+    print(p1)
+    print(p2)
+  }
+}
+```
+## 4. Velocidad
+```{r}
+# buscar carpetas
+op_dirs <- list.dirs(results, recursive = FALSE)
+op_dirs <- op_dirs[grepl("/com", op_dirs)]
+biomass_files <- file.path(op_dirs, "biomass.txt")
+biomass_files <- biomass_files[file.exists(biomass_files)]
+
+for (file_path in biomass_files) {
+  df <- read.table(file_path)
+  colnames(df) <- c("time", "c2", "c3", "model", "biomass")
+  df$time <- as.numeric(df$time)
+  df$hours <- df$time * 0.1
+  df$biomass <- as.numeric(df$biomass)
+  gc_fit <- SummarizeGrowth(df$hours, df$biomass)
+  print(gc_fit)
+}
+```
+
+# Phylomint 
+## 1. Índice de competencia 
+```{r}
+
+mcompetition_path <- '/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/phylomint/mcompetition.csv'
+
+mcompetition <- read.csv(mcompetition_path, header=TRUE, row.names=1, check.names=FALSE)
+mcompetition <- data.matrix(mcompetition)
+
+# Convert matrix to dataframe
+data_df <- as.data.frame(as.table(mcompetition))
+
+# Asiganr nombres
+data_df$Var1 <- name_bac[as.character(data_df$Var1)]
+data_df$Var2 <- name_bac[as.character(data_df$Var2)]
+# Plot heatmap
+heatmap_plot <- ggplot(data_df, aes(x = Var1, y = Var2, fill = Freq)) +
+  geom_tile(color = "white") + # Create heatmap
+  scale_fill_gradient(low = "white", high = "steelblue") + # Set color gradient
+  theme_minimal() + # Set theme
+  labs(x = 'strains' , y = 'strains' , title = "Heatmap with Values") + # Labels
+  labs(fill = "competition index") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels
+
+# Add values to the heatmap
+plot(heatmap_plot)
+
+g_competition <- graph_from_adjacency_matrix(
+  mcompetition,
+  mode = "directed",
+  weighted = TRUE
+  
+)
+
+E(g_competition)$weight
+mcompetition[mcompetition < 0.7] <- 0
+V(g_competition)$color <- colores_bac[V(g_competition)$name]
+V(g_competition)$label <- name_bac[V(g_competition)$name]
+
+
+plot(g_competition, edge.width = E(g_competition)$weight * 3)
+
+```
+
+## 2. índece de complementaridad
+```{r}
+mcomplementary_path <- '/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/phylomint/mcomplemetary.csv'
+mcomplementary <- read.csv(mcomplementary_path, header=TRUE, row.names=1, check.names=FALSE)
+mcomplementary <- data.matrix(mcomplementary)
+
+
+# Convert matrix to dataframe
+data_mcomplem <- as.data.frame(as.table(mcomplementary))
+
+# Asiganr nombres
+data_mcomplem$Var1 <- name_bac[as.character(data_mcomplem$Var1)]
+data_mcomplem$Var2 <- name_bac[as.character(data_mcomplem$Var2)]
+# Plot heatmap
+heatmap_complem <- ggplot(data_mcomplem, aes(x = Var1, y = Var2, fill = Freq)) +
+  geom_tile(color = "white") + # Create heatmap
+  scale_fill_gradient(low = "white", high = "hotpink") + # Set color gradient
+  theme_minimal() + # Set theme
+  labs(x = 'strains' , y = 'strains' , title = "Heatmap with Values") + # Labels
+  labs(fill = "complementary index") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels
+
+plot(heatmap_complem)
+
+
+####################
+mcomplementary <- data.matrix(mcomplementary)
+mcomplementary
+#mcomplementary[mcomplementary < 0.000001] <- 0
+#mcomplementary
+g_complementary <- graph_from_adjacency_matrix(
+  mcomplementary,
+  mode = "directed",
+  weighted = TRUE
+  
+)
+E(g_complementary)$weight
+V(g_complementary)$color <- colores_bac[V(g_complementary)$name]
+V(g_complementary)$label <- name_bac[V(g_complementary)$name]
+
+
+plot(g_complementary, edge.width = E(g_complementary)$weight * 3)
+######################
+setdiff(unique(rownames(mcomplementary)), names(name_bac))
+
+################
+# seleccionar cepas
+sel <- c("ST00042","ST00094","ST00110","ST00164","ST00143")
+
+mcomplementary <- read.csv(mcomplementary_path, header=TRUE, row.names=1, check.names=FALSE)
+mcomplementary <- data.matrix(mcomplementary[sel, sel])
+
+data_mcomplem <- as.data.frame(as.table(mcomplementary))
+
+# nombres bonitos
+data_mcomplem$Var1 <- name_bac[as.character(data_mcomplem$Var1)]
+data_mcomplem$Var2 <- name_bac[as.character(data_mcomplem$Var2)]
+
+# plot
+heatmap_complem <- ggplot(data_mcomplem, aes(x = Var1, y = Var2, fill = Freq)) +
+  geom_tile(color = "white", na.rm = TRUE) +
+  scale_fill_gradient(low = "white", high = "hotpink", na.value = "white") +
+  theme_minimal() +
+  labs(x = "strains", y = "strains", fill = "complementary index") +
+  theme(
+  axis.text.x = element_text(angle = 45, hjust = 1, face = "italic"),
+  axis.text.y = element_text(face = "italic")
+)
+
+plot(heatmap_complem)
+```
