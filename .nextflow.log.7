@@ -1,176 +1,122 @@
-Jul-21 16:06:13.590 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry GAPFILL -profile gapseq -resume
-Jul-21 16:06:13.758 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
-Jul-21 16:06:13.780 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
-Jul-21 16:06:13.830 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jul-21 16:06:13.831 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jul-21 16:06:13.834 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Jul-21 16:06:13.850 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
-Jul-21 16:06:13.972 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jul-21 16:06:13.999 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-21 16:06:14.001 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
-Jul-21 16:06:14.117 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `gapseq`
-Jul-21 16:06:14.579 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [gapseq, memote, combos, comets]
-Jul-21 16:06:14.597 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jul-21 16:06:14.597 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jul-21 16:06:14.612 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
-Jul-21 16:06:14.614 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@42fb8c87] - activable => nextflow.secret.LocalSecretsProvider@42fb8c87
-Jul-21 16:06:14.625 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jul-21 16:06:14.639 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [infallible_feynman] DSL2 - revision: 8ceade9680
-Jul-21 16:06:14.691 [main] DEBUG nextflow.Session - Session UUID: 8c6003f4-4bcf-4884-814b-30b1e126a99f
-Jul-21 16:06:14.691 [main] DEBUG nextflow.Session - Run name: infallible_feynman
-Jul-21 16:06:14.692 [main] DEBUG nextflow.Session - Executor pool size: 2
-Jul-21 16:06:14.700 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jul-21 16:06:14.705 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-21 16:06:14.725 [main] DEBUG nextflow.cli.CmdRun - 
+Jul-28 14:49:45.495 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -entry COMETS -profile comets -resume
+Jul-28 14:49:45.813 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
+Jul-28 14:49:45.837 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/mmontante/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
+Jul-28 14:49:45.893 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-28 14:49:45.894 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-28 14:49:45.898 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-28 14:49:45.916 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Jul-28 14:49:46.057 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-28 14:49:46.174 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-28 14:49:46.181 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/nextflow.config
+Jul-28 14:49:46.225 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `comets`
+Jul-28 14:49:46.724 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [doall, gapseq, memote, combos, comets, fill]
+Jul-28 14:49:46.743 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-28 14:49:46.743 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-28 14:49:46.759 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/mmontante/.nextflow/secrets/store.json
+Jul-28 14:49:46.762 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@65383667] - activable => nextflow.secret.LocalSecretsProvider@65383667
+Jul-28 14:49:46.774 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-28 14:49:46.789 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [gloomy_blackwell] DSL2 - revision: e572b5a4e7
+Jul-28 14:49:46.844 [main] DEBUG nextflow.Session - Session UUID: c72135a9-0d3c-4157-b4e7-6ff7b22f3730
+Jul-28 14:49:46.844 [main] DEBUG nextflow.Session - Run name: gloomy_blackwell
+Jul-28 14:49:46.845 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-28 14:49:46.854 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-28 14:49:46.860 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-28 14:49:46.880 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 25.10.4 build 11173
   Created: 10-02-2026 15:17 UTC (09:17 CDT)
   System: Linux 5.14.0-570.42.2.el9_6.x86_64
   Runtime: Groovy 4.0.28 on Java HotSpot(TM) 64-Bit Server VM 20.0.1+9-29
   Encoding: UTF-8 (UTF-8)
-  Process: 2569083@node02.cluster [10.1.1.2]
-  CPUs: 2 - Mem: 1006.8 GB (180.2 GB) - Swap: 4 GB (3.3 GB)
-Jul-21 16:06:14.815 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
-Jul-21 16:06:14.816 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
-Jul-21 16:06:14.826 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jul-21 16:06:14.837 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Jul-21 16:06:14.841 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
-Jul-21 16:06:14.893 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jul-21 16:06:14.904 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
-Jul-21 16:06:14.997 [main] DEBUG nextflow.Session - Session start
-Jul-21 16:06:15.003 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
-Jul-21 16:06:15.335 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jul-21 16:06:15.932 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
-Jul-21 16:06:15.932 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
-Jul-21 16:06:15.946 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
-Jul-21 16:06:15.954 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
-Jul-21 16:06:15.957 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
-Jul-21 16:06:15.959 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
-Jul-21 16:06:15.987 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE': maxForks=0; fair=false; array=0
-Jul-21 16:06:16.024 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, MEMOTE_REPORT, COMETS_RUN, GAPFILL_PIPELINE, GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE
-Jul-21 16:06:16.027 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
-Jul-21 16:06:16.037 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE
-Jul-21 16:06:16.038 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_f9c8ebba4fd576ca: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/comets.nf
-  Script_60cc6ee1ab540a01: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
+  Process: 1268105@node02.cluster [10.1.1.2]
+  CPUs: 2 - Mem: 1006.8 GB (29.2 GB) - Swap: 4 GB (3.3 GB)
+Jul-28 14:49:46.917 [main] DEBUG nextflow.Session - Work-dir: /mnt/data/sur/users/mmontante/02_resultados/nf_work [nfs]
+Jul-28 14:49:46.917 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/bin
+Jul-28 14:49:46.927 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-28 14:49:46.938 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-28 14:49:46.941 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Jul-28 14:49:46.991 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-28 14:49:47.002 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jul-28 14:49:47.302 [main] DEBUG nextflow.Session - Session start
+Jul-28 14:49:47.308 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/data/sur/users/mmontante/02_resultados/nf_work/nf_logs/nextflow_trace.txt
+Jul-28 14:49:47.776 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-28 14:49:48.395 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jul-28 14:49:48.395 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jul-28 14:49:48.411 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jul-28 14:49:48.421 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jul-28 14:49:48.424 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jul-28 14:49:48.426 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jul-28 14:49:48.451 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'COMETS:PROCESO_COMETS:COMETS_RUN': maxForks=0; fair=false; array=0
+Jul-28 14:49:48.486 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: COMBO_RUN, GAPSEQ_DOALL, FILL, MEMOTE_REPORT, COMETS_RUN, COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-28 14:49:48.488 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-28 14:49:48.494 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > COMETS:PROCESO_COMETS:COMETS_RUN
+Jul-28 14:49:48.495 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_7c2db3297c79f300: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/comets.nf
+  Script_b94ae69ab591b845: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/main.nf
   Script_40e35436535a6fc7: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/memote.nf
-  Script_2c6a3d0984946119: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/gap_fill.nf
+  Script_278f9509f74c5b50: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/gap_doall.nf
   Script_4f350f0f59dd5811: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/combos.nf
-Jul-21 16:06:16.039 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jul-21 16:06:16.039 [main] DEBUG nextflow.Session - Session await
-Jul-21 16:06:16.039 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/gapseq/gapfind/; pattern: *-all-Reactions.tbl; options: [:]
-Jul-21 16:06:16.411 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (C2RQJT_1_rerun_NS_M2_01_25_2) > jobId: 243181; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/b0/6c787da42b642891d3df87c2fad275
-Jul-21 16:06:16.411 [Task submitter] INFO  nextflow.Session - [b0/6c787d] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (C2RQJT_1_rerun_NS_M2_01_25_2)
-Jul-21 16:06:16.432 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945) > jobId: 243182; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/52/05c5bbdd2ec78bad9d172504176da7
-Jul-21 16:06:16.432 [Task submitter] INFO  nextflow.Session - [52/05c5bb] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945)
-Jul-21 16:06:16.456 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000701305) > jobId: 243183; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d2/a18899e1a06468e8c7172665d5d025
-Jul-21 16:06:16.457 [Task submitter] INFO  nextflow.Session - [d2/a18899] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000701305)
-Jul-21 16:06:16.475 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000702405) > jobId: 243184; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/40/721b824a4faab88c29499aa321aecd
-Jul-21 16:06:16.475 [Task submitter] INFO  nextflow.Session - [40/721b82] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000702405)
-Jul-21 16:06:16.492 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000744355) > jobId: 243185; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/88/50e12555e19c279886dfab702de029
-Jul-21 16:06:16.493 [Task submitter] INFO  nextflow.Session - [88/50e125] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000744355)
-Jul-21 16:06:16.510 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (RC3LPC_2_NS_M2_01_25) > jobId: 243186; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/5e/77f9841b3726988d5420ae9a09ff3d
-Jul-21 16:06:16.511 [Task submitter] INFO  nextflow.Session - [5e/77f984] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (RC3LPC_2_NS_M2_01_25)
-Jul-21 16:06:16.526 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_900116035) > jobId: 243187; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d2/c159ae67a4272862ad141cd89c61e1
-Jul-21 16:06:16.527 [Task submitter] INFO  nextflow.Session - [d2/c159ae] Submitted process > GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_900116035)
-Jul-21 16:09:15.973 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243182; id: 2; name: GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/52/05c5bbdd2ec78bad9d172504176da7 started: 1784671580978; exited: 2026-07-21T22:09:13.45713153Z; ]
-Jul-21 16:09:15.974 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jul-21 16:09:15.978 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 243183; id: 3; name: GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000701305); status: COMPLETED; exit: 1; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/d2/a18899e1a06468e8c7172665d5d025 started: 1784671580980; exited: 2026-07-21T22:09:14.096128742Z; ]
-Jul-21 16:09:15.983 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/52/05c5bbdd2ec78bad9d172504176da7
-  error [nextflow.exception.ProcessFailedException]: Process `GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945)` terminated with an error exit status (1)
-Jul-21 16:09:16.021 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945)'
-
-Caused by:
-  Process `GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945)` terminated with an error exit status (1)
-
-
-Command executed:
-
-  eval "$(conda shell.bash hook)"
-  conda activate gapseq
-  
-  echo ">>> Draft: GCF_000374945"
-  gapseq draft -r GCF_000374945-all-Reactions.tbl -t GCF_000374945-Transporter.tbl -p GCF_000374945-all-Pathways.tbl
-  
-  echo ">>> Export (sin gap-filling): GCF_000374945"
-  gapseq export -m GCF_000374945-draft.RDS -f sbml -o GCF_000374945-draft-model.xml
-
-Command exit status:
-  1
-
-Command output:
-  >>> Export (sin gap-filling): GCF_000374945
-     __ _  __ _ _ __  ___  ___  __ _ 
-    / _` |/ _` | '_ \/ __|/ _ \/ _` |
-   | (_| | (_| | |_) \__ \  __/ (_| |
-    \__, |\__,_| .__/|___/\___|\__, |
-    |___/      |_|                |_|
-  
-  Informed prediction and analysis of bacterial metabolic pathways and genome-scale networks
-  
-  Usage:
-    gapseq test
-    gapseq (find | find-transport | draft | fill | doall | adapt) (...)
-    gapseq doall (genome) [medium] [Bacteria|Archaea]
-    gapseq find (-p pathways | -e enzymes) [-b bitscore] (genome)
-    gapseq find-transport [-b bitscore] (genome)
-    gapseq draft (-r reactions | -t transporter -c genome -p pathways) [-b pos|neg|archaea|auto]
-    gapseq medium (-m draft -p pathways) [-c manual_fluxes -o output_file]
-    gapseq fill (-m draft -n medium -c rxn_weights -g rxn_genes)
-    gapseq adapt (-a reactions/pathways | -r reactions/pathways| -w growh_compounds) -m model (-g rxn_genes, -c rxn_weights, -b reaction_blast_file)
-    gapseq pan (-m draft_list -c rxn_weights_list -g rxn_genes_list -w pathways_list)
-  
-  Examples:
-    gapseq test
-    gapseq doall toy/ecoli.faa.gz
-    gapseq doall toy/myb71.fna.gz dat/media/TSBmed.csv
-    gapseq find -p chitin toy/myb71.fna.gz
-    gapseq find -p all toy/myb71.fna.gz
-    gapseq find-transport toy/myb71.fna.gz
-    gapseq draft -r toy/ecoli-all-Reactions.tbl -t toy/ecoli-Transporter.tbl -c toy/ecoli.faa.gz -p toy/ecoli-all-Pathways.tbl
-    gapseq medium -m toy/ecoli-draft.RDS -p toy/ecoli-all-Pathways.tbl
-    gapseq fill -m toy/ecoli-draft.RDS -n dat/media/ALLmed.csv -c toy/ecoli-rxnWeights.RDS -g toy/ecoli-rxnXgenes.RDS
-    gapseq adapt -a 14DICHLORBENZDEG-PWY -m toy/myb71.RDS
-    gapseq adapt -m toy/myb71.RDS -w cpd00089:TRUE -c toy/myb71-rxnWeights.RDS -g toy/myb71-rxnXgenes.RDS -b toy/myb71-all-Reactions.tbl
-    gapseq pan -m toy/MGYG000*-draft.RDS -c toy/MGYG000*-rxnWeights.RDS -g toy/MGYG000*-rxnXgenes.RDS -w toy/MGYG000*.tbl.gz
-  
-  Options:
-    test            Testing dependencies and basic functionality of gapseq.
-    test-long       Testing model reconstruction for a E. coli core genome.
-    find            Pathway analysis, try to find enzymes based on homology.
-    find-transport  Search for transporters based on homology.
-    draft           Draft model construction based on results from find and find-transport.
-    medium          (gapfill-)Medium prediction based on results from find and draft
-    fill            Gap filling of a model.
-    doall           Combine find, find-transport, draft, (medium,) and fill.
-    adapt           Add or remove reactions or pathways.
-    pan             Reconstruct a pan-Draft from a list of models.
-    -v              Show version.
-    -h              Show this screen.
-    -n              Enable noisy verbose mode.
-    -K              Number of threads for sequence alignments. If option is not provided, number of available CPUs will be automatically determined.
-
-Command error:
-  Error in if (opt$biomass == "auto" && is.null(opt$genome.seq)) { : 
-    missing value where TRUE/FALSE needed
-
-Work dir:
-  /mnt/data/sur/users/mmontante/02_resultados/nf_work/52/05c5bbdd2ec78bad9d172504176da7
-
-Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
-Jul-21 16:09:16.024 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
-  task: name=GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000701305); work-dir=/mnt/data/sur/users/mmontante/02_resultados/nf_work/d2/a18899e1a06468e8c7172665d5d025
-  error [nextflow.exception.ProcessFailedException]: Process `GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000701305)` terminated with an error exit status (1)
-Jul-21 16:09:16.038 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `GAPFILL:PROCESO_GAPFILL:GAPFILL_PIPELINE (GCF_000374945)` terminated with an error exit status (1)
-Jul-21 16:09:16.066 [TaskFinalizer-1] WARN  n.processor.TaskPollingMonitor - Killing running tasks (5)
-Jul-21 16:09:16.109 [TaskFinalizer-1] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=2; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=5; succeedDuration=0ms; failedDuration=23m 20s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=7; peakCpus=28; peakMemory=112 GB; ]
-Jul-21 16:09:16.257 [TaskFinalizer-1] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
-Jul-21 16:09:17.099 [TaskFinalizer-1] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
-Jul-21 16:09:17.105 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jul-21 16:09:17.105 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
-Jul-21 16:09:17.106 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jul-21 16:09:17.107 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=2; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=5; succeedDuration=0ms; failedDuration=23m 20s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=7; peakCpus=28; peakMemory=112 GB; ]
-Jul-21 16:09:17.107 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
-Jul-21 16:09:17.901 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
-Jul-21 16:09:17.979 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jul-21 16:09:18.014 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Script_1a2d4517c7946840: /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/gap_fill.nf
+Jul-28 14:49:48.496 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-28 14:49:48.496 [main] DEBUG nextflow.Session - Session await
+Jul-28 14:49:48.497 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final/; pattern: *.xml; options: [:]
+Jul-28 14:49:48.906 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (agrobacterium) > jobId: 249339; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a1/1dd8725d5d6f91c8949db657717fd8
+Jul-28 14:49:48.906 [Task submitter] INFO  nextflow.Session - [a1/1dd872] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (agrobacterium)
+Jul-28 14:49:48.926 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (arthrobacter) > jobId: 249340; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/dc/d84a69e9d7b34b6642bb2eb7158e32
+Jul-28 14:49:48.926 [Task submitter] INFO  nextflow.Session - [dc/d84a69] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (arthrobacter)
+Jul-28 14:49:48.941 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (bacillus) > jobId: 249341; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/7ef285a8bb1a6d73ce56603124cb90
+Jul-28 14:49:48.941 [Task submitter] INFO  nextflow.Session - [56/7ef285] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (bacillus)
+Jul-28 14:49:49.028 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (mycobacterium) > jobId: 249342; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/58/54ab43a4b743224f3fed22eec8cc6b
+Jul-28 14:49:49.029 [Task submitter] INFO  nextflow.Session - [58/54ab43] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (mycobacterium)
+Jul-28 14:49:49.085 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (bthuringensis) > jobId: 249343; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ff/1c731c8d1b39f224715042bb3df6be
+Jul-28 14:49:49.086 [Task submitter] INFO  nextflow.Session - [ff/1c731c] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (bthuringensis)
+Jul-28 14:49:49.531 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (paenibacillus) > jobId: 249344; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ca/1a4e4544f363aed59ab57c8eef0194
+Jul-28 14:49:49.531 [Task submitter] INFO  nextflow.Session - [ca/1a4e45] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (paenibacillus)
+Jul-28 14:49:49.548 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (pumsongensis) > jobId: 249345; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/25/2a59aef519a1f6d3af27a9db74fc36
+Jul-28 14:49:49.549 [Task submitter] INFO  nextflow.Session - [25/2a59ae] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (pumsongensis)
+Jul-28 14:49:49.589 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (pseudomonas) > jobId: 249346; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/65/ff36abbd9f0d36067a00db5f77a09b
+Jul-28 14:49:49.589 [Task submitter] INFO  nextflow.Session - [65/ff36ab] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (pseudomonas)
+Jul-28 14:49:49.605 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (vparadoxus) > jobId: 249347; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/779f0d7d3fd05c2d4801ee27407bc7
+Jul-28 14:49:49.605 [Task submitter] INFO  nextflow.Session - [85/779f0d] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (vparadoxus)
+Jul-28 14:49:49.622 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process COMETS:PROCESO_COMETS:COMETS_RUN (rerythropolis) > jobId: 249348; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/44b5e2ca7ab42ba84745c705daac68
+Jul-28 14:49:49.623 [Task submitter] INFO  nextflow.Session - [ec/44b5e2] Submitted process > COMETS:PROCESO_COMETS:COMETS_RUN (rerythropolis)
+Jul-28 14:54:33.440 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249341; id: 3; name: COMETS:PROCESO_COMETS:COMETS_RUN (bacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/56/7ef285a8bb1a6d73ce56603124cb90 started: 1785271828432; exited: 2026-07-28T20:54:22.127063383Z; ]
+Jul-28 14:54:33.441 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-28 14:54:33.472 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-28 14:54:53.439 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 9 -- submitted tasks are shown below
+~> TaskHandler[jobId: 249339; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (agrobacterium); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a1/1dd8725d5d6f91c8949db657717fd8 started: 1785271823430; exited: -; ]
+~> TaskHandler[jobId: 249340; id: 2; name: COMETS:PROCESO_COMETS:COMETS_RUN (arthrobacter); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/dc/d84a69e9d7b34b6642bb2eb7158e32 started: 1785271828430; exited: -; ]
+~> TaskHandler[jobId: 249342; id: 5; name: COMETS:PROCESO_COMETS:COMETS_RUN (mycobacterium); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/58/54ab43a4b743224f3fed22eec8cc6b started: 1785271828434; exited: -; ]
+~> TaskHandler[jobId: 249343; id: 4; name: COMETS:PROCESO_COMETS:COMETS_RUN (bthuringensis); status: SUBMITTED; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ff/1c731c8d1b39f224715042bb3df6be started: -; exited: -; ]
+~> TaskHandler[jobId: 249344; id: 6; name: COMETS:PROCESO_COMETS:COMETS_RUN (paenibacillus); status: SUBMITTED; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ca/1a4e4544f363aed59ab57c8eef0194 started: -; exited: -; ]
+~> TaskHandler[jobId: 249345; id: 8; name: COMETS:PROCESO_COMETS:COMETS_RUN (pumsongensis); status: SUBMITTED; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/25/2a59aef519a1f6d3af27a9db74fc36 started: -; exited: -; ]
+~> TaskHandler[jobId: 249346; id: 7; name: COMETS:PROCESO_COMETS:COMETS_RUN (pseudomonas); status: SUBMITTED; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/65/ff36abbd9f0d36067a00db5f77a09b started: -; exited: -; ]
+~> TaskHandler[jobId: 249347; id: 9; name: COMETS:PROCESO_COMETS:COMETS_RUN (vparadoxus); status: SUBMITTED; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/779f0d7d3fd05c2d4801ee27407bc7 started: -; exited: -; ]
+~> TaskHandler[jobId: 249348; id: 10; name: COMETS:PROCESO_COMETS:COMETS_RUN (rerythropolis); status: SUBMITTED; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/44b5e2ca7ab42ba84745c705daac68 started: -; exited: -; ]
+Jul-28 14:55:28.442 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249339; id: 1; name: COMETS:PROCESO_COMETS:COMETS_RUN (agrobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/a1/1dd8725d5d6f91c8949db657717fd8 started: 1785271823430; exited: 2026-07-28T20:55:14.270838412Z; ]
+Jul-28 14:55:33.441 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249340; id: 2; name: COMETS:PROCESO_COMETS:COMETS_RUN (arthrobacter); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/dc/d84a69e9d7b34b6642bb2eb7158e32 started: 1785271828430; exited: 2026-07-28T20:55:21.125808835Z; ]
+Jul-28 14:55:38.442 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249342; id: 5; name: COMETS:PROCESO_COMETS:COMETS_RUN (mycobacterium); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/58/54ab43a4b743224f3fed22eec8cc6b started: 1785271828434; exited: 2026-07-28T20:55:36.870740905Z; ]
+Jul-28 14:58:53.452 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249343; id: 4; name: COMETS:PROCESO_COMETS:COMETS_RUN (bthuringensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ff/1c731c8d1b39f224715042bb3df6be started: 1785272098450; exited: 2026-07-28T20:58:24.745009162Z; ]
+Jul-28 14:58:53.454 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249344; id: 6; name: COMETS:PROCESO_COMETS:COMETS_RUN (paenibacillus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ca/1a4e4544f363aed59ab57c8eef0194 started: 1785272158451; exited: 2026-07-28T20:58:52.190891828Z; ]
+Jul-28 14:59:53.452 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 4 -- submitted tasks are shown below
+~> TaskHandler[jobId: 249345; id: 8; name: COMETS:PROCESO_COMETS:COMETS_RUN (pumsongensis); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/25/2a59aef519a1f6d3af27a9db74fc36 started: 1785272158453; exited: -; ]
+~> TaskHandler[jobId: 249346; id: 7; name: COMETS:PROCESO_COMETS:COMETS_RUN (pseudomonas); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/65/ff36abbd9f0d36067a00db5f77a09b started: 1785272158453; exited: -; ]
+~> TaskHandler[jobId: 249347; id: 9; name: COMETS:PROCESO_COMETS:COMETS_RUN (vparadoxus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/779f0d7d3fd05c2d4801ee27407bc7 started: 1785272338461; exited: -; ]
+~> TaskHandler[jobId: 249348; id: 10; name: COMETS:PROCESO_COMETS:COMETS_RUN (rerythropolis); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/44b5e2ca7ab42ba84745c705daac68 started: 1785272363452; exited: -; ]
+Jul-28 15:00:58.457 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249345; id: 8; name: COMETS:PROCESO_COMETS:COMETS_RUN (pumsongensis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/25/2a59aef519a1f6d3af27a9db74fc36 started: 1785272158453; exited: 2026-07-28T21:00:38.939432093Z; ]
+Jul-28 15:02:03.459 [Task monitor] DEBUG nextflow.file.FileHelper - FS path type (true): /mnt/data/sur/users/mmontante/02_resultados/nf_work
+Jul-28 15:02:03.471 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249346; id: 7; name: COMETS:PROCESO_COMETS:COMETS_RUN (pseudomonas); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/65/ff36abbd9f0d36067a00db5f77a09b started: 1785272158453; exited: 2026-07-28T21:01:44.531147457Z; ]
+Jul-28 15:04:03.470 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249348; id: 10; name: COMETS:PROCESO_COMETS:COMETS_RUN (rerythropolis); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/ec/44b5e2ca7ab42ba84745c705daac68 started: 1785272363452; exited: 2026-07-28T21:03:50.497602359Z; ]
+Jul-28 15:04:53.462 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 249347; id: 9; name: COMETS:PROCESO_COMETS:COMETS_RUN (vparadoxus); status: RUNNING; exit: -; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/779f0d7d3fd05c2d4801ee27407bc7 started: 1785272338461; exited: -; ]
+Jul-28 15:05:53.465 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 249347; id: 9; name: COMETS:PROCESO_COMETS:COMETS_RUN (vparadoxus); status: COMPLETED; exit: 0; error: -; workDir: /mnt/data/sur/users/mmontante/02_resultados/nf_work/85/779f0d7d3fd05c2d4801ee27407bc7 started: 1785272338461; exited: 2026-07-28T21:05:40.065129514Z; ]
+Jul-28 15:05:53.484 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-28 15:05:58.464 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jul-28 15:05:58.465 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-28 15:05:58.469 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jul-28 15:05:58.469 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jul-28 15:05:58.478 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=10; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=49m 5s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=4; peakCpus=4; peakMemory=400 GB; ]
+Jul-28 15:05:58.577 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jul-28 15:05:59.495 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jul-28 15:05:59.527 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-28 15:05:59.608 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jul-28 15:05:59.609 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

@@ -284,7 +284,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         gem_i = cobra.io.read_sbml_model(gem)
         # print(f"=========================Modelo cargado para {strain}==============")
         gem_i = c.model(gem_i)
-        gem_i.optimizer = "GLOP"
+        # gem_i.optimizer = "GLOP"
         # print(f"=========================Modelo procesado para {strain}==============")
         gem_i.id = strain
         # print(f"=========================ID establecido para {strain}==============")
@@ -327,6 +327,6 @@ def set_sim_params(args):
     sim_params.set_param("maxCycles", args.cycles)
     sim_params.set_param("maxSpaceBiomass", 10) # gr DW
     sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
-    sim_params.set_param("spaceWidth", 3.107233) # cm
+    sim_params.set_param("spaceWidth", 5) # cm
 
     return sim_params

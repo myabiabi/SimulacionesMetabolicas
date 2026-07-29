@@ -55,6 +55,12 @@ workflow DOALL {
 }
 
 workflow FILL {
-    drafts_ch = Channel.fromPath("${params.fill_indir}/*-draft.RDS")
+    drafts_ch = Channel.fromPath("${params.fill_input}/*-draft.RDS")
+        .map { draft ->
+            def prefix = draft.name.replace('-draft.RDS', '')
+            def weights = file("${draft.parent}/${prefix}-rxnWeights.RDS")
+            def genes   = file("${draft.parent}/${prefix}-rxnXgenes.RDS")
+            tuple(draft, weights, genes)
+        }
     PROCESO_FILL(drafts_ch)
 }

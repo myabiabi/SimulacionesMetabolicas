@@ -50,4 +50,19 @@
 2026-07-22 12:54:35	7.5s	jolly_stone	OK	8ceade9680f389dbc7ce96c1bf1709b2	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
 2026-07-22 12:58:31	14m 53s	cheesy_spence	OK	8ceade9680f389dbc7ce96c1bf1709b2	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
 2026-07-22 14:12:24	5h 20m 4s	sick_mclean	OK	43756043fccc7db1ac7e6e65abd12e17	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
-2026-07-23 11:46:06	-	scruffy_hamilton	-	43756043fccc7db1ac7e6e65abd12e17	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-23 11:46:06	4h 49m 10s	scruffy_hamilton	OK	43756043fccc7db1ac7e6e65abd12e17	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-23 14:09:39	24s	lethal_mccarthy	ERR	484c4af73cdb8cdd47f13a6923a46cbc	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry FILL -profile fill -resume
+2026-07-23 16:57:00	4h 19m 8s	pensive_montalcini	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-27 13:14:24	4h 21m 44s	distraught_carson	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-27 18:18:13	7.6s	dreamy_ochoa	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-27 18:21:40	5h 25m 24s	serene_rubens	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry DOALL -profile doall -resume
+2026-07-28 14:07:47	12m 24s	special_borg	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-28 14:30:47	11m 13s	mighty_easley	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-28 14:49:46	16m 14s	gloomy_blackwell	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-28 15:35:47	6m 14s	gloomy_stonebraker	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry FILL -profile gapseq -resume
+2026-07-28 15:46:17	1h 48m 19s	fabulous_goldstine	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry FILL -profile gapseq -resume
+2026-07-28 16:06:48	-	marvelous_jang	-	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-28 16:27:16	-	thirsty_hoover	-	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -work-dir /mnt/data/sur/users/mmontante/02_resultados/nf_work_comets -resume
+2026-07-28 17:40:17	-	small_ramanujan	-	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -work-dir /mnt/data/sur/users/mmontante/02_resultados/nf_work_comets -resume
+2026-07-28 17:41:46	1h 6m 59s	loving_bell	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume
+2026-07-28 18:54:17	27m 44s	extravagant_boyd	OK	e572b5a4e75db0822a202b51887d3ec9	c72135a9-0d3c-4157-b4e7-6ff7b22f3730	nextflow run main.nf -entry COMETS -profile comets -resume

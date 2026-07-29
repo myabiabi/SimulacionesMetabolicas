@@ -24,8 +24,6 @@ process COMETS_RUN {
       --strains ${strain} \\
       --media ${params.media} \\
       --cycles ${params.cycles} \\
-      --media_dil ${params.media_dil} \\
-      --media_vol ${params.media_vol} \\
       --outdir out_${strain}
     """
 }
