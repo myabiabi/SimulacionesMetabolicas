@@ -47,12 +47,14 @@ Corynebacterium_sp_29_x.fasta_assembly.RAST.fbamodel.xml
 
 Bacillus_altitudinis_23_x-draft.xml
 ```
-for archivo in *-draft.xml; do
+for archivo in *.tsv; do
+    nombre_base="${archivo%.tsv}"
+
     # 2. Definir el prefijo (sin el guion bajo al final para que quede pegado a ST)
-    #prefijo="cc_na_gp_na"
+    #prefijo="rz_pk_cv_lb_"
     
     # 3. Renombrar el archivo combinando todo
-    mv "$archivo" "${prefijo}${nombre_base}.xml"
+    mv "$archivo" "${prefijo}${nombre_base}.tsv"
 done
 ```
 rz_pk_lb_consenso_vparadoxus.xml
@@ -1592,6 +1594,58 @@ echo "[INFO] Python script finished at $(date)"
 echo "========================================="
 echo "Pipeline done at: $(date)"
 echo "========================================="
+
+
+###########
+
+  GNU nano 5.6.1                                                                            SimulacionesMetabolicas/comets.nf                                                                            Modified  
+process COMETS_RUN {
+    tag "$strain"
+
+    errorStrategy 'ignore'    // <-- ignora el modelo fallido y continúa
+
+    publishDir "${params.outbase}/${strain}", mode: 'copy'
+
+    cpus 1
+
+    input:
+    val strain
+
+    output:
+    path "out_${strain}"
+
+    script:
+    """
+    eval "\$(mamba shell hook --shell bash)"
+    mamba activate python3
+    module load COMETS
+
+    python ${params.comets_script} \\
+      --gem_path ${params.gem_path} \\
+      --strains ${strain} \\
+      --media ${params.media} \\
+      --cycles ${params.cycles} \\
+      --outdir out_${strain}
+    """
+}
+
+workflow PROCESO_COMETS {
+    take:
+    strains_ch
+
+    main:
+    COMETS_RUN(strains_ch)
+}
+
+gem_path	   = '/mnt/data/sur/users/mmontante/02_resultados/rz/models/finalmodels_cv'
+
+media          = 'lb'
+
+    cycles         = 200000
+outbase        = '/mnt/data/sur/users/mmontante/02_resultados/rz/290726simulaciones'
+
+
+
 
 
 
