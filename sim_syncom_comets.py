@@ -62,7 +62,7 @@ def process_arguments():
     parser.add_argument("--media_vol",
                          help="Volume of media to use. Example:",
                          type=float,
-                         default=1)
+                         default=0.03)
     parser.add_argument("--initial_mass",
                         help=("Initial mass for each strain in grams of dry weight. Example: 1e-8"
                               "Currently, only identical starting masses for all strains are supported."),

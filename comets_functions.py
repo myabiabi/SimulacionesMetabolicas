@@ -134,7 +134,7 @@ def comets(ruta_csv_syncoms, patron_xml, threads, cycles, mass, media, newpath):
     os.chdir(original_path)
     print(f"\nProceso finalizado. Resultados en: {root_path}")
 
-def media(name="lb", dil=0.1, vol=1):
+def media(name="lb", dil=0.1, vol=0.03):
     name = name.lower()  
     res = {}
 

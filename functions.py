@@ -106,6 +106,109 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
     return resultados_totales
 
 
+import os
+import glob
+from itertools import combinations
+#import mergem
+import cobra
+import pandas as pd
+
+def mergem_statistics(ruta_input, ruta_output, lista_patrones):
+    """
+    Para cada patrón en la lista, busca todos los modelos .xml que lo
+    contengan en el nombre y calcula la distancia/similitud de Jaccard
+    para TODOS los pares posibles de esos modelos (no solo el consenso
+    global).
+
+    Devuelve un diccionario:
+        resultados_totales[patron] = {
+            "pares": {(archivo1, archivo2): jacc_valor, ...},
+            "tabla": DataFrame con columnas [modelo_1, modelo_2, jaccard]
+        }
+    """
+    resultados_totales = {}
+
+    print(f"Iniciando para {len(lista_patrones)} patrones...")
+    os.makedirs(ruta_output, exist_ok=True)
+
+    for patron in lista_patrones:
+
+        # 1. Buscar archivos para ESTE patrón
+        input_models = [
+            f for f in glob.glob(os.path.join(ruta_input, "*.xml"))
+            if patron.lower() in os.path.basename(f).lower()
+        ]
+
+        # Validaciones
+        if not input_models:
+            print(f"No se encontraron archivos para: '{patron}'")
+            continue
+
+        if len(input_models) < 2:
+            print(f"Solo se encontró {len(input_models)} modelo para '{patron}'. Se necesitan al menos 2.")
+            continue
+
+        print(f"\n========================================")
+        print(f"Calculando Jaccard por pares para: {patron.upper()}")
+        print(f"Se encontraron {len(input_models)} modelos.")
+
+        # 2. Generar TODOS los pares posibles para este patrón
+        couples = list(combinations(input_models, 2))
+        print(f"Se evaluarán {len(couples)} combinaciones posibles.")
+
+        pares_resultado = {}
+        filas_tabla = []
+
+        # 3. Ejecutar mergem PAR POR PAR
+        for modelo_a, modelo_b in couples:
+            nombre_a = os.path.basename(modelo_a)
+            nombre_b = os.path.basename(modelo_b)
+
+            try:
+                results = mergem.merge(
+                    [modelo_a, modelo_b],
+                    set_objective='merge',
+                    exact_sto=False,
+                    use_prot=False,
+                    extend_annot=False,
+                    trans_to_db=None
+                )
+
+                # jacc_matrix es 2x2 para un par; el valor de interés
+                # es el elemento fuera de la diagonal (comparación entre
+                # los dos modelos distintos)
+                jacc_matrix = results['jacc_matrix']
+                jacc_valor = jacc_matrix[0][1]
+
+                pares_resultado[(nombre_a, nombre_b)] = jacc_valor
+                filas_tabla.append({
+                    "modelo_1": nombre_a,
+                    "modelo_2": nombre_b,
+                    "jaccard": jacc_valor
+                })
+
+                print(f"  {nombre_a} vs {nombre_b} -> Jaccard = {jacc_valor:.4f}")
+
+            except Exception as e:
+                print(f"  Error comparando {nombre_a} vs {nombre_b}: {e}")
+                continue
+
+        # 4. Guardar tabla de resultados para este patrón
+        tabla_df = pd.DataFrame(filas_tabla)
+        nombre_csv = f"jaccard_pares_{patron.lower()}.csv"
+        ruta_csv = os.path.join(ruta_output, nombre_csv)
+        tabla_df.to_csv(ruta_csv, index=False)
+        print(f"Tabla de Jaccard guardada en: {ruta_csv}")
+
+        resultados_totales[patron] = {
+            "pares": pares_resultado,
+            "tabla": tabla_df
+        }
+
+    print("fin")
+    return resultados_totales
+
+
 
 import glob
 import os

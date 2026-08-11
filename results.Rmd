@@ -2332,14 +2332,14 @@ plot_rel_abund_grid <- function(df, titulo) {
 ## 3.  BIOMASSA FINAL (PRODUCTIVIDAD) INVIDIVDUAL VS COMUNIDAD 
 ```{r}
 
-path_op  <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/rizo/comparasion/"
+path_op  <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/04_resultados/"
 path_com <- path_op
 
 op_dirs  <- list.dirs(path_op, recursive = FALSE)
-op_dirs  <- op_dirs[grepl("/op[0-9]+", op_dirs)]
+op_dirs  <- op_dirs[grepl("individual", op_dirs)]
 
 com_dirs <- list.dirs(path_com, recursive = FALSE)
-com_dirs <- com_dirs[grepl("/com[0-9]+", com_dirs)]
+com_dirs <- com_dirs[grepl("comunidades", com_dirs)]
 
 # ==============================================================================
 # LOOP PRINCIPAL
