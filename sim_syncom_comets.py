@@ -60,7 +60,7 @@ def process_arguments():
                         type=float,
                         default=0.1)
     parser.add_argument("--media_vol",
-                         help="Volume of media to use. Example:",
+                         help="Volume of media to use. Example: 0.03 for 30 mL.",
                          type=float,
                          default=0.03)
     parser.add_argument("--initial_mass",
