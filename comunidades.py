@@ -4,23 +4,23 @@ import csv
 
 # --- CONFIGURACIÓN DE RUTAS Y PARÁMETROS ---
 CSV_PATH = "/mnt/data/sur/users/mmontante/01_data/rz/syncoms.csv"
-SCRIPT_ORIGINAL = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py"
-GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/cv_final"
+SCRIPT = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py"
+GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/finalmodels_cv"
 
-# CAMBIO CRUCIAL: Dejamos esto relativo porque tu script original 
-# ya se encarga de concatenarlo con la ruta base interna (/mnt/data/sur/users/mmontante/)
 
-OUTDIR_BASE = "02_resultados/rz/com"
+
+
+OUTDIR_BASE = "02_resultados/rz/100826simulaciones"
 
 if not os.path.exists(OUTDIR_BASE):
 	os.makedirs(OUTDIR_BASE)
 
 # Parámetros fijos para las simulaciones
 
-CYCLES = "10000"
+CYCLES = "200000"
 MEDIA = "lb"
-MEDIA_DIL = "0.1"
-MEDIA_VOL = "0.03"
+#MEDIA_DIL = "0.1"
+#MEDIA_VOL = "0.03"
 
 def main():
     if not os.path.exists(CSV_PATH):
@@ -65,7 +65,7 @@ def main():
         
         # 3. Construir el comando expandiendo las cepas dinámicamente
         comando = [
-            "python3", SCRIPT_ORIGINAL,
+            "python3", SCRIPT,
             "--gem_path", GEM_PATH,
         ]
         
@@ -75,8 +75,6 @@ def main():
         comando.extend([
             "--cycles", CYCLES,
             "--media", MEDIA,
-            "--media_dil", MEDIA_DIL,
-            "--media_vol", MEDIA_VOL,
             "--outdir", outdir_especifico
         ])
         
