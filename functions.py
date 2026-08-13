@@ -45,7 +45,7 @@ def variables_totales(gem_path, output_dir, output_filename):
 import os
 import glob
 import cobra
-#import mergem
+import mergem
 
 def mergem_function(ruta_input, ruta_output, lista_patrones):
     """
@@ -257,9 +257,82 @@ def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_t
 
 
 
+import pandas as pd
+
+BIGG_METS_URL = "http://bigg.ucsd.edu/static/namespace/bigg_models_metabolites.txt"
 
 
+def _load_bigg_metabolites(url: str = BIGG_METS_URL) -> pd.DataFrame:
+    """Descarga la tabla de metabolitos de BiGG."""
+    df = pd.read_csv(url, sep="\t")
+    id_col = 'bigg_id' if 'bigg_id' in df.columns else df.columns[0]
+    name_col = 'name' if 'name' in df.columns else df.columns[1]
+    return df.rename(columns={id_col: 'bigg_id', name_col: 'name'})
 
+
+def buscar_metabolitos(nombres, compartimento="_e", top_n=3, url=BIGG_METS_URL):
+    """
+    Busca IDs de BiGG para una lista de nombres/fórmulas de metabolitos.
+
+    Parameters
+    ----------
+    nombres : list[str]
+        Nombres o fórmulas a buscar (ej. ['glucose', 'ethanol', 'h2o']).
+    compartimento : str
+        Sufijo del bigg_id a filtrar (ej. '_e' para extracelular).
+        Usa None para no filtrar por compartimento.
+    top_n : int
+        Número máximo de candidatos a devolver por nombre buscado.
+    url : str
+        URL (o path local) del archivo de metabolitos de BiGG.
+
+    Returns
+    -------
+    pd.DataFrame con columnas: query, bigg_id, name, match_type
+    """
+    df = _load_bigg_metabolites(url)
+
+    if compartimento:
+        df = df[df['bigg_id'].str.endswith(compartimento, na=False)]
+
+    resultados = []
+    for m in nombres:
+        nombre_lower = df['name'].str.lower().fillna("")
+        m_lower = m.lower()
+
+        # 1) match exacto de nombre completo
+        exact = df[nombre_lower == m_lower]
+        # 2) el nombre empieza con la búsqueda (ej. 'glucose' -> 'Glucose exchange')
+        starts = df[nombre_lower.str.startswith(m_lower) & ~(nombre_lower == m_lower)]
+        # 3) la búsqueda aparece en cualquier parte del nombre
+        contains = df[nombre_lower.str.contains(m_lower, regex=False) &
+                      ~nombre_lower.str.startswith(m_lower)]
+
+        encontrado = False
+        for subset, tipo in [(exact, "exacto"), (starts, "empieza_con"), (contains, "contiene")]:
+            if not subset.empty:
+                encontrado = True
+                subset = subset.assign(name_len=subset['name'].str.len()) \
+                                .sort_values('name_len') \
+                                .drop(columns='name_len')
+                subset = subset.head(top_n).copy()
+                subset['query'] = m
+                subset['match_type'] = tipo
+                resultados.append(subset[['query', 'bigg_id', 'name', 'match_type']])
+
+        if not encontrado:
+            print(f"⚠️  No se encontraron coincidencias para: '{m}'")
+
+    if not resultados:
+        return pd.DataFrame(columns=['query', 'bigg_id', 'name', 'match_type'])
+
+    return pd.concat(resultados, ignore_index=True).drop_duplicates(subset=['query', 'bigg_id'])
+
+
+# Uso
+# medio_names = ['glucose', 'ethanol', 'h2o', 'phosphate']
+# final_df = buscar_metabolitos(medio_names)
+# print(final_df)
 
 
 

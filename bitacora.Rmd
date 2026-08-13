@@ -1978,4 +1978,26 @@ No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 6.103516e-
 No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 3.051758e-08 
 
 
+## 1110
+
+SIMULACIONES DE CC
+
+    gem_path	   = '/mnt/data/sur/users/mmontante/02_resultados/cc/models'
+     comets {
+	    process.executor = 'slurm'
+        process.memory     = '100 GB'
+        process.cpus	  = 4
+        params.outbase    = '/mnt/data/sur/users/mmontante/02_resultados/rz/310726simulaciones'
+        outbase        = '/mnt/data/sur/users/mmontante/02_resultados/cc'
+
+dil y vol use los defaults (0.1 y 0.03y
+)
+
+
+
+
+
+
+
+
 
