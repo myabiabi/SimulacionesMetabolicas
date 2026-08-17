@@ -45,7 +45,7 @@ def variables_totales(gem_path, output_dir, output_filename):
 import os
 import glob
 import cobra
-import mergem
+#import mergem
 
 def mergem_function(ruta_input, ruta_output, lista_patrones):
     """
@@ -254,9 +254,6 @@ def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_t
         })
 
     return bacterias
-
-
-
 import pandas as pd
 
 BIGG_METS_URL = "http://bigg.ucsd.edu/static/namespace/bigg_models_metabolites.txt"
@@ -273,6 +270,9 @@ def _load_bigg_metabolites(url: str = BIGG_METS_URL) -> pd.DataFrame:
 def buscar_metabolitos(nombres, compartimento="_e", top_n=3, url=BIGG_METS_URL):
     """
     Busca IDs de BiGG para una lista de nombres/fórmulas de metabolitos.
+    Solo considera coincidencias 'exactas' o que 'empiezan con' el término buscado.
+    Los metabolitos sin coincidencia se agregan igual, con bigg_id/name en NaN,
+    y se conserva el orden original de la lista de entrada.
 
     Parameters
     ----------
@@ -304,12 +304,9 @@ def buscar_metabolitos(nombres, compartimento="_e", top_n=3, url=BIGG_METS_URL):
         exact = df[nombre_lower == m_lower]
         # 2) el nombre empieza con la búsqueda (ej. 'glucose' -> 'Glucose exchange')
         starts = df[nombre_lower.str.startswith(m_lower) & ~(nombre_lower == m_lower)]
-        # 3) la búsqueda aparece en cualquier parte del nombre
-        contains = df[nombre_lower.str.contains(m_lower, regex=False) &
-                      ~nombre_lower.str.startswith(m_lower)]
 
         encontrado = False
-        for subset, tipo in [(exact, "exacto"), (starts, "empieza_con"), (contains, "contiene")]:
+        for subset, tipo in [(exact, "exacto"), (starts, "empieza_con")]:
             if not subset.empty:
                 encontrado = True
                 subset = subset.assign(name_len=subset['name'].str.len()) \
@@ -322,19 +319,26 @@ def buscar_metabolitos(nombres, compartimento="_e", top_n=3, url=BIGG_METS_URL):
 
         if not encontrado:
             print(f"⚠️  No se encontraron coincidencias para: '{m}'")
+            resultados.append(pd.DataFrame([{
+                'query': m,
+                'bigg_id': pd.NA,
+                'name': pd.NA,
+                'match_type': 'no_encontrado'
+            }]))
 
-    if not resultados:
-        return pd.DataFrame(columns=['query', 'bigg_id', 'name', 'match_type'])
+    resultado_final = pd.concat(resultados, ignore_index=True).drop_duplicates(subset=['query', 'bigg_id'], keep='first')
 
-    return pd.concat(resultados, ignore_index=True).drop_duplicates(subset=['query', 'bigg_id'])
+    # Conservar el orden original de `nombres`
+    resultado_final['query'] = pd.Categorical(resultado_final['query'], categories=nombres, ordered=True)
+    resultado_final = resultado_final.sort_values('query').reset_index(drop=True)
+
+    return resultado_final
 
 
 # Uso
-# medio_names = ['glucose', 'ethanol', 'h2o', 'phosphate']
-# final_df = buscar_metabolitos(medio_names)
-# print(final_df)
-
-
+#medio_names = ['glucose', 'ethanol', 'h2o', 'phosphate']
+#final_df = buscar_metabolitos(medio_names)
+#print(final_df)
 
 # # Print the total number of reactions
 # print(f"Total reactions: {len(model.reactions)}")

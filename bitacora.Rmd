@@ -1994,7 +1994,43 @@ dil y vol use los defaults (0.1 y 0.03y
 )
 
 
+172126
 
+ddef media_marino_minimo(dil=1):
+    return {
+        "al3_e":      0.07      * dil,
+        "borate_e":   0.42      * dil,
+        "co2_e":      2.29      * dil,
+        "ca2_e":      10        * dil,
+        "cl_e":       536       * dil,
+        "cobalt2_e":  1.70e-6   * dil,
+        "cu2_e":      1.40e-3   * dil,
+        "f_e":        0.074     * dil,
+        "iodine_e":   3.90e-4   * dil,
+        "fe2_e":      1.80e-4   * dil,
+        "fe3_e":      1.80e-4   * dil,
+        "mg2_e":      52.3      * dil,
+        "mn2_e":      1.80e-4   * dil,
+        "nh4_e":      3.0e-4    * dil,   # rango 3.0e-4 - 1.5e-2, valor mínimo
+        "no3_e":      8.87e-5   * dil,
+        "no2_e":      1.09e-4   * dil,
+        "ni2_e":      8.50e-6   * dil,
+        "o2_e":       0.28,
+        "pi_e":       3.20e-3   * dil,
+        "k_e":        9.72      * dil,
+        "h_e":        1.0e-5,
+        "h2s_e":      0.01      * dil,
+        "so4_e":      0.039     * dil,
+        "so3_e":      5.00e-3   * dil,
+        "tsul_e":     5.00e-3   * dil,
+        "na1_e":      459       * dil,
+        "zn2_e":      2.10e-3   * dil,
+        "h2o_e":      55.5,
+    }
+    
+    
+    
+    
 
 
 

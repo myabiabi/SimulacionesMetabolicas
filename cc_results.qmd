@@ -23,6 +23,85 @@ library(ggbeeswarm)
 library(DescTools)
 ```
 
+```{r}
+
+library(dplyr)
+library(readr)
+
+med_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medium_pred"
+
+archivos <- list.files(med_path, pattern = "*.csv", full.names = TRUE)
+
+# Leer cada CSV, extraer columnas y agregar columna de cepa
+lista_dfs <- lapply(archivos, function(archivo) {
+    df <- read_csv(archivo, show_col_types = FALSE)
+    nombre_cepa <- tools::file_path_sans_ext(basename(archivo))
+    df %>% 
+        select(compounds, name, maxFlux) %>%
+        mutate(cepa = nombre_cepa)
+})
+
+# Apilar todos los dataframes
+df_final <- bind_rows(lista_dfs)
+
+print(head(df_final))
+print(paste("Total filas:", nrow(df_final)))
+
+# Guardar
+write_csv(
+    df_final,
+    "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medium_pred/todas_las_medias.csv"
+)
+
+
+#############
+library(dplyr)
+library(readr)
+
+med_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medium_pred"
+
+archivos <- list.files(med_path, pattern = "*.csv", full.names = TRUE)
+
+# Leer todos los CSVs y extraer columna 'name'
+todos_metabolitos <- lapply(archivos, function(archivo) {
+    df <- read_csv(archivo, show_col_types = FALSE)
+    df$name
+})
+
+# Unir todas las listas y obtener valores únicos
+lista_unica <- unique(unlist(todos_metabolitos))
+
+# Ordenar alfabéticamente
+lista_unica <- sort(lista_unica)
+
+print(lista_unica)
+print(paste("Total metabolitos únicos:", length(lista_unica)))
+
+# Guardar en CSV
+write_csv(
+    data.frame(name = lista_unica),
+    "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medium_pred/metabolitos_unicos.csv"
+)
+```
+
+# Leer todos los CSVs y extraer columna 'name'
+
+todos_metabolitos \<- lapply(archivos, function(archivo) { df \<- read_csv(archivo, show_col_types = FALSE) df\$name })
+
+# Unir todas las listas y obtener valores únicos
+
+lista_unica \<- unique(unlist(todos_metabolitos))
+
+# Ordenar alfabéticamente
+
+lista_unica \<- sort(lista_unica)
+
+print(lista_unica) print(paste("Total metabolitos únicos:", length(lista_unica)))
+
+# Guardar en CSV
+
+write_csv( data.frame(name = lista_unica), "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medium_pred/metabolitos_unicos.csv" )
+
 ## Número de variables
 
 ### General
