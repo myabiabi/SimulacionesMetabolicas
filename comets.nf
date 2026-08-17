@@ -20,7 +20,6 @@ process COMETS_RUN {
     module load COMETS
 
     python ${params.comets_script} \\
-      --csv_syncoms ${params.com_path} \\
       --gem_path ${params.gem_path} \\
       --strains ${strain} \\
       --media ${params.media} \\

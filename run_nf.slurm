@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=29726com
+#SBATCH --job-name=ecolidoall
 #SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.log
 #SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.error
 #SBATCH --time=240:00:00
@@ -24,7 +24,7 @@ export JAVA_HOME=/opt/apps/oracle-java/20.0.1
 export NXF_JVM_ARGS="-XX:TieredStopAtLevel=1 -Xmx1g"
 
 #nextflow run main.nf -entry MEMOTE -profile memote
-nextflow run main.nf -entry COMETS -profile comets -resume
+#nextflow run main.nf -entry COMETS -profile comets -resume
 #nextflow run main.nf -entry COMBOS -profile combos -resume
 #nextflow run main.nf -entry FILL -profile gapseq -resume
-#nextflow run main.nf -entry DOALL -profile doall -resume
+nextflow run main.nf -entry DOALL -profile doall -resume

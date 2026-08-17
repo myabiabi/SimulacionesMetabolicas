@@ -18,7 +18,7 @@ process GAPSEQ_DOALL {
     eval "\$(conda shell.bash hook)"
     conda activate gapseq
 
-    gapseq doall ${genome} ${params.gapseq_media}
+    gapseq doall ${genome}
     """
 }
 
