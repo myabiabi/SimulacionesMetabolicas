@@ -45,7 +45,7 @@ def variables_totales(gem_path, output_dir, output_filename):
 import os
 import glob
 import cobra
-#import mergem
+import mergem
 
 def mergem_function(ruta_input, ruta_output, lista_patrones):
     """

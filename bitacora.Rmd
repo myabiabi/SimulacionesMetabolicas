@@ -2030,7 +2030,60 @@ ddef media_marino_minimo(dil=1):
     
     
     
-    
+
+
+
+for f in *.xml; do
+    base=$(basename "$f")
+    cp "$f" "/mnt/data/sur/users/mmontante/02_resultados/cc/models/cc_pk_gp_mm_$base"
+done
+
+
+
+
+b altitudinales
+b infanis
+b thuringensis
+corynebacterium
+metabacillus
+micrococos
+s arlette
+s shinni
+
+falta de cc_na_gp_mm 
+b atrohaeus
+p megaterium
+
+
+cc_pk_gp_mm faltan 2 
+m indicus
+Staphylococcus arlettae
+
+cc_na_gp_mm
+priesta 
+
+## 190826 
+COMETS articulo: 
+“First, populate the entire simulation with trace metabolites that are essential to growth but are not carbon or nitrogen sources. Use set_specific_metabolite to do this as follows, which sets the amount in mmol in every box in the lattice to the second argument (here, 1,000.). These metabolites should remain fixed and unlimited. Therefore, set the third argument of set_specific_metabolite to True, which means that, at the beginning of each time step, the metabolite amounts will return to 1,000. To make this easier, use a loop that iterates through each metabolite.” ([Dukovski et al., 2021, p. 5068](zotero://select/library/items/9VFN6SPS)) ([pdf](zotero://open-pdf/library/items/7PYT82PT?page=39&annotation=KMVTXZYN))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
