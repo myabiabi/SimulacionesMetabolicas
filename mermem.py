@@ -1,12 +1,12 @@
-from functions import mergem_function
-mis_bacterias = ["batrophaeus", "bthuringiensis" 
-                  ]
+#from functions import mergem_function
+#mis_bacterias = ["batrophaeus", "bthuringiensis" 
+                  #]
 
-diccionario_resultados = mergem_function(
-      ruta_input="/media/abigaylmontantearenas/UBUNTU 24_0/abi/models/cc/mergem", 
-      ruta_output="/media/abigaylmontantearenas/UBUNTU 24_0/abi/models/cc/mergem", 
-      lista_patrones=mis_bacterias
-  )
+#diccionario_resultados = mergem_function(
+      #ruta_input="/media/abigaylmontantearenas/UBUNTU 24_0/abi/models/cc/mergem", 
+      #ruta_output="/media/abigaylmontantearenas/UBUNTU 24_0/abi/models/cc/mergem", 
+      #lista_patrones=mis_bacterias
+  #)
 
 #from functions import mergem_statistics
 
@@ -18,12 +18,12 @@ diccionario_resultados = mergem_function(
 #)
 
 
-#from functions import variables_totales
-#variables_totales(
-    #gem_path="/home/abigaylmontantearenas/Documents/proyecto_tesis",
-    #output_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis",
-    #output_filename="180826_cc_variables_totales.csv"
-#)
+from functions import variables_totales
+variables_totales(
+    gem_path="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/ecoli",
+    output_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis",
+    output_filename="1006_ecoli_variables_totales.csv"
+)
 
 
 # # Uso
