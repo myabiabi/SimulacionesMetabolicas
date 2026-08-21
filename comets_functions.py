@@ -266,6 +266,7 @@ def media(name="lb", dil=0.1, vol=0.03):
         "nac_e": 0.00326 * vol * dil,
         "pydxn_e": 0.0000886 * vol * dil,
         "cbl1_e": 0.000000000516 * vol * dil,
+        "mobd_e":     3.07E-04        * vol * dil,
         "o2_e": 18.2 * vol,
         "h2o_e": 55509.2978073827 * vol,
         "h_e": 0.0001 * vol,
