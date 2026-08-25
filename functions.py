@@ -218,10 +218,16 @@ def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_t
      models
      ------bacteria1 
         -------------genome1
-        -------------models1.xml
+        -------------cc_pk_lb_carveme.xml
+        -------------cc_pk_lb_modelseed
+        -------------cc_pk_lb_gapseq
      ------bacteria2
         -------------genome2
-        -------------models2.xml."""
+        -------------c_pk_lb_carveme.xml
+        -------------cc_pk_lb_modelseed
+        -------------cc_pk_lb_gapseq"""
+    
+        
     bacterias = []
     for carpeta in sorted(glob.glob(os.path.join(data_dir, "*"))):
         if not os.path.isdir(carpeta):
@@ -229,15 +235,15 @@ def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_t
         id_bacteria = os.path.basename(carpeta)
 
         genoma_nt = os.path.join(carpeta, "genome.fasta")
-        #genoma_aa = os.path.join(carpeta, "genome.faa")
+        genoma_aa = os.path.join(carpeta, "genome.faa")
 
         modelos = []
 
         # --- AQUÍ va el cambio, reemplazando el for anterior ---
         tipos_archivo = {
-            "cc_pk_lb_carveme": "carveme",
-            "cc_pk_lb_modelseed": "modelseed",
-            "cc_pk_lb_gapseq": "gapseq",
+            "cc_pk_lb_mm_carveme": "carveme",
+            "cc_pk_mm_modelseed": "modelseed",
+            "cc_pk_mm_gapseq": "gapseq",
         }
 
         for nombre_archivo, tipo_real in tipos_archivo.items():
@@ -257,7 +263,7 @@ def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_t
         bacterias.append({
             "id_bacteria": id_bacteria,
             "genoma_nt": genoma_nt,
-            #"genoma_aa": genoma_aa,
+            "genoma_aa": genoma_aa,
             "modelos": modelos,
         })
 
