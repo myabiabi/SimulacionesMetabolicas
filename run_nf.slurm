@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=4c_mm
+#SBATCH --job-name=mm_mm2
 #SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.log
 #SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.error
 #SBATCH --time=240:00:00
