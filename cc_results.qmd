@@ -157,8 +157,8 @@ medgapfill <- c(
   "L-Phenylalanine"
 )
 
-unique_mets <- setdiff(medexp, medgapfill)
-write.csv(clean_df, "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medio_comparacion.csv", row.names = FALSE)
+inter_mets <- intersect(medexp, medgapfill)
+write.csv(inter_mets, "/home/abigaylmontantearenas/Documents/proyecto_tesis/310826/medio_comparacion.csv", row.names = FALSE)
 
 ```
 
