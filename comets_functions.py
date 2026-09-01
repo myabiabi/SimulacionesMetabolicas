@@ -248,7 +248,7 @@ def media(name="lb", dil=0.1, vol=0.03):
     "chol_e": 0.0153595085 * vol * dil,
     "adocbl_e": 2.58226354e-09 * vol * dil,
     "mobd_e": 0.000307 * vol * dil,
-    "glc__D_e": 0.02 * vol * dil,
+    "glc__D_e": 0.020 * vol * dil,
     "o2_e": 18.2 * vol,
     "h2o_e": 55509.29781 * vol,
     "h_e": 0.0001 * vol,
