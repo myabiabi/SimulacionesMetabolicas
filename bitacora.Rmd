@@ -2067,8 +2067,14 @@ COMETS articulo:
 “First, populate the entire simulation with trace metabolites that are essential to growth but are not carbon or nitrogen sources. Use set_specific_metabolite to do this as follows, which sets the amount in mmol in every box in the lattice to the second argument (here, 1,000.). These metabolites should remain fixed and unlimited. Therefore, set the third argument of set_specific_metabolite to True, which means that, at the beginning of each time step, the metabolite amounts will return to 1,000. To make this easier, use a loop that iterates through each metabolite.” ([Dukovski et al., 2021, p. 5068](zotero://select/library/items/9VFN6SPS)) ([pdf](zotero://open-pdf/library/items/7PYT82PT?page=39&annotation=KMVTXZYN))
 
 
+for d in */; do
+    nombre=$(basename "$d")
+    archivo="${d}/out_${nombre}/biomass.txt"
 
-
+    if [ -f "$archivo" ]; then
+        cp "$archivo" "biomass/${nombre}_biomass.txt"
+    fi
+done
 
 
 
