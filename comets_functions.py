@@ -195,6 +195,26 @@ def media(name="lb", dil=0.1, vol=0.03):
             "h2o_e": 55509.29781 * vol,
             "h_e": 1E-04 * vol
         }
+    elif name == "lb2":
+        res = {
+            "na1_e": 186.931246 * vol * dil,
+            "cl_e": 171.820893 * vol * dil,
+            "ca2_e": 0.0800938 * vol * dil,
+            "fe2_e": 0.0456128 * vol * dil,
+            "fe3_e": 0.0456128 * vol * dil,
+            "so4_e": 0.390397 * vol * dil,
+            "pi_e": 4.438244 * vol * dil,
+            "mg2_e": 1.746966 * vol * dil,
+            "k_e": 2.579814 * vol * dil,
+            "cobalt2_e": 2.96947381E-04 * vol * dil,
+            "cu2_e": 0.0052891188 * vol * dil,
+            "mn2_e": 0.0110323638 * vol * dil,
+            "ni2_e": 0.00207757313 * vol * dil,
+            "zn2_e": 0.493722 * vol * dil,
+            "o2_e": 18.2 * vol,
+            "h2o_e": 55509.29781 * vol
+
+    }
     elif name == "lb+ribose":
         res = media("lb", dil)
         res["2dr5p_e"] = 0.1 * dil
