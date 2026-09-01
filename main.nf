@@ -4,7 +4,7 @@ include { PROCESO_MEMOTE } from './memote.nf'
 include { PROCESO_COMETS } from './comets.nf'
 include { PROCESO_COMBOS } from './combos.nf'
 include { PROCESO_DOALL } from './gap_doall.nf'
-include { PROCESO_FILL } from './gap_fill.nf'
+
 
 def combinationsOf(list, k) {
     def lst = list as ArrayList
@@ -52,15 +52,5 @@ workflow COMBOS {
 workflow DOALL {
     genomes_ch = Channel.fromPath("${params.genomes}")
     PROCESO_DOALL(genomes_ch)
-}
+    }
 
-workflow FILL {
-    drafts_ch = Channel.fromPath("${params.fill_input}/*-draft.RDS")
-        .map { draft ->
-            def prefix = draft.name.replace('-draft.RDS', '')
-            def weights = file("${draft.parent}/${prefix}-rxnWeights.RDS")
-            def genes   = file("${draft.parent}/${prefix}-rxnXgenes.RDS")
-            tuple(draft, weights, genes)
-        }
-    PROCESO_FILL(drafts_ch)
-}
