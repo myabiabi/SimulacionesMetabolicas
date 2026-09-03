@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=cometsindi
+#SBATCH --job-name=ec_lbbounds
 #SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.log
 #SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.error
 #SBATCH --time=240:00:00
 #SBATCH --cpus-per-task=2
-#SBATCH --mem=2G
+#SBATCH --mem=8G
 
 cd /mnt/data/sur/users/mmontante/SimulacionesMetabolicas
 
@@ -17,11 +17,13 @@ echo "========================================="
 
 #module load nextflow/24.04.1
 #export JAVA_HOME=/opt/apps/oracle-java/20.0.1
-module load nextflow/25.10.4
+#module load nextflow/25.10.4
 #export JAVA_HOME=/opt/apps/oracle-java/20.0.1
-module load oracle-java/20.0.1
-export JAVA_HOME=/opt/apps/oracle-java/20.0.1
-export NXF_JVM_ARGS="-XX:TieredStopAtLevel=1 -Xmx1g"
+#module load oracle-java/20.0.1
+#export JAVA_HOME=/opt/apps/oracle-java/20.0.1
+#export NXF_JVM_ARGS=-XX:TieredStopAtLevel=1 -Xmx1g"
+module load nextflow/25.10.4
+export NXF_JVM_ARGS="-Xint"
 
 #nextflow run main.nf -entry MEMOTE -profile memote
 nextflow run main.nf -entry COMETS -profile comets -resume

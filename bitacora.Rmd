@@ -47,12 +47,14 @@ Corynebacterium_sp_29_x.fasta_assembly.RAST.fbamodel.xml
 
 Bacillus_altitudinis_23_x-draft.xml
 ```
-for archivo in *-draft.xml; do
+for archivo in *.tsv; do
+    nombre_base="${archivo%.tsv}"
+
     # 2. Definir el prefijo (sin el guion bajo al final para que quede pegado a ST)
-    #prefijo="cc_na_gp_na"
+    #prefijo="rz_pk_cv_lb_"
     
     # 3. Renombrar el archivo combinando todo
-    mv "$archivo" "${prefijo}${nombre_base}.xml"
+    mv "$archivo" "${prefijo}${nombre_base}.tsv"
 done
 ```
 rz_pk_lb_consenso_vparadoxus.xml
@@ -1547,7 +1549,7 @@ mycobacterium completada.
 ###########################
 
 #!/bin/bash
-#SBATCH --job-name=com_results
+#SBATCH --job-name=com5
 #SBATCH --output=%x.log
 #SBATCH --error=%x.error
 #SBATCH --time=1000:00:00
@@ -1566,25 +1568,8 @@ module load COMETS
 
 echo "[INFO] Starting Python script at $(date)"
 
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains vparadoxus --cycles 400000 --outdir ./com1
 
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains arthrobacter --cycles 400000 --outdir ./com2
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains bacillus --cycles 400000 --outdir ./com3
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains bthuringensis --cycles 400000 --outdir ./com4
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains mycobacterium --cycles 400000 --outdir ./com5
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path .02_resultados/rz/models/cv_final --strains paenibacillus --cycles 400000 --outdir ./com6
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/cv_final --strains pseudomonas --cycles 400000 --outdir ./com7
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/cv_final --strains pseudomonas --cycles 400000 --outdir ./com8
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/cv_final --strains pumsongensis --cycles 400000 --outdir ./com9
-
-python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ../02_resultados/rz/models/cv_final --strains rerythropoli --cycles 400000 --outdir ./com10
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./02_resultados/rz/models/finalmodels_cv --strains agrobacterium pseudomonas mycobacterium pumsongensis bthuringensis --cycles 150000 --outdir ./02_resultados/rz/310726simulaciones/com5
 
 
 echo "[INFO] Python script finished at $(date)"
@@ -1592,6 +1577,522 @@ echo "[INFO] Python script finished at $(date)"
 echo "========================================="
 echo "Pipeline done at: $(date)"
 echo "========================================="
+
+
+###########
+
+  GNU nano 5.6.1                                                                            SimulacionesMetabolicas/comets.nf                                                                            Modified  
+process COMETS_RUN {
+    tag "$strain"
+
+    errorStrategy 'ignore'    // <-- ignora el modelo fallido y continúa
+
+    publishDir "${params.outbase}/${strain}", mode: 'copy'
+
+    cpus 1
+
+    input:
+    val strain
+
+    output:
+    path "out_${strain}"
+
+    script:
+    """
+    eval "\$(mamba shell hook --shell bash)"
+    mamba activate python3
+    module load COMETS
+
+    python ${params.comets_script} \\
+      --gem_path ${params.gem_path} \\
+      --strains ${strain} \\
+      --media ${params.media} \\
+      --cycles ${params.cycles} \\
+      --outdir out_${strain}
+    """
+}
+
+workflow PROCESO_COMETS {
+    take:
+    strains_ch
+
+    main:
+    COMETS_RUN(strains_ch)
+}
+
+gem_path	   = '/mnt/data/sur/users/mmontante/02_resultados/rz/models/finalmodels_cv'
+
+media          = 'lb'
+
+    cycles         = 200000
+outbase        = '/mnt/data/sur/users/mmontante/02_resultados/rz/290726simulaciones'
+
+
+
+##########
+find . -type f -name "biomass.txt" | while read -r file; do
+    dir=$(dirname "$file")
+    folder_name=$(basename "$dir")
+    ext="${file##*.}"
+    echo cp "$file" "$dir/$folder_name.$ext"
+done
+
+
+###############
+
+DESTINO="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/210526simulaciones/metabolitos"
+
+# 1. Crear el directorio si no existe
+mkdir -p "$DESTINO"
+
+# 2. Buscar e iterar de forma segura (soporta espacios y saltos de línea)
+find . -type f -iname "*_exchange_fluxes.tsv" -print0 | while IFS= read -r -d '' file; do
+    dir_name=$(basename "$(dirname "$file")")
+    
+    # Copia renombrando como <nombre_carpeta_padre>.tsv
+    cp -n "$file" "$DESTINO/${dir_name}.tsv"
+done
+
+## 100826
+ * gapfill.nf
+
+ * main.nf
+
+
+ * nexflow.config
+```{}
+  GNU nano 5.6.1                                                                                     nexflow.config                                                                                                
+params {
+    fill_input  = '/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq_raw'
+    fill_media  = '/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv'
+    fill_outdir = '/mnt/data/sur/users/mmontante/02_resultados/rz'
+}
+process {
+    executor = 'slurm'
+}
+```
+
+* run_gapfill.slurm
+```{}
+```
+
+
+gapseq_pred.slurm 
+```{}
+#!/bin/bash
+#SBATCH --job-name=pred
+#SBATCH -o logs/pred_%j.log
+#SBATCH -e logs/pred_%j.error
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=20G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+INDIR="/mnt/data/sur/users/mmontante/01_data/cc/raw_data"
+OUTDIR="/mnt/data/sur/users/mmontante"
+
+mkdir -p "$OUTDIR"
+cd "$OUTDIR"
+
+for GENOME in "$INDIR"/*.{fna,faa,fasta}; do
+    [ -e "$GENOME" ] || continue
+    PREFIX=$(basename "$GENOME")
+    PREFIX="${PREFIX%.*}"
+
+    echo ">>> $PREFIX: find"
+    gapseq find -p all "$GENOME"
+
+    echo ">>> $PREFIX: find-transport"
+    gapseq find-transport "$GENOME"
+done
+```
+
+
+
+cat gapseq_fill.slurm 
+```{}
+#!/bin/bash
+#SBATCH --job-name=fill
+#SBATCH -o logs/job_%j.log
+#SBATCH -e logs/job_%j.error
+#SBATCH --time=24:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+INDIR="/mnt/data/sur/users/mmontante"
+OUTDIR="/mnt/data/sur/users/mmontante"
+MEDIA="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
+
+mkdir -p "$OUTDIR"
+cd "$OUTDIR"
+
+for RXN_FILE in "$INDIR"/*-all-Reactions.tbl; do
+    [ -e "$RXN_FILE" ] || continue
+
+    PREFIX=$(basename "$RXN_FILE" "-all-Reactions.tbl")
+    PATH_FILE="$INDIR/${PREFIX}-all-Pathways.tbl"
+    TRANS_FILE="$INDIR/${PREFIX}-Transporter.tbl"
+
+    echo "=================================================="
+    echo "Procesando: $PREFIX — $(date)"
+    echo "=================================================="
+
+    echo ">>> Draft: $PREFIX"
+    gapseq draft -r "$RXN_FILE" -t "$TRANS_FILE" -p "$PATH_FILE"
+
+    echo ">>> Fill: $PREFIX"
+    gapseq fill \
+        -m "${PREFIX}-draft.RDS" \
+        -n "$MEDIA" \
+        -c "${PREFIX}-rxnWeights.RDS" \
+        -g "${PREFIX}-rxnXgenes.RDS" \
+        
+
+    echo ">>> Export: $PREFIX"
+    gapseq export -m "${PREFIX}-fill.RDS" -f sbml -o "${PREFIX}-model.xml"
+
+    echo ">>> Listo: $PREFIX — $(date)"
+done
+echo "¡Proceso completo!"
+```
+
+
+## gapfill
+
+```{}
+#!/bin/bash
+#SBATCH --job-name=pred
+#SBATCH -o logs/pred_%j.log
+#SBATCH -e logs/pred_%j.error
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=20G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+INPUT_DIR="/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq_raw"
+MEDIUM="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
+OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/rz"
+ 
+mkdir -p "$OUTDIR"
+ 
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+ 
+for draft in "$INPUT_DIR"/*-draft.RDS; do
+    id=$(basename "$draft" -draft.RDS)
+    echo "=== Gapfilling $id ==="
+ 
+    gapseq fill -m "$draft" \
+                -n "$MEDIUM" \
+                -c "$INPUT_DIR/${id}-rxnWeights.RDS" \
+                -g "$INPUT_DIR/${id}-rxnXgenes.RDS" \
+                -o "$OUTDIR/"
+ 
+    # gapseq fill nombra la salida igual que el draft (sin "-draft"): le agregamos el prefijo lb_
+    mv "$OUTDIR/${id}.xml" "$OUTDIR/lb_${id}.xml"
+    mv "$OUTDIR/${id}.RDS" "$OUTDIR/lb_${id}.RDS"
+done
+ 
+echo "Gapfilling terminado. Modelos en: $OUTDIR"
+ 
+
+```
+
+
+
+
+```{}
+#!/bin/bash
+#SBATCH --job-name=pred
+#SBATCH -o logs/pred_%j.log
+#SBATCH -e logs/pred_%j.error
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=20G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+INPUT_DIR="/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq_raw"
+MEDIUM="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
+OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/rz/gapfill_medium"
+ 
+mkdir -p "$OUTDIR"
+ 
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+ 
+for draft in "$INPUT_DIR"/*-draft.RDS; do
+    id=$(basename "$draft" -draft.RDS)
+    echo "=== Gapfilling $id ==="
+ 
+    gapseq fill -m "$draft" \
+                -n "$MEDIUM" \
+                -c "$INPUT_DIR/${id}-rxnWeights.RDS" \
+                -g "$INPUT_DIR/${id}-rxnXgenes.RDS" \
+                -f "$OUTDIR/"
+ 
+    mv "$OUTDIR/${id}.xml" "$OUTDIR/ln_${id}.xml"
+    mv "$OUTDIR/${id}.RDS" "$OUTDIR/ln_${id}.RDS"
+done
+```
+
+
+
+```{}
+tail pred_256774.error
+Warning message:
+Deprecation notice: Flag '-o' is now replaced with flag '-f'. Please adjust your script(s), as the flag will be removed in a future release. 
+mv: cannot stat '/mnt/data/sur/users/mmontante/02_resultados/rz/2643221496.xml': No such file or directory
+mv: cannot stat '/mnt/data/sur/users/mmontante/02_resultados/rz/2643221496.RDS': No such file or directory
+Warning message:
+Deprecation notice: Flag '-o' is now replaced with flag '-f'. Please adjust your script(s), as the flag will be removed in a future release. 
+mv: cannot stat '/mnt/data/sur/users/mmontante/02_resultados/rz/2643221503.xml': No such file or directory
+mv: cannot stat '/mnt/data/sur/users/mmontante/02_resultados/rz/2643221503.RDS': No such file or directory
+Warning message:
+Deprecation notice: Flag '-o' is now replaced with flag '-f'. Please adjust your script(s), as the flag will be removed in a future release.
+```
+
+```{r}
+cat gapfill.slurm 
+#!/bin/bash
+#SBATCH --job-name=pred
+#SBATCH -o pred_%j.log
+#SBATCH -e pred_%j.error
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=20G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+INPUT_DIR="/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq_raw"
+MEDIUM="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
+OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/rz"
+ 
+mkdir -p "$OUTDIR"
+ 
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+ 
+for draft in "$INPUT_DIR"/*-draft.RDS; do
+    id=$(basename "$draft" -draft.RDS)
+    echo "=== Gapfilling $id ==="
+ 
+    gapseq fill -m "$draft" \
+                -n "$MEDIUM" \
+                -c "$INPUT_DIR/${id}-rxnWeights.RDS" \
+                -g "$INPUT_DIR/${id}-rxnXgenes.RDS" \
+                -o "$OUTDIR/"
+ 
+    # gapseq fill nombra la salida igual que el draft (sin "-draft"): le agregamos el prefijo lb_
+    mv "$OUTDIR/${id}.xml" "$OUTDIR/lb_${id}.xml"
+    mv "$OUTDIR/${id}.RDS" "$OUTDIR/lb_${id}.RDS"
+done
+ 
+echo "Gapfilling terminado. Modelos en: $OUTDIR"
+[mmontante@login01 mmontante]$ cat gapfill2.slurm 
+#!/bin/bash
+#SBATCH --job-name=pred2
+#SBATCH -o logs/pred2_%j.log
+#SBATCH -e logs/pred2_%j.error
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=20G
+
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+
+INPUT_DIR="/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq_raw"
+MEDIUM="/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv"
+OUTDIR="/mnt/data/sur/users/mmontante/02_resultados/rz/gapfill_medium"
+ 
+mkdir -p "$OUTDIR"
+ 
+eval "$(conda shell.bash hook)"
+conda activate gapseq
+ 
+for draft in "$INPUT_DIR"/*-draft.RDS; do
+    id=$(basename "$draft" -draft.RDS)
+    echo "=== Gapfilling $id ==="
+ 
+    gapseq fill -m "$draft" \
+                -n "$MEDIUM" \
+                -c "$INPUT_DIR/${id}-rxnWeights.RDS" \
+                -g "$INPUT_DIR/${id}-rxnXgenes.RDS" \
+                -f "$OUTDIR/"
+ 
+    cd "$OUTDIR/${id}.xml" "$OUTDIR/ln_${id}.xml"
+    cd "$OUTDIR/${id}.RDS" "$OUTDIR/ln_${id}.RDS"
+done
+[mmontante@login01 mmontante]$ 
+
+
+```
+
+me quedé con el gapfilling2
+  ✅ "Arthrobacter sp.",
+  ✅"Rhodococcus erythropolis", 
+  ✅ "Pseudomonas sp.",
+  ✅"Variovorax paradoxus", 
+  ✅ "Bacillus thuringiensis",
+  "Paenibacillus sp.", 
+  ✅"Pseudomonas umsongensis",
+  "Mycobacterium sp.", 
+  ✅ "Agrobacterium sp." 
+  ✅"Bacillus sp."
+
+
+## GAPFILLING CC MEDIO MARINO 
+
+tail logs/mm256951.*
+==> logs/mm256951.error <==
+Execution halted
+Warning in media_check(media.file, mod.orig, seed_x_mets) :
+  Unknown compound identifier: cpd1012 will be ignored.Unknown compound identifier: cpd00476 will be ignored.
+Warning in media_check(media.file, mod.orig, seed_x_mets) :
+  Potentially missing compounds in medium: cpd00030 Mn2+, cpd00058 Cu2+, cpd10516 Fe3+
+Warning in media_check(media.file, mod.orig, seed_x_mets) :
+  For cellulose the identifier cpd90020 is recommended.
+Error in gapfill4(mod.orig = mod.orig, mod.full = mod, rxn.weights = copy(rxn.weights),  : 
+  Initial gap-filling using all reactions was not successful although all available reactions were considered. Please check your gap-filling medium or consider reducing the minimum required growth rate.
+Execution halted
+
+==> logs/mm256951.log <==
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 1.5625e-05 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 7.8125e-06 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 3.90625e-06 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 1.953125e-06 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 9.765625e-07 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 4.882813e-07 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 2.441406e-07 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 1.220703e-07 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 6.103516e-08 
+No feasible gap-fill solution found. Relaxing pFBA coefficient 'c' to 3.051758e-08 
+
+
+## 1110
+
+SIMULACIONES DE CC
+
+    gem_path	   = '/mnt/data/sur/users/mmontante/02_resultados/cc/models'
+     comets {
+	    process.executor = 'slurm'
+        process.memory     = '100 GB'
+        process.cpus	  = 4
+        params.outbase    = '/mnt/data/sur/users/mmontante/02_resultados/rz/310726simulaciones'
+        outbase        = '/mnt/data/sur/users/mmontante/02_resultados/cc'
+
+dil y vol use los defaults (0.1 y 0.03y
+)
+
+
+172126
+
+ddef media_marino_minimo(dil=1):
+    return {
+        "al3_e":      0.07      * dil,
+        "borate_e":   0.42      * dil,
+        "co2_e":      2.29      * dil,
+        "ca2_e":      10        * dil,
+        "cl_e":       536       * dil,
+        "cobalt2_e":  1.70e-6   * dil,
+        "cu2_e":      1.40e-3   * dil,
+        "f_e":        0.074     * dil,
+        "iodine_e":   3.90e-4   * dil,
+        "fe2_e":      1.80e-4   * dil,
+        "fe3_e":      1.80e-4   * dil,
+        "mg2_e":      52.3      * dil,
+        "mn2_e":      1.80e-4   * dil,
+        "nh4_e":      3.0e-4    * dil,   # rango 3.0e-4 - 1.5e-2, valor mínimo
+        "no3_e":      8.87e-5   * dil,
+        "no2_e":      1.09e-4   * dil,
+        "ni2_e":      8.50e-6   * dil,
+        "o2_e":       0.28,
+        "pi_e":       3.20e-3   * dil,
+        "k_e":        9.72      * dil,
+        "h_e":        1.0e-5,
+        "h2s_e":      0.01      * dil,
+        "so4_e":      0.039     * dil,
+        "so3_e":      5.00e-3   * dil,
+        "tsul_e":     5.00e-3   * dil,
+        "na1_e":      459       * dil,
+        "zn2_e":      2.10e-3   * dil,
+        "h2o_e":      55.5,
+    }
+    
+    
+    
+
+
+
+for f in *.xml; do
+    base=$(basename "$f")
+    cp "$f" "/mnt/data/sur/users/mmontante/02_resultados/cc/models/cc_pk_gp_mm_$base"
+done
+
+
+
+
+b altitudinales
+b infanis
+b thuringensis
+corynebacterium
+metabacillus
+micrococos
+s arlette
+s shinni
+
+falta de cc_na_gp_mm 
+b atrohaeus
+p megaterium
+
+
+cc_pk_gp_mm faltan 2 
+m indicus
+Staphylococcus arlettae
+
+cc_na_gp_mm
+priesta 
+
+## 190826 
+COMETS articulo: 
+“First, populate the entire simulation with trace metabolites that are essential to growth but are not carbon or nitrogen sources. Use set_specific_metabolite to do this as follows, which sets the amount in mmol in every box in the lattice to the second argument (here, 1,000.). These metabolites should remain fixed and unlimited. Therefore, set the third argument of set_specific_metabolite to True, which means that, at the beginning of each time step, the metabolite amounts will return to 1,000. To make this easier, use a loop that iterates through each metabolite.” ([Dukovski et al., 2021, p. 5068](zotero://select/library/items/9VFN6SPS)) ([pdf](zotero://open-pdf/library/items/7PYT82PT?page=39&annotation=KMVTXZYN))
+
+
+for d in */; do
+    nombre=$(basename "$d")
+    archivo="${d}/out_${nombre}/biomass.txt"
+
+    if [ -f "$archivo" ]; then
+        cp "$archivo" "biomass_lb2/${nombre}_biomass.txt"
+    fi
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

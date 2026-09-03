@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=com_results
+#SBATCH --job-name=com100826
 #SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/logs/%x.log
 #SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/logs/%x.error
 #SBATCH --time=1000:00:00

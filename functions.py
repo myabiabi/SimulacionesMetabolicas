@@ -106,27 +106,144 @@ def mergem_function(ruta_input, ruta_output, lista_patrones):
     return resultados_totales
 
 
+import os
+import glob
+from itertools import combinations
+#import mergem
+import cobra
+import pandas as pd
+
+def mergem_statistics(ruta_input, ruta_output, lista_patrones):
+    """
+    Para cada patrón en la lista, busca todos los modelos .xml que lo
+    contengan en el nombre y calcula la distancia/similitud de Jaccard
+    para TODOS los pares posibles de esos modelos (no solo el consenso
+    global).
+
+    Devuelve un diccionario:
+        resultados_totales[patron] = {
+            "pares": {(archivo1, archivo2): jacc_valor, ...},
+            "tabla": DataFrame con columnas [modelo_1, modelo_2, jaccard]
+        }
+    """
+    resultados_totales = {}
+
+    print(f"Iniciando para {len(lista_patrones)} patrones...")
+    os.makedirs(ruta_output, exist_ok=True)
+
+    for patron in lista_patrones:
+
+        # 1. Buscar archivos para ESTE patrón
+        input_models = [
+            f for f in glob.glob(os.path.join(ruta_input, "*.xml"))
+            if patron.lower() in os.path.basename(f).lower()
+        ]
+
+        # Validaciones
+        if not input_models:
+            print(f"No se encontraron archivos para: '{patron}'")
+            continue
+
+        if len(input_models) < 2:
+            print(f"Solo se encontró {len(input_models)} modelo para '{patron}'. Se necesitan al menos 2.")
+            continue
+
+        print(f"\n========================================")
+        print(f"Calculando Jaccard por pares para: {patron.upper()}")
+        print(f"Se encontraron {len(input_models)} modelos.")
+
+        # 2. Generar TODOS los pares posibles para este patrón
+        couples = list(combinations(input_models, 2))
+        print(f"Se evaluarán {len(couples)} combinaciones posibles.")
+
+        pares_resultado = {}
+        filas_tabla = []
+
+        # 3. Ejecutar mergem PAR POR PAR
+        for modelo_a, modelo_b in couples:
+            nombre_a = os.path.basename(modelo_a)
+            nombre_b = os.path.basename(modelo_b)
+
+            try:
+                results = mergem.merge(
+                    [modelo_a, modelo_b],
+                    set_objective='merge',
+                    exact_sto=False,
+                    use_prot=False,
+                    extend_annot=False,
+                    trans_to_db=None
+                )
+
+                # jacc_matrix es 2x2 para un par; el valor de interés
+                # es el elemento fuera de la diagonal (comparación entre
+                # los dos modelos distintos)
+                jacc_matrix = results['jacc_matrix']
+                jacc_valor = jacc_matrix[0][1]
+
+                pares_resultado[(nombre_a, nombre_b)] = jacc_valor
+                filas_tabla.append({
+                    "modelo_1": nombre_a,
+                    "modelo_2": nombre_b,
+                    "jaccard": jacc_valor
+                })
+
+                print(f"  {nombre_a} vs {nombre_b} -> Jaccard = {jacc_valor:.4f}")
+
+            except Exception as e:
+                print(f"  Error comparando {nombre_a} vs {nombre_b}: {e}")
+                continue
+
+        # 4. Guardar tabla de resultados para este patrón
+        tabla_df = pd.DataFrame(filas_tabla)
+        nombre_csv = f"jaccard_pares_{patron.lower()}.csv"
+        ruta_csv = os.path.join(ruta_output, nombre_csv)
+        tabla_df.to_csv(ruta_csv, index=False)
+        print(f"Tabla de Jaccard guardada en: {ruta_csv}")
+
+        resultados_totales[patron] = {
+            "pares": pares_resultado,
+            "tabla": tabla_df
+        }
+
+    print("fin")
+    return resultados_totales
+
+
 
 import glob
 import os
 
-def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/mergem/models"):
+def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/2408_gemsembler_4c"):
+    """los archivos deben estar ordenados de esta forma: 
+     models
+     ------bacteria1 
+        -------------genome1
+        -------------cc_pk_lb_carveme.xml
+        -------------cc_pk_lb_modelseed
+        -------------cc_pk_lb_gapseq
+     ------bacteria2
+        -------------genome2
+        -------------c_pk_lb_carveme.xml
+        -------------cc_pk_lb_modelseed
+        -------------cc_pk_lb_gapseq"""
+    
+        
     bacterias = []
     for carpeta in sorted(glob.glob(os.path.join(data_dir, "*"))):
         if not os.path.isdir(carpeta):
             continue
         id_bacteria = os.path.basename(carpeta)
 
-        genoma_nt = os.path.join(carpeta, "genome.fna")
+        genoma_nt = os.path.join(carpeta, "genome.fasta")
         genoma_aa = os.path.join(carpeta, "genome.faa")
 
         modelos = []
 
         # --- AQUÍ va el cambio, reemplazando el for anterior ---
         tipos_archivo = {
-            "rz_pk_lb_carveme": "carveme",
-            "rz_pk_lb_modelseed": "modelseed",
-            "rz_pk_lb_gapseq": "gapseq",
+            "cc_pk_lb_mm_carveme": "carveme",
+            "cc_pk_mm_modelseed": "modelseed",
+            "cc_pk_mm_gapseq": "gapseq",
         }
 
         for nombre_archivo, tipo_real in tipos_archivo.items():
@@ -153,19 +270,100 @@ def filtrar_bacterias(data_dir="/home/abigaylmontantearenas/Documents/proyecto_t
     return bacterias
 
 
+import pandas as pd
 
 
 
+BIGG_METS_URL = "http://bigg.ucsd.edu/static/namespace/bigg_models_metabolites.txt"
 
 
+def _load_bigg_metabolites(url: str = BIGG_METS_URL) -> pd.DataFrame:
+    """Descarga la tabla de metabolitos de BiGG."""
+    df = pd.read_csv(url, sep="\t")
+    id_col = 'bigg_id' if 'bigg_id' in df.columns else df.columns[0]
+    name_col = 'name' if 'name' in df.columns else df.columns[1]
+    return df.rename(columns={id_col: 'bigg_id', name_col: 'name'})
 
+
+def buscar_metabolitos(nombres, compartimento="_e", top_n=3, url=BIGG_METS_URL):
+    """
+    Busca IDs de BiGG para una lista de nombres/fórmulas de metabolitos.
+    Solo considera coincidencias 'exactas' o que 'empiezan con' el término buscado.
+    Los metabolitos sin coincidencia se agregan igual, con bigg_id/name en NaN,
+    y se conserva el orden original de la lista de entrada.
+
+    Parameters
+    ----------
+    nombres : list[str]
+        Nombres o fórmulas a buscar (ej. ['glucose', 'ethanol', 'h2o']).
+    compartimento : str
+        Sufijo del bigg_id a filtrar (ej. '_e' para extracelular).
+        Usa None para no filtrar por compartimento.
+    top_n : int
+        Número máximo de candidatos a devolver por nombre buscado.
+    url : str
+        URL (o path local) del archivo de metabolitos de BiGG.
+
+    Returns
+    -------
+    pd.DataFrame con columnas: query, bigg_id, name, match_type
+    """
+    df = _load_bigg_metabolites(url)
+
+    if compartimento:
+        df = df[df['bigg_id'].str.endswith(compartimento, na=False)]
+
+    resultados = []
+    for m in nombres:
+        nombre_lower = df['name'].str.lower().fillna("")
+        m_lower = m.lower()
+
+        # 1) match exacto de nombre completo
+        exact = df[nombre_lower == m_lower]
+        # 2) el nombre empieza con la búsqueda (ej. 'glucose' -> 'Glucose exchange')
+        starts = df[nombre_lower.str.startswith(m_lower) & ~(nombre_lower == m_lower)]
+
+        encontrado = False
+        for subset, tipo in [(exact, "exacto"), (starts, "empieza_con")]:
+            if not subset.empty:
+                encontrado = True
+                subset = subset.assign(name_len=subset['name'].str.len()) \
+                                .sort_values('name_len') \
+                                .drop(columns='name_len')
+                subset = subset.head(top_n).copy()
+                subset['query'] = m
+                subset['match_type'] = tipo
+                resultados.append(subset[['query', 'bigg_id', 'name', 'match_type']])
+
+        if not encontrado:
+            print(f"⚠️  No se encontraron coincidencias para: '{m}'")
+            resultados.append(pd.DataFrame([{
+                'query': m,
+                'bigg_id': pd.NA,
+                'name': pd.NA,
+                'match_type': 'no_encontrado'
+            }]))
+
+    resultado_final = pd.concat(resultados, ignore_index=True).drop_duplicates(subset=['query', 'bigg_id'], keep='first')
+
+    # Conservar el orden original de `nombres`
+    resultado_final['query'] = pd.Categorical(resultado_final['query'], categories=nombres, ordered=True)
+    resultado_final = resultado_final.sort_values('query').reset_index(drop=True)
+
+    return resultado_final
+
+
+# Uso
+#medio_names = ['glucose', 'ethanol', 'h2o', 'phosphate']
+#final_df = buscar_metabolitos(medio_names)
+#print(final_df)
 
 # # Print the total number of reactions
 # print(f"Total reactions: {len(model.reactions)}")
 
 # # Print a formatted list of all reactions with their IDs and stoichiometry
-# for reaction in model.reactions:
-#     print(f"{reaction.id}: {reaction.reaction}")
+ for reaction in model.metabolites:
+     print(f"{metabolites.id}: {metabolites.metabolites}")
 
 
 # # Load the model from your xml/sbml file

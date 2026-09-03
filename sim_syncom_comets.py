@@ -58,11 +58,11 @@ def process_arguments():
     parser.add_argument("--media_dil",
                         help="Dilution factor for the media. Example: 0.1 for 1/10 dilution.",
                         type=float,
-                        default=1)
+                        default=0.1)
     parser.add_argument("--media_vol",
-                         help="Volume of media to use.",
+                         help="Volume of media to use. Example: 0.03 for 30 mL.",
                          type=float,
-                         default=1)
+                         default=0.03)
     parser.add_argument("--initial_mass",
                         help=("Initial mass for each strain in grams of dry weight. Example: 1e-8"
                               "Currently, only identical starting masses for all strains are supported."),

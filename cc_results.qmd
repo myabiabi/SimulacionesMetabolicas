@@ -1,0 +1,817 @@
+---
+title: "graficas_cc"
+format: html
+editor: visual
+---
+
+## Paquetería
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(ggplot2)
+library(readr)     
+library(ggplot2)   
+library(dplyr)     
+library(stringr)   
+library(fs)     
+library(igraph)
+library(pracma)
+library(ggrepel)
+library(growthcurver)
+library(ggbeeswarm)
+library(DescTools)
+library(scales) 
+
+
+```
+
+## Medio
+
+```{r}
+library(dplyr)
+medpred <- list.files("/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medium_pred", full.names = TRUE)
+
+total_mets <- list()
+for (i in medpred) {
+    df <- read.csv(i)
+    colnames(df)[2] <- "mets"
+    total_mets <- append(total_mets, df$mets)
+}
+
+clean_df <- unique(unlist(total_mets))
+write.csv(clean_df, "/home/abigaylmontantearenas/Documents/proyecto_tesis/01_data/media/medio_consenso.csv", row.names = FALSE)
+
+medexp <- c(
+  "sodium",
+  "chloride",
+  "sulfate",
+  "Calcium",
+  "Potassium",
+  "Carbonate",
+  "Bromide",
+  "Fluoride",
+  "Magnesium",
+  "Iron",
+  "phosphate",
+  "ammonium",
+  "nitrate",
+  "Alanine",
+  "Aspartic",
+  "Asparagine",
+  "Glutamic",
+  "Glutamine",
+  "Glycine",
+  "Histidine",
+  "Isoleucine",
+  "Leucine",
+  "Lysine",
+  "Methionine",
+  "Phenylalanine",
+  "Proline",
+  "Serine",
+  "Threonine",
+  "Tryptophan",
+  "Tryptophan",
+  "Valine",
+  "Arginine",
+  "Cystine",
+  "Aluminum",
+  "Barium",
+  "Cadmium",
+  "Cobalt",
+  "Chromium",
+  "Gallium",
+  "Cooper",
+  "Manganese",
+  "Nickel",
+  "Lead",
+  "Srontium",
+  "Vanadium",
+  "Tin",
+  "Zinc",
+  "Titanium",
+  "Molybdenum",
+  "Adenine",
+  "Guanine",
+  "Cytosine",
+  "Uracil",
+  "Ammonia",
+  "Cellulose",
+  "Mannose",
+  "Folate",
+  "Pantothenate",
+  "Biotin",
+  "Selenium",
+  "Vitamin C, total ascorbic acid",
+  "Thiamin",
+  "Riboflavin",
+  "Niacin",
+  "Vitamin B-6",
+  "Vitamin B-12",
+  "Oxygen",
+  "Water",
+  "Protons"
+)
+
+medgapfill <- c(
+  "H2O",
+  "Sodium",
+  "K+",
+  "Cl-",
+  "Fe2+",
+  "Fe3+",
+  "Phosphate",
+  "Cobalt",
+  "Mg",
+  "Nickel",
+  "Sulfate",
+  "H2S",
+  "Zn2+",
+  "Cu2+",
+  "Mn2+",
+  "Ca2+",
+  "Ammonium",
+  "O2",
+  "D-Glucose",
+  "D-Fructose",
+  "Sucrose",
+  "Xylan-b-1-4",
+  "Trehalose",
+  "Xylose",
+  "Acetate",
+  "H+",
+  "starch (n=27, 3xalpha1-6, 23xalpha1-4)",
+  "Inulin (2,1-beta-D-fructan)",
+  "N-Acetyl-D-glucosamine",
+  "L-Rhamnose",
+  "Lactose",
+  "L-Serine",
+  "L-Valine",
+  "Chorismate",
+  "L-Methionine",
+  "L-Proline",
+  "L-Tyrosine",
+  "Thiamin",
+  "Riboflavin",
+  "L-Phenylalanine"
+)
+
+inter_mets <- intersect(medexp, medgapfill)
+write.csv(inter_mets, "/home/abigaylmontantearenas/Documents/proyecto_tesis/310826/medio_comparacion.csv", row.names = FALSE)
+
+```
+
+## Número de variables
+
+### General
+
+```{r}
+library(tidyverse)
+
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/cc_final/variables_totales.csv"
+df_variables <- read_csv(variables_file, show_col_types = FALSE)
+
+# Corrección aquí: names(df_variables)
+names(df_variables) <- trimws(names(df_variables))
+
+df_variables$Method <- factor(
+  df_variables$Method,
+  levels = c("CV", "KB", "GP")
+)
+
+df_long <- df_variables %>%
+  pivot_longer(
+    cols = c(
+      Reactions,
+      Metabolites,
+      Genes
+    ),
+    names_to = "Variable",
+    values_to = "Value"
+  )
+
+general <- ggplot(
+  df_long,
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Method
+  )
+) +
+  geom_boxplot(
+    alpha = 0.4,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8)
+  ) +
+  coord_cartesian(ylim = c(0, 3000)) +
+  geom_jitter(
+    aes(color = Method),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2,
+    alpha = 0.9
+  ) +
+  scale_fill_manual(
+    values = c(
+      CV = "#79CDCD",
+      KB = "#BCEE68",
+      GP = "#FFC0CB"
+    ),
+    labels = c(
+      CV = "CarveMe",
+      KB = "KBase",
+      GP = "gapseq"
+    )
+  ) +
+  scale_color_manual(
+    values = c(
+      CV = "#528B8B",
+      KB = "#6E8B3D",
+      GP = "#C71585"
+    ),
+    labels = c(
+      CV = "CarveMe",
+      KB = "KBase",
+      GP = "gapseq"
+    )
+  ) +
+  labs(
+    fill = "Method",
+    color = "Method",
+    x = "",
+    y = "Count"
+  ) +
+  guides(color = "none") +
+  theme_bw()
+
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/cc_final/variables_totales.png", 
+  plot = general, 
+  width = 18,           
+  height = 7,           
+  units = "in",         
+  dpi = 600             
+)
+
+print(general)
+
+
+```
+
+### Por anotación
+
+```{r}
+
+variables_file <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/cc_final/variables_totales.csv"
+df_variables <- read_csv(variables_file)
+
+df_long <- df_variables %>%
+  pivot_longer(
+    cols = c(
+      Reactions,
+      Metabolites,
+      Genes
+    ),
+    names_to = "Variable",
+    values_to = "Value"
+  )
+
+df_long_cv <- df_long %>%
+  filter(Reconstruction %in% c("CV", "CV_LB", "CV_MM", "CV_LB_MM", "PK_CV", "PK_CV_LB", "PK_CV_MM", "PK_CV_LB_MM"))
+
+# Definir el orden de los grupos
+df_long_cv$Reconstruction <- factor(
+  df_long_cv$Reconstruction,
+  levels = c("CV", "CV_LB", "CV_MM", "CV_LB_MM", "PK_CV", "PK_CV_LB", "PK_CV_MM", "PK_CV_LB_MM")
+)
+
+# Paleta de colores unificada
+colores_carve <- c(
+  CV       = "#000080",  
+  CV_LB    = "#48AAAD",
+  CV_MM    = "#10AAAD",
+  CV_LB_MM = "#1069E1",
+  PK_CV    = "#4169E1",
+  PK_CV_LB = "#016064",
+  PK_CV_MM = "#406066",
+  PK_CV_LB_MM = "#506950"
+)
+
+etiquetas_carve <- c(
+  "CarveMe",
+  "CarveMe + LB",
+  "CarveMe + MM", 
+  "CarveMe + LB_MM",
+  "Prokka + CarveMe",
+  "Prokka + CarveMe + LB",
+  "Prokka + CarveMe + MM",
+  "Prokka + CarveMe + LB_MM"
+
+)
+
+# Creación de la gráfica
+carve <- ggplot(
+  df_long_cv, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.4,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8)
+) +
+  coord_cartesian(ylim = c(0, 3000)) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_carve,
+    labels = etiquetas_carve
+  ) +
+  scale_color_manual(
+    values = colores_carve,
+    labels = etiquetas_carve
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/cc_final/cc_carveme.png", 
+  plot = carve, 
+  width = 18,           
+  height = 7,           
+  units = "in",         
+  dpi = 600             
+)
+
+# Mostrar la gráfica
+print(carve)
+
+# KBASE
+# Filtrar únicamente los métodos de KBase
+df_long_kb<- df_long %>%
+  filter(Reconstruction %in% c("KB", "KB_LB", "KB_MM", "PK_KB", "PK_KB_LB", "PK_KB_MM"))
+
+# Definir el orden de los grupos
+df_long_kb$Reconstruction <- factor(
+  df_long_kb$Reconstruction,
+  levels = c("KB", "KB_LB", "KB_MM", "PK_KB", "PK_KB_LB", "PK_KB_MM")
+)
+
+# Paleta de colores unificada
+colores_kb <- c(
+  KB       = "#2E8B57",
+  KB_LB    = "#98FB98",
+  KB_MM    = "#60FB98",
+  PK_KB    = "#98FA35",
+  PK_KB_LB = "#1E5631",
+  PK_KB_MM = "#2E6020"
+)
+etiquetas_kb <- c(
+  "KBase",
+  "KBase + LB",
+  "KBase + MM",
+  "Prokka + KBase",
+  "Prokka + KBase + LB",
+  "Prokka + KBase + MM"
+
+)
+# Creación de la gráfica
+kbase <- ggplot(
+  df_long_kb, # Usar el dataframe filtrado
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  coord_cartesian(ylim = c(0, 3000)) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_kb,
+    labels = etiquetas_kb
+  ) +
+  scale_color_manual(
+    values = colores_kb,
+    labels = etiquetas_kb
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(kbase)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/cc_final/cc_kbase.png", 
+  plot = kbase, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
+
+#########
+
+# Filtrar únicamente los métodos de KBase
+df_long_gp<- df_long %>%
+  filter(Reconstruction %in% c("GP", "GP_LB", "GP_MM", "PK_GP", "PK_GP_LB", "PK_GP_MM"))
+
+# Definir el orden de los grupos
+df_long_gp$Reconstruction <- factor(
+  df_long_gp$Reconstruction,
+  levels = c("GP", "GP_LB", "GP_MM", "PK_GP", "PK_GP_LB", "PK_GP_MM")
+)
+
+# Paleta de colores unificada
+colores_gp <- c(
+  "GP"    = "#C71585",
+  "GP_LB" = "#c71605",
+  "GP_MM" = "#C80585",
+  "PK_GP" = "#FFB6C1",
+  "PK_GP_LB" = "#FFB7A1",
+  "PK_GP_MM" = "#FFB6F1"
+  )
+etiquetas_gp <- c(
+  "GapSeq ",
+  "GapSeq + LB",
+  "GapSeq + MM",
+  "Prokka + GapSeq ",
+  "Prokka + GapSeq + LB",
+  "Prokka + GapSeq + MM"
+)
+# Creación de la gráfica
+gapseq <- ggplot(
+  df_long_gp, 
+  aes(
+    x = Variable,
+    y = Value,
+    fill = Reconstruction
+  )
+) +
+  geom_boxplot(
+    alpha = 0.5,
+    outlier.shape = NA,
+    position = position_dodge(width = 0.8),
+    width = 0.7
+  ) +
+  coord_cartesian(ylim = c(0, 3000)) +
+  geom_jitter(
+    aes(color = Reconstruction),
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.8
+    ),
+    size = 2.5,
+    alpha = 0.8
+  ) +
+  scale_fill_manual(
+    values = colores_gp,
+    labels = etiquetas_gp
+  ) +
+  scale_color_manual(
+    values = colores_gp,
+    labels = etiquetas_gp
+  ) +
+  labs(
+    x = "",
+    y = "Count",
+    fill = "Reconstruction",
+    color = "Reconstruction"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      size = 12,
+      face = "bold"
+    )
+  )
+
+# Mostrar la gráfica
+print(gapseq)
+
+# Guardar la gráfica en disco
+ggsave(
+  filename = "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/cc_final/cc_gapseq.png", 
+  plot = gapseq, 
+  width = 18, 
+  height = 7, 
+  units = "in", 
+  dpi = 600 
+)
+
+```
+
+## MEMOTE
+
+```{r}
+
+```
+
+## Distacia Jaccard
+
+```{r}
+
+
+```
+
+## Velocidad
+
+```{r}
+
+directorio <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/1708/1708_mm_biomass"  # Cambia por tu ruta (ej. "./datos")
+
+archivos <- list.files(path = directorio, pattern = "\\.txt$", full.names = TRUE)
+
+# 3. Función para procesar un solo archivo
+procesar_archivo <- function(ruta_archivo) {
+  # Leer el archivo delimitado por espacios/tabulaciones
+  # Las columnas esperadas según tu ejemplo son: tiempo, x, y, simulation_id, biomass
+  datos <- read.table(ruta_archivo, header = FALSE, stringsAsFactors = FALSE, fill = TRUE)
+  
+  # Asignamos nombres a las columnas (ajusta según el número exacto de columnas)
+  colnames(datos)[c(1, 4, 5)] <- c("time", "simulation", "biomass")
+  
+  # Limpiar el nombre de la simulación (quitar la extensión .cmd si es necesario)
+  nombre_sim <- gsub("\\.cmd$", "", datos$simulation[1])
+  
+  # Obtener el primer y último valor de biomasa (asegurando tipo numérico)
+  initial_mass <- as.numeric(head(na.omit(datos$biomass), 1))
+  final_mass   <- as.numeric(tail(na.omit(datos$biomass), 1))
+  
+  # Si el tiempo total es necesario para calcular la tasa/velocidad:
+  t_inicial <- head(datos$time, 1)
+  t_final   <- tail(datos$time, 1)
+  dt <- t_final - t_inicial
+  
+  # Calcular la diferencia absoluta o velocidad
+  # Si es solo la diferencia: final_mass - initial_mass
+  # Si es velocidad por unidad de tiempo: (final_mass - initial_mass) / dt
+  velocity <- ifelse(dt > 0, (final_mass - initial_mass) / dt, final_mass - initial_mass)
+  
+  # Retornar una fila con los resultados
+  tibble(
+    simulation   = nombre_sim,
+    initial_mass = initial_mass,
+    final_mass   = final_mass,
+    velocity     = velocity
+  )
+}
+
+# 4. Aplicar la función a todos los archivos y combinar en un solo DataFrame
+tabla_resultados <- map_df(archivos, procesar_archivo)
+
+# 5. Visualizar la tabla resultante
+print(tabla_resultados)
+
+# 6. Guardar el resultado en un archivo CSV o TXT
+write.csv(tabla_resultados, "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/1708/1708_mm_biomass/cambio_biomasas.csv", row.names = FALSE)
+```
+
+```{r}
+# 1. Cargar datos
+data <- read.csv("/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/1708/1708_mm2_biomass/cambio_biomasas.csv")
+
+# 2. Prefijos ordenados por longitud descendente
+mis_prefijos <- c(
+  "cc_na_cv_lb_mm", "cc_pk_cv_lb_mm", 
+  "cc_na_kb_rt_na", "cc_na_kb_rt_lb", "cc_na_kb_rt_mm",
+  "cc_pk_kb_rt_na", "cc_pk_kb_rt_lb", "cc_pk_kb_rt_mm",
+  "cc_na_cv_na", "cc_na_cv_lb", "cc_na_cv_mm",
+  "cc_pk_cv_na", "cc_pk_cv_lb", "cc_pk_cv_mm",
+  "cc_na_gp_na", "cc_na_gp_lb", "cc_na_gp_mm",
+  "cc_pk_gp_na", "cc_pk_gp_lb", "cc_pk_gp_mm"
+)
+mis_prefijos <- mis_prefijos[order(nchar(mis_prefijos), decreasing = TRUE)]
+
+# 3. Asignar Condition, ID, Grupo (_cv_, _gp_, _kb_) y Color_Group
+data_clean <- data %>%
+  rowwise() %>%
+  mutate(
+    Condition = mis_prefijos[sapply(mis_prefijos, function(p) str_starts(simulation, p))][1],
+    ID = str_remove(simulation, paste0("^", Condition, "_?")) %>% 
+         str_remove("_biomass$")
+  ) %>%
+  ungroup() %>%
+  mutate(
+    Grupo = case_when(
+      str_detect(Condition, "_cv_") ~ "CV",
+      str_detect(Condition, "_gp_") ~ "GP",
+      str_detect(Condition, "_kb_") ~ "KB",
+      TRUE ~ "Otros"
+    ),
+    Color_Group = if_else(velocity == 0, "Cero (Sin crecimiento)", "Crecimiento (>0)")
+  ) %>%
+  filter(!is.na(Condition))
+
+# 4. Directorio de salida
+plots_dir <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/1708/1708_mm2_biomass"
+dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
+
+# 5. Generar, mostrar y guardar gráficas por grupo
+for (grp in c("CV", "GP", "KB")) {
+  df_grp <- data_clean %>% filter(Grupo == grp)
+  
+  if (nrow(df_grp) == 0) next
+  
+  p <- ggplot(df_grp, aes(x = ID, y = velocity, color = Color_Group)) +
+    geom_point(size = 2.5, alpha = 0.8) +
+    scale_color_manual(values = c("Cero (Sin crecimiento)" = "red", "Crecimiento (>0)" = "#2b5c8f")) +
+    scale_y_continuous(trans = pseudo_log_trans(base = 10)) +
+    facet_wrap(~ Condition, scales = "free_x") +
+    theme_bw() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
+      plot.title = element_text(face = "bold", size = 12),
+      strip.background = element_rect(fill = "#e0e0e0"),
+      strip.text = element_text(face = "bold", size = 8),
+      legend.position = "bottom"
+    ) +
+    labs(
+      title = paste("Velocidad de Crecimiento - Grupo:", grp),
+      x = "ID",
+      y = "Velocidad",
+      color = "Estado"
+    )
+  
+  print(p)
+  
+  ggsave(
+    filename = file.path(plots_dir, paste0("velocidades_grupo_", grp, ".png")),
+    plot = p,
+    width = 12,
+    height = 8,
+    dpi = 300
+  )
+}
+```
+
+## Curvas individuales
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(fs)
+
+indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/03092/"
+output_folder <- file.path(indi_path, "plots_individuales")
+dir_create(output_folder)
+
+# 1. Comprobar búsqueda de archivos
+all_mass <- list.files(path = indi_path, pattern = "biomass", recursive = TRUE, full.names = TRUE)
+message("Archivos 'biomass' encontrados: ", length(all_mass))
+
+if (length(all_mass) == 0) {
+  stop("No se encontraron archivos que coincidan con 'biomass' en la ruta especificada. Revisa si la ruta 'indi_path' existe o está bien escrita.")
+}
+
+data_indi <- data.frame()
+
+# 2. Bucle de procesamiento
+for (i in seq_along(all_mass)) {
+  file_path <- all_mass[i]
+
+  op_id <- basename(dirname(dirname(file_path)))
+  
+  # Lectura flexible
+  df <- tryCatch({
+    read.table(file_path, header = FALSE, fill = TRUE, comment.char = "")
+  }, error = function(e) {
+    message("   -> Error al leer el archivo: ", e$message)
+    return(NULL)
+  })
+  
+  if (is.null(df)) next
+  
+  # Filtrar filas incompletas
+  df <- df[complete.cases(df[, 1:5]), ]
+  
+  if (nrow(df) == 0) {
+    next
+  }
+  
+  colnames(df)[1:5] <- c("time", "c2", "c3", "model_id", "biomass")
+  #biomass <- df$biomass[1:250]
+  df <- df[1:600,]
+
+
+  df <- df %>% 
+    mutate(
+      time = as.numeric(time),
+      biomass = as.numeric(biomass),
+      # Filas 1 a 5 y columnas 2 a 4
+      #datos[1:5, 2:4]
+      # Extraer nombre limpio del archivo .cmd
+      model_id = sub(".*_mm_", "", model_id),
+      model_id = sub("_[a-zA-Z]\\.cmd$", "", model_id),
+      sim_id = op_id,
+      time = time * 0.1
+    ) %>% 
+    filter(!is.na(biomass)) %>% 
+    arrange(time)
+  
+  bac_key <- df$model_id[1]
+  data_indi <- bind_rows(data_indi, df)
+  
+  # Gráfica individual
+  p <- ggplot(df, aes(x = time, y = biomass)) +
+    geom_line(color = "#2b5c8f", linewidth = 1) +
+    scale_y_log10() +
+    labs(
+      title = paste("Crecimiento:", bac_key),
+      subtitle = paste("Simulación:", op_id),
+      x = "Tiempo (h)",
+      y = expression(log[10] * " Biomass (g)")
+    ) +
+    theme_bw(base_size = 13) +
+    theme(panel.grid.minor = element_blank())
+  
+  out_name <- file.path(output_folder, paste0("plot_", bac_key, "_", op_id, ".png"))
+  ggsave(out_name, p, width = 7, height = 5, dpi = 300)
+}
+
+# 3. Gráfica Global
+if (nrow(data_indi) > 0) {
+
+  p_all <- ggplot(data_indi, aes(x = time, y = biomass, color = model_id, group = interaction(model_id, sim_id))) +
+    geom_line(linewidth = 0.8, alpha = 0.8) +
+    #scale_y_log10() +
+    labs(
+      title = "Crecimiento Individual de Todas las Cepas",
+      x = "Tiempo (h)",
+      y = expression(log[10] * " Biomass (g)"),
+      color = "Cepa"
+    ) +
+    theme_bw(base_size = 13) +
+    theme(
+      plot.title = element_text(face = "bold"),
+      panel.grid.minor = element_blank()
+    )
+  
+  global_out <- file.path(output_folder, "todas_las_bacterias_individuales.png")
+  ggsave(global_out, p_all, width = 9, height = 6, dpi = 300)
+} else {
+  message(" No se pudieron acumular datos para la gráfica global.")
+}
+```
+
+```{r}
+
+```
+
+## Curvas metabolitos individuales
