@@ -237,6 +237,11 @@ def media(name="lb", dil=0.1, vol=0.03):
             "thr__L_e": 0.1 * vol * dil, 
             "ile__L_e": 0.1 * vol * dil
         }
+    elif name == "lb3":
+         res = {
+            "glc__D_e": 0.01 * vol * dil,
+            "o2_e": 0 
+        }
     elif name == "lb+ribose":
         res = media("lb", dil)
         res["2dr5p_e"] = 0.1 * vol * dil
