@@ -708,7 +708,7 @@ library(dplyr)
 library(ggplot2)
 library(fs)
 
-indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/2108_biomass_mm/"
+indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/2108_cc_biomass"
 output_folder <- file.path(indi_path, "plots_individuales")
 dir_create(output_folder)
 
@@ -725,8 +725,7 @@ data_indi <- data.frame()
 # 2. Bucle de procesamiento
 for (i in seq_along(all_mass)) {
   file_path <- all_mass[i]
-  message(paste0("[", i, "/", length(all_mass), "] Procesando: "), file_path)
-  
+
   op_id <- basename(dirname(dirname(file_path)))
   
   # Lectura flexible
@@ -743,12 +742,11 @@ for (i in seq_along(all_mass)) {
   df <- df[complete.cases(df[, 1:5]), ]
   
   if (nrow(df) == 0) {
-    message("   -> El archivo está vacío o sus filas no tienen 5 columnas.")
     next
   }
   
   colnames(df)[1:5] <- c("time", "c2", "c3", "model_id", "biomass")
-  
+
   df <- df %>% 
     mutate(
       time = as.numeric(time),
@@ -756,7 +754,8 @@ for (i in seq_along(all_mass)) {
       # Extraer nombre limpio del archivo .cmd
       model_id = sub(".*_mm_", "", model_id),
       model_id = sub("_[a-zA-Z]\\.cmd$", "", model_id),
-      sim_id = op_id
+      sim_id = op_id,
+      time = time * 0.1
     ) %>% 
     filter(!is.na(biomass)) %>% 
     arrange(time)
@@ -779,13 +778,11 @@ for (i in seq_along(all_mass)) {
   
   out_name <- file.path(output_folder, paste0("plot_", bac_key, "_", op_id, ".png"))
   ggsave(out_name, p, width = 7, height = 5, dpi = 300)
-  message("   -> Guardada gráfica individual en: ", out_name)
 }
 
 # 3. Gráfica Global
 if (nrow(data_indi) > 0) {
-  message("Generando gráfica global con ", length(unique(data_indi$model_id)), " cepas...")
-  
+
   p_all <- ggplot(data_indi, aes(x = time, y = biomass, color = model_id, group = interaction(model_id, sim_id))) +
     geom_line(linewidth = 0.8, alpha = 0.8) +
     scale_y_log10() +
@@ -803,7 +800,6 @@ if (nrow(data_indi) > 0) {
   
   global_out <- file.path(output_folder, "todas_las_bacterias_individuales.png")
   ggsave(global_out, p_all, width = 9, height = 6, dpi = 300)
-  message(" -> Gráfica global guardada con éxito en: ", global_out)
 } else {
   message(" No se pudieron acumular datos para la gráfica global.")
 }

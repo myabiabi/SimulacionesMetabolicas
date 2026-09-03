@@ -362,8 +362,8 @@ def buscar_metabolitos(nombres, compartimento="_e", top_n=3, url=BIGG_METS_URL):
 # print(f"Total reactions: {len(model.reactions)}")
 
 # # Print a formatted list of all reactions with their IDs and stoichiometry
-# for reaction in model.reactions:
-#     print(f"{reaction.id}: {reaction.reaction}")
+ for reaction in model.metabolites:
+     print(f"{metabolites.id}: {metabolites.metabolites}")
 
 
 # # Load the model from your xml/sbml file
