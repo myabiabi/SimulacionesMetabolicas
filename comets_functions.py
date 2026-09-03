@@ -415,7 +415,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         # print(f"=========================ID establecido para {strain}==============")
         gem_i.initial_pop = [0, 0, initial_mass]
         # print(f"=========================Abrir flujos de reacciones de intercambio==============")
-        gem_i.open_exchange()
+        gem_i.open_exchanges()
         # print(f"=========================Biomasa inicial para {strain}==============")
         layout.add_model(gem_i)
         # print(f"=========================Modelo añadido {strain}==============")
