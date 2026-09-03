@@ -708,7 +708,7 @@ library(dplyr)
 library(ggplot2)
 library(fs)
 
-indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/biomass_lb2/"
+indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/03092/"
 output_folder <- file.path(indi_path, "plots_individuales")
 dir_create(output_folder)
 
@@ -746,11 +746,16 @@ for (i in seq_along(all_mass)) {
   }
   
   colnames(df)[1:5] <- c("time", "c2", "c3", "model_id", "biomass")
+  #biomass <- df$biomass[1:250]
+  df <- df[1:600,]
+
 
   df <- df %>% 
     mutate(
       time = as.numeric(time),
       biomass = as.numeric(biomass),
+      # Filas 1 a 5 y columnas 2 a 4
+      #datos[1:5, 2:4]
       # Extraer nombre limpio del archivo .cmd
       model_id = sub(".*_mm_", "", model_id),
       model_id = sub("_[a-zA-Z]\\.cmd$", "", model_id),
@@ -785,7 +790,7 @@ if (nrow(data_indi) > 0) {
 
   p_all <- ggplot(data_indi, aes(x = time, y = biomass, color = model_id, group = interaction(model_id, sim_id))) +
     geom_line(linewidth = 0.8, alpha = 0.8) +
-    scale_y_log10() +
+    #scale_y_log10() +
     labs(
       title = "Crecimiento Individual de Todas las Cepas",
       x = "Tiempo (h)",
