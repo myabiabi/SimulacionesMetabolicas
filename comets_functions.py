@@ -403,6 +403,10 @@ def load_strains(layout, models, initial_mass = 1e-8):
     for strain, gem in models.items():
         # print(f"==============Cargando modelo para {strain} desde {gem}==============")
         gem_i = cobra.io.read_sbml_model(gem)
+        # print(f"=========================Remover flujos de reacciones de intercambio==============")
+        for i in gem_i.reactions: 
+            if 'EX_' in i.id: 
+                i.lower_bound =-1000.0
         # print(f"=========================Modelo cargado para {strain}==============")
         gem_i = c.model(gem_i)
         # gem_i.optimizer = "GLOP"

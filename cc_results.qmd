@@ -708,7 +708,7 @@ library(dplyr)
 library(ggplot2)
 library(fs)
 
-indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/02_resultados/2108_cc_biomass"
+indi_path <- "/home/abigaylmontantearenas/Documents/proyecto_tesis/biomass_lb2/"
 output_folder <- file.path(indi_path, "plots_individuales")
 dir_create(output_folder)
 

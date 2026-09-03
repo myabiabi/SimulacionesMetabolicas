@@ -2072,7 +2072,7 @@ for d in */; do
     archivo="${d}/out_${nombre}/biomass.txt"
 
     if [ -f "$archivo" ]; then
-        cp "$archivo" "biomass_lb2_2/${nombre}_biomass.txt"
+        cp "$archivo" "biomass_lb2/${nombre}_biomass.txt"
     fi
 done
 
