@@ -401,6 +401,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         #for i in gem_i.reactions: 
             #if 'EX_' in i.id: 
                 #i.lower_bound =-1000.0
+        gem_i.change_bounds('EX_glc__D_e', -1000, 1000)
         # print(f"=========================Modelo cargado para {strain}==============")
         gem_i = c.model(gem_i)
         # gem_i.optimizer = "GLOP"
@@ -409,7 +410,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         # print(f"=========================ID establecido para {strain}==============")
         gem_i.initial_pop = [0, 0, initial_mass]
         # print(f"=========================Abrir flujos de reacciones de intercambio==============")
-        gem_i.open_exchanges()
+        # gem_i.open_exchanges()
         # print(f"=========================Biomasa inicial para {strain}==============")
         layout.add_model(gem_i)
         # print(f"=========================Modelo añadido {strain}==============")
@@ -444,10 +445,12 @@ def set_sim_params(args):
 
     sim_params.set_param("numRunThreads", args.threads)
     # sim_params.set_param("randomSeed", args.seed)
-    sim_params.set_param("timeStep", 0.1) # hr
+    sim_params.set_param('defaultVmax', 18.5)
+    sim_params.set_param('defaultKm', 0.000015)
+    sim_params.set_param("timeStep", 0.01) # hr
+    sim_params.set_param("spaceWidth", 1) # cm
     sim_params.set_param("maxCycles", args.cycles)
     sim_params.set_param("maxSpaceBiomass", 10) # gr DW
     sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
-    sim_params.set_param("spaceWidth", 3.107233) # cm
 
     return sim_params
