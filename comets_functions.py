@@ -445,12 +445,22 @@ def set_sim_params(args):
 
     sim_params.set_param("numRunThreads", args.threads)
     # sim_params.set_param("randomSeed", args.seed)
-    sim_params.set_param('defaultVmax', 18.5)
-    sim_params.set_param('defaultKm', 0.000015)
-    sim_params.set_param("timeStep", 0.01) # hr
-    sim_params.set_param("spaceWidth", 1) # cm
+    
+
+    sim_params.set_param("numRunThreads", args.threads)
+    # sim_params.set_param("randomSeed", args.seed)
+    sim_params.set_param("timeStep", 0.1) # hr
     sim_params.set_param("maxCycles", args.cycles)
     sim_params.set_param("maxSpaceBiomass", 10) # gr DW
     sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
+    sim_params.set_param("spaceWidth", 3.107233) # cm
+
+    #sim_params.set_param('defaultVmax', 18.5)
+    #sim_params.set_param('defaultKm', 0.000015)
+    #sim_params.set_param("timeStep", 0.01) # hr
+    #sim_params.set_param("spaceWidth", 1) # cm
+    #sim_params.set_param("maxCycles", args.cycles)
+    #sim_params.set_param("maxSpaceBiomass", 10) # gr DW
+    #sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
 
     return sim_params
