@@ -240,11 +240,7 @@ def media(name="lb", dil=0.1, vol=0.03):
     elif name == "lb3":
          res = {
             "glc__D_e": 0.01 * vol * dil,
-            "o2_e": 0,
-            "nh4_e": 1000,
-            "pi_e": 1000,
-            "h2o_e": 1000,
-            "h_e": 1000
+            "o2_e": 0
         }
     elif name == "lb+ribose":
         res = media("lb", dil)
@@ -442,10 +438,6 @@ def set_sim_params(args):
     sim_params.set_param("writeVelocityMultiConvLog", False) 
     sim_params.set_param("velocityMultiConvLogName", os.path.join(args.outdir, "velocity.txt"))
     sim_params.set_param("velocityMultiConvLogRate", 1)
-
-    sim_params.set_param("numRunThreads", args.threads)
-    # sim_params.set_param("randomSeed", args.seed)
-    
 
     sim_params.set_param("numRunThreads", args.threads)
     # sim_params.set_param("randomSeed", args.seed)

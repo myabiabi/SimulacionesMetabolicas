@@ -2072,19 +2072,61 @@ for d in */; do
     archivo="${d}/out_${nombre}/biomass.txt"
 
     if [ -f "$archivo" ]; then
-        cp "$archivo" "biomass_lb2/${nombre}_biomass.txt"
+        cp "$archivo" "biomass/${nombre}_biomass.txt"
     fi
 done
 
 
+* sin especio 
+* usar el medio de la documentacion
+* cambiar espacio y medio
+* medio solo glucosa 
+* ignorar volumen
+* con medio de la documentacion
+* medio bassado en gapfilling 
+* medio anterior de gapfilling
+*  una por una variables cambiadas
+* varibales: volumn, dilucion, volumne*dilucion, lb*gapseq, lb*literal, medio*documentacion
+
+
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 1e-6 --media_dil 1 --outdir ./e_coli_core/vol_gp
+
+
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 1e-6 --media lb3 --media_vol 1 --outdir ./e_coli_core/dil_doc
+
+
+#040926
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb3 --media_dil 1 --media_vol 1  --outdir ./e_coli_core/0409/doc/doc
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb3 --media_vol 1  --outdir ./e_coli_core/0409/doc/dil
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb3 --media_dil 1 --outdir ./e_coli_core/0409/doc/vol
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb3 --outdir ./e_coli_core/0409/doc/dil_vol_doc
 
 
 
 
+for d in */; do
+    nombre=$(basename "$d")
+    archivo="${nombre}/biomass.txt"
+
+    if [ -f "$archivo" ]; then
+        cp "$archivo" "biomass/${nombre}_biomass.txt"
+    fi
+done
 
 
+############## combinando medios, parametros y variables 
+
+medios: lb, lb2, lb3
+variables: solo, dil, vol, vo_dil
+parametros: defaultVmax, defaultKm
 
 
+## medio experimental
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb1 --media_dil 1 --media_vol 1 --outdir ./e_coli_core/0409_results/lb1
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb1 --media_vol 1 --outdir ./e_coli_core/0409_results/lb1_dil
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb1 --media_dil 1 --outdir ./e_coli_core/0409_results/lb1_vol
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb1 --outdir ./e_coli_core/0409_results/lb1_vol_dil
 
 
 
