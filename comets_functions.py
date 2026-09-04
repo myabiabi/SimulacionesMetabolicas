@@ -401,7 +401,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         #for i in gem_i.reactions: 
             #if 'EX_' in i.id: 
                 #i.lower_bound =-1000.0
-        gem_i.change_bounds('EX_glc__D_e', -1000, 1000)
+        #gem_i.change_bounds('EX_glc__D_e', -1000, 1000)
         # print(f"=========================Modelo cargado para {strain}==============")
         gem_i = c.model(gem_i)
         # gem_i.optimizer = "GLOP"
@@ -410,7 +410,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         # print(f"=========================ID establecido para {strain}==============")
         gem_i.initial_pop = [0, 0, initial_mass]
         # print(f"=========================Abrir flujos de reacciones de intercambio==============")
-        # gem_i.open_exchanges()
+        gem_i.open_exchanges()
         # print(f"=========================Biomasa inicial para {strain}==============")
         layout.add_model(gem_i)
         # print(f"=========================Modelo añadido {strain}==============")
