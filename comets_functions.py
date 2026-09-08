@@ -197,48 +197,79 @@ def media(name="lb", dil=0.1, vol=0.03):
         }
     elif name == "lb2":
          res = {
-            "h2o_e": 100, 
-            "o2_e": 10, 
-            "pi_e": 10 * vol * dil, 
-            "zn2_e": 10 * vol * dil, 
-            "cobalt2_e": 10 * vol * dil, 
-            "k_e": 10 * vol * dil, 
-            "mg2_e": 10 * vol * dil, 
-            "na1_e": 10 * vol * dil, 
-            "cd2_e": 10 * vol * dil, 
-            "aso4_e": 10 * vol * dil, 
-            "fe2_e": 10 * vol * dil, 
-            "fe3_e": 10 * vol * dil, 
-            "cro4_e": 10 * vol * dil, 
-            "pydx_e": 10 * vol * dil, 
-            "nac_e": 10 * vol * dil, 
-            "ribflv_e": 10 * vol * dil, 
-            "ura_e": 0.1 * vol * dil,
-            "glu__L_e": 0.1 * vol * dil, 
-            "gly_e": 0.1 * vol * dil,
-            "ala__L_e": 0.1 * vol * dil, 
-            "lys__L_e": 0.1 * vol * dil, 
-            "asp__L_e": 0.1 * vol * dil, 
-            "so4_e": 0.1 * vol * dil,
-            "arg__L_e": 0.1 * vol * dil, 
-            "ser__L_e": 0.1 * vol * dil, 
-            "cu2_e": 0.1 * vol * dil, 
-            "met__L_e": 0.1 * vol * dil, 
-            "trp__L_e": 0.1 * vol * dil, 
-            "phe__L_e": 0.1 * vol * dil, 
-            "h_e": 0.1 * vol * dil, 
-            "tyr__L_e": 0.1 * vol * dil, 
-            "cys__L_e": 0.1 * vol * dil, 
-            "cl_e": 0.1 * vol * dil, 
-            "leu__L_e": 0.1 * vol * dil, 
-            "his__L_e": 0.1 * vol * dil, 
-            "pro__L_e": 0.1 * vol * dil, 
-            "val__L_e": 0.1 * vol * dil, 
-            "thr__L_e": 0.1 * vol * dil, 
-            "ile__L_e": 0.1 * vol * dil
+            "h2o_e": 100,
+        "o2_e": 10,
+        "pi_e": 100 * vol * dil,
+        "amp_e": 0.1 * vol * dil,
+        "glu__L_e": 1 * vol * dil,
+        "pheme_e": 0.1 * vol * dil,
+        "mn2_e": 100 * vol * dil,
+        "gly_e": 1 * vol * dil,
+        "zn2_e": 100 * vol * dil,
+        "ala__L_e": 1 * vol * dil,
+        "lys__L_e": 1 * vol * dil,
+        "asp__L_e": 1 * vol * dil,
+        "cmp_e": 0.1 * vol * dil,
+        "so4_e": 100 * vol * dil,
+        "arg__L_e": 1 * vol * dil,
+        "ser__L_e": 1 * vol * dil,
+        "cu2_e": 100 * vol * dil,
+        "met__L_e": 1 * vol * dil,
+        "ca2_e": 100 * vol * dil,
+        "trp__L_e": 1 * vol * dil,
+        "phe__L_e": 1 * vol * dil,
+        "h_e": 0.1 * vol * dil,
+        "tyr__L_e": 1 * vol * dil,
+        "cys__L_e": 1 * vol * dil,
+        "ump_e": 0.1 * vol * dil,
+        "ura_e": 0.1 * vol * dil,
+        "cl_e": 100 * vol * dil,
+        "leu__L_e": 1 * vol * dil,
+        "his__L_e": 1 * vol * dil,
+        "gmp_e": 0.1 * vol * dil,
+        "pro__L_e": 1 * vol * dil,
+        "cobalt2_e": 100 * vol * dil,
+        "val__L_e": 1 * vol * dil,
+        "thr__L_e": 1 * vol * dil,
+        "adn_e": 0.1 * vol * dil,
+        "thymd_e": 0.1 * vol * dil,
+        "k_e": 100 * vol * dil,
+        "pydx_e": 0.1 * vol * dil,
+        "nac_e": 0.1 * vol * dil,
+        "pppn_e": 0.1 * vol * dil,
+        "ribflv_e": 0.1 * vol * dil,
+        "hxan_e": 0.1 * vol * dil,
+        "h2s_e": 0.1 * vol * dil,
+        "ins_e": 0.1 * vol * dil,
+        "uri_e": 0.1 * vol * dil,
+        "mg2_e": 100 * vol * dil,
+        "gsn_e": 0.1 * vol * dil,
+        "ile__L_e": 1 * vol * dil,
+        "lcystin_e": 1 * vol * dil,
+        "skm_e": 0.1 * vol * dil,
+        "fol_e": 0.1 * vol * dil,
+        "dad_2_e": 0.1 * vol * dil,
+        "hg2_e": 100 * vol * dil,
+        "lipop_e": 0.1 * vol * dil,
+        "pnto__R_e": 0.1 * vol * dil,
+        "dcyt_e": 0.1 * vol * dil,
+        "thmmp_e": 0.1 * vol * dil,
+        "na1_e": 100 * vol * dil,
+        "cd2_e": 100 * vol * dil,
+        "aso4_e": 100 * vol * dil,
+        "cbl1_e": 0.1 * vol * dil,
+        "fe2_e": 100 * vol * dil,
+        "fe3_e": 100 * vol * dil,
+        "cro4_e": 100 * vol * dil,
+        "nh4_e": 100 * vol * dil
         }
-    elif name == "lb+ribose":
-        res = media("lb", dil)
+    elif name == "glu":
+         res = {
+            "glc__D_e": 0.01 * vol * dil,
+            "o2_e": 0
+        }
+    elif name == "+rgluibose":
+        res = media("glu", dil)
         res["2dr5p_e"] = 0.1 * vol * dil
 
     elif name == "mm":
@@ -317,67 +348,6 @@ def media(name="lb", dil=0.1, vol=0.03):
         res = media("mm", dil)
         res["2dr5p_e"] = 0.1 * dil
     
-    elif name == "mm2":
-
-        res = {
-    "na1_e":      29.8353095877879 * vol * dil,
-    "cl_e":       24.4955342300223 * vol * dil,
-    "so4_e":      11.5265819593191 * vol * dil,
-    "ca2_e":      0.961242138283167 * vol * dil,
-    "k_e":        2.97056655751503 * vol * dil,
-    "mg2_e":      2.22652476530697 * vol * dil,
-    "fe2_e":      0.00058 * vol * dil,
-    "fe3_e":      1.88994331602787 * vol * dil,
-    "pi_e":       0.6663334999167 * vol * dil,
-    "nh4_e":      0.6663334999167 * vol * dil,
-    "no3_e":      0.021036 * vol * dil,
-    "ala__L_e":   0.013266666666667 * vol * dil,
-    "asp__L_e":   0.00252 * vol * dil,
-    "asn__L_e":   0.021266666666667 * vol * dil,
-    "glu__L_e":   0.000456666666667 * vol * dil,
-    "gln__L_e":   0.013333333333333 * vol * dil,
-    "gly_e":      0.002793333333333 * vol * dil,
-    "his__L_e":   0.0076 * vol * dil,
-    "ile__L_e":   0.0104 * vol * dil,
-    "leu__L_e":   0.010466666666667 * vol * dil,
-    "lys__L_e":   0.001786666666667 * vol * dil,
-    "met__L_e":   0.005246666666667 * vol * dil,
-    "phe__L_e":   0.005793333333333 * vol * dil,
-    "pro__L_e":   0.005073333333333 * vol * dil,
-    "ser__L_e":   0.00448 * vol * dil,
-    "thr__L_e":   0.000813333333333 * vol * dil,
-    "trp__L_e":   0.002206666666667 * vol * dil,
-    "val__L_e":   0.009933333333333 * vol * dil,
-    "arg__L_e":   0.004973333333333 * vol * dil,
-    "cd2_e":      4.43333333333333E-07 * vol * dil,
-    "cobalt2_e":  1.98E-06 * vol * dil,
-    "cu2_e":      3.3E-05 * vol * dil,
-    "mn2_e":      3.2E-05 * vol * dil,
-    "ni2_e":      3.63333333333333E-06 * vol * dil,
-    "zn2_e":      0.001886666666667 * vol * dil,
-    "mobd_e":     2.04666666666667E-06 * vol * dil,
-    "ade_e":      0.00218 * vol * dil,
-    "gua_e":      0.00204 * vol * dil,
-    "ura_e":      0.001873333333333 * vol * dil,
-    "cellb_e":    6.8E-05 * vol * dil,
-    "man_e":      0.008466666666667 * vol * dil,
-    "fol_e":      1.69333333333333E-06 * vol * dil,
-    "pnto__R_e":  1.61333333333333E-05 * vol * dil,
-    "btn_e":      1.82666666666667E-07 * vol * dil,
-    "sel_e":      3.66666666666667E-08 * vol * dil,
-    "ascb__L_e":  5.66666666666667E-07 * vol * dil,
-    "thm_e":      1.38E-05 * vol * dil,
-    "ribflv_e":   3.53333333333333E-06 * vol * dil,
-    "nac_e":      0.000108666666667 * vol * dil,
-    "o2_e":       0.606666666666667 * vol,
-    "h2o_e":      1850.30992691276 * vol,
-    "h_e":        3.33333333333333E-06 * vol,
-}
-
-    elif name == "mm2+ribose":
-        res = media("mm2", vol, dil)
-        res["2dr5p_e"] = 0.1 * vol * dil
-
     else:
         raise ValueError(f"Unrecognized media '{name}'. Supported: 'lb', 'mm', 'mm2', 'mm+ribose'")
 
@@ -392,6 +362,7 @@ def load_strains(layout, models, initial_mass = 1e-8):
         #for i in gem_i.reactions: 
             #if 'EX_' in i.id: 
                 #i.lower_bound =-1000.0
+        #gem_i.change_bounds('EX_glc__D_e', -1000, 1000)
         # print(f"=========================Modelo cargado para {strain}==============")
         gem_i = c.model(gem_i)
         # gem_i.optimizer = "GLOP"
@@ -440,5 +411,7 @@ def set_sim_params(args):
     sim_params.set_param("maxSpaceBiomass", 10) # gr DW
     sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
     sim_params.set_param("spaceWidth", 3.107233) # cm
+    sim_params.set_param('defaultVmax', 18.5)
+    sim_params.set_param('defaultKm', 0.000015)
 
     return sim_params
