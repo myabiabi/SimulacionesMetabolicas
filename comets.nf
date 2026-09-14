@@ -23,6 +23,8 @@ process COMETS_RUN {
       --gem_path ${params.gem_path} \\
       --strains ${strain} \\
       --media ${params.media} \\
+      --media_vol ${params.media_vol} \\
+      --media_dil ${params.media_dil} \\
       --cycles ${params.cycles} \\
       --outdir out_${strain}
     """

@@ -1,4 +1,4 @@
-workDir = '/mnt/data/sur/users/mmontante/02_resultados/nf_work'
+workDir = '/mnt/data/sur/users/mmontante/02_resultados/nf'
 
 
 executor {
@@ -26,16 +26,15 @@ params {
     genomes        = '/mnt/data/sur/users/mmontante/02_resultados/models_core/*faa'
     memote_input   = '/mnt/data/sur/users/mmontante/02_resultados/cc/models/cc_pk_gp_lb*.xml'
     comets_script  = '/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py'
-    gem_path       = '/mnt/data/sur/users/mmontante/02_resultados/cc/models/final_models'
+    gem_path       = '/mnt/data/sur/users/mmontante/02_resultados/rz/models/final_models'
     com_path      = '/mnt/data/sur/users/mmontante/01_data/rz/syncoms.csv'
-    outbase        = '/mnt/data/sur/users/mmontante/02_resultados/1409_resultados/mm_vol_vk'
+    outbase        = '/mnt/data/sur/users/mmontante'
     fill_outdir    = '/mnt/data/sur/users/mmontante/02_resultados'
     fill_input     = '/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq_raw'
     fill_media     = '/mnt/data/sur/users/mmontante/01_data/media/LBmed.csv' 
-    media          = 'mm'
-    mass	   = '5e-6'
-    cycles         = 5000
-    media_dil      = 1
+    media          = 'lb2'
+    cycles         = 2000
+    media_dil      = 0.1
     media_vol      = 0.03
     output_dir     = '/mnt/data/sur/users/mmontante/02_resultados/cc/memote'
     gapseq_indir   = '/mnt/data/sur/users/mmontante/02_resultados/rz/gapseq/gapfind'
@@ -67,7 +66,7 @@ profiles {
         process.executor = 'slurm'
         process.memory     = '100 GB'
         process.cpus      = 4
-        params.outbase    = '/mnt/data/sur/users/mmontante/02_resultados/1409_resultados/mm_vol_vk'
+        params.outbase    = '/mnt/data/sur/users/mmontante'
     }
 
      combos {
@@ -75,7 +74,8 @@ profiles {
         process.cpus      = 2
 	process.memory    = '40 GB'
         process.time      = '48h'
-        params.outbase    = '/mnt/data/sur/users/mmontante'
+        params.gem_path   = '/mnt/data/sur/users/mmontante/02_resultados/rz/consenso'
+        params.outbase    = '/mnt/data/sur/users/mmontante/02_resultados/rz'
     }
 
      doall {

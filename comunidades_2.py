@@ -8,16 +8,15 @@ SCRIPT = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comet
 GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/final_models"
 
 
-OUTDIR_BASE = "02_resultados/rz/110926simulaciones_4"
+OUTDIR_BASE = "02_resultados/rz/110926simulaciones"
 
 if not os.path.exists(OUTDIR_BASE):
 	os.makedirs(OUTDIR_BASE)
 
 # Parámetros fijos para las simulaciones
 
-CYCLES = "100"
+CYCLES = "5000"
 MEDIA = "lb2"
-INITIAL_MASS = "5e-6"
 #MEDIA_DIL = "0.1"
 #MEDIA_VOL = "0.03"
 
@@ -84,9 +83,7 @@ def main():
         comando.extend([
             "--cycles", CYCLES,
             "--media", MEDIA,
-            "--outdir", outdir_especifico,
-	    "--initial_mass",INITIAL_MASS
-		
+            "--outdir", outdir_especifico
         ])
         
         # Ejecutar la simulación

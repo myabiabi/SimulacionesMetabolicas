@@ -2,38 +2,34 @@ import os
 import subprocess
 import csv
 
-# --- RUTAS Y PARÁMETROS ---
+# --- CONFIGURACIÓN DE RUTAS Y PARÁMETROS ---
 CSV_PATH = "/mnt/data/sur/users/mmontante/01_data/rz/syncoms.csv"
 SCRIPT = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py"
 GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/final_models"
 
 
-OUTDIR_BASE = "02_resultados/rz/110926simulaciones_4"
+
+
+OUTDIR_BASE = "02_resultados/rz/100926simulaciones"
 
 if not os.path.exists(OUTDIR_BASE):
 	os.makedirs(OUTDIR_BASE)
 
 # Parámetros fijos para las simulaciones
 
-CYCLES = "100"
+CYCLES = "5000"
 MEDIA = "lb2"
-INITIAL_MASS = "5e-6"
 #MEDIA_DIL = "0.1"
 #MEDIA_VOL = "0.03"
-
-
-print(f"\n========================================================")
-print(f" Iniciando lectura de comunidades ")
-print(f"========================================================")
 
 def main():
     if not os.path.exists(CSV_PATH):
         print(f"Error: No se encontró el archivo en {CSV_PATH}")
         return
 
-    print(f"--- Iniciando SynComs para COMETS ---")
+    print(f"--- Iniciando Orquestador SynComs para COMETS (Modo Nativo) ---")
 
-    # 1. Leer el archivo usando el 'csv'
+    # 1. Leer el archivo usando el módulo nativo 'csv'
     with open(CSV_PATH, mode='r', encoding='utf-8') as f:
         lector = csv.DictReader(f, delimiter='\t')
         
@@ -46,33 +42,28 @@ def main():
             for com in columnas_comunidades:
                 clave_original = next(k for k in fila.keys() if com in k)
                 valor = fila[clave_original].replace('"', '').strip()
-
                 
                 if valor == '1':
                     comunidades_dict[com].append(cepa_nombre)
 
-    print(f"Se procesarán {len(columnas_comunidades)}")
+    print(f"Se procesarán {len(columnas_comunidades)} comunidades de forma integral.\n")
 
-    # 2. Iterar sobre las comunidades
+    # 2. Iterar sobre las comunidades mapeadas para lanzar las simulaciones
     for com_nombre, cepas_presentes in comunidades_dict.items():
         
         if not cepas_presentes:
-            print(f"La comunidad {com_nombre} está vacía en el archivo. Saltando...")
+            print(f"[AVISO] La comunidad {com_nombre} está vacía en el archivo. Saltando...")
             continue
             
         print(f"\n========================================================")
-        print(f" {com_nombre} ")
+        print(f" Lanzando {com_nombre} como comunidad unificada")
         print(f" Cepas miembros: {cepas_presentes}")
         print(f"========================================================")
         
-        # Ruta de salida relativa (ej: "./com3")
+        # Construir la ruta de salida relativa (ej: "./com3")
         outdir_especifico = os.path.join(OUTDIR_BASE, com_nombre)
         
-	
-        print(f" Iniciando simulaciones ")
-        
-
-        # 3. Instrucciones COMETS
+        # 3. Construir el comando expandiendo las cepas dinámicamente
         comando = [
             "python3", SCRIPT,
             "--gem_path", GEM_PATH,
@@ -84,20 +75,19 @@ def main():
         comando.extend([
             "--cycles", CYCLES,
             "--media", MEDIA,
-            "--outdir", outdir_especifico,
-	    "--initial_mass",INITIAL_MASS
-		
+            "--outdir", outdir_especifico
         ])
         
         # Ejecutar la simulación
         try:
-            print(f"Simulando interacciones en {com_nombre}...")
+            print(f"[EJECUTANDO COMETS] Simulando interacciones en {com_nombre}...")
             resultado = subprocess.run(comando, check=True, text=True, capture_output=True)
-            print(f"Comunidad {com_nombre} correcto.")
+            print(f"[ÉXITO] Comunidad {com_nombre} simulada correctamente.")
         except subprocess.CalledProcessError as e:
-            print(f"Falló la simulación para {com_nombre}.")
+            print(f"[ERROR] Falló la simulación conjunta para {com_nombre}.")
+            print(f"Detalle del error de ejecución:\n{e.stderr}")
 
-    print("\n--- Simulaciones de comunidades completadas exitosamente ---")
+    print("\n--- ¡Simulaciones de comunidades completadas exitosamente! ---")
 
 if __name__ == "__main__":
     main()
