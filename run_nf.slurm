@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=1409mm
+#SBATCH --job-name=2409mm
 #SBATCH --output=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.log
 #SBATCH --error=/mnt/data/sur/users/mmontante/02_resultados/nf_work/%x.error
 #SBATCH --time=240:00:00
@@ -23,8 +23,8 @@ echo "========================================="
 #export JAVA_HOME=/opt/apps/oracle-java/20.0.1
 #export NXF_JVM_ARGS=-XX:TieredStopAtLevel=1 -Xmx1g"
 module load nextflow/25.10.4
-export NXF_JVM_ARGS="-Xint"
-
+#export NXF_JVM_ARGS="-Xint"
+export NXF_JVM_ARGS="-Xmx4g"
 #nextflow run main.nf -entry MEMOTE -profile memote
 nextflow run main.nf -entry COMETS -profile comets -resume
 #nextflow run main.nf -entry COMBOS -profile combos -resume

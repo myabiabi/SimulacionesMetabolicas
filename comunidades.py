@@ -3,22 +3,22 @@ import subprocess
 import csv
 
 # --- RUTAS Y PARÁMETROS ---
-CSV_PATH = "/mnt/data/sur/users/mmontante/01_data/rz/syncoms.csv"
+CSV_PATH = "/mnt/data/sur/users/mmontante/01_data/cc/syncoms.csv"
 SCRIPT = "/mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py"
-GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/rz/models/final_models"
+GEM_PATH = "/mnt/data/sur/users/mmontante/02_resultados/cc/models/final_models"
 
 
-OUTDIR_BASE = "02_resultados/rz/110926simulaciones_4"
+OUTDIR_BASE = "02_resultados/1509_resultados/cc/vk1/comunidades"
 
 if not os.path.exists(OUTDIR_BASE):
 	os.makedirs(OUTDIR_BASE)
 
 # Parámetros fijos para las simulaciones
 
-CYCLES = "100"
-MEDIA = "lb2"
+CYCLES = "5000"
+MEDIA = "mm"
 INITIAL_MASS = "5e-6"
-#MEDIA_DIL = "0.1"
+MEDIA_DIL = "1"
 #MEDIA_VOL = "0.03"
 
 
@@ -85,7 +85,9 @@ def main():
             "--cycles", CYCLES,
             "--media", MEDIA,
             "--outdir", outdir_especifico,
-	    "--initial_mass",INITIAL_MASS
+	    "--initial_mass",INITIAL_MASS,
+	    "--media_dil",MEDIA_DIL
+
 		
         ])
         

@@ -67,7 +67,7 @@ def process_arguments():
                         help=("Initial mass for each strain in grams of dry weight. Example: 1e-8"
                               "Currently, only identical starting masses for all strains are supported."),
                         type=float,
-                        default=1e-8)
+                        default=5e-6)
     parser.add_argument("--ignore_trace_metabolites",
                         help=("Whether to ignore typical trace metabolites in the media."
                               "These are added at a concentration of 1000 mmol/gDW."
