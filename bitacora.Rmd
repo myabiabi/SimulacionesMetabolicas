@@ -2105,12 +2105,32 @@ python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.p
 
 
 
+for d in */out_*/; do
+    nombre=$(basename "$d")
+    archivo="${nombre}/biomass.txt"
+
+    if [ -f "$archivo" ]; then
+        cp "$archivo" "biomass/${nombre}_biomass.txt"
+    fi
+done
+
+
 for d in */; do
     nombre=$(basename "$d")
     archivo="${nombre}/biomass.txt"
 
     if [ -f "$archivo" ]; then
         cp "$archivo" "biomass/${nombre}_biomass.txt"
+    fi
+done
+
+
+for d in */out_*; do
+    nombre=$(basename "$d")
+    archivo="${nombre}/_exchange_fluxes.tsv"
+
+    if [ -f "$archivo" ]; then
+        cp "$archivo" "fluxes/${nombre}.tsv"
     fi
 done
 
@@ -2290,21 +2310,53 @@ for (file_path in all_files) {
 
 for m in 02_resultados/ecoli/models/gp/*.xml; do id=$(basename "$m" .xml); out="./e_coli_core/0809_results/gp/lb2_vol_vk/$id"; python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path 02_resultados/ecoli/models/gp --strains "$id" --cycles 10000 --initial_mass 5e-6 --media lb2 --media_dil 1 --outdir "$out"; done
 
+##############
 
 
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb2 --media_dil 1 --media_vol 1 --outdir ./02_resultados/1409_resultados/1/ecoli/lb2
 
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb2 --media_vol 1 --outdir ./02_resultados/1409_resultados/1/ecoli/lb2_dil
 
+python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb2 --media_dil 1 --outdir ./02_resultados/1409_resultados/1/ecoli/lb2_vol
 
+python /mnt/data/sur/users/test/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py --gem_path ./e_coli_core --strains ecoli --cycles 10000 --initial_mass 5e-6 --media lb2 --outdir ./02_resultados/1409_resultados/1/ecoli/lb2_vol_dil
 
+############
+for d in */out_*/; do
+    nombre=$(basename "$d")
+    archivo="${d}fluxes.tsv"
 
+    if [ -f "$archivo" ]; then
+        cp "$archivo" "fluxes/${nombre}_fluxes.tsv"
+    fi
+done
 
+##############################
+eval "$(mamba shell hook --shell bash)"
+mamba activate python3
+module load COMETS
+for mm in 02_resultados/rz/models/bacillus/rz_pk_gp_lb_bacillus.xml; do
+    id=$(basename "$mm" .xml)
+    out="./02_resultados/1509_resultados/rz/vk1/bacillus/pk_lb"
 
-
-
-
-
-
-
+    python /mnt/data/sur/users/mmontante/SimulacionesMetabolicas/sim_syncom_comets.py \
+        --gem_path 02_resultados/rz/models/bacillus \
+        --strains "$id" \
+        --cycles 10000 \
+        --initial_mass 5e-6 \
+        --media lb2 \
+        --media_dil 0.1 \
+        --media_vol 0.03 \
+        --outdir "$out"
+done
+###########################
+for dir in C*/; do
+    d="${dir%/}"
+    com_prefix="${d/C/com}"
+    for file in "$d"/*biomass.txt; do
+        [ -f "$file" ] && cp "$file" "biomass/${com_prefix}_$(basename "$file")"
+    done
+done
 
 
 

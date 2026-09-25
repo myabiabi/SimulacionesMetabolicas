@@ -1373,7 +1373,6 @@ ggsave(file.path(output_folder, "combined_clean.png"), p_combined, width = 11, h
 ```
 ## 3. Comunidad con integrantes 
 ```{r}
-# ====================================== Comunidad con integrantes ======================================
 
 com_dirs <- list.dirs(results, recursive = FALSE)
 com_dirs <- com_dirs[grepl("/com", com_dirs)]
@@ -2088,7 +2087,6 @@ p_bars <- ggplot(final_biomass_comm, aes(x = com, y = total_biomass, fill = com)
   ) +
   
   # Usar una paleta con colores distintos para cada barra
-  # "Paired" es buena para hasta 12 categorías
   scale_fill_brewer(palette = "Paired") + 
   
   # Expandir el eje Y para que la etiqueta no se corte

@@ -20,9 +20,9 @@
 
 from functions import variables_totales
 variables_totales(
-    gem_path="/media/abigaylmontantearenas/KINGSTON/models/rz",
-    output_dir="/media/abigaylmontantearenas/KINGSTON/models/rz",
-    output_filename="1109_rz_variables_totales.csv"
+    gem_path="/media/abigaylmontantearenas/KINGSTON/models/cc/mergem/models",
+    output_dir="/media/abigaylmontantearenas/KINGSTON/models/cc/mergem/models",
+    output_filename="2109_cc_gemsembler_variables_totales.csv"
 )
 
 

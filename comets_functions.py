@@ -411,7 +411,7 @@ def set_sim_params(args):
     sim_params.set_param("maxSpaceBiomass", 10) # gr DW
     sim_params.set_param("minSpaceBiomass", 1e-11) # gr DW
     sim_params.set_param("spaceWidth", 3.107233) # cm
-    sim_params.set_param('defaultVmax', 10)
-    sim_params.set_param('defaultKm', 0.01)
+    sim_params.set_param('defaultVmax', 18.5)
+    sim_params.set_param('defaultKm', 0.000015)
 
     return sim_params
