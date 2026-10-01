@@ -6,5 +6,5 @@ conda activate cometspy
 pip3 install cometspy
 ```
 
-Acknowledgments
+## Acknowledgments
 The work in this repository is supported by PAPIIT-IN206626.
