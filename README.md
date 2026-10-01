@@ -5,8 +5,6 @@ conda create -c conda-forge -n cometspy python=3.8 jupyter matplotlib "pandas>=1
 conda activate cometspy
 pip3 install cometspy
 
-
 ## Acknowledgments
-
-```sh
 The work in this repository is supported by PAPIIT-IN206626.
+
